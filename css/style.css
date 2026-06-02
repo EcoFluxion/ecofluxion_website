@@ -934,6 +934,7 @@ img {
 
 .social-links {
     display: flex;
+    flex-wrap: wrap;
     gap: 1rem;
 }
 
@@ -1022,6 +1023,7 @@ img {
 
 .footer-social {
     display: flex;
+    flex-wrap: wrap;
     gap: 1rem;
     margin-top: 1.5rem;
 }

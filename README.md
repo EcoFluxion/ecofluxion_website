@@ -2,14 +2,14 @@
 
 ![EcoFluxion Logo](./image/ecofluxion_logo.png)
 
-**Veriden Zekaya, Yazılımdan Başarıya.**  
-*From Data to Intelligence, From Software to Success.*
+**Veriden Zekaya, Araştırmadan Ürüne.**  
+*From Data to Intelligence, From Research to Product.*
 
 ---
 
 ## 🌿 About EcoFluxion
 
-EcoFluxion is an Ankara-based software and artificial intelligence technology company. We specialize in Natural Language Processing (NLP), Large Language Models (LLM), and AI solutions, developing intelligent, secure, and scalable software systems for public and private sectors, particularly with Turkish language support.
+EcoFluxion is an Ankara-based AI R&D company operating in ODTÜ Teknokent. We build our own products in Natural Language Processing (NLP) and Large Language Models (LLM), with a strong focus on Turkish-language AI. Our flagship product is **İçtiHub**, an AI-powered legal-tech platform.
 
 ### Company Information
 - **Location:** Mustafa Kemal Mahallesi Bilişim İnovasyon Merkezi ODTÜ Teknokent 06510 Çankaya, Ankara
@@ -29,24 +29,22 @@ EcoFluxion is an Ankara-based software and artificial intelligence technology co
 ## 🚀 Mission & Vision
 
 **Mission:**  
-To lead digital transformation processes of institutions using artificial intelligence and data analytics technologies, optimize business processes, and provide innovative solutions that add value to society.
+To build AI products that bring large language models and data analytics into real-world use — starting with the legal domain through İçtiHub — and to create lasting value for the people and institutions who rely on them.
 
 **Vision:**  
-To become one of Turkey's leading artificial intelligence and software development companies, producing technology-focused solutions that make a difference in local and international projects.
+To become one of Türkiye's leading AI product companies, developing our own platforms that make a difference both locally and internationally.
 
 ---
 
 ## 🛠️ Technologies & Expertise
 
-### Core Technologies
-- **Artificial Intelligence** - Advanced AI solutions and implementations
-- **Large Language Models (LLMs)** - Custom model development and fine-tuning
-- **Natural Language Processing** - Turkish and multilingual text processing
-- **Deep Learning & Neural Networks** - Advanced neural architectures
-- **Computer Vision** - Image and video analysis systems
-- **Big Data & Analytics** - Large-scale data processing and insights
-- **Cloud Computing & DevOps** - Scalable cloud infrastructure
-- **Cybersecurity & Privacy** - Secure and compliant solutions
+### Core Technologies (behind our products)
+- **Large Language Models (LLMs)** - Our own models, fine-tuned for the Turkish legal domain
+- **Natural Language Processing** - Turkish and multilingual text understanding
+- **Retrieval-Augmented Generation (RAG)** - Grounded, accurate answers from real data
+- **Semantic Search & Vector Databases** - Fast, meaning-based retrieval
+- **Model Training & MLOps** - Training and fine-tuning on large-scale infrastructure
+- **Cloud-Native Infrastructure** - Scalable, secure platforms running our products
 
 ### Technology Stack
 - **Backend:** Python, Node.js, Microservices Architecture
@@ -74,14 +72,14 @@ Advanced large language model (LLM) specifically designed for Turkish legal text
 
 **Technologies:** LLM, RAG, MCP Agent System, NLP, Turkish Language
 
-**Integration:** These powerful components are utilized within the AvukatAI platform
+**Integration:** These powerful components power our İçtiHub platform
 
 ---
 
-### 2. AvukatAI
-**Category:** Legal Technology Platform
+### 2. İçtiHub
+**Category:** Flagship Product — Legal Technology Platform
 
-Comprehensive AI-powered legal platform designed for law firms, legal departments, and institutions seeking digital transformation:
+Our flagship AI-powered legal platform that brings LLM-driven case-law search, document analysis, and intelligent legal assistance to legal professionals across Türkiye:
 
 **Key Features:**
 - Integrated legal archives and document management
@@ -97,53 +95,33 @@ Comprehensive AI-powered legal platform designed for law firms, legal department
 
 ---
 
-### 3. SYDhub (Sanayide Yeşil Dönüşüm Hub)
-**Category:** Green Transformation
+## 🛠️ What We Build
 
-Large-scale industrial green transformation portal connecting stakeholders for sustainable development:
+These are the capabilities behind our **own products** (İçtiHub, MevzuatBot) — not services for hire.
 
-**Key Features:**
-- Connects academia, industry sectors, and public institutions
-- Knowledge sharing ecosystem for sustainability
-- Sustainable development resources and best practices
-- Collaboration tools for green transformation initiatives
-- Research database and resource library
-- Project matching and partnership facilitation
+### 1. Applied AI & LLMs
+- Our own large language models, fine-tuned for the Turkish legal domain
+- NLP pipelines and text understanding
+- Conversational AI and intelligent assistants
+- Document understanding and automation
+- AI agent systems and orchestration (MCP)
 
-**Technologies:** Web Portal, Collaboration Systems, Database, Integration
-
----
-
-## 💼 Services
-
-### 1. AI Solutions Development
-- Custom LLM development and fine-tuning for specific domains
-- NLP-powered applications and text processing
-- Conversational AI, chatbots, and virtual assistants
-- Intelligent document processing and automation
-- Retrieval-Augmented Generation (RAG) systems
-- AI agent systems and orchestration
-
-### 2. Enterprise Software Development
-- Large-scale web portals and platforms
-- Cloud-native applications and microservices
-- RESTful API development and integration
+### 2. Scalable Platforms
+- Large-scale, cloud-native product platforms
+- Microservices architecture
+- RESTful APIs that power our products
 - Real-time systems and data processing
-- Enterprise system integration
 
-### 3. Digital Transformation
-- Legacy system modernization and migration
-- Cloud migration strategies and implementation
-- Business process automation
-- Digital workflow optimization
-- System integration services
+### 3. Data & Retrieval
+- Retrieval-Augmented Generation (RAG)
+- Semantic search and embeddings
+- Vector databases
+- Knowledge bases grounded in real data
 
-### 4. Consulting & Strategy
-- AI readiness assessment and planning
-- Technology roadmap development
-- Architecture design and review
-- Performance optimization
-- Technical due diligence
+### 4. AI Research
+- Training and fine-tuning models on large-scale infrastructure
+- Research into new architectures
+- Prototyping and applied experimentation
 
 ---
 
@@ -166,12 +144,12 @@ This corporate website is a modern, bilingual showcase with advanced features:
 
 1. **Home** - Hero section with animated particle background and company introduction
 2. **About** - Company mission, vision, and core values with feature highlights
-3. **Services** - Four main service categories with detailed descriptions
-4. **Projects** - Detailed showcases of MevzuatBot, AvukatAI, and SYDhub
+3. **What We Build** - The AI and engineering capabilities behind our products
+4. **Products** - Showcases of İçtiHub and MevzuatBot
 5. **Technologies** - Technology expertise and partnerships
 6. **Careers** - Why EcoFluxion section and CV submission form (side-by-side layout)
 7. **Contact** - Contact form and company information
-8. **Footer** - Quick links, services, resources, and social media
+8. **Footer** - Quick links, products, resources, and social media
 
 ### Interactive Elements
 - Smooth scroll navigation
@@ -605,8 +583,8 @@ Tested and fully compatible with:
   "@context": "https://schema.org",
   "@type": "Organization",
   "name": "EcoFluxion",
-  "url": "https://www.ecofluxion.com",
-  "logo": "https://www.ecofluxion.com/image/ecofluxion_logo.png",
+  "url": "https://ecofluxion.com",
+  "logo": "https://ecofluxion.com/image/ecofluxion_logo.png",
   "contactPoint": {
     "@type": "ContactPoint",
     "telephone": "+90-542-412-2111",
@@ -884,8 +862,8 @@ For technical issues or questions:
 - **LinkedIn:** [EcoFluxion Company Page](https://tr.linkedin.com/company/ecofluxion)
 
 ### Office Location
-Öveçler Mahallesi Niyet Caddesi No:8/13  
-Çankaya, Ankara, Turkey
+Mustafa Kemal Mahallesi Bilişim İnovasyon Merkezi ODTÜ Teknokent  
+06510 Çankaya, Ankara, Turkey
 
 ---
 
@@ -958,9 +936,9 @@ For technical issues or questions:
 
 **Built with ❤️ by the EcoFluxion Team**
 
-*Pioneering AI-Integrated Software Solutions*
+*We build our own AI products — flagship: İçtiHub*
 
-For more information, visit [our website](https://www.ecofluxion.org) or contact us at info@ecofluxion.com
+For more information, visit [our website](https://ecofluxion.com) or contact us at info@ecofluxion.com
 
 ---
 

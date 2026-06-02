@@ -411,9 +411,9 @@
             return false;
         }
         
-        // Service validation
+        // Topic validation
         if (data.service === '') {
-            showFormMessage('error', 'Please select a service.');
+            showFormMessage('error', 'Please select a topic.');
             return false;
         }
         
@@ -496,7 +496,7 @@
     // ==========================================================================
     
     console.log('%c🌿 EcoFluxion ', 'background: #7CB342; color: white; font-size: 20px; padding: 10px;');
-    console.log('%cPioneering AI-Integrated Software Solutions', 'color: #424242; font-size: 14px;');
+    console.log('%cWe build our own AI products — flagship: İçtiHub', 'color: #424242; font-size: 14px;');
     console.log('%cWebsite built with ❤️ by EcoFluxion Team', 'color: #757575; font-size: 12px;');
     console.log('%cInterested in joining our team? Check out our careers page!', 'color: #7CB342; font-size: 12px; font-weight: bold;');
 

@@ -1,7 +1,7 @@
 {
   "name": "ecofluxion-website",
   "version": "1.0.0",
-  "description": "EcoFluxion Corporate Website - AI & Software Development Company",
+  "description": "EcoFluxion — AI product R&D company website (flagship product: İçtiHub)",
   "main": "index.html",
   "scripts": {
     "start": "npx http-server -p 8000 -o",
@@ -12,11 +12,12 @@
   },
   "keywords": [
     "ecofluxion",
+    "ictihub",
     "ai",
-    "machine-learning",
+    "legal-tech",
+    "llm",
     "nlp",
-    "software-development",
-    "corporate-website",
+    "machine-learning",
     "bilingual",
     "responsive"
   ],
@@ -25,12 +26,12 @@
   "private": true,
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yourusername/ecofluxion-website.git"
+    "url": "git+https://github.com/EcoFluxion/ecofluxion_website.git"
   },
   "bugs": {
-    "url": "https://github.com/yourusername/ecofluxion-website/issues"
+    "url": "https://github.com/EcoFluxion/ecofluxion_website/issues"
   },
-  "homepage": "https://www.ecofluxion.org",
+  "homepage": "https://ecofluxion.com",
   "devDependencies": {},
   "dependencies": {},
   "engines": {

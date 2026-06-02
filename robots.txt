@@ -1,14 +1,30 @@
-# Robots.txt for EcoFluxion Website
+# robots.txt — EcoFluxion (https://ecofluxion.com)
 
+# Default: allow all crawlers full access
 User-agent: *
 Allow: /
 
-# Sitemap location
-Sitemap: https://www.ecofluxion.com/sitemap.txt
+# AI / generative-engine crawlers explicitly welcome (GEO)
+User-agent: GPTBot
+Allow: /
 
-# Disallow admin areas (if any)
-# Disallow: /admin/
+User-agent: OAI-SearchBot
+Allow: /
 
-# Crawl-delay
-Crawl-delay: 1
+User-agent: ChatGPT-User
+Allow: /
 
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# Sitemap
+Sitemap: https://ecofluxion.com/sitemap.xml

@@ -1,14 +1,5 @@
-# Sitemap
-# EcoFluxion Corporate Website
-# Last Updated: November 2025
+# Sitemap (plain-text) — EcoFluxion
+# Primary sitemap: https://ecofluxion.com/sitemap.xml
+# Last Updated: June 2026
 
-https://www.ecofluxion.com/
-https://www.ecofluxion.com/index.html
-https://www.ecofluxion.com/#home
-https://www.ecofluxion.com/#about
-https://www.ecofluxion.com/#services
-https://www.ecofluxion.com/#projects
-https://www.ecofluxion.com/#technologies
-https://www.ecofluxion.com/#careers
-https://www.ecofluxion.com/#contact
-
+https://ecofluxion.com/
