@@ -14,12 +14,12 @@
   <meta property="og:site_name" content="EcoFluxion">
   <meta property="og:locale" content="tr_TR">
   <meta property="og:locale:alternate" content="en_US">
-  <meta property="og:image" content="https://ecofluxion.com/image/ecofluxion_logo.png">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:image" content="https://ecofluxion.com/image/blog/yapay-zeka-veri-gizliligi.jpg">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@ecofluxion">
   <meta name="twitter:title" content="Yapay Zekâ ve Veri Gizliliği: Yazdığınız Her Şey Nereye Gidiyor?">
   <meta name="twitter:description" content="Yapay zekâ kullanırken veriniz nereye gidiyor? Eğitim ve çıkarım farkı, bulut–on-prem seçenekleri, KVKK ve GDPR temelleri, anonimleştirme ve birey ile şirketler için pratik ipuçlarını sade bir dille öğrenin.">
-  <meta name="twitter:image" content="https://ecofluxion.com/image/ecofluxion_logo.png">
+  <meta name="twitter:image" content="https://ecofluxion.com/image/blog/yapay-zeka-veri-gizliligi.jpg">
   <title>Yapay Zekâ ve Veri Gizliliği: Yazdığınız Her Şey Nereye Gidiyor? | EcoFluxion</title>
   <link rel="icon" type="image/png" href="../image/ecofluxion_logo.png">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -35,9 +35,7 @@
     .legal-langbar { display:flex; gap:.4rem; }
     .legal-lang-btn.active { background:#fff; color:#558B2F; }
     .article-wrap { max-width: 800px; margin: 0 auto; padding: 130px 1.25rem 70px; }
-    .article-hero { display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; height:300px; border-radius:14px; margin-bottom:1.6rem; }
-    .article-hero .main-ico { font-size:5rem; color:rgba(255,255,255,.96); position:relative; z-index:1; }
-    .article-hero .bg-ico { position:absolute; right:-28px; bottom:-44px; font-size:15rem; color:rgba(255,255,255,.10); z-index:0; }
+    .article-hero { width:100%; height:340px; object-fit:cover; border-radius:14px; margin-bottom:1.6rem; display:block; background:#e9efe0; }
     .breadcrumb-nav { font-size:.88rem; color:#999; margin-bottom:1.4rem; }
     .breadcrumb-nav a { color:#558B2F; text-decoration:none; }
     .article-cat { color: var(--primary-green,#7CB342); font-weight:700; text-transform:uppercase; letter-spacing:1px; font-size:.82rem; }
@@ -55,12 +53,10 @@
     .blog-head { padding:130px 1.25rem 1.5rem; text-align:center; }
     .blog-head h1 { font-family:'Montserrat',sans-serif; font-weight:800; color:#2f3a22; }
     .blog-head p { color:#666; max-width:640px; margin:.5rem auto 0; }
-    .blog-grid { max-width:1120px; margin:0 auto; padding:1rem 1.25rem 80px; display:grid; grid-template-columns:repeat(auto-fill,minmax(330px,1fr)); gap:1.6rem; }
+    .blog-grid { max-width:1120px; margin:0 auto; padding:1rem 1.25rem 1.5rem; display:grid; grid-template-columns:repeat(auto-fill,minmax(330px,1fr)); gap:1.6rem; }
     .blog-card { background:#fff; border:1px solid #eee; border-radius:14px; overflow:hidden; transition:.3s; display:flex; flex-direction:column; }
     .blog-card:hover { transform:translateY(-5px); box-shadow:0 15px 35px rgba(0,0,0,.08); }
-    .blog-card-img { display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; width:100%; height:165px; text-decoration:none; }
-    .blog-card-img .main-ico { font-size:2.8rem; color:rgba(255,255,255,.96); z-index:1; }
-    .blog-card-img .bg-ico { position:absolute; right:-14px; bottom:-22px; font-size:8rem; color:rgba(255,255,255,.12); z-index:0; }
+    .blog-card-img { width:100%; height:175px; object-fit:cover; display:block; background:#e9efe0; }
     .blog-card-body { padding:1.6rem; display:flex; flex-direction:column; flex:1; }
     .blog-card h2 { font-family:'Montserrat',sans-serif; font-weight:700; font-size:1.22rem; margin:.45rem 0 .6rem; line-height:1.35; }
     .blog-card h2 a { color:#222; text-decoration:none; }
@@ -68,11 +64,12 @@
     .blog-card p { color:#666; line-height:1.6; flex:1; font-size:.97rem; }
     .blog-card .read-more { color:#558B2F; font-weight:600; text-decoration:none; margin-top:1rem; align-self:flex-start; }
     .blog-card-meta { color:#999; font-size:.82rem; margin-top:.8rem; }
-    .grad-g1{background:linear-gradient(135deg,#7CB342,#33691E);}
-    .grad-g2{background:linear-gradient(135deg,#558B2F,#1B5E20);}
-    .grad-g3{background:linear-gradient(135deg,#8BC34A,#2E7D32);}
-    .grad-g4{background:linear-gradient(135deg,#26A69A,#2E7D32);}
-    @media (max-width:600px){ .article-hero{ height:200px; } .article-hero .main-ico{ font-size:3.5rem; } }
+    .blog-pagination { display:flex; justify-content:center; gap:.4rem; flex-wrap:wrap; padding:0 1.25rem 70px; }
+    .blog-pagination button { border:1px solid #cdd8c0; background:#fff; color:#2f3a22; min-width:42px; height:42px; padding:0 .5rem; border-radius:8px; font-weight:600; cursor:pointer; transition:.2s; }
+    .blog-pagination button:hover:not(:disabled) { border-color:#7CB342; color:#558B2F; }
+    .blog-pagination button.active { background:#558B2F; border-color:#558B2F; color:#fff; }
+    .blog-pagination button:disabled { opacity:.4; cursor:default; }
+    @media (max-width:600px){ .article-hero{ height:210px; } }
 </style>
   <script type="application/ld+json">
 {
@@ -100,7 +97,7 @@
     "@type": "WebPage",
     "@id": "https://ecofluxion.com/blog/yapay-zeka-veri-gizliligi.html"
   },
-  "image": "https://ecofluxion.com/image/ecofluxion_logo.png",
+  "image": "https://ecofluxion.com/image/blog/yapay-zeka-veri-gizliligi.jpg",
   "articleSection": "Toplum",
   "keywords": "Veri Gizliliği, KVKK, GDPR, Güvenlik, Yapay Zekâ"
 }
@@ -162,7 +159,7 @@
   </nav>
   <main class="article-wrap">
     <nav class="breadcrumb-nav"><a href="/">EcoFluxion</a> / <a href="/blog/"><span class="lang-content" data-lang="tr">Faydalı Bilgiler</span><span class="lang-content" data-lang="en">Insights</span></a> / <span class="lang-content" data-lang="tr">Yapay Zekâ ve Veri Gizliliği: Yazdığınız Her Şey Nereye Gidiyor?</span><span class="lang-content" data-lang="en">AI and Data Privacy: Where Does Everything You Type Actually Go?</span></nav>
-    <div class="article-hero grad-g1"><i class="fas fa-user-shield bg-ico"></i><i class="fas fa-user-shield main-ico"></i></div>
+    <img class="article-hero" src="../image/blog/yapay-zeka-veri-gizliligi.jpg" alt="Yapay Zekâ ve Veri Gizliliği: Yazdığınız Her Şey Nereye Gidiyor?" loading="lazy">
 
     <div class="lang-content" data-lang="tr">
       <div class="article-cat">Toplum</div>
