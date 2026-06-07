@@ -29,6 +29,7 @@
     .legal-langbar { display:flex; gap:.4rem; }
     .legal-lang-btn.active { background:#fff; color:#558B2F; }
     .article-wrap { max-width: 800px; margin: 0 auto; padding: 130px 1.25rem 70px; }
+    .article-hero { width:100%; height:340px; object-fit:cover; border-radius:14px; margin-bottom:1.6rem; display:block; background:#e9efe0; }
     .breadcrumb-nav { font-size:.88rem; color:#999; margin-bottom:1.4rem; }
     .breadcrumb-nav a { color:#558B2F; text-decoration:none; }
     .article-cat { color: var(--primary-green,#7CB342); font-weight:700; text-transform:uppercase; letter-spacing:1px; font-size:.82rem; }
@@ -49,7 +50,7 @@
     .blog-grid { max-width:1120px; margin:0 auto; padding:1rem 1.25rem 80px; display:grid; grid-template-columns:repeat(auto-fill,minmax(330px,1fr)); gap:1.6rem; }
     .blog-card { background:#fff; border:1px solid #eee; border-radius:14px; overflow:hidden; transition:.3s; display:flex; flex-direction:column; }
     .blog-card:hover { transform:translateY(-5px); box-shadow:0 15px 35px rgba(0,0,0,.08); }
-    .blog-card-top { height:6px; background:linear-gradient(135deg,#7CB342,#558B2F); }
+    .blog-card-img { width:100%; height:175px; object-fit:cover; display:block; background:#e9efe0; }
     .blog-card-body { padding:1.6rem; display:flex; flex-direction:column; flex:1; }
     .blog-card h2 { font-family:'Montserrat',sans-serif; font-weight:700; font-size:1.22rem; margin:.45rem 0 .6rem; line-height:1.35; }
     .blog-card h2 a { color:#222; text-decoration:none; }
@@ -57,6 +58,7 @@
     .blog-card p { color:#666; line-height:1.6; flex:1; font-size:.97rem; }
     .blog-card .read-more { color:#558B2F; font-weight:600; text-decoration:none; margin-top:1rem; align-self:flex-start; }
     .blog-card-meta { color:#999; font-size:.82rem; margin-top:.8rem; }
+    @media (max-width:600px){ .article-hero{ height:220px; } }
 </style>
   <script type="application/ld+json">
 {
@@ -195,7 +197,7 @@
   <section class="blog-grid">
 
       <article class="blog-card">
-        <div class="blog-card-top"></div>
+        <a href="llm-nedir-nasil-calisir.html"><img class="blog-card-img" src="https://loremflickr.com/1200/600/technology?lock=21" alt="Büyük Dil Modelleri (LLM) Nedir ve Nasıl Çalışır?" loading="lazy"></a>
         <div class="blog-card-body">
           <div class="article-cat"><span class="lang-content" data-lang="tr">Eğitim</span><span class="lang-content" data-lang="en">Education</span></div>
           <h2><a href="llm-nedir-nasil-calisir.html"><span class="lang-content" data-lang="tr">Büyük Dil Modelleri (LLM) Nedir ve Nasıl Çalışır?</span><span class="lang-content" data-lang="en">What Are Large Language Models (LLMs) and How Do They Work?</span></a></h2>
@@ -206,7 +208,7 @@
       </article>
 
       <article class="blog-card">
-        <div class="blog-card-top"></div>
+        <a href="token-embedding-vektor.html"><img class="blog-card-img" src="https://loremflickr.com/1200/600/data?lock=22" alt="Token, Embedding ve Vektör: Yapay Zeka Dili Nasıl Sayıya Çeviriyor?" loading="lazy"></a>
         <div class="blog-card-body">
           <div class="article-cat"><span class="lang-content" data-lang="tr">Eğitim</span><span class="lang-content" data-lang="en">Education</span></div>
           <h2><a href="token-embedding-vektor.html"><span class="lang-content" data-lang="tr">Token, Embedding ve Vektör: Yapay Zeka Dili Nasıl Sayıya Çeviriyor?</span><span class="lang-content" data-lang="en">Tokens, Embeddings and Vectors: How AI Turns Language Into Numbers</span></a></h2>
@@ -217,7 +219,7 @@
       </article>
 
       <article class="blog-card">
-        <div class="blog-card-top"></div>
+        <a href="prompt-muhendisligi.html"><img class="blog-card-img" src="https://loremflickr.com/1200/600/code?lock=23" alt="Prompt Mühendisliği: Yapay Zekadan Daha İyi Cevaplar Almanın Pratik Yolları" loading="lazy"></a>
         <div class="blog-card-body">
           <div class="article-cat"><span class="lang-content" data-lang="tr">Pratik / Nasıl Yapılır</span><span class="lang-content" data-lang="en">Practical / How-to</span></div>
           <h2><a href="prompt-muhendisligi.html"><span class="lang-content" data-lang="tr">Prompt Mühendisliği: Yapay Zekadan Daha İyi Cevaplar Almanın Pratik Yolları</span><span class="lang-content" data-lang="en">Prompt Engineering: A Practical Guide to Getting Better Answers from AI</span></a></h2>
@@ -228,7 +230,7 @@
       </article>
 
       <article class="blog-card">
-        <div class="blog-card-top"></div>
+        <a href="rag-vs-fine-tuning.html"><img class="blog-card-img" src="https://loremflickr.com/1200/600/server?lock=24" alt="RAG mı, İnce Ayar mı? Hangisini Ne Zaman Seçmeli" loading="lazy"></a>
         <div class="blog-card-body">
           <div class="article-cat"><span class="lang-content" data-lang="tr">Mühendislik</span><span class="lang-content" data-lang="en">Engineering</span></div>
           <h2><a href="rag-vs-fine-tuning.html"><span class="lang-content" data-lang="tr">RAG mı, İnce Ayar mı? Hangisini Ne Zaman Seçmeli</span><span class="lang-content" data-lang="en">RAG or Fine-Tuning? Which to Use and When</span></a></h2>
@@ -239,7 +241,7 @@
       </article>
 
       <article class="blog-card">
-        <div class="blog-card-top"></div>
+        <a href="yapay-zeka-halusinasyon.html"><img class="blog-card-img" src="https://loremflickr.com/1200/600/abstract?lock=25" alt="Yapay Zekâ Halüsinasyonu: Modeller Neden Uydurur ve Bunu Nasıl Azaltırız?" loading="lazy"></a>
         <div class="blog-card-body">
           <div class="article-cat"><span class="lang-content" data-lang="tr">Eğitim</span><span class="lang-content" data-lang="en">Education</span></div>
           <h2><a href="yapay-zeka-halusinasyon.html"><span class="lang-content" data-lang="tr">Yapay Zekâ Halüsinasyonu: Modeller Neden Uydurur ve Bunu Nasıl Azaltırız?</span><span class="lang-content" data-lang="en">AI Hallucination: Why Models Make Things Up and How to Reduce It</span></a></h2>
@@ -250,7 +252,7 @@
       </article>
 
       <article class="blog-card">
-        <div class="blog-card-top"></div>
+        <a href="transformer-mimarisi.html"><img class="blog-card-img" src="https://loremflickr.com/1200/600/circuit?lock=26" alt="Transformer Mimarisi, Sade Bir Dille" loading="lazy"></a>
         <div class="blog-card-body">
           <div class="article-cat"><span class="lang-content" data-lang="tr">Araştırma</span><span class="lang-content" data-lang="en">Research</span></div>
           <h2><a href="transformer-mimarisi.html"><span class="lang-content" data-lang="tr">Transformer Mimarisi, Sade Bir Dille</span><span class="lang-content" data-lang="en">The Transformer Architecture, Explained Simply</span></a></h2>
@@ -261,7 +263,7 @@
       </article>
 
       <article class="blog-card">
-        <div class="blog-card-top"></div>
+        <a href="yapay-zeka-ajanlari.html"><img class="blog-card-img" src="https://loremflickr.com/1200/600/robot?lock=27" alt="Yapay Zeka Ajanları ve Araç Kullanımı: Sohbet Botundan Eyleme Geçen Yapay Zekaya" loading="lazy"></a>
         <div class="blog-card-body">
           <div class="article-cat"><span class="lang-content" data-lang="tr">Mühendislik</span><span class="lang-content" data-lang="en">Engineering</span></div>
           <h2><a href="yapay-zeka-ajanlari.html"><span class="lang-content" data-lang="tr">Yapay Zeka Ajanları ve Araç Kullanımı: Sohbet Botundan Eyleme Geçen Yapay Zekaya</span><span class="lang-content" data-lang="en">AI Agents and Tool Use: From Chatbot to AI That Actually Does Things</span></a></h2>
@@ -272,7 +274,7 @@
       </article>
 
       <article class="blog-card">
-        <div class="blog-card-top"></div>
+        <a href="vektor-veritabani-anlamsal-arama.html"><img class="blog-card-img" src="https://loremflickr.com/1200/600/network?lock=28" alt="Vektör Veritabanları ve Anlamsal Arama: Bilgisayar &quot;Anlam&quot;ı Nasıl Bulur?" loading="lazy"></a>
         <div class="blog-card-body">
           <div class="article-cat"><span class="lang-content" data-lang="tr">Mühendislik</span><span class="lang-content" data-lang="en">Engineering</span></div>
           <h2><a href="vektor-veritabani-anlamsal-arama.html"><span class="lang-content" data-lang="tr">Vektör Veritabanları ve Anlamsal Arama: Bilgisayar "Anlam"ı Nasıl Bulur?</span><span class="lang-content" data-lang="en">Vector Databases and Semantic Search: How a Computer Finds "Meaning"</span></a></h2>
@@ -283,7 +285,7 @@
       </article>
 
       <article class="blog-card">
-        <div class="blog-card-top"></div>
+        <a href="yapay-zeka-etigi-onyargi.html"><img class="blog-card-img" src="https://loremflickr.com/1200/600/justice?lock=29" alt="Yapay Zekâ Etiği, Önyargı ve Güvenlik: Sakin ve Pratik Bir Rehber" loading="lazy"></a>
         <div class="blog-card-body">
           <div class="article-cat"><span class="lang-content" data-lang="tr">Toplum</span><span class="lang-content" data-lang="en">Society</span></div>
           <h2><a href="yapay-zeka-etigi-onyargi.html"><span class="lang-content" data-lang="tr">Yapay Zekâ Etiği, Önyargı ve Güvenlik: Sakin ve Pratik Bir Rehber</span><span class="lang-content" data-lang="en">AI Ethics, Bias, and Safety: A Calm, Practical Guide</span></a></h2>
@@ -294,7 +296,7 @@
       </article>
 
       <article class="blog-card">
-        <div class="blog-card-top"></div>
+        <a href="hukukta-yapay-zeka.html"><img class="blog-card-img" src="https://loremflickr.com/1200/600/law?lock=30" alt="Hukukta Yapay Zeka: Fırsatlar, Riskler ve Sorumluluk" loading="lazy"></a>
         <div class="blog-card-body">
           <div class="article-cat"><span class="lang-content" data-lang="tr">LegalTech</span><span class="lang-content" data-lang="en">LegalTech</span></div>
           <h2><a href="hukukta-yapay-zeka.html"><span class="lang-content" data-lang="tr">Hukukta Yapay Zeka: Fırsatlar, Riskler ve Sorumluluk</span><span class="lang-content" data-lang="en">AI in Law: Opportunities, Risks, and Responsibility</span></a></h2>
@@ -305,7 +307,7 @@
       </article>
 
       <article class="blog-card">
-        <div class="blog-card-top"></div>
+        <a href="ictihub-ai-hukuki-arastirma.html"><img class="blog-card-img" src="https://loremflickr.com/1200/600/courthouse?lock=31" alt="İçtiHub — Türkiye'de hukuki araştırmayı yapay zekayla yeniden kuruyoruz" loading="lazy"></a>
         <div class="blog-card-body">
           <div class="article-cat"><span class="lang-content" data-lang="tr">Ürün</span><span class="lang-content" data-lang="en">Product</span></div>
           <h2><a href="ictihub-ai-hukuki-arastirma.html"><span class="lang-content" data-lang="tr">İçtiHub — Türkiye'de hukuki araştırmayı yapay zekayla yeniden kuruyoruz</span><span class="lang-content" data-lang="en">İçtiHub — Rebuilding legal research in Türkiye with AI</span></a></h2>
@@ -316,7 +318,7 @@
       </article>
 
       <article class="blog-card">
-        <div class="blog-card-top"></div>
+        <a href="rag-turkce-hukuk-verisi.html"><img class="blog-card-img" src="https://loremflickr.com/1200/600/documents?lock=32" alt="Türkçe Hukuk Verisinde LLM'leri RAG ile Sağlamlaştırmak" loading="lazy"></a>
         <div class="blog-card-body">
           <div class="article-cat"><span class="lang-content" data-lang="tr">Mühendislik</span><span class="lang-content" data-lang="en">Engineering</span></div>
           <h2><a href="rag-turkce-hukuk-verisi.html"><span class="lang-content" data-lang="tr">Türkçe Hukuk Verisinde LLM'leri RAG ile Sağlamlaştırmak</span><span class="lang-content" data-lang="en">Grounding LLMs in Turkish Legal Data with RAG</span></a></h2>
@@ -327,7 +329,7 @@
       </article>
 
       <article class="blog-card">
-        <div class="blog-card-top"></div>
+        <a href="turkce-yapay-zeka-nlp.html"><img class="blog-card-img" src="https://loremflickr.com/1200/600/books?lock=33" alt="Türkçe için Yapay Zeka: Türkçe Doğal Dil İşlemenin Zorlukları ve Fırsatları" loading="lazy"></a>
         <div class="blog-card-body">
           <div class="article-cat"><span class="lang-content" data-lang="tr">Araştırma</span><span class="lang-content" data-lang="en">Research</span></div>
           <h2><a href="turkce-yapay-zeka-nlp.html"><span class="lang-content" data-lang="tr">Türkçe için Yapay Zeka: Türkçe Doğal Dil İşlemenin Zorlukları ve Fırsatları</span><span class="lang-content" data-lang="en">AI for Turkish: The Challenges and Opportunities of Turkish NLP</span></a></h2>
