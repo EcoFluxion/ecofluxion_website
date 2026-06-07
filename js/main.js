@@ -52,7 +52,10 @@
         
         // Update HTML lang attribute
         $('html').attr('lang', lang);
-        
+
+        // Point the "Insights / Faydalı Bilgiler" links to the current language's section
+        $('a[data-translate="nav_blog"]').attr('href', lang === 'en' ? 'insights/' : 'faydali-bilgiler/');
+
         // Add transition class to body for fade-out effect
         $('body').addClass('lang-transitioning');
         

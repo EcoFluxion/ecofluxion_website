@@ -6,6 +6,9 @@
   <meta name="description" content="Anlamsal arama nedir, anahtar kelime aramasından farkı ne, embedding ve HNSW nasıl çalışır, vektör veritabanı ne işe yarar ve yeniden sıralama neden gerekir? İçtiHub örnekleriyle sade bir rehber.">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="https://ecofluxion.com/faydali-bilgiler/vektor-veritabani-anlamsal-arama.html">
+  <link rel="alternate" hreflang="tr" href="https://ecofluxion.com/faydali-bilgiler/vektor-veritabani-anlamsal-arama.html">
+  <link rel="alternate" hreflang="en" href="https://ecofluxion.com/insights/vektor-veritabani-anlamsal-arama.html">
+  <link rel="alternate" hreflang="x-default" href="https://ecofluxion.com/faydali-bilgiler/vektor-veritabani-anlamsal-arama.html">
   <meta name="theme-color" content="#7CB342">
   <meta property="og:type" content="article">
   <meta property="og:title" content="Vektör Veritabanları ve Anlamsal Arama: Bilgisayar &quot;Anlam&quot;ı Nasıl Bulur?">
@@ -59,8 +62,7 @@
     .blog-card-img { width:100%; height:175px; object-fit:cover; display:block; background:#e9efe0; }
     .blog-card-body { padding:1.6rem; display:flex; flex-direction:column; flex:1; }
     .blog-card h2 { font-family:'Montserrat',sans-serif; font-weight:700; font-size:1.22rem; margin:.45rem 0 .6rem; line-height:1.35; }
-    .blog-card h2 a { color:#222; text-decoration:none; }
-    .blog-card h2 a:hover { color:#558B2F; }
+    .blog-card h2 a { color:#222; text-decoration:none; } .blog-card h2 a:hover { color:#558B2F; }
     .blog-card p { color:#666; line-height:1.6; flex:1; font-size:.97rem; }
     .blog-card .read-more { color:#558B2F; font-weight:600; text-decoration:none; margin-top:1rem; align-self:flex-start; }
     .blog-card-meta { color:#999; font-size:.82rem; margin-top:.8rem; }
@@ -139,18 +141,18 @@
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#blogNav" aria-label="Menu"><span class="navbar-toggler-icon"></span></button>
       <div class="collapse navbar-collapse" id="blogNav">
         <ul class="navbar-nav ms-auto align-items-lg-center">
-          <li class="nav-item"><a class="nav-link" href="/#home"><span class="lang-content" data-lang="tr">Ana Sayfa</span><span class="lang-content" data-lang="en">Home</span></a></li>
-          <li class="nav-item"><a class="nav-link" href="/#about"><span class="lang-content" data-lang="tr">Hakkımızda</span><span class="lang-content" data-lang="en">About</span></a></li>
-          <li class="nav-item"><a class="nav-link" href="/#services"><span class="lang-content" data-lang="tr">Neler Geliştiriyoruz</span><span class="lang-content" data-lang="en">What We Build</span></a></li>
-          <li class="nav-item"><a class="nav-link" href="/#projects"><span class="lang-content" data-lang="tr">Ürünler</span><span class="lang-content" data-lang="en">Products</span></a></li>
-          <li class="nav-item"><a class="nav-link" href="/#technologies"><span class="lang-content" data-lang="tr">Teknolojiler</span><span class="lang-content" data-lang="en">Technologies</span></a></li>
-          <li class="nav-item"><a class="nav-link" href="/#careers"><span class="lang-content" data-lang="tr">Kariyer</span><span class="lang-content" data-lang="en">Careers</span></a></li>
-          <li class="nav-item"><a class="nav-link active" href="/faydali-bilgiler/"><span class="lang-content" data-lang="tr">Faydalı Bilgiler</span><span class="lang-content" data-lang="en">Insights</span></a></li>
-          <li class="nav-item"><a class="nav-link" href="/#contact"><span class="lang-content" data-lang="tr">İletişim</span><span class="lang-content" data-lang="en">Contact</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="/#home">Ana Sayfa</a></li>
+          <li class="nav-item"><a class="nav-link" href="/#about">Hakkımızda</a></li>
+          <li class="nav-item"><a class="nav-link" href="/#services">Neler Geliştiriyoruz</a></li>
+          <li class="nav-item"><a class="nav-link" href="/#projects">Ürünler</a></li>
+          <li class="nav-item"><a class="nav-link" href="/#technologies">Teknolojiler</a></li>
+          <li class="nav-item"><a class="nav-link" href="/#careers">Kariyer</a></li>
+          <li class="nav-item"><a class="nav-link active" href="/faydali-bilgiler/">Faydalı Bilgiler</a></li>
+          <li class="nav-item"><a class="nav-link" href="/#contact">İletişim</a></li>
           <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
             <div class="legal-langbar">
-              <button class="btn btn-sm btn-outline-light legal-lang-btn" data-lang="tr">TR</button>
-              <button class="btn btn-sm btn-outline-light legal-lang-btn" data-lang="en">EN</button>
+              <a class="btn btn-sm btn-outline-light legal-lang-btn active" href="https://ecofluxion.com/faydali-bilgiler/vektor-veritabani-anlamsal-arama.html" data-setlang="tr" hreflang="tr">TR</a>
+              <a class="btn btn-sm btn-outline-light legal-lang-btn" href="https://ecofluxion.com/insights/vektor-veritabani-anlamsal-arama.html" data-setlang="en" hreflang="en">EN</a>
             </div>
           </li>
         </ul>
@@ -158,15 +160,13 @@
     </div>
   </nav>
   <main class="article-wrap">
-    <nav class="breadcrumb-nav"><a href="/">EcoFluxion</a> / <a href="/faydali-bilgiler/"><span class="lang-content" data-lang="tr">Faydalı Bilgiler</span><span class="lang-content" data-lang="en">Insights</span></a> / <span class="lang-content" data-lang="tr">Vektör Veritabanları ve Anlamsal Arama: Bilgisayar "Anlam"ı Nasıl Bulur?</span><span class="lang-content" data-lang="en">Vector Databases and Semantic Search: How a Computer Finds "Meaning"</span></nav>
+    <nav class="breadcrumb-nav"><a href="/">EcoFluxion</a> / <a href="/faydali-bilgiler/">Faydalı Bilgiler</a> / Vektör Veritabanları ve Anlamsal Arama: Bilgisayar "Anlam"ı Nasıl Bulur?</nav>
     <img class="article-hero" src="../image/faydali-bilgiler/vektor-veritabani-anlamsal-arama.jpg" alt="Vektör Veritabanları ve Anlamsal Arama: Bilgisayar &quot;Anlam&quot;ı Nasıl Bulur?" loading="lazy">
-
-    <div class="lang-content" data-lang="tr">
-      <div class="article-cat">Mühendislik</div>
-      <h1>Vektör Veritabanları ve Anlamsal Arama: Bilgisayar "Anlam"ı Nasıl Bulur?</h1>
-      <p class="article-sub">Anahtar kelime aramasından anlamsal aramaya: embedding'ler, HNSW gibi yaklaşık komşu indeksleri, vektör veritabanının gerçekte yaptığı iş ve yeniden sıralama. Hepsini sade örneklerle anlatıyor, İçtiHub'ın içtihadı kelimeyle değil anlamla nasıl bulduğunu gösteriyoruz.</p>
-      <div class="article-meta"><span><i class="far fa-clock"></i> 12 dk okuma</span><div class="article-tags"><span class="article-tag">Vektör Veritabanı</span><span class="article-tag">Anlamsal Arama</span><span class="article-tag">Embedding</span><span class="article-tag">RAG</span></div></div>
-      <div class="article-body">
+    <div class="article-cat">Mühendislik</div>
+    <h1>Vektör Veritabanları ve Anlamsal Arama: Bilgisayar "Anlam"ı Nasıl Bulur?</h1>
+    <p class="article-sub">Anahtar kelime aramasından anlamsal aramaya: embedding'ler, HNSW gibi yaklaşık komşu indeksleri, vektör veritabanının gerçekte yaptığı iş ve yeniden sıralama. Hepsini sade örneklerle anlatıyor, İçtiHub'ın içtihadı kelimeyle değil anlamla nasıl bulduğunu gösteriyoruz.</p>
+    <div class="article-meta"><span><i class="far fa-clock"></i> 12 dk okuma</span><div class="article-tags"><span class="article-tag">Vektör Veritabanı</span><span class="article-tag">Anlamsal Arama</span><span class="article-tag">Embedding</span><span class="article-tag">RAG</span></div></div>
+    <div class="article-body">
 <h2>Anahtar Kelime Araması Nerede Tıkanır?</h2>
 <p>Klasik arama motorlarını yıllardır kullanıyoruz ve çoğu zaman işimizi görüyorlar. Mantıkları aslında sade: bir kelime yazarsınız, sistem o kelimenin geçtiği belgeleri bulur. Buna anahtar kelime araması (keyword search) denir. Arka planda genellikle 'ters dizin' (inverted index) denen bir yapı çalışır; tıpkı bir kitabın sonundaki dizin gibi, her kelimenin hangi belgelerde geçtiğini önceden listeler. Bu yüzden de göz açıp kapayana kadar cevap döner.</p>
 <p>Ama bu yaklaşımın kör bir noktası var: kelimeleri tanır, anlamı tanımaz. 'Otomobil' diye ararsanız, içinde yalnızca 'araba' geçen bir belgeyi kaçırırsınız. İkisi aynı şeyi anlatsa bile sistem için bunlar bambaşka iki harf dizisidir. Modern arama motorları eş anlamlı sözlükler ve birtakım hilelerle bu sorunu kısmen yamar, ama temel mantık değişmez: harf harf eşleşme arar.</p>
@@ -206,68 +206,17 @@
 <p>Anlamsal arama, bilgisayarla bilgi arasındaki ilişkiyi sessizce yeniden tanımlıyor. Onlarca yıl boyunca arama, 'doğru kelimeyi bilen kazanır' oyunuydu. Embedding'ler ve vektör veritabanları bu kuralı bozdu: artık niyetinizi ifade etmeniz yeterli, doğru kelimeyi bulmak makinenin işi. Zihinsel modeli şu zincirle özetleyebilirsiniz: metin önce embedding'e dönüşür, embedding'ler bir vektör veritabanında saklanır, ANN indeksleri (örneğin HNSW) bunları hızla aratır ve yeniden sıralama son rötuşu atar.</p>
 <p>Bu teknolojinin sihirli bir değnek olmadığını da unutmamak gerek. Bir embedding modeli yalnızca eğitildiği veriler kadar iyidir; Türkçe gibi sondan eklemeli ve hukuk gibi alana özgü diller, genel amaçlı modellerin gözünden kaçan incelikler taşır. Anlamsal arama da bazen yüzeysel benzerliklere kanabilir. İşte tam bu yüzden hibrit arama, yeniden sıralama ve metadata filtreleme gibi katmanlar süs değil, sistemi güvenilir kılan asıl unsurlardır.</p>
 <p>Meraklı bir okuyucu için iyi haber şu: bu kavramların hiçbiri erişilmez değil. Embedding'i bir anlam haritası, vektör veritabanını bu haritanın hızlı atlası, ANN'i akıllı bir kestirme, yeniden sıralamayı da son bir gözden geçirme olarak düşünürseniz, en karmaşık yapay zeka arama sistemlerinin bile iskeletini görmüş olursunuz. EcoFluxion'da İçtiHub'ı tam olarak bu yapı taşlarıyla kuruyoruz; çünkü bir hukukçunun aradığı şey nadiren bir kelime, neredeyse her zaman bir anlamdır.</p>
-      </div>
-      <div class="takeaways"><h3>Öne çıkanlar</h3><ul><li>Anahtar kelime araması harf harf eşleşmeye dayanır ve aynı anlamı farklı kelimelerle anlatan metinleri kaçırır; anlamsal arama ise kelimeyi değil anlamı eşleştirir.</li><li>Embedding, bir metni anlamını taşıyan yüzlerce boyutlu bir sayı dizisine çevirir; anlamca benzer metinler bu uzayda yakın noktalara düşer ve benzerlik genellikle kosinüs benzerliğiyle ölçülür.</li><li>Milyonlarca vektörü tek tek taramak yavaştır; ANN (Yaklaşık En Yakın Komşu) algoritmaları, HNSW'nin katmanlı 'uçak yolculuğu' mantığıyla en yakın komşuları milisaniyeler içinde bulur.</li><li>Vektör veritabanı, embedding'leri saklayan, indeksleyen ve anlamsal yakınlığı tarih veya yürürlük gibi katı metadata filtreleriyle aynı sorguda birleştiren özel bir sistemdir.</li><li>Yeniden sıralama (re-ranking), hızlı vektör aramasının çıkardığı küçük aday listesini bir cross-encoder ile yeniden tartar; geniş havuzda hız, dar havuzda hassasiyet sağlar.</li><li>İçtiHub içtihadı kelimeyle değil anlamla bulmak için embedding, vektör arama, hibrit arama, yeniden sıralama ve metadata filtrelemeyi birlikte kullanır; bu yapı aynı zamanda RAG'in temelidir.</li></ul></div>
     </div>
-
-    <div class="lang-content" data-lang="en">
-      <div class="article-cat">Engineering</div>
-      <h1>Vector Databases and Semantic Search: How a Computer Finds "Meaning"</h1>
-      <p class="article-sub">From keyword search to semantic search: embeddings, ANN indexes like HNSW, what a vector database actually does, and re-ranking — all explained with plain examples, plus how İçtiHub finds case law by meaning rather than by words.</p>
-      <div class="article-meta"><span><i class="far fa-clock"></i> 12 min read</span><div class="article-tags"><span class="article-tag">Vektör Veritabanı</span><span class="article-tag">Anlamsal Arama</span><span class="article-tag">Embedding</span><span class="article-tag">RAG</span></div></div>
-      <div class="article-body">
-<h2>Where Keyword Search Hits a Wall</h2>
-<p>We have relied on classic search engines for years, and most of the time they do the job. The mechanism is actually simple: you type a word, and the system returns the documents that contain it. This is keyword search. Behind the scenes there is usually an 'inverted index' — much like the index at the back of a book, it lists in advance which documents each word appears in. That is why it answers in the blink of an eye.</p>
-<p>But this approach has a blind spot: it knows words, not meaning. Search for 'automobile' and you will miss a document that only ever says 'car.' Even though the two describe the same thing, to the system they are two entirely different strings of characters. Modern engines patch this partly with synonym lists and a few tricks, but the core logic never changes: it looks for letter-by-letter matches.</p>
-<p>In law, that blind spot stings far more. A user might think in terms of 'the cap placed on rent increases,' while the relevant court ruling expresses the same idea as 'the maximum rate to be applied in determining the rental fee.' The same legal concept sits in two different sentences without sharing a single word. Keyword search can never bring these texts together, because there is no matching word — only a matching meaning.</p>
-<p>Semantic search was born precisely to close this gap. Its goal is to turn the question 'which words do they share?' into the question 'are these two texts talking about the same thing?' To pull that off, we first have to give the computer some representation of meaning — even if it is made of numbers. The rest of this article is about how that representation is built and how it is searched.</p>
-<h2>Embeddings: Turning Meaning into Numbers</h2>
-<p>A computer does not understand text; it processes numbers. So the first step of semantic search is to convert a piece of text into a sequence of numbers that carries its meaning. We call this sequence an embedding. In practice an embedding is a long list of, say, 768 or 1,536 numbers, where each number is like a coordinate pointing to one dimension of the text's meaning.</p>
-<p>The easiest way to picture this is as a map. You locate a city with two numbers, latitude and longitude. Embeddings do the same thing, only they use hundreds of 'dimensions' instead of two. In this vast space, every word, sentence, or document settles at a point. The magic is this: the neural network that produces these points has been trained to place semantically similar texts close together and unrelated texts far apart.</p>
-<p>That is why 'dog' and 'cat' end up as near neighbors in this space, while 'dog' and 'accounting' sit kilometers apart. There is even a famous example: take the vector for 'king,' subtract the vector for 'man,' add the vector for 'woman,' and the point you arrive at lands surprisingly close to 'queen.' This is a simplified illustration and it does not always work out this cleanly, but it captures the idea beautifully: meaning takes on a geometric shape in this numerical space, where closeness means similarity and direction means relationship.</p>
-<p>To measure how alike two embeddings are, we usually use 'cosine similarity.' The name sounds intimidating, but the idea is plain: imagine two arrows. If they point the same way they are very similar, if they form a right angle they are unrelated, and if they point opposite ways they are opposites. Cosine similarity looks only at the direction of the arrows, not their length — so it cares less about how long a text is and more about what it is about. Semantic search takes the arrow of your query and surfaces the documents whose arrows point most nearly the same way.</p>
-<h2>Searching Among Millions of Vectors: ANN and HNSW</h2>
-<p>Suppose we have millions of document vectors, each representing a meaning, and we want to find the ones nearest to a user's query vector. The most honest method is to compare the query against every document one by one; this is called 'brute-force' or exact search. For a few thousand documents it is no problem. But scanning millions of documents from scratch on every query quickly becomes unaffordable in terms of speed and cost.</p>
-<p>The solution is to settle for a 'good enough' answer instead of a perfect one. ANN — Approximate Nearest Neighbor — algorithms do exactly that: they find the nearest neighbors not with mathematical certainty but with very high probability, and at incomparable speed. In practice the tiny loss in accuracy often goes unnoticed, while the speed gain can run into the hundreds. This trade-off is what makes semantic search practical in the real world.</p>
-<p>One of the most widely used ANN methods today is HNSW (Hierarchical Navigable Small World). The name is long, but the intuition is very familiar — think of air travel. To reach a remote village, you first fly from a major airport to another continent, then transfer to a regional airport, and finally take local roads to the village. HNSW builds the vector space as exactly this kind of layered road network.</p>
-<p>At the top layer there are only a few 'long-distance' links; from here the algorithm leaps quickly toward the general region of the target. Then, descending to lower layers, it shrinks its steps and tightens its circle around the destination. Instead of inspecting all of the millions of points, it reaches the nearest neighbors in just a few hundred smart steps. Thanks to this elegant idea, a query can be answered in milliseconds even over an enormous dataset.</p>
-<h2>So What Does a Vector Database Actually Do?</h2>
-<p>So far we have discussed embeddings and how to search them quickly. A vector database is the system that brings all of these pieces together, packaged to run in production. In the shortest possible terms: it is a specialized database that stores and indexes millions of embeddings and reliably answers the query 'bring me the N documents nearest to this vector.'</p>
-<p>You tell a traditional database 'give me products priced under 100 lira,' and the answer is exact and crisp. You tell a vector database 'give me the records most similar in meaning to this text.' This fundamental difference demands a different foundation: managing ANN indexes like HNSW, laying out vectors so they fit in memory, and speeding up similarity computations without cutting corners are the real areas of expertise for these systems.</p>
-<p>A good vector database does not only search by similarity; it also does 'metadata filtering.' You can attach labels to each vector: document type, date, source, in-force status. This makes a query like 'the records closest in meaning to this question, but only decisions from the last five years that are still in force' possible. The ability to combine semantic closeness with hard rules in a single query is what makes these systems useful in real applications.</p>
-<p>In this space you will find dedicated products like Pinecone, Weaviate, Milvus, and Qdrant, alongside extensions such as pgvector added to PostgreSQL, and managed services from the major cloud providers. They all make the same promise: to store meaning and make it searchable in a scalable, low-latency way. Which one you pick depends on data size, latency targets, and your existing infrastructure — there is no single magic right answer.</p>
-<h2>Re-ranking: The Final Polish on Fast Search</h2>
-<p>ANN search is fast, but that speed comes at a price. Embedding-based search turns the query and the documents into vectors separately and then compares them; in other words it has 'pre-summarized' each document with no knowledge of the query. This lets it scan a broad pool of candidates very quickly, but it sometimes misses fine distinctions. The first retrieval pass is good at finding the 20-50 most relevant candidates, yet not always good at putting them in the right order.</p>
-<p>This is exactly where re-ranking comes in. A re-ranker is usually a 'cross-encoder' model: instead of weighing query and document separately, it places them side by side and reads them together, judging their true relevance far more deeply. Seeing the query and the document at the same time lets the model answer 'does this sentence actually address this question?' with much greater accuracy. But that deeper look is expensive to compute.</p>
-<p>The solution is a two-stage architecture: first the fast-but-coarse vector search distills a small candidate list (say, 50 documents) out of millions; then the expensive-but-precise re-ranker weighs only those 50 and picks the best 5. Speed over the broad pool, precision over the narrow one — a practical balance that combines the best of both worlds.</p>
-<p>The real value of re-ranking is that it weeds out candidates that are irrelevant yet superficially similar. In AI-powered systems especially, keeping the context handed to the model clean is worth its weight in gold, because the model takes everything placed in front of it seriously, and one wrong document can become one wrong answer. Getting the first few results in the right order is often far more valuable than retrieving more results.</p>
-<h2>Where Does All This Pay Off? Real Use Cases</h2>
-<p>Semantic search and vector databases are not an abstract engineering curiosity; they are the quiet engine behind many products you use today. The most visible example is recommendation systems: when a music service says 'if you liked this, you'll like that,' it is often relying on how close the songs sit in embedding space. Similar products, similar articles, similar profiles — all draw on the same idea of 'nearness.'</p>
-<p>The second large area is enterprise knowledge search. Asking 'how does a customer refund work?' across a company's thousands of pages of documentation, support tickets, or internal wiki makes it possible to reach the right document without even knowing the right words. The same logic works for image and audio search: you can turn a photo or a melody into a vector and find similar ones, because the idea of an embedding is not limited to text.</p>
-<p>Perhaps the fastest-growing use is RAG with AI. RAG — Retrieval-Augmented Generation — is the method of 'fetching' relevant documents and placing them in front of a language model before it answers. At the heart of that fetch step lies vector search: semantic search tells the model what to read. This way the model speaks not from memory but from current, real sources placed in front of it, and the vector database effectively acts as the long-term memory of modern AI assistants.</p>
-<p>All these examples share one common denominator: the user can express their intent without having to know exactly which word to search for. Semantic search shifts the burden of 'finding the right keyword' from the human to the machine. This seemingly small change makes an enormous difference in user experience.</p>
-<h2>The İçtiHub Example: Finding Case Law by Meaning, Not by Words</h2>
-<p>Turkish legal research is a domain that shows very clearly why semantic search matters. A lawyer usually arrives with a concrete situation: 'whether the renovation cited as a just cause for evicting a tenant was actually carried out.' The exact words in that sentence very likely do not appear in the precedent you are looking for, because every decision narrates its facts in its own language and its own patterns. Keyword search frequently comes back empty here.</p>
-<p>The approach at the core of İçtiHub targets exactly this problem. Millions of decisions and legislative texts are first split into meaningful chunks, then each chunk is converted into an embedding and stored in a vector index. The user's query is carried into the same space, and the system now asks not 'which words do they share?' but 'which decisions are closest in meaning to this situation?' In this way a perfectly on-point precedent that shares not a single word can surface.</p>
-<p>But semantic closeness alone is not enough in law. When you need an exact article number or a precise term verbatim, the precision of keyword search is still valuable. So a hybrid approach that uses semantic search and classic search together comes into play, followed by a re-ranking layer that orders the retrieved candidates as accurately as possible. Speed comes from the broad pool, and precision from this fine filtering.</p>
-<p>Finally, metadata filtering is almost mandatory in law: presenting a repealed article or an overruled precedent as if it were the right answer is unacceptable. The vector database's ability to combine semantic closeness with hard filters like date of entry into force or court type within the same query is what turns semantic search, for law, from merely impressive into genuinely trustworthy.</p>
-<h2>To Sum Up: The New Grammar of Search</h2>
-<p>Semantic search is quietly redefining the relationship between a computer and information. For decades, search was a game of 'whoever knows the right word wins.' Embeddings and vector databases broke that rule: now it is enough to express your intent, and finding the right word is the machine's job. You can sum up the mental model with this chain: text becomes an embedding, embeddings are stored in a vector database, ANN indexes (such as HNSW) search them quickly, and re-ranking adds the final touch.</p>
-<p>It is worth remembering that this technology is not a magic wand. An embedding model is only as good as the data it was trained on; agglutinative languages like Turkish and domain-specific ones like law carry nuances that general-purpose models miss. Semantic search can also occasionally be fooled by superficial similarity. That is precisely why layers like hybrid search, re-ranking, and metadata filtering are not decoration but the very things that make the system trustworthy.</p>
-<p>The good news for a curious reader is that none of these concepts is out of reach. If you think of an embedding as a map of meaning, the vector database as a fast atlas of that map, ANN as a clever shortcut, and re-ranking as one final review, you have seen the skeleton of even the most complex AI search systems. At EcoFluxion we build İçtiHub with exactly these building blocks, because what a lawyer is searching for is rarely a word and almost always a meaning.</p>
-      </div>
-      <div class="takeaways"><h3>Key takeaways</h3><ul><li>Keyword search relies on letter-by-letter matching and misses texts that express the same meaning in different words; semantic search matches meaning, not words.</li><li>An embedding turns a text into a sequence of hundreds of numbers that carries its meaning; semantically similar texts land at nearby points, and similarity is usually measured with cosine similarity.</li><li>Scanning millions of vectors one by one is slow; ANN (Approximate Nearest Neighbor) algorithms, via HNSW's layered 'air travel' logic, find the nearest neighbors in milliseconds.</li><li>A vector database is a specialized system that stores and indexes embeddings and, in a single query, combines semantic closeness with hard metadata filters like date or in-force status.</li><li>Re-ranking re-weighs the small candidate list produced by fast vector search using a cross-encoder, giving speed over the broad pool and precision over the narrow one.</li><li>İçtiHub combines embeddings, vector search, hybrid search, re-ranking, and metadata filtering to find case law by meaning rather than words — a structure that is also the foundation of RAG.</li></ul></div>
-    </div>
-
-    <a href="/faydali-bilgiler/" class="article-back"><i class="fas fa-arrow-left"></i> <span class="lang-content" data-lang="tr">Tüm yazılar</span><span class="lang-content" data-lang="en">All articles</span></a>
+    <div class="takeaways"><h3>Öne çıkanlar</h3><ul><li>Anahtar kelime araması harf harf eşleşmeye dayanır ve aynı anlamı farklı kelimelerle anlatan metinleri kaçırır; anlamsal arama ise kelimeyi değil anlamı eşleştirir.</li><li>Embedding, bir metni anlamını taşıyan yüzlerce boyutlu bir sayı dizisine çevirir; anlamca benzer metinler bu uzayda yakın noktalara düşer ve benzerlik genellikle kosinüs benzerliğiyle ölçülür.</li><li>Milyonlarca vektörü tek tek taramak yavaştır; ANN (Yaklaşık En Yakın Komşu) algoritmaları, HNSW'nin katmanlı 'uçak yolculuğu' mantığıyla en yakın komşuları milisaniyeler içinde bulur.</li><li>Vektör veritabanı, embedding'leri saklayan, indeksleyen ve anlamsal yakınlığı tarih veya yürürlük gibi katı metadata filtreleriyle aynı sorguda birleştiren özel bir sistemdir.</li><li>Yeniden sıralama (re-ranking), hızlı vektör aramasının çıkardığı küçük aday listesini bir cross-encoder ile yeniden tartar; geniş havuzda hız, dar havuzda hassasiyet sağlar.</li><li>İçtiHub içtihadı kelimeyle değil anlamla bulmak için embedding, vektör arama, hibrit arama, yeniden sıralama ve metadata filtrelemeyi birlikte kullanır; bu yapı aynı zamanda RAG'in temelidir.</li></ul></div>
+    <a href="/faydali-bilgiler/" class="article-back"><i class="fas fa-arrow-left"></i> Tüm yazılar</a>
   </main>
   <footer class="footer" style="padding:2rem 0;">
   <div class="container text-center">
     <div style="display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;margin-bottom:1rem;">
-      <a href="/"><span class="lang-content" data-lang="tr">Ana Sayfa</span><span class="lang-content" data-lang="en">Home</span></a>
-      <a href="/faydali-bilgiler/"><span class="lang-content" data-lang="tr">Faydalı Bilgiler</span><span class="lang-content" data-lang="en">Insights</span></a>
+      <a href="/">Ana Sayfa</a>
+      <a href="/faydali-bilgiler/">Faydalı Bilgiler</a>
       <a href="https://ictihub.com" target="_blank" rel="noopener">İçtiHub</a>
-      <a href="/privacy-policy.html"><span class="lang-content" data-lang="tr">Gizlilik</span><span class="lang-content" data-lang="en">Privacy</span></a>
+      <a href="/privacy-policy.html">Gizlilik</a>
     </div>
     <div class="footer-social" style="display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;margin-bottom:1rem;">
       <a href="https://x.com/ecofluxion" target="_blank" rel="noopener" aria-label="X"><i class="fab fa-x-twitter"></i></a>
@@ -275,22 +224,10 @@
       <a href="https://www.instagram.com/ecofluxion/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
       <a href="https://www.tiktok.com/@ecofluxion" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
     </div>
-    <p class="footer-copyright mb-0">&copy; 2024-2026 EcoFluxion. <span class="lang-content" data-lang="tr">Tüm hakları saklıdır.</span><span class="lang-content" data-lang="en">All rights reserved.</span></p>
+    <p class="footer-copyright mb-0">&copy; 2024-2026 EcoFluxion. Tüm hakları saklıdır.</p>
   </div>
 </footer>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-(function () {
-  var lang = localStorage.getItem('language') || 'tr';
-  function apply(l) {
-    document.documentElement.lang = l;
-    document.querySelectorAll('.lang-content').forEach(function (el) { el.style.display = (el.getAttribute('data-lang') === l) ? '' : 'none'; });
-    document.querySelectorAll('.legal-lang-btn').forEach(function (b) { b.classList.toggle('active', b.getAttribute('data-lang') === l); });
-    localStorage.setItem('language', l);
-  }
-  document.querySelectorAll('.legal-lang-btn').forEach(function (b) { b.addEventListener('click', function () { apply(b.getAttribute('data-lang')); }); });
-  apply(lang);
-})();
-</script>
+<script>document.querySelectorAll('[data-setlang]').forEach(function(a){a.addEventListener('click',function(){try{localStorage.setItem('language',this.getAttribute('data-setlang'));}catch(e){}});});</script>
 </body>
 </html>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://ecofluxion.com/</loc>
     <lastmod>2026-06-07</lastmod>
@@ -8,126 +8,378 @@
   </url>
   <url>
     <loc>https://ecofluxion.com/faydali-bilgiler/</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://ecofluxion.com/faydali-bilgiler/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ecofluxion.com/insights/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ecofluxion.com/faydali-bilgiler/"/>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ecofluxion.com/insights/</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://ecofluxion.com/faydali-bilgiler/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ecofluxion.com/insights/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ecofluxion.com/faydali-bilgiler/"/>
     <lastmod>2026-06-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://ecofluxion.com/faydali-bilgiler/acik-kaynak-kapali-modeller.html</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://ecofluxion.com/faydali-bilgiler/acik-kaynak-kapali-modeller.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ecofluxion.com/insights/acik-kaynak-kapali-modeller.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ecofluxion.com/faydali-bilgiler/acik-kaynak-kapali-modeller.html"/>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ecofluxion.com/insights/acik-kaynak-kapali-modeller.html</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://ecofluxion.com/faydali-bilgiler/acik-kaynak-kapali-modeller.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ecofluxion.com/insights/acik-kaynak-kapali-modeller.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ecofluxion.com/faydali-bilgiler/acik-kaynak-kapali-modeller.html"/>
     <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://ecofluxion.com/faydali-bilgiler/cok-modlu-yapay-zeka.html</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://ecofluxion.com/faydali-bilgiler/cok-modlu-yapay-zeka.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ecofluxion.com/insights/cok-modlu-yapay-zeka.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ecofluxion.com/faydali-bilgiler/cok-modlu-yapay-zeka.html"/>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ecofluxion.com/insights/cok-modlu-yapay-zeka.html</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://ecofluxion.com/faydali-bilgiler/cok-modlu-yapay-zeka.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ecofluxion.com/insights/cok-modlu-yapay-zeka.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ecofluxion.com/faydali-bilgiler/cok-modlu-yapay-zeka.html"/>
     <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://ecofluxion.com/faydali-bilgiler/hukukta-yapay-zeka.html</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://ecofluxion.com/faydali-bilgiler/hukukta-yapay-zeka.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ecofluxion.com/insights/hukukta-yapay-zeka.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ecofluxion.com/faydali-bilgiler/hukukta-yapay-zeka.html"/>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ecofluxion.com/insights/hukukta-yapay-zeka.html</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://ecofluxion.com/faydali-bilgiler/hukukta-yapay-zeka.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ecofluxion.com/insights/hukukta-yapay-zeka.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ecofluxion.com/faydali-bilgiler/hukukta-yapay-zeka.html"/>
     <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://ecofluxion.com/faydali-bilgiler/ictihub-ai-hukuki-arastirma.html</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://ecofluxion.com/faydali-bilgiler/ictihub-ai-hukuki-arastirma.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ecofluxion.com/insights/ictihub-ai-hukuki-arastirma.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ecofluxion.com/faydali-bilgiler/ictihub-ai-hukuki-arastirma.html"/>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ecofluxion.com/insights/ictihub-ai-hukuki-arastirma.html</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://ecofluxion.com/faydali-bilgiler/ictihub-ai-hukuki-arastirma.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ecofluxion.com/insights/ictihub-ai-hukuki-arastirma.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ecofluxion.com/faydali-bilgiler/ictihub-ai-hukuki-arastirma.html"/>
     <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://ecofluxion.com/faydali-bilgiler/isletmeler-icin-yapay-zeka.html</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://ecofluxion.com/faydali-bilgiler/isletmeler-icin-yapay-zeka.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ecofluxion.com/insights/isletmeler-icin-yapay-zeka.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ecofluxion.com/faydali-bilgiler/isletmeler-icin-yapay-zeka.html"/>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ecofluxion.com/insights/isletmeler-icin-yapay-zeka.html</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://ecofluxion.com/faydali-bilgiler/isletmeler-icin-yapay-zeka.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ecofluxion.com/insights/isletmeler-icin-yapay-zeka.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ecofluxion.com/faydali-bilgiler/isletmeler-icin-yapay-zeka.html"/>
     <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://ecofluxion.com/faydali-bilgiler/llm-nedir-nasil-calisir.html</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://ecofluxion.com/faydali-bilgiler/llm-nedir-nasil-calisir.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ecofluxion.com/insights/llm-nedir-nasil-calisir.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ecofluxion.com/faydali-bilgiler/llm-nedir-nasil-calisir.html"/>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ecofluxion.com/insights/llm-nedir-nasil-calisir.html</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://ecofluxion.com/faydali-bilgiler/llm-nedir-nasil-calisir.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ecofluxion.com/insights/llm-nedir-nasil-calisir.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ecofluxion.com/faydali-bilgiler/llm-nedir-nasil-calisir.html"/>
     <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://ecofluxion.com/faydali-bilgiler/prompt-muhendisligi.html</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://ecofluxion.com/faydali-bilgiler/prompt-muhendisligi.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ecofluxion.com/insights/prompt-muhendisligi.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ecofluxion.com/faydali-bilgiler/prompt-muhendisligi.html"/>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ecofluxion.com/insights/prompt-muhendisligi.html</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://ecofluxion.com/faydali-bilgiler/prompt-muhendisligi.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ecofluxion.com/insights/prompt-muhendisligi.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ecofluxion.com/faydali-bilgiler/prompt-muhendisligi.html"/>
     <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://ecofluxion.com/faydali-bilgiler/rag-turkce-hukuk-verisi.html</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://ecofluxion.com/faydali-bilgiler/rag-turkce-hukuk-verisi.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ecofluxion.com/insights/rag-turkce-hukuk-verisi.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ecofluxion.com/faydali-bilgiler/rag-turkce-hukuk-verisi.html"/>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ecofluxion.com/insights/rag-turkce-hukuk-verisi.html</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://ecofluxion.com/faydali-bilgiler/rag-turkce-hukuk-verisi.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ecofluxion.com/insights/rag-turkce-hukuk-verisi.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ecofluxion.com/faydali-bilgiler/rag-turkce-hukuk-verisi.html"/>
     <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://ecofluxion.com/faydali-bilgiler/rag-vs-fine-tuning.html</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://ecofluxion.com/faydali-bilgiler/rag-vs-fine-tuning.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ecofluxion.com/insights/rag-vs-fine-tuning.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ecofluxion.com/faydali-bilgiler/rag-vs-fine-tuning.html"/>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ecofluxion.com/insights/rag-vs-fine-tuning.html</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://ecofluxion.com/faydali-bilgiler/rag-vs-fine-tuning.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ecofluxion.com/insights/rag-vs-fine-tuning.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ecofluxion.com/faydali-bilgiler/rag-vs-fine-tuning.html"/>
     <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://ecofluxion.com/faydali-bilgiler/token-embedding-vektor.html</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://ecofluxion.com/faydali-bilgiler/token-embedding-vektor.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ecofluxion.com/insights/token-embedding-vektor.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ecofluxion.com/faydali-bilgiler/token-embedding-vektor.html"/>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ecofluxion.com/insights/token-embedding-vektor.html</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://ecofluxion.com/faydali-bilgiler/token-embedding-vektor.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ecofluxion.com/insights/token-embedding-vektor.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ecofluxion.com/faydali-bilgiler/token-embedding-vektor.html"/>
     <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://ecofluxion.com/faydali-bilgiler/transformer-mimarisi.html</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://ecofluxion.com/faydali-bilgiler/transformer-mimarisi.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ecofluxion.com/insights/transformer-mimarisi.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ecofluxion.com/faydali-bilgiler/transformer-mimarisi.html"/>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ecofluxion.com/insights/transformer-mimarisi.html</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://ecofluxion.com/faydali-bilgiler/transformer-mimarisi.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ecofluxion.com/insights/transformer-mimarisi.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ecofluxion.com/faydali-bilgiler/transformer-mimarisi.html"/>
     <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://ecofluxion.com/faydali-bilgiler/turkce-yapay-zeka-nlp.html</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://ecofluxion.com/faydali-bilgiler/turkce-yapay-zeka-nlp.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ecofluxion.com/insights/turkce-yapay-zeka-nlp.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ecofluxion.com/faydali-bilgiler/turkce-yapay-zeka-nlp.html"/>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ecofluxion.com/insights/turkce-yapay-zeka-nlp.html</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://ecofluxion.com/faydali-bilgiler/turkce-yapay-zeka-nlp.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ecofluxion.com/insights/turkce-yapay-zeka-nlp.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ecofluxion.com/faydali-bilgiler/turkce-yapay-zeka-nlp.html"/>
     <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://ecofluxion.com/faydali-bilgiler/vektor-veritabani-anlamsal-arama.html</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://ecofluxion.com/faydali-bilgiler/vektor-veritabani-anlamsal-arama.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ecofluxion.com/insights/vektor-veritabani-anlamsal-arama.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ecofluxion.com/faydali-bilgiler/vektor-veritabani-anlamsal-arama.html"/>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ecofluxion.com/insights/vektor-veritabani-anlamsal-arama.html</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://ecofluxion.com/faydali-bilgiler/vektor-veritabani-anlamsal-arama.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ecofluxion.com/insights/vektor-veritabani-anlamsal-arama.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ecofluxion.com/faydali-bilgiler/vektor-veritabani-anlamsal-arama.html"/>
     <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://ecofluxion.com/faydali-bilgiler/yapay-zeka-ajanlari.html</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://ecofluxion.com/faydali-bilgiler/yapay-zeka-ajanlari.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ecofluxion.com/insights/yapay-zeka-ajanlari.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ecofluxion.com/faydali-bilgiler/yapay-zeka-ajanlari.html"/>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ecofluxion.com/insights/yapay-zeka-ajanlari.html</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://ecofluxion.com/faydali-bilgiler/yapay-zeka-ajanlari.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ecofluxion.com/insights/yapay-zeka-ajanlari.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ecofluxion.com/faydali-bilgiler/yapay-zeka-ajanlari.html"/>
     <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://ecofluxion.com/faydali-bilgiler/yapay-zeka-degerlendirme.html</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://ecofluxion.com/faydali-bilgiler/yapay-zeka-degerlendirme.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ecofluxion.com/insights/yapay-zeka-degerlendirme.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ecofluxion.com/faydali-bilgiler/yapay-zeka-degerlendirme.html"/>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ecofluxion.com/insights/yapay-zeka-degerlendirme.html</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://ecofluxion.com/faydali-bilgiler/yapay-zeka-degerlendirme.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ecofluxion.com/insights/yapay-zeka-degerlendirme.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ecofluxion.com/faydali-bilgiler/yapay-zeka-degerlendirme.html"/>
     <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://ecofluxion.com/faydali-bilgiler/yapay-zeka-etigi-onyargi.html</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://ecofluxion.com/faydali-bilgiler/yapay-zeka-etigi-onyargi.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ecofluxion.com/insights/yapay-zeka-etigi-onyargi.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ecofluxion.com/faydali-bilgiler/yapay-zeka-etigi-onyargi.html"/>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ecofluxion.com/insights/yapay-zeka-etigi-onyargi.html</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://ecofluxion.com/faydali-bilgiler/yapay-zeka-etigi-onyargi.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ecofluxion.com/insights/yapay-zeka-etigi-onyargi.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ecofluxion.com/faydali-bilgiler/yapay-zeka-etigi-onyargi.html"/>
     <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://ecofluxion.com/faydali-bilgiler/yapay-zeka-halusinasyon.html</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://ecofluxion.com/faydali-bilgiler/yapay-zeka-halusinasyon.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ecofluxion.com/insights/yapay-zeka-halusinasyon.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ecofluxion.com/faydali-bilgiler/yapay-zeka-halusinasyon.html"/>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ecofluxion.com/insights/yapay-zeka-halusinasyon.html</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://ecofluxion.com/faydali-bilgiler/yapay-zeka-halusinasyon.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ecofluxion.com/insights/yapay-zeka-halusinasyon.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ecofluxion.com/faydali-bilgiler/yapay-zeka-halusinasyon.html"/>
     <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://ecofluxion.com/faydali-bilgiler/yapay-zeka-veri-gizliligi.html</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://ecofluxion.com/faydali-bilgiler/yapay-zeka-veri-gizliligi.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ecofluxion.com/insights/yapay-zeka-veri-gizliligi.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ecofluxion.com/faydali-bilgiler/yapay-zeka-veri-gizliligi.html"/>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ecofluxion.com/insights/yapay-zeka-veri-gizliligi.html</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://ecofluxion.com/faydali-bilgiler/yapay-zeka-veri-gizliligi.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ecofluxion.com/insights/yapay-zeka-veri-gizliligi.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ecofluxion.com/faydali-bilgiler/yapay-zeka-veri-gizliligi.html"/>
     <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://ecofluxion.com/faydali-bilgiler/yapay-zeka-verimlilik.html</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://ecofluxion.com/faydali-bilgiler/yapay-zeka-verimlilik.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ecofluxion.com/insights/yapay-zeka-verimlilik.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ecofluxion.com/faydali-bilgiler/yapay-zeka-verimlilik.html"/>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ecofluxion.com/insights/yapay-zeka-verimlilik.html</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://ecofluxion.com/faydali-bilgiler/yapay-zeka-verimlilik.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ecofluxion.com/insights/yapay-zeka-verimlilik.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ecofluxion.com/faydali-bilgiler/yapay-zeka-verimlilik.html"/>
     <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://ecofluxion.com/faydali-bilgiler/yapay-zekanin-gelecegi-agi.html</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://ecofluxion.com/faydali-bilgiler/yapay-zekanin-gelecegi-agi.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ecofluxion.com/insights/yapay-zekanin-gelecegi-agi.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ecofluxion.com/faydali-bilgiler/yapay-zekanin-gelecegi-agi.html"/>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ecofluxion.com/insights/yapay-zekanin-gelecegi-agi.html</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://ecofluxion.com/faydali-bilgiler/yapay-zekanin-gelecegi-agi.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ecofluxion.com/insights/yapay-zekanin-gelecegi-agi.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ecofluxion.com/faydali-bilgiler/yapay-zekanin-gelecegi-agi.html"/>
     <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
