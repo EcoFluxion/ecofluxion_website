@@ -1,30 +1,56 @@
 # robots.txt — EcoFluxion (https://ecofluxion.com)
+#
+# Policy: FULLY OPEN. We want search engines AND AI / generative engines to
+# crawl, index, cite and learn from this site (GEO — Generative Engine
+# Optimization). Nothing is disallowed. AI crawlers are explicitly welcomed
+# below so we appear in AI answers (ChatGPT, Gemini, Claude, Perplexity,
+# Copilot, Apple Intelligence, …) and in model knowledge.
 
-# Default: allow all crawlers full access
+# ---- All crawlers: full access ----
 User-agent: *
 Allow: /
 
-# AI / generative-engine crawlers explicitly welcome (GEO)
+# ---- AI / generative-engine crawlers: explicitly welcome ----
+
+# OpenAI — ChatGPT search, browsing & training
 User-agent: GPTBot
-Allow: /
-
 User-agent: OAI-SearchBot
-Allow: /
-
 User-agent: ChatGPT-User
 Allow: /
 
+# Anthropic — Claude search, user fetches & training
 User-agent: ClaudeBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: anthropic-ai
 Allow: /
 
+# Perplexity — index & live citations
 User-agent: PerplexityBot
+User-agent: Perplexity-User
 Allow: /
 
+# Google — Gemini / AI Overviews (Google-Extended) & Apple Intelligence
 User-agent: Google-Extended
-Allow: /
-
+User-agent: Applebot
 User-agent: Applebot-Extended
 Allow: /
 
-# Sitemap
+# Microsoft Copilot (Bing) & Common Crawl (feeds many models)
+User-agent: Bingbot
+User-agent: CCBot
+Allow: /
+
+# Other AI engines (Amazon, Meta AI, DuckDuckGo, Mistral, Cohere, You.com, ByteDance)
+User-agent: Amazonbot
+User-agent: meta-externalagent
+User-agent: FacebookBot
+User-agent: DuckAssistBot
+User-agent: MistralAI-User
+User-agent: cohere-ai
+User-agent: YouBot
+User-agent: Bytespider
+Allow: /
+
+# Sitemap (bilingual: /faydali-bilgiler/ TR + /insights/ EN, with hreflang)
 Sitemap: https://ecofluxion.com/sitemap.xml
