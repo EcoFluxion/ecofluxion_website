@@ -3,6 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+      // Keep the address bar clean: strip a trailing "index.html" without reloading.
+      if (location.pathname.endsWith('index.html')) {
+        history.replaceState(null, '', location.pathname.replace(/index\.html$/, '') + location.search + location.hash);
+      }
+    </script>
     <meta name="description" content="EcoFluxion is an AI R&D company building its own products in NLP and large language models, with a focus on Turkish-language AI. Our flagship product is İçtiHub, an AI-powered legal-tech platform.">
     <meta name="keywords" content="İçtiHub, AI products, legal tech, LLM, NLP, RAG, Turkish NLP, AI startup, artificial intelligence">
     <meta name="author" content="EcoFluxion">
@@ -143,7 +149,7 @@
                         <a class="nav-link" href="#careers" data-translate="nav_careers">Careers</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="blog/index.html" data-translate="nav_blog">Insights</a>
+                        <a class="nav-link" href="blog/" data-translate="nav_blog">Insights</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#contact" data-translate="nav_contact">Contact</a>
@@ -708,7 +714,7 @@
                     <ul class="footer-links">
                         <li><a href="#projects" data-translate="footer_projects">Products</a></li>
                         <li><a href="#technologies" data-translate="footer_technologies">Technologies</a></li>
-                        <li><a href="blog/index.html" data-translate="nav_blog">Insights</a></li>
+                        <li><a href="blog/" data-translate="nav_blog">Insights</a></li>
                         <li><a href="https://ictihub.com" target="_blank" rel="noopener">İçtiHub</a></li>
                         <li><a href="#careers" data-translate="footer_careers">Careers</a></li>
                     </ul>

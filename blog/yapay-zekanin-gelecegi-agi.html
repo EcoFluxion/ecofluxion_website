@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AGI (genel yapay zeka) nedir, bugün gerçekten nerede duruyoruz? Ajansal yapay zeka, iyimser ve temkinli görüşler, yakın vadeli etki ile hype arasındaki farkı dengeli, abartısız anlatıyoruz.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://ecofluxion.com/blog/yapay-zekanin-gelecegi-agi.html">
+  <meta name="theme-color" content="#7CB342">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Yapay Zekanın Geleceği ve AGI Tartışması: Gürültüyü Sinyalden Ayırmak">
+  <meta property="og:description" content="AGI (genel yapay zeka) nedir, bugün gerçekten nerede duruyoruz? Ajansal yapay zeka, iyimser ve temkinli görüşler, yakın vadeli etki ile hype arasındaki farkı dengeli, abartısız anlatıyoruz.">
+  <meta property="og:url" content="https://ecofluxion.com/blog/yapay-zekanin-gelecegi-agi.html">
+  <meta property="og:site_name" content="EcoFluxion">
+  <meta property="og:locale" content="tr_TR">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:image" content="https://ecofluxion.com/image/ecofluxion_logo.png">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@ecofluxion">
+  <meta name="twitter:title" content="Yapay Zekanın Geleceği ve AGI Tartışması: Gürültüyü Sinyalden Ayırmak">
+  <meta name="twitter:description" content="AGI (genel yapay zeka) nedir, bugün gerçekten nerede duruyoruz? Ajansal yapay zeka, iyimser ve temkinli görüşler, yakın vadeli etki ile hype arasındaki farkı dengeli, abartısız anlatıyoruz.">
+  <meta name="twitter:image" content="https://ecofluxion.com/image/ecofluxion_logo.png">
+  <title>Yapay Zekanın Geleceği ve AGI Tartışması: Gürültüyü Sinyalden Ayırmak | EcoFluxion</title>
+  <link rel="icon" type="image/png" href="../image/ecofluxion_logo.png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .legal-nav { background: #2f3a22; }
+    .legal-nav .nav-link { color: rgba(255,255,255,.85); }
+    .legal-nav .nav-link:hover, .legal-nav .nav-link.active { color: #fff; }
+    .legal-langbar { display:flex; gap:.4rem; }
+    .legal-lang-btn.active { background:#fff; color:#558B2F; }
+    .article-wrap { max-width: 800px; margin: 0 auto; padding: 130px 1.25rem 70px; }
+    .article-hero { display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; height:300px; border-radius:14px; margin-bottom:1.6rem; }
+    .article-hero .main-ico { font-size:5rem; color:rgba(255,255,255,.96); position:relative; z-index:1; }
+    .article-hero .bg-ico { position:absolute; right:-28px; bottom:-44px; font-size:15rem; color:rgba(255,255,255,.10); z-index:0; }
+    .breadcrumb-nav { font-size:.88rem; color:#999; margin-bottom:1.4rem; }
+    .breadcrumb-nav a { color:#558B2F; text-decoration:none; }
+    .article-cat { color: var(--primary-green,#7CB342); font-weight:700; text-transform:uppercase; letter-spacing:1px; font-size:.82rem; }
+    .article-wrap h1 { font-family:'Montserrat',sans-serif; font-weight:800; line-height:1.2; margin:.4rem 0 1rem; color:#222; }
+    .article-sub { font-size:1.22rem; color:#555; line-height:1.6; margin-bottom:1.4rem; }
+    .article-meta { display:flex; flex-wrap:wrap; gap:.8rem 1.2rem; align-items:center; color:#888; font-size:.9rem; border-top:1px solid #eee; border-bottom:1px solid #eee; padding:.9rem 0; margin-bottom:2rem; }
+    .article-tags { display:flex; flex-wrap:wrap; gap:.4rem; }
+    .article-tag { background:#f3f8ec; color:#558B2F; border-radius:50px; padding:.22rem .7rem; font-size:.78rem; font-weight:600; }
+    .article-body h2 { font-family:'Montserrat',sans-serif; font-weight:700; font-size:1.5rem; margin:2.3rem 0 .8rem; color:#2f3a22; }
+    .article-body p { color:#333; line-height:1.85; font-size:1.07rem; margin-bottom:1.1rem; }
+    .takeaways { background:#f3f8ec; border-left:4px solid var(--primary-green,#7CB342); border-radius:8px; padding:1.2rem 1.5rem; margin:2.6rem 0; }
+    .takeaways h3 { font-family:'Montserrat',sans-serif; font-weight:700; font-size:1.1rem; margin-bottom:.6rem; }
+    .takeaways ul { margin:0; padding-left:1.2rem; } .takeaways li { color:#3a4a28; line-height:1.7; margin-bottom:.3rem; }
+    .article-back { display:inline-block; margin-top:2rem; font-weight:600; color:#558B2F; text-decoration:none; }
+    .blog-head { padding:130px 1.25rem 1.5rem; text-align:center; }
+    .blog-head h1 { font-family:'Montserrat',sans-serif; font-weight:800; color:#2f3a22; }
+    .blog-head p { color:#666; max-width:640px; margin:.5rem auto 0; }
+    .blog-grid { max-width:1120px; margin:0 auto; padding:1rem 1.25rem 80px; display:grid; grid-template-columns:repeat(auto-fill,minmax(330px,1fr)); gap:1.6rem; }
+    .blog-card { background:#fff; border:1px solid #eee; border-radius:14px; overflow:hidden; transition:.3s; display:flex; flex-direction:column; }
+    .blog-card:hover { transform:translateY(-5px); box-shadow:0 15px 35px rgba(0,0,0,.08); }
+    .blog-card-img { display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; width:100%; height:165px; text-decoration:none; }
+    .blog-card-img .main-ico { font-size:2.8rem; color:rgba(255,255,255,.96); z-index:1; }
+    .blog-card-img .bg-ico { position:absolute; right:-14px; bottom:-22px; font-size:8rem; color:rgba(255,255,255,.12); z-index:0; }
+    .blog-card-body { padding:1.6rem; display:flex; flex-direction:column; flex:1; }
+    .blog-card h2 { font-family:'Montserrat',sans-serif; font-weight:700; font-size:1.22rem; margin:.45rem 0 .6rem; line-height:1.35; }
+    .blog-card h2 a { color:#222; text-decoration:none; }
+    .blog-card h2 a:hover { color:#558B2F; }
+    .blog-card p { color:#666; line-height:1.6; flex:1; font-size:.97rem; }
+    .blog-card .read-more { color:#558B2F; font-weight:600; text-decoration:none; margin-top:1rem; align-self:flex-start; }
+    .blog-card-meta { color:#999; font-size:.82rem; margin-top:.8rem; }
+    .grad-g1{background:linear-gradient(135deg,#7CB342,#33691E);}
+    .grad-g2{background:linear-gradient(135deg,#558B2F,#1B5E20);}
+    .grad-g3{background:linear-gradient(135deg,#8BC34A,#2E7D32);}
+    .grad-g4{background:linear-gradient(135deg,#26A69A,#2E7D32);}
+    @media (max-width:600px){ .article-hero{ height:200px; } .article-hero .main-ico{ font-size:3.5rem; } }
+</style>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Yapay Zekanın Geleceği ve AGI Tartışması: Gürültüyü Sinyalden Ayırmak",
+  "description": "AGI (genel yapay zeka) nedir, bugün gerçekten nerede duruyoruz? Ajansal yapay zeka, iyimser ve temkinli görüşler, yakın vadeli etki ile hype arasındaki farkı dengeli, abartısız anlatıyoruz.",
+  "inLanguage": "tr",
+  "datePublished": "2026-06-07",
+  "dateModified": "2026-06-07",
+  "author": {
+    "@type": "Organization",
+    "name": "EcoFluxion",
+    "url": "https://ecofluxion.com/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "EcoFluxion",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://ecofluxion.com/image/ecofluxion_logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://ecofluxion.com/blog/yapay-zekanin-gelecegi-agi.html"
+  },
+  "image": "https://ecofluxion.com/image/ecofluxion_logo.png",
+  "articleSection": "Araştırma",
+  "keywords": "AGI, Yapay Zekanın Geleceği, Yapay Zeka, Ajansal Yapay Zeka, Trendler"
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "EcoFluxion",
+      "item": "https://ecofluxion.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Faydalı Bilgiler",
+      "item": "https://ecofluxion.com/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Yapay Zekanın Geleceği ve AGI Tartışması: Gürültüyü Sinyalden Ayırmak",
+      "item": "https://ecofluxion.com/blog/yapay-zekanin-gelecegi-agi.html"
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top legal-nav">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="/">
+        <img src="../image/ecofluxion_logo.png" alt="EcoFluxion" class="logo-img" style="height:36px;">
+        <span class="ms-2 fw-bold">EcoFluxion</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#blogNav" aria-label="Menu"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="blogNav">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="/#home"><span class="lang-content" data-lang="tr">Ana Sayfa</span><span class="lang-content" data-lang="en">Home</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="/#about"><span class="lang-content" data-lang="tr">Hakkımızda</span><span class="lang-content" data-lang="en">About</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="/#services"><span class="lang-content" data-lang="tr">Neler Geliştiriyoruz</span><span class="lang-content" data-lang="en">What We Build</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="/#projects"><span class="lang-content" data-lang="tr">Ürünler</span><span class="lang-content" data-lang="en">Products</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="/#technologies"><span class="lang-content" data-lang="tr">Teknolojiler</span><span class="lang-content" data-lang="en">Technologies</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="/#careers"><span class="lang-content" data-lang="tr">Kariyer</span><span class="lang-content" data-lang="en">Careers</span></a></li>
+          <li class="nav-item"><a class="nav-link active" href="/blog/"><span class="lang-content" data-lang="tr">Faydalı Bilgiler</span><span class="lang-content" data-lang="en">Insights</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="/#contact"><span class="lang-content" data-lang="tr">İletişim</span><span class="lang-content" data-lang="en">Contact</span></a></li>
+          <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+            <div class="legal-langbar">
+              <button class="btn btn-sm btn-outline-light legal-lang-btn" data-lang="tr">TR</button>
+              <button class="btn btn-sm btn-outline-light legal-lang-btn" data-lang="en">EN</button>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <main class="article-wrap">
+    <nav class="breadcrumb-nav"><a href="/">EcoFluxion</a> / <a href="/blog/"><span class="lang-content" data-lang="tr">Faydalı Bilgiler</span><span class="lang-content" data-lang="en">Insights</span></a> / <span class="lang-content" data-lang="tr">Yapay Zekanın Geleceği ve AGI Tartışması: Gürültüyü Sinyalden Ayırmak</span><span class="lang-content" data-lang="en">The Future of AI and the AGI Debate: Separating Signal from Hype</span></nav>
+    <div class="article-hero grad-g3"><i class="fas fa-rocket bg-ico"></i><i class="fas fa-rocket main-ico"></i></div>
+
+    <div class="lang-content" data-lang="tr">
+      <div class="article-cat">Araştırma</div>
+      <h1>Yapay Zekanın Geleceği ve AGI Tartışması: Gürültüyü Sinyalden Ayırmak</h1>
+      <p class="article-sub">"Genel yapay zeka" (AGI) tam olarak ne demek, şu an gerçekten neredeyiz, ajansal yapay zeka neyi değiştiriyor? İyimser ve temkinli görüşleri, yakın vadeli gerçek etkiyi ve şişirilmiş vaatleri sakin bir dille birbirinden ayırıyoruz.</p>
+      <div class="article-meta"><span><i class="far fa-clock"></i> 13 dk okuma</span><div class="article-tags"><span class="article-tag">AGI</span><span class="article-tag">Yapay Zekanın Geleceği</span><span class="article-tag">Yapay Zeka</span><span class="article-tag">Ajansal Yapay Zeka</span><span class="article-tag">Trendler</span></div></div>
+      <div class="article-body">
+<h2>Önce Tanımı Netleştirelim: AGI Aslında Ne Demek?</h2>
+<p>Yapay zeka tartışmalarının en kafa karıştırıcı yanı, herkesin aynı üç harfi kullanıp farklı şeyler kastetmesidir. AGI, İngilizce 'Artificial General Intelligence', yani 'genel yapay zeka' demek. Buradaki kilit kelime 'genel'. Bugün kullandığımız çoğu sistem belirli işlerde iyidir; AGI ise bir insanın aklını kullanabildiği neredeyse her alanda — yazmak, planlamak, akıl yürütmek, sıfırdan yeni bir beceriyi öğrenmek — en az ortalama bir insan kadar yetkin olan bir yapay zekayı tarif eder.</p>
+<p>Bir benzetme yardımcı olabilir. Hesap makinesi bölme işleminde sizden milyonlarca kat hızlıdır ama bir şiiri yorumlayamaz; o 'dar' bir zekadır. Satranç motoru dünya şampiyonunu yener ama mutfağınızda kahve yapamaz, hatta neden kahve yapmak istediğinizi bile kavrayamaz. AGI ise 'her işi yapabilen' o esnek aklı kasteder: bugün bir hukuk metnini çözümleyen, yarın hiç görmediği bir tablo programını kurcalayıp öğrenen, öbür gün bir deney tasarlayan tek bir sistem.</p>
+<p>İşte en sinir bozucu gerçek: AGI'nin tek, üzerinde uzlaşılmış bir tanımı yoktur. Kimi için 'ekonomik açıdan değerli işlerin çoğunda insan kadar iyi olmak', kimi için 'kendini geliştirebilen bir sistem', kimi içinse yatırım sunumlarını parlatan bir slogandır. Tanım belirsiz olunca 'AGI'ye ne kadar yakınız?' sorusu da kaçınılmaz olarak belirsizleşir; çünkü hedef direkleri herkesin kafasında başka bir yerde durur.</p>
+<p>Bu yüzden bu yazıda AGI'yi bir 'an' değil, bir 'yelpaze' olarak ele alacağız. 'Geldi mi, gelmedi mi?' yanlış sorudur — tıpkı 'gün tam olarak ne zaman ağardı?' diye sormak gibi. Daha iyi soru şudur: yapay zeka hangi işlerde, ne kadar güvenilir biçimde, insana yakın bir genellik gösteriyor — ve bu sınır nereye doğru kayıyor?</p>
+<h2>Bugün Gerçekten Neredeyiz?</h2>
+<p>Yapay zeka uzun süre 'dar' kaldı: bir model yalnızca çeviri yapardı, başka bir model yalnızca yüz tanırdı. 2020'lerin büyük dil modelleriyle (LLM) bir şey değişti. Aynı tek model artık makale yazabiliyor, kod üretebiliyor, bir görseli tarif edebiliyor, bir tabloyu yorumlayabiliyor ve bir sınavı geçebiliyor. Bu, eski anlamda 'dar' değil; ama henüz 'genel' de değil. İkisinin arasında, tuhaf ve yeni bir yerdeyiz.</p>
+<p>Bu sistemler bazı işlerde gerçekten etkileyici. Bir sözleşme taslağını dakikalar içinde çıkarabilir, karmaşık bir konuyu sade dile çevirebilir, yüzlerce sayfayı özetleyebilirler. Üstelik bu yetenekler tek bir alana hapsolmuş değil — aynı araç hem bir mühendise, hem bir avukata, hem bir öğrenciye yarar. İşte AGI tartışmasını canlı tutan asıl şey bu genişliktir.</p>
+<p>Ama aynı sistemlerin sınırları da çok gerçek. Akıl yürütmeleri kırılgandır: doğru cevabı verdikleri bir soruyu, kelimelerini biraz değiştirip aynı şeyi sorduğunuzda yanlış yanıtlayabilirler. Hafızaları sınırlıdır; uzun bir görevin başında söyleneni sonunda unutabilirler. Ve en sinsisi: neyi bilmediklerini güvenilir biçimde bilmezler. Bir model, var olmayan bir mahkeme kararını tam bir özgüvenle, gerçek bir esas numarasıymış gibi uydurabilir — buna 'halüsinasyon' denir ve henüz tam çözülmemiş, yapısal bir sorundur.</p>
+<p>Dürüst özet şu: bugünkü en iyi sistemler, dar yapay zekanın çok ötesinde ama AGI'nin de berisindedir. İnsan zekasının bazı boyutlarını şaşırtıcı ölçüde taklit ederken, başka boyutlarında — istikrarlı muhakeme, gerçek dünya nedenselliği, kendi hatasını fark etme — hâlâ kırılgandır. Bu nüansı korumak önemlidir; çünkü hem 'her şey çözüldü' diyenler hem 'bunlar sadece numara' diyenler aynı anda yanılıyor.</p>
+<h2>Asıl Hikaye AGI Değil, Ajansal Yapay Zeka</h2>
+<p>Manşetler AGI'ye odaklanırken, 2025 ve 2026'da sahada asıl değişen şey çok daha somut: ajansal yapay zeka. Bir sohbet botu size tek bir cevap yazar ve susar; soruyu yanıtlar, orada biter. Bir 'ajan' ise bir hedefe ulaşmak için adım adım çalışır — bir arama yapar, bir belge getirir, bir hesap yapar, sonuca bakıp planını değiştirir ve iş bitene kadar bu döngüyü sürdürür. Yani yapay zeka artık sadece konuşmuyor; araçlar kullanarak iş yapmaya başlıyor.</p>
+<p>Bu, AGI tartışması için kritik bir kayma. Çünkü asıl ilerleme modelin ham 'zekasında' değil, güvenilirliğinde yaşanıyor. Bir modeli birkaç IQ puanı daha akıllı yapmak yerine, onu çok adımlı bir görevi baştan sona hatasız götürebilen bir sisteme dönüştürmek — fark yaratan şey bu. Bir avukatın işine yarayan, sınavda yüksek puan alan bir model değil; bir araştırmayı eksiksiz ve doğrulanabilir biçimde tamamlayan bir asistandır.</p>
+<p>Ama ajanların büyük bir zayıflığı var ve bu, AGI iyimserliğine doğal bir fren koyuyor: uzun zincirlerde hatalar birikir. Diyelim model her adımda yüzde doksan dokuz isabetli olsun; kulağa kusursuz geliyor. Ama yüz adımlık bir görevde bu küçük pay birikir — 0,99'un yüzüncü kuvveti yaklaşık 0,37'ye iner. Yani 'neredeyse her zaman doğru' bir model bile, yeterince uzun bir zincirde işi baştan sona doğru bitirme şansını üçte bire düşürür. Tek bir kopan halka, tüm zinciri koparabilir. Güvenilirlik, zekadan daha zor bir problemdir.</p>
+<p>Bu yüzden ajanlar bugün net hedefli, geri besleme veren işlerde parlıyor: bir belgeden bilgi çıkarmak, bir veri kümesini sorgulamak, bir kod hatasını avlamak — sonucun doğru olup olmadığını anında kontrol edebildiğiniz işler. Belirsiz, çok adımlı, gerçek dünyaya yayılan işlerde ise hâlâ kırılganlar. AGI'ye giden yol, muhtemelen daha 'dahi' bir modelden değil, bu güvenilirlik açığını kapatmaktan geçecek.</p>
+<h2>İyimser Görüş: Eğri Yukarı Kıvrılmaya Devam Eder</h2>
+<p>İyimserlerin en güçlü kozu, son on yıldır işe yarayan bir gözlem: ölçek yasaları. Kabaca şu demek — modelleri büyüttükçe (daha çok veri, daha çok hesaplama gücü, daha çok parametre) yetenekleri tahmin edilebilir biçimde artar. Üstelik bazı beceriler, model belli bir boyutu geçtiğinde sanki birden 'beliriverdi'. Bu eğriyi gören biri için mantık basit: madem her büyütmede yeni kapılar açılıyor, neden duracak ki?</p>
+<p>İkinci dayanak, ajanların hızlı olgunlaşması. Birkaç yıl önce yapay zeka tutarlı tek bir paragraf üretmekte zorlanıyordu; bugün araçları kullanarak saatler süren işleri zincirleyebiliyor. İyimserlere göre yön bellidir: modeller giderek daha uzun görevleri, daha az insan müdahalesiyle götürebiliyor. Bu eğri sürerse, 'genel' yeterliğe ulaşmak bir kopuş değil, sürekli gelişmenin doğal varış noktası olur.</p>
+<p>Üçüncüsü, kendini hızlandıran döngü fikri. Yapay zeka, yapay zeka araştırmasını hızlandırmaya başladığında — kod yazmaya, deney tasarlamaya, fikirleri elemeye yardım ettiğinde — ilerlemenin kendisi hızlanabilir. Bu görüşte, bizi AGI'ye götürecek son adımları belki de yine yapay zeka atacaktır; bu yüzden tarihler düşündüğümüzden erken olabilir.</p>
+<p>Bu iyimserliğin saygıyı hak eden bir yanı var: son birkaç yılda 'yapay zeka bunu asla yapamaz' denen pek çok şey gerçekten yapıldı. Uzmanların tahminleri tekrar tekrar fazla temkinli çıktı. Geçmişteki bu sürekli yanılma, 'bu sefer de bizi şaşırtabilir' demek için iyi bir gerekçedir. Ama dikkat: aynı geçmiş bir uyarı da içeriyor — fazla iyimser tahminler de tekrar tekrar tutmadı. Sıradaki bölüm tam da bununla ilgili.</p>
+<h2>Temkinli Görüş: Aynı Kanıt, Farklı Okuma</h2>
+<p>Temkinli kanat iyimserlerle aynı verilere bakar ama farklı bir sonuç çıkarır. İlk itirazları şu: bir sınavda yüksek puan almak, bir işi gerçekten yapabilmekle aynı şey değildir. Bir model bir hukuk sınavını geçebilir; ama gerçek bir davada — eksik bilgiyle, çelişkili kanıtla, yüksek riskle baş başa kaldığında — çuvallayabilir. Ölçtüğümüz şey (kıyaslama testleri, yani 'benchmark'lar) çoğu zaman gerçek yeterliğin zayıf bir vekilidir; üstelik bu testlerin bir kısmı eğitim verisine sızdığında, yüksek puan ezberin gölgesi olabilir.</p>
+<p>İkinci endişe akıl yürütmenin kırılganlığıdır. Bugünkü sistemler örüntü eşlemede olağanüstüdür; ama gerçekten adım adım mantık mı yürütüyorlar, yoksa eğitim verisinde gördükleri kalıpları mı taklit ediyorlar — bu hâlâ açık bir tartışma. Bir problemi yüzeysel olarak değiştirdiğinizde performansın düşmesi, temkinlilere göre derin bir kavrayışın değil sığ bir taklidin işaretidir.</p>
+<p>Üçüncüsü, somut sınırlar. Ölçek yasaları sonsuza kadar bedava işlemez: yüksek kaliteli eğitim verisi tükeniyor, hesaplama maliyetleri ve enerji tüketimi hızla artıyor. 'Sadece on kat büyüt' demek kolaydır; ama bunun parasal, fiziksel ve çevresel bir faturası var. Eğrinin bir noktada düzleşmesi — getirisinin azalması — en az sürmesi kadar olası bir senaryodur.</p>
+<p>Son olarak, değerlendirmenin kendisi zordur. Bir sistemin 'genel olarak zeki' mi, yoksa yalnızca test ettiğimiz dar şeylerde mi iyi olduğunu ölçmek için bile sağlam araçlarımız yok. Temkinli görüş 'asla olmaz' demez; 'sandığımızdan daha yavaş, daha pürüzlü ve daha pahalı olabilir' der. Ve dürüst olalım: iki taraf da geleceği kesin bilmiyor. Aradaki fark, belirsizlik karşısında ne kadar alçakgönüllü davrandıklarıdır.</p>
+<h2>Hype'ı Gerçek Etkiden Ayırmak</h2>
+<p>Yapay zeka haberlerinde iki uç ses en yüksekten çıkar: 'her şey birkaç ay içinde değişecek' diyen aşırı heyecan ve 'hepsi balon, yakında patlar' diyen aşırı küçümseme. İkisi de tıklanır, ikisi de yanıltıcıdır. Gerçek, çoğu dönüştürücü teknolojide olduğu gibi, sıkıcı ama sağlam bir orta yerdedir: kısa vadede abartılır, uzun vadede hafife alınır.</p>
+<p>Hype'ın klasik işaretlerini tanımak işe yarar. Belirsiz ama dev iddialar ('insanlığı dönüştürecek'), takvimi olmayan tahminler, tek bir gösterişli demonun genele yorulması ve 'biz hariç herkes geride kalacak' korkusu. Buna karşılık gerçek ilerleme sessizdir: belirli bir işte ölçülebilir verimlilik, başkalarınca tekrarlanan sonuçlar ve insanların parasını ödemeye razı olduğu somut bir fayda.</p>
+<p>İşin tuhafı, hype ile gerçek etki aynı anda var olabilir. Geçmişteki teknoloji balonlarında bile, köpük sönerken altta kalıcı ve gerçek bir altyapı kalmıştı — internet balonu patladı ama fiber kablolar ve bütün bir web ekonomisi geride kaldı. Yapay zekada da büyük olasılıkla benzeri olacak: aşırı vaatlerin bir kısmı boşa çıkacak, ama geriye bilgi işini kalıcı biçimde değiştiren gerçek bir araç katmanı kalacak. Mesele, hangi vaadin hangisi olduğunu ayırt edebilmek.</p>
+<p>Pratik bir pusula şu: bir iddiayı duyduğunuzda 'bu tam olarak hangi işte, ne kadar güvenilir biçimde, kimin bağımsız doğrulamasıyla işe yarıyor?' diye sorun. Cevap netse, muhtemelen gerçek etkiye bakıyorsunuz. Cevap bulanık ve duygusalsa, muhtemelen hype'a. Bu tek soru, gürültünün büyük kısmını süzmenizi sağlar.</p>
+<h2>Yakın Vadede Gerçekten Ne Değişecek?</h2>
+<p>Bilim kurgu, yürüyen robotları ve süper zekayı sever. Ama yakın vadenin gerçek hikayesi çok daha sıradan ve çok daha yaygın: sıradan bilgi işinin yeniden tasarlanması. Taslak hazırlamak, araştırma yapmak, özetlemek, çevirmek, kod yazmak, müşteriye yanıt vermek — bu işler tek bir dramatik anda değil, milyonlarca küçük adımda dönüşecek. Devrim gürültülü değil, sessiz ve dağıtık olacak.</p>
+<p>Burada anahtar kelime 'yerine koymak' değil, 'yeniden düzenlemek'. Çoğu meslekte yapay zeka bir işi bütünüyle devralmaktan çok belirli parçalarını üstlenecek: avukatın saatlerce sürdüğü ön araştırmayı dakikalara indirmek, ama nihai muhakemeyi ve sorumluluğu insana bırakmak gibi. İşler ortadan kalkmaktan çok yeniden şekillenecek; insanlar denetim, yargı ve sorumluluk gerektiren kısımlara doğru kayacak.</p>
+<p>Bu kademeli geçişin somut bir örneği hukuktur. Bir hukukçunun günü; mevzuat taramak, içtihat bulmak, dilekçe taslağı çıkarmak ve metinleri özetlemek gibi tekrarlı ama dikkat isteyen işlerle dolu. Yapay zeka bu yükü hafifletebilir — ama yalnızca kaynağını gösterebildiği, doğrulanabilir olduğu ölçüde. 'Akıllı görünen' bir cevap yetmez; mahkemede 'işte kanun, işte karar, işte kaynak' diyebilmek gerekir.</p>
+<p>İçtiHub'ı geliştirirken bizi yönlendiren ilke tam da budur. Amacımız hukukçunun yerine geçen değil, onu güçlendiren bir asistan: ağır araştırma yükünü taşıyan ama son sözü her zaman insana bırakan bir sistem. Yakın vadeli yapay zekanın en sağlıklı kullanımı genellikle böyle görünür — gösterişli bir otonomi değil, doğrulanabilir ve denetlenebilir bir yardımcılık.</p>
+<h2>Peki, Aslında Neyi İzlemeli?</h2>
+<p>AGI tarihleri ve kıyamet manşetleri eğlencelidir ama yanıltıcıdır. Gerçek ilerlemeyi takip etmek isteyen biri için çok daha bilgilendirici, somut sinyaller var. Birincisi güvenilirliktir: modeller uzun, çok adımlı görevleri ne kadar hatasız tamamlayabiliyor? Asıl eşik, modelin 'daha akıllı' olması değil, uzun bir işi baştan sona güvenle bitirebilmesidir.</p>
+<p>İkincisi bağımsız değerlendirmedir. Bir şirketin kendi modeli hakkındaki parlak iddiaları değil, üçüncü tarafların tekrarlanabilir testleri (benchmark'lar) önemlidir — özellikle de gerçek dünya işlerine benzeyen, ezberlenemeyen testler. Üçüncüsü gerçek işyeri verimliliğidir: laboratuvar gösterileri değil, sıradan profesyonellerin işlerinde ölçülen, kontrollü ve tekrarlanmış kazanımlar.</p>
+<p>Dördüncüsü maliyet ve enerji eğrileridir. Bir yeteneğin var olması bir şeydir; ucuz, hızlı ve sürdürülebilir biçimde var olması bambaşka bir şeydir. Bir görevin maliyeti hızla düşüyorsa, o yetenek laboratuvardan gerçek hayata geçiyor demektir. Beşincisi düzenlemedir: yapay zekayı kimin, nasıl, hangi sorumlulukla kullanabileceğini belirleyen kurallar, teknolojinin kendisi kadar belirleyici olacak.</p>
+<p>Son ve en kalıcı tavsiye şu: tek bir 'AGI geldi' anını beklemeyin; çünkü öyle bir an muhtemelen olmayacak. Bunun yerine, sınırın hangi işlerde, ne hızla ve hangi güvenilirlikle kaydığına bakın. Heyecanı da kaygıyı da elden bırakmayın ama ikisini de kanıta bağlayın. Sakin, meraklı ve şüpheci kalmak — bu hızlı çağda bir zayıflık değil, en büyük avantajdır.</p>
+      </div>
+      <div class="takeaways"><h3>Öne çıkanlar</h3><ul><li>AGI (Artificial General Intelligence, genel yapay zeka), tek bir dar işte değil, insanın yapabildiği işlerin çok geniş bir yelpazesinde insan kadar yetkin bir yapay zeka demektir; üzerinde uzlaşılmış net bir tanımı bile henüz yoktur.</li><li>Bugünkü sistemler 'dar' değil ama AGI de değildir: tek bir model artık yazıyor, kod üretiyor, görselle çalışıyor; ama akıl yürütmesi kırılgan, hafızası sınırlı ve neyi bilmediğini güvenilir biçimde bilmiyor.</li><li>2025-2026'nın asıl hikayesi AGI değil, ajansal yapay zekadır: çok adımlı işleri araçlar kullanarak yürüten sistemler. Asıl ilerleme zekanın 'IQ'sunda değil, güvenilirliğinde yaşanıyor.</li><li>İyimserler ölçek yasalarına ve ajanların hızlanmasına; temkinliler akıl yürütmedeki kırılganlığa, veri/enerji sınırlarına ve değerlendirmenin zorluğuna işaret ediyor — iki taraf da aynı kanıtlara farklı ağırlık veriyor.</li><li>Yakın vadeli gerçek etki, robot-üstün-zeka senaryolarında değil, sıradan bilgi işinin yeniden tasarlanmasında: taslak hazırlama, araştırma, özetleme, kod, müşteri desteği. Devrim sessiz ve dağıtık olacak.</li><li>AGI tarihleri ve kıyamet manşetleri yerine somut sinyalleri izleyin: uzun görevlerde güvenilirlik, bağımsız değerlendirmeler (benchmark), gerçek işyeri verimliliği, maliyet/enerji eğrileri ve düzenleme.</li><li>Hukuk gibi yüksek riskli alanlarda 'akıllı' yetmez; doğrulanabilir olmak gerekir. İçtiHub'ın felsefesi tam da budur: her cevabı kaynağına bağlamak ve son sözü insana bırakmak.</li></ul></div>
+    </div>
+
+    <div class="lang-content" data-lang="en">
+      <div class="article-cat">Research</div>
+      <h1>The Future of AI and the AGI Debate: Separating Signal from Hype</h1>
+      <p class="article-sub">What does "AGI" actually mean, where are we really right now, and what does agentic AI change? We calmly separate the optimistic and cautious views, the genuine near-term impact, and the inflated promises.</p>
+      <div class="article-meta"><span><i class="far fa-clock"></i> 13 min read</span><div class="article-tags"><span class="article-tag">AGI</span><span class="article-tag">Yapay Zekanın Geleceği</span><span class="article-tag">Yapay Zeka</span><span class="article-tag">Ajansal Yapay Zeka</span><span class="article-tag">Trendler</span></div></div>
+      <div class="article-body">
+<h2>Let's Pin Down the Word First: What Does AGI Actually Mean?</h2>
+<p>The most confusing thing about AI debates is that everyone uses the same three letters to mean different things. AGI stands for 'Artificial General Intelligence.' The key word is 'general.' Most systems we use today are good at specific tasks; AGI describes an AI that is at least as capable as an average person across nearly any domain where a human can use their mind — writing, planning, reasoning, picking up a brand-new skill from scratch.</p>
+<p>An analogy helps. A calculator is millions of times faster than you at division but can't interpret a poem; that's a 'narrow' intelligence. A chess engine beats the world champion but can't make coffee in your kitchen — it can't even grasp why you'd want coffee. AGI refers to that flexible, do-anything mind: a single system that analyzes a legal text today, tinkers with and learns a spreadsheet program it has never seen tomorrow, and designs an experiment the day after.</p>
+<p>Here's the maddening truth: there is no single, agreed definition of AGI. For some it means 'as good as a human at most economically valuable work'; for others, 'a system that can improve itself'; for others still, it's just a slogan that makes a pitch deck shine. When the definition is fuzzy, the question 'how close are we to AGI?' inevitably becomes fuzzy too, because the goalposts sit in a different place inside everyone's head.</p>
+<p>So in this article we'll treat AGI as a spectrum, not a moment. 'Has it arrived or not?' is the wrong question — a bit like asking 'at exactly what second did dawn happen?' The better question is: on which tasks, and how reliably, does AI show human-like generality — and which way is that frontier moving?</p>
+<h2>Where Are We Really Today?</h2>
+<p>AI stayed 'narrow' for a long time: one model only translated, another only recognized faces. Something changed with the large language models (LLMs) of the 2020s. The same single model can now write an essay, generate code, describe an image, interpret a table, and pass an exam. That's no longer 'narrow' in the old sense — but it isn't 'general' yet either. We're in a strange, new place in between.</p>
+<p>These systems are genuinely impressive at some jobs. They can draft a contract in minutes, translate a complex topic into plain language, summarize hundreds of pages. And those abilities aren't locked to a single domain — the same tool helps an engineer, a lawyer, and a student alike. This breadth is what keeps the AGI debate alive.</p>
+<p>But the limits of these same systems are very real. Their reasoning is brittle: a question they answer correctly can be answered wrongly if you reword it slightly while asking the same thing. Their memory is limited; they can forget at the end of a long task what was said at the start. And the sneakiest one: they don't reliably know what they don't know. A model can fabricate a nonexistent court ruling with full confidence, complete with a real-looking case number — this is called 'hallucination,' and it's a structural problem that isn't fully solved.</p>
+<p>The honest summary: today's best systems are far beyond narrow AI but short of AGI. They mimic some dimensions of human intelligence astonishingly well, while remaining brittle in others — stable reasoning, real-world causality, noticing their own mistakes. Holding this nuance matters, because both 'everything is solved' and 'it's all just a trick' are wrong at the same time.</p>
+<h2>The Real Story Isn't AGI — It's Agentic AI</h2>
+<p>While the headlines fixate on AGI, the thing that actually changed in the field in 2025 and 2026 is far more concrete: agentic AI. A chatbot writes you a single answer and stops; it responds to the question, and that's the end of it. An 'agent' works toward a goal step by step — it runs a search, fetches a document, does a calculation, looks at the result and revises its plan, and keeps that loop going until the job is done. AI is no longer just talking; it's starting to do work by using tools.</p>
+<p>This is a crucial shift for the AGI debate, because the real progress isn't in the model's raw 'intelligence' but in its reliability. Rather than making a model a few IQ points smarter, the thing that makes a difference is turning it into a system that can carry a multi-step task from start to finish without breaking. What helps a lawyer isn't a model that scores high on an exam; it's an assistant that can complete a piece of research fully and verifiably.</p>
+<p>But agents have a big weakness, and it puts a natural brake on AGI optimism: errors accumulate over long chains. Say the model is 99% accurate at every step — that sounds flawless. But over a hundred-step task, that small margin compounds: 0.99 to the hundredth power is about 0.37. So even an 'almost always right' model drops to a one-in-three chance of finishing a long enough chain correctly end-to-end. A single broken link can snap the whole chain. Reliability is a harder problem than intelligence.</p>
+<p>That's why agents shine today on clear-goal tasks with feedback: extracting facts from a document, querying a dataset, hunting a code bug — jobs where you can immediately check whether the result is right. On ambiguous, multi-step jobs that spill into the messy real world, they're still fragile. The road to AGI probably runs not through a more 'genius' model but through closing this reliability gap.</p>
+<h2>The Optimistic View: The Curve Keeps Bending Upward</h2>
+<p>The optimists' strongest card is an observation that has held for a decade: scaling laws. Roughly, as you make models bigger — more data, more compute, more parameters — their capabilities improve in a predictable way. And some skills seemed to 'emerge' almost suddenly once a model crossed a certain size. To anyone who sees this curve, the logic is simple: if every scale-up opens new doors, why would it stop?</p>
+<p>The second pillar is the rapid maturing of agents. A few years ago AI struggled to produce a single coherent paragraph; today it can chain together hours-long tasks using tools. To optimists the direction is clear: models are becoming able to carry longer tasks with less human intervention. If that curve continues, reaching 'general' competence becomes the natural destination of steady improvement, not a sudden break.</p>
+<p>Third is the idea of a self-accelerating loop. Once AI starts speeding up AI research itself — helping write code, design experiments, sift ideas — progress itself can accelerate. In this view, the final steps to AGI may well be taken by AI, which is why timelines could come sooner than we think.</p>
+<p>There's something in this optimism that deserves respect: over the past few years, many things people swore 'AI will never do' were in fact done. Expert predictions repeatedly turned out too cautious. That track record of underestimating is a fair reason to say 'it might surprise us again.' But beware: that same history carries a warning too — overly optimistic predictions also failed, again and again. Which is exactly what the next section is about.</p>
+<h2>The Cautious View: Same Evidence, Different Reading</h2>
+<p>The cautious camp looks at the same data as the optimists but draws a different conclusion. Their first objection: scoring high on an exam is not the same as actually doing a job. A model can pass a law exam yet fall apart in a real case — alone with incomplete information, conflicting evidence, and high stakes. What we measure (benchmarks) is often a weak proxy for real competence; and when some of those tests leak into the training data, a high score can be the shadow of memorization.</p>
+<p>The second worry is the brittleness of reasoning. Today's systems are extraordinary at pattern matching; but whether they perform genuine, step-by-step logic or merely imitate patterns seen in their training data is still an open debate. When performance drops after you superficially alter a problem, the cautious read this as a sign of shallow imitation, not deep understanding.</p>
+<p>Third are the concrete limits. Scaling laws don't run for free forever: high-quality training data is running short, and compute costs and energy use are rising fast. 'Just make it ten times bigger' is easy to say; but it carries a financial, physical, and environmental bill. The curve flattening at some point — diminishing returns — is at least as plausible a scenario as it continuing.</p>
+<p>Finally, evaluation itself is hard. We don't even have solid tools to tell whether a system is 'generally intelligent' or just good at the narrow things we test. The cautious view doesn't say 'never'; it says 'it may be slower, bumpier, and more expensive than we think.' And let's be honest: neither side knows the future for sure. The difference is how much humility each shows in the face of that uncertainty.</p>
+<h2>Telling Hype Apart from Real Impact</h2>
+<p>In AI news, two extreme voices are always loudest: the over-excited 'everything will change within months,' and the over-dismissive 'it's all a bubble that's about to pop.' Both get clicks, and both mislead. The truth, as with most transformative technologies, sits in a boring but sturdy middle: overhyped in the short term, underestimated in the long term.</p>
+<p>It helps to recognize the classic markers of hype. Vague but grand claims ('it will transform humanity'), predictions with no timeline, one flashy demo generalized to everything, and the fear that 'everyone but us will be left behind.' Real progress, by contrast, is quiet: measurable productivity on a specific task, results others can reproduce, and a concrete benefit people are willing to pay for.</p>
+<p>The odd thing is that hype and real impact can coexist. Even in past technology bubbles, when the froth burst, a lasting and real infrastructure remained underneath — the dot-com bubble popped, but the fiber cables and a whole web economy stayed behind. Something similar will likely happen with AI: some of the inflated promises will fall flat, but what stays is a genuine layer of tools that permanently changes knowledge work. The task is to tell which promise is which.</p>
+<p>A practical compass: when you hear a claim, ask 'on exactly which task, how reliably, and verified independently by whom does this work?' If the answer is clear, you're probably looking at real impact. If it's blurry and emotional, you're probably looking at hype. That single question filters out most of the noise.</p>
+<h2>What Will Actually Change in the Near Term?</h2>
+<p>Science fiction loves walking robots and superintelligence. But the real near-term story is far more ordinary and far more widespread: the redesign of everyday knowledge work. Drafting, researching, summarizing, translating, coding, answering customers — these jobs will transform not in one dramatic moment but in millions of small steps. The revolution will be quiet and diffuse, not loud.</p>
+<p>The key phrase here isn't 'replace' but 'rearrange.' In most professions, AI will take over specific parts of a job rather than the whole thing: cutting a lawyer's hours of preliminary research down to minutes, while leaving the final judgment and responsibility to a human. Jobs will be reshaped more than eliminated; people will shift toward the parts that require oversight, judgment, and accountability.</p>
+<p>A concrete example of this gradual shift is law. A lawyer's day is full of repetitive but attention-demanding work: scanning legislation, finding case law, drafting petitions, summarizing texts. AI can lighten that load — but only to the extent it can show its source and be verified. An answer that 'looks smart' isn't enough; in court you have to be able to say 'here is the statute, here is the ruling, here is the source.'</p>
+<p>This is exactly the principle that guides us as we build İçtiHub. Our aim is not an assistant that replaces the lawyer but one that empowers them: a system that carries the heavy research load while always leaving the final word to a human. The healthiest near-term use of AI usually looks like this — not flashy autonomy, but verifiable, auditable assistance.</p>
+<h2>So, What Should You Actually Watch?</h2>
+<p>AGI dates and doom headlines are entertaining but misleading. For anyone who wants to track real progress, there are far more informative, concrete signals. The first is reliability: how flawlessly can models complete long, multi-step tasks? The real threshold isn't the model being 'smarter' but being able to finish a long job from start to finish with confidence.</p>
+<p>The second is independent evaluation. What matters isn't a company's glowing claims about its own model but third parties' repeatable tests (benchmarks) — especially ones that resemble real-world work and can't be memorized. The third is genuine workplace productivity: not lab demos, but controlled, repeated gains measured in ordinary professionals' actual jobs.</p>
+<p>The fourth is cost and energy curves. It's one thing for a capability to exist; it's another for it to exist cheaply, quickly, and sustainably. If the cost of a task is dropping fast, that capability is moving from the lab into real life. The fifth is regulation: rules about who may use AI, how, and with what responsibility will be as decisive as the technology itself.</p>
+<p>The last and most durable advice: don't wait for a single 'AGI has arrived' moment, because there probably won't be one. Instead, watch where the frontier is shifting — on which tasks, how fast, and with what reliability. Hold on to both your excitement and your caution, but tie both to evidence. Staying calm, curious, and skeptical isn't a weakness in this fast era; it's the greatest advantage.</p>
+      </div>
+      <div class="takeaways"><h3>Key takeaways</h3><ul><li>AGI (Artificial General Intelligence) means AI that is roughly as capable as a human across a very broad range of tasks — not one narrow skill — and there isn't even a single agreed definition of it yet.</li><li>Today's systems are no longer 'narrow,' but they aren't AGI either: one model now writes, codes, and handles images — yet its reasoning is brittle, its memory limited, and it doesn't reliably know what it doesn't know.</li><li>The real story of 2025-2026 isn't AGI but agentic AI: systems that carry out multi-step work using tools. The frontier of progress is reliability, not raw 'IQ.'</li><li>Optimists point to scaling laws and accelerating agents; the cautious point to brittle reasoning, data and energy limits, and the difficulty of evaluation — both sides weigh the same evidence differently.</li><li>Genuine near-term impact lies not in superhuman-robot scenarios but in the quiet redesign of ordinary knowledge work: drafting, research, summarizing, code, support. The revolution will be diffuse.</li><li>Instead of AGI dates and doom headlines, watch concrete signals: reliability on long tasks, independent benchmarks, real workplace productivity, cost/energy curves, and regulation.</li><li>In high-stakes fields like law, being 'smart' isn't enough — being verifiable is. That is exactly İçtiHub's philosophy: tie every answer to its source and leave the final word to a human.</li></ul></div>
+    </div>
+
+    <a href="/blog/" class="article-back"><i class="fas fa-arrow-left"></i> <span class="lang-content" data-lang="tr">Tüm yazılar</span><span class="lang-content" data-lang="en">All articles</span></a>
+  </main>
+  <footer class="footer" style="padding:2rem 0;">
+  <div class="container text-center">
+    <div style="display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;margin-bottom:1rem;">
+      <a href="/"><span class="lang-content" data-lang="tr">Ana Sayfa</span><span class="lang-content" data-lang="en">Home</span></a>
+      <a href="/blog/"><span class="lang-content" data-lang="tr">Faydalı Bilgiler</span><span class="lang-content" data-lang="en">Insights</span></a>
+      <a href="https://ictihub.com" target="_blank" rel="noopener">İçtiHub</a>
+      <a href="/privacy-policy.html"><span class="lang-content" data-lang="tr">Gizlilik</span><span class="lang-content" data-lang="en">Privacy</span></a>
+    </div>
+    <div class="footer-social" style="display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;margin-bottom:1rem;">
+      <a href="https://x.com/ecofluxion" target="_blank" rel="noopener" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+      <a href="https://tr.linkedin.com/company/ecofluxion" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      <a href="https://www.instagram.com/ecofluxion/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.tiktok.com/@ecofluxion" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+    </div>
+    <p class="footer-copyright mb-0">&copy; 2024-2026 EcoFluxion. <span class="lang-content" data-lang="tr">Tüm hakları saklıdır.</span><span class="lang-content" data-lang="en">All rights reserved.</span></p>
+  </div>
+</footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+(function () {
+  var lang = localStorage.getItem('language') || 'tr';
+  function apply(l) {
+    document.documentElement.lang = l;
+    document.querySelectorAll('.lang-content').forEach(function (el) { el.style.display = (el.getAttribute('data-lang') === l) ? '' : 'none'; });
+    document.querySelectorAll('.legal-lang-btn').forEach(function (b) { b.classList.toggle('active', b.getAttribute('data-lang') === l); });
+    localStorage.setItem('language', l);
+  }
+  document.querySelectorAll('.legal-lang-btn').forEach(function (b) { b.addEventListener('click', function () { apply(b.getAttribute('data-lang')); }); });
+  apply(lang);
+})();
+</script>
+</body>
+</html>

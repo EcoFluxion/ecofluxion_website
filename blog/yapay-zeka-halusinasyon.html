@@ -14,12 +14,12 @@
   <meta property="og:site_name" content="EcoFluxion">
   <meta property="og:locale" content="tr_TR">
   <meta property="og:locale:alternate" content="en_US">
-  <meta property="og:image" content="https://loremflickr.com/1200/600/abstract?lock=25">
-  <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:image" content="https://ecofluxion.com/image/ecofluxion_logo.png">
+  <meta name="twitter:card" content="summary">
   <meta name="twitter:site" content="@ecofluxion">
   <meta name="twitter:title" content="Yapay Zekâ Halüsinasyonu: Modeller Neden Uydurur ve Bunu Nasıl Azaltırız?">
   <meta name="twitter:description" content="Yapay zekâ halüsinasyonu nedir, LLM'ler neden kendinden emin uydurur ve bunu grounding/RAG, kaynak gösterimi, değerlendirme ve insan denetimiyle nasıl azaltırız? Sade bir rehber.">
-  <meta name="twitter:image" content="https://loremflickr.com/1200/600/abstract?lock=25">
+  <meta name="twitter:image" content="https://ecofluxion.com/image/ecofluxion_logo.png">
   <title>Yapay Zekâ Halüsinasyonu: Modeller Neden Uydurur ve Bunu Nasıl Azaltırız? | EcoFluxion</title>
   <link rel="icon" type="image/png" href="../image/ecofluxion_logo.png">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -35,7 +35,9 @@
     .legal-langbar { display:flex; gap:.4rem; }
     .legal-lang-btn.active { background:#fff; color:#558B2F; }
     .article-wrap { max-width: 800px; margin: 0 auto; padding: 130px 1.25rem 70px; }
-    .article-hero { width:100%; height:340px; object-fit:cover; border-radius:14px; margin-bottom:1.6rem; display:block; background:#e9efe0; }
+    .article-hero { display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; height:300px; border-radius:14px; margin-bottom:1.6rem; }
+    .article-hero .main-ico { font-size:5rem; color:rgba(255,255,255,.96); position:relative; z-index:1; }
+    .article-hero .bg-ico { position:absolute; right:-28px; bottom:-44px; font-size:15rem; color:rgba(255,255,255,.10); z-index:0; }
     .breadcrumb-nav { font-size:.88rem; color:#999; margin-bottom:1.4rem; }
     .breadcrumb-nav a { color:#558B2F; text-decoration:none; }
     .article-cat { color: var(--primary-green,#7CB342); font-weight:700; text-transform:uppercase; letter-spacing:1px; font-size:.82rem; }
@@ -56,7 +58,9 @@
     .blog-grid { max-width:1120px; margin:0 auto; padding:1rem 1.25rem 80px; display:grid; grid-template-columns:repeat(auto-fill,minmax(330px,1fr)); gap:1.6rem; }
     .blog-card { background:#fff; border:1px solid #eee; border-radius:14px; overflow:hidden; transition:.3s; display:flex; flex-direction:column; }
     .blog-card:hover { transform:translateY(-5px); box-shadow:0 15px 35px rgba(0,0,0,.08); }
-    .blog-card-img { width:100%; height:175px; object-fit:cover; display:block; background:#e9efe0; }
+    .blog-card-img { display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; width:100%; height:165px; text-decoration:none; }
+    .blog-card-img .main-ico { font-size:2.8rem; color:rgba(255,255,255,.96); z-index:1; }
+    .blog-card-img .bg-ico { position:absolute; right:-14px; bottom:-22px; font-size:8rem; color:rgba(255,255,255,.12); z-index:0; }
     .blog-card-body { padding:1.6rem; display:flex; flex-direction:column; flex:1; }
     .blog-card h2 { font-family:'Montserrat',sans-serif; font-weight:700; font-size:1.22rem; margin:.45rem 0 .6rem; line-height:1.35; }
     .blog-card h2 a { color:#222; text-decoration:none; }
@@ -64,7 +68,11 @@
     .blog-card p { color:#666; line-height:1.6; flex:1; font-size:.97rem; }
     .blog-card .read-more { color:#558B2F; font-weight:600; text-decoration:none; margin-top:1rem; align-self:flex-start; }
     .blog-card-meta { color:#999; font-size:.82rem; margin-top:.8rem; }
-    @media (max-width:600px){ .article-hero{ height:220px; } }
+    .grad-g1{background:linear-gradient(135deg,#7CB342,#33691E);}
+    .grad-g2{background:linear-gradient(135deg,#558B2F,#1B5E20);}
+    .grad-g3{background:linear-gradient(135deg,#8BC34A,#2E7D32);}
+    .grad-g4{background:linear-gradient(135deg,#26A69A,#2E7D32);}
+    @media (max-width:600px){ .article-hero{ height:200px; } .article-hero .main-ico{ font-size:3.5rem; } }
 </style>
   <script type="application/ld+json">
 {
@@ -92,7 +100,7 @@
     "@type": "WebPage",
     "@id": "https://ecofluxion.com/blog/yapay-zeka-halusinasyon.html"
   },
-  "image": "https://loremflickr.com/1200/600/abstract?lock=25",
+  "image": "https://ecofluxion.com/image/ecofluxion_logo.png",
   "articleSection": "Eğitim",
   "keywords": "Halüsinasyon, Güvenilirlik, RAG, LLM"
 }
@@ -127,21 +135,21 @@
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top legal-nav">
     <div class="container">
-      <a class="navbar-brand d-flex align-items-center" href="../index.html">
+      <a class="navbar-brand d-flex align-items-center" href="/">
         <img src="../image/ecofluxion_logo.png" alt="EcoFluxion" class="logo-img" style="height:36px;">
         <span class="ms-2 fw-bold">EcoFluxion</span>
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#blogNav" aria-label="Menu"><span class="navbar-toggler-icon"></span></button>
       <div class="collapse navbar-collapse" id="blogNav">
         <ul class="navbar-nav ms-auto align-items-lg-center">
-          <li class="nav-item"><a class="nav-link" href="../index.html#home"><span class="lang-content" data-lang="tr">Ana Sayfa</span><span class="lang-content" data-lang="en">Home</span></a></li>
-          <li class="nav-item"><a class="nav-link" href="../index.html#about"><span class="lang-content" data-lang="tr">Hakkımızda</span><span class="lang-content" data-lang="en">About</span></a></li>
-          <li class="nav-item"><a class="nav-link" href="../index.html#services"><span class="lang-content" data-lang="tr">Neler Geliştiriyoruz</span><span class="lang-content" data-lang="en">What We Build</span></a></li>
-          <li class="nav-item"><a class="nav-link" href="../index.html#projects"><span class="lang-content" data-lang="tr">Ürünler</span><span class="lang-content" data-lang="en">Products</span></a></li>
-          <li class="nav-item"><a class="nav-link" href="../index.html#technologies"><span class="lang-content" data-lang="tr">Teknolojiler</span><span class="lang-content" data-lang="en">Technologies</span></a></li>
-          <li class="nav-item"><a class="nav-link" href="../index.html#careers"><span class="lang-content" data-lang="tr">Kariyer</span><span class="lang-content" data-lang="en">Careers</span></a></li>
-          <li class="nav-item"><a class="nav-link active" href="index.html"><span class="lang-content" data-lang="tr">Faydalı Bilgiler</span><span class="lang-content" data-lang="en">Insights</span></a></li>
-          <li class="nav-item"><a class="nav-link" href="../index.html#contact"><span class="lang-content" data-lang="tr">İletişim</span><span class="lang-content" data-lang="en">Contact</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="/#home"><span class="lang-content" data-lang="tr">Ana Sayfa</span><span class="lang-content" data-lang="en">Home</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="/#about"><span class="lang-content" data-lang="tr">Hakkımızda</span><span class="lang-content" data-lang="en">About</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="/#services"><span class="lang-content" data-lang="tr">Neler Geliştiriyoruz</span><span class="lang-content" data-lang="en">What We Build</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="/#projects"><span class="lang-content" data-lang="tr">Ürünler</span><span class="lang-content" data-lang="en">Products</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="/#technologies"><span class="lang-content" data-lang="tr">Teknolojiler</span><span class="lang-content" data-lang="en">Technologies</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="/#careers"><span class="lang-content" data-lang="tr">Kariyer</span><span class="lang-content" data-lang="en">Careers</span></a></li>
+          <li class="nav-item"><a class="nav-link active" href="/blog/"><span class="lang-content" data-lang="tr">Faydalı Bilgiler</span><span class="lang-content" data-lang="en">Insights</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="/#contact"><span class="lang-content" data-lang="tr">İletişim</span><span class="lang-content" data-lang="en">Contact</span></a></li>
           <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
             <div class="legal-langbar">
               <button class="btn btn-sm btn-outline-light legal-lang-btn" data-lang="tr">TR</button>
@@ -153,8 +161,8 @@
     </div>
   </nav>
   <main class="article-wrap">
-    <nav class="breadcrumb-nav"><a href="../index.html">EcoFluxion</a> / <a href="index.html"><span class="lang-content" data-lang="tr">Faydalı Bilgiler</span><span class="lang-content" data-lang="en">Insights</span></a> / <span class="lang-content" data-lang="tr">Yapay Zekâ Halüsinasyonu: Modeller Neden Uydurur ve Bunu Nasıl Azaltırız?</span><span class="lang-content" data-lang="en">AI Hallucination: Why Models Make Things Up and How to Reduce It</span></nav>
-    <img class="article-hero" src="https://loremflickr.com/1200/600/abstract?lock=25" alt="Yapay Zekâ Halüsinasyonu: Modeller Neden Uydurur ve Bunu Nasıl Azaltırız?" loading="lazy">
+    <nav class="breadcrumb-nav"><a href="/">EcoFluxion</a> / <a href="/blog/"><span class="lang-content" data-lang="tr">Faydalı Bilgiler</span><span class="lang-content" data-lang="en">Insights</span></a> / <span class="lang-content" data-lang="tr">Yapay Zekâ Halüsinasyonu: Modeller Neden Uydurur ve Bunu Nasıl Azaltırız?</span><span class="lang-content" data-lang="en">AI Hallucination: Why Models Make Things Up and How to Reduce It</span></nav>
+    <div class="article-hero grad-g2"><i class="fas fa-triangle-exclamation bg-ico"></i><i class="fas fa-triangle-exclamation main-ico"></i></div>
 
     <div class="lang-content" data-lang="tr">
       <div class="article-cat">Eğitim</div>
@@ -248,15 +256,15 @@
       <div class="takeaways"><h3>Key takeaways</h3><ul><li>A hallucination is a language model producing false information fluently and confidently; it is not lying but a 'confident-sounding prediction error.'</li><li>The cause is architectural: an LLM is not a database but a probability engine predicting the next word; knowledge gaps, the training cutoff and pressure to 'be helpful' all feed invention.</li><li>The types differ: factual errors, unfaithfulness to context, fabricated citations and quietly flawed reasoning — each needs a different fix.</li><li>The strongest defense is grounding/RAG: bring facts from a trusted source and tell the model to rely only on them; when legislation changes you update the document pool, not the model.</li><li>Citations make an answer auditable and discipline the model; but since the citation itself can be a hallucination, citations must be separately verified.</li><li>No system can eliminate hallucination; continuous evaluation (especially faithfulness) and human-in-the-loop review are essential. In high-stakes fields like law and medicine these are a minimum, not a luxury.</li><li>İçtiHub is built on this philosophy: answers are retrieved from Turkish legal sources, every claim is shown, and the final decision always stays with the lawyer.</li></ul></div>
     </div>
 
-    <a href="index.html" class="article-back"><i class="fas fa-arrow-left"></i> <span class="lang-content" data-lang="tr">Tüm yazılar</span><span class="lang-content" data-lang="en">All articles</span></a>
+    <a href="/blog/" class="article-back"><i class="fas fa-arrow-left"></i> <span class="lang-content" data-lang="tr">Tüm yazılar</span><span class="lang-content" data-lang="en">All articles</span></a>
   </main>
   <footer class="footer" style="padding:2rem 0;">
   <div class="container text-center">
     <div style="display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;margin-bottom:1rem;">
-      <a href="../index.html"><span class="lang-content" data-lang="tr">Ana Sayfa</span><span class="lang-content" data-lang="en">Home</span></a>
-      <a href="index.html"><span class="lang-content" data-lang="tr">Faydalı Bilgiler</span><span class="lang-content" data-lang="en">Insights</span></a>
+      <a href="/"><span class="lang-content" data-lang="tr">Ana Sayfa</span><span class="lang-content" data-lang="en">Home</span></a>
+      <a href="/blog/"><span class="lang-content" data-lang="tr">Faydalı Bilgiler</span><span class="lang-content" data-lang="en">Insights</span></a>
       <a href="https://ictihub.com" target="_blank" rel="noopener">İçtiHub</a>
-      <a href="../privacy-policy.html"><span class="lang-content" data-lang="tr">Gizlilik</span><span class="lang-content" data-lang="en">Privacy</span></a>
+      <a href="/privacy-policy.html"><span class="lang-content" data-lang="tr">Gizlilik</span><span class="lang-content" data-lang="en">Privacy</span></a>
     </div>
     <div class="footer-social" style="display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;margin-bottom:1rem;">
       <a href="https://x.com/ecofluxion" target="_blank" rel="noopener" aria-label="X"><i class="fab fa-x-twitter"></i></a>
