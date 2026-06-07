@@ -936,6 +936,7 @@ img {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
+    max-width: 250px;
 }
 
 .social-link {
@@ -1026,6 +1027,7 @@ img {
     flex-wrap: wrap;
     gap: 1rem;
     margin-top: 1.5rem;
+    max-width: 232px;
 }
 
 .footer-social a {

@@ -17,7 +17,7 @@ const translations = {
         nav_projects: "Products",
         nav_technologies: "Technologies",
         nav_careers: "Careers",
-        nav_blog: "Blog",
+        nav_blog: "Insights",
         nav_contact: "Contact",
 
         // Hero Section
@@ -32,6 +32,7 @@ const translations = {
         about_description: "EcoFluxion is an Ankara-based AI R&D company operating in ODTÜ Teknokent. We build our own products in natural language processing (NLP) and large language models (LLM), with a strong focus on Turkish-language AI. Our flagship product is İçtiHub, an AI-powered legal-tech platform.",
         about_mission: "Our mission is to build AI products that bring large language models and data analytics into real-world use — starting with the legal domain through İçtiHub — and to create lasting value for the people and institutions who rely on them.",
         about_vision: "Our vision is to become one of Türkiye's leading AI product companies, developing our own platforms that make a difference both locally and internationally.",
+        about_founders: "Founders",
         about_feature1_title: "Innovation First",
         about_feature1_desc: "Pushing the boundaries of AI technology with custom models and advanced research.",
         about_feature2_title: "Excellence",
@@ -199,7 +200,7 @@ const translations = {
         nav_projects: "Ürünler",
         nav_technologies: "Teknolojiler",
         nav_careers: "Kariyer",
-        nav_blog: "Blog",
+        nav_blog: "Faydalı Bilgiler",
         nav_contact: "İletişim",
 
         // Hero Section
@@ -214,6 +215,7 @@ const translations = {
         about_description: "EcoFluxion, ODTÜ Teknokent'te faaliyet gösteren Ankara merkezli bir yapay zeka Ar-Ge şirketidir. Doğal dil işleme (NLP) ve büyük dil modelleri (LLM) alanlarında, özellikle Türkçe yapay zekaya odaklanarak kendi ürünlerimizi geliştiriyoruz. Amiral gemisi ürünümüz, yapay zeka destekli hukuk platformu İçtiHub'dır.",
         about_mission: "Misyonumuz, büyük dil modellerini ve veri analitiğini gerçek dünya kullanımına taşıyan yapay zeka ürünleri geliştirmek — İçtiHub ile hukuk alanından başlayarak — ve bu ürünleri kullanan insanlar ile kurumlara kalıcı değer yaratmaktır.",
         about_vision: "Vizyonumuz, kendi platformlarını geliştiren, yerelde ve uluslararası alanda fark yaratan, Türkiye'nin önde gelen yapay zeka ürün şirketlerinden biri olmaktır.",
+        about_founders: "Kurucularımız",
         about_feature1_title: "Yenilikçilik",
         about_feature1_desc: "Kendi modellerimiz ve ileri düzey araştırmalarla yapay zeka teknolojisinin sınırlarını zorluyoruz.",
         about_feature2_title: "Mükemmellik",
