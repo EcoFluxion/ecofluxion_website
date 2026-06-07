@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="EcoFluxion Blog — yapay zeka ürünleri, büyük dil modelleri, RAG, Türkçe NLP ve hukuk teknolojisi üzerine yazılar. Articles on AI products, LLMs, RAG and Turkish NLP.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://ecofluxion.com/blog/">
+  <meta name="theme-color" content="#7CB342">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="EcoFluxion Blog">
+  <meta property="og:description" content="Articles on AI products, LLMs, RAG, Turkish NLP and legal technology.">
+  <meta property="og:url" content="https://ecofluxion.com/blog/">
+  <meta property="og:site_name" content="EcoFluxion">
+  <meta property="og:image" content="https://ecofluxion.com/image/ecofluxion_logo.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>Blog | EcoFluxion</title>
+  <link rel="icon" type="image/png" href="../image/ecofluxion_logo.png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .legal-nav { background: #2f3a22; }
+    .legal-langbar { display:flex; gap:.5rem; }
+    .legal-lang-btn.active { background:#fff; color:#558B2F; }
+    .article-wrap { max-width: 800px; margin: 0 auto; padding: 130px 1.25rem 70px; }
+    .breadcrumb-nav { font-size:.88rem; color:#999; margin-bottom:1.4rem; }
+    .breadcrumb-nav a { color:#558B2F; text-decoration:none; }
+    .article-cat { color: var(--primary-green,#7CB342); font-weight:700; text-transform:uppercase; letter-spacing:1px; font-size:.82rem; }
+    .article-wrap h1 { font-family:'Montserrat',sans-serif; font-weight:800; line-height:1.2; margin:.4rem 0 1rem; color:#222; }
+    .article-sub { font-size:1.22rem; color:#555; line-height:1.6; margin-bottom:1.4rem; }
+    .article-meta { display:flex; flex-wrap:wrap; gap:.8rem 1.2rem; align-items:center; color:#888; font-size:.9rem; border-top:1px solid #eee; border-bottom:1px solid #eee; padding:.9rem 0; margin-bottom:2rem; }
+    .article-tags { display:flex; flex-wrap:wrap; gap:.4rem; }
+    .article-tag { background:#f3f8ec; color:#558B2F; border-radius:50px; padding:.22rem .7rem; font-size:.78rem; font-weight:600; }
+    .article-body h2 { font-family:'Montserrat',sans-serif; font-weight:700; font-size:1.5rem; margin:2.3rem 0 .8rem; color:#2f3a22; }
+    .article-body p { color:#333; line-height:1.85; font-size:1.07rem; margin-bottom:1.1rem; }
+    .takeaways { background:#f3f8ec; border-left:4px solid var(--primary-green,#7CB342); border-radius:8px; padding:1.2rem 1.5rem; margin:2.6rem 0; }
+    .takeaways h3 { font-family:'Montserrat',sans-serif; font-weight:700; font-size:1.1rem; margin-bottom:.6rem; }
+    .takeaways ul { margin:0; padding-left:1.2rem; } .takeaways li { color:#3a4a28; line-height:1.7; margin-bottom:.3rem; }
+    .article-back { display:inline-block; margin-top:2rem; font-weight:600; color:#558B2F; text-decoration:none; }
+    .blog-head { padding:130px 1.25rem 1.5rem; text-align:center; }
+    .blog-head h1 { font-family:'Montserrat',sans-serif; font-weight:800; color:#2f3a22; }
+    .blog-head p { color:#666; max-width:620px; margin:.5rem auto 0; }
+    .blog-grid { max-width:1120px; margin:0 auto; padding:1rem 1.25rem 80px; display:grid; grid-template-columns:repeat(auto-fill,minmax(330px,1fr)); gap:1.6rem; }
+    .blog-card { background:#fff; border:1px solid #eee; border-radius:14px; overflow:hidden; transition:.3s; display:flex; flex-direction:column; }
+    .blog-card:hover { transform:translateY(-5px); box-shadow:0 15px 35px rgba(0,0,0,.08); }
+    .blog-card-top { height:6px; background:linear-gradient(135deg,#7CB342,#558B2F); }
+    .blog-card-body { padding:1.6rem; display:flex; flex-direction:column; flex:1; }
+    .blog-card h2 { font-family:'Montserrat',sans-serif; font-weight:700; font-size:1.22rem; margin:.45rem 0 .6rem; line-height:1.35; }
+    .blog-card h2 a { color:#222; text-decoration:none; }
+    .blog-card h2 a:hover { color:#558B2F; }
+    .blog-card p { color:#666; line-height:1.6; flex:1; font-size:.97rem; }
+    .blog-card .read-more { color:#558B2F; font-weight:600; text-decoration:none; margin-top:1rem; align-self:flex-start; }
+    .blog-card-meta { color:#999; font-size:.82rem; margin-top:.8rem; }
+</style>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "EcoFluxion Blog",
+  "url": "https://ecofluxion.com/blog/",
+  "description": "EcoFluxion blog: AI products, LLMs, RAG, Turkish NLP and legal technology.",
+  "inLanguage": [
+    "tr",
+    "en"
+  ],
+  "publisher": {
+    "@type": "Organization",
+    "name": "EcoFluxion",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://ecofluxion.com/image/ecofluxion_logo.png"
+    }
+  },
+  "blogPost": [
+    {
+      "@type": "BlogPosting",
+      "headline": "İçtiHub — Türkiye'de hukuki araştırmayı yapay zekayla yeniden kuruyoruz",
+      "url": "https://ecofluxion.com/blog/ictihub-ai-hukuki-arastirma.html",
+      "datePublished": "2026-06-07"
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "Türkçe Hukuk Verisinde LLM'leri RAG ile Sağlamlaştırmak",
+      "url": "https://ecofluxion.com/blog/rag-turkce-hukuk-verisi.html",
+      "datePublished": "2026-06-07"
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "Türkçe için Yapay Zeka: Türkçe Doğal Dil İşlemenin Zorlukları ve Fırsatları",
+      "url": "https://ecofluxion.com/blog/turkce-yapay-zeka-nlp.html",
+      "datePublished": "2026-06-07"
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+  <nav class="navbar navbar-dark fixed-top legal-nav">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="../index.html">
+        <img src="../image/ecofluxion_logo.png" alt="EcoFluxion" class="logo-img" style="height:36px;">
+        <span class="ms-2 fw-bold">EcoFluxion</span>
+      </a>
+      <div class="d-flex align-items-center gap-3">
+        <a class="nav-link text-white" href="index.html"><span class="lang-content" data-lang="tr">Blog</span><span class="lang-content" data-lang="en">Blog</span></a>
+        <div class="legal-langbar">
+          <button class="btn btn-sm btn-outline-light legal-lang-btn" data-lang="tr">TR</button>
+          <button class="btn btn-sm btn-outline-light legal-lang-btn" data-lang="en">EN</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <header class="blog-head">
+    <h1>Blog</h1>
+    <p><span class="lang-content" data-lang="tr">Yapay zeka ürünleri, büyük dil modelleri, RAG ve Türkçe NLP üzerine yazdıklarımız.</span><span class="lang-content" data-lang="en">Our writing on AI products, large language models, RAG and Turkish NLP.</span></p>
+  </header>
+  <section class="blog-grid">
+
+      <article class="blog-card">
+        <div class="blog-card-top"></div>
+        <div class="blog-card-body">
+          <div class="article-cat"><span class="lang-content" data-lang="tr">Ürün</span><span class="lang-content" data-lang="en">Product</span></div>
+          <h2><a href="ictihub-ai-hukuki-arastirma.html"><span class="lang-content" data-lang="tr">İçtiHub — Türkiye'de hukuki araştırmayı yapay zekayla yeniden kuruyoruz</span><span class="lang-content" data-lang="en">İçtiHub — Rebuilding legal research in Türkiye with AI</span></a></h2>
+          <p><span class="lang-content" data-lang="tr">Milyonlarca karar ve binlerce sayfa mevzuat arasında saatler süren manuel aramayı; Türk hukuk metinleri üzerine kurulu büyük dil modelleri ve RAG ile saniyeler içinde tamamlanan anlamsal bir araştırmaya dönüştürüyoruz.</span><span class="lang-content" data-lang="en">We turn hours of manual searching through millions of court decisions and thousands of pages of legislation into semantic research that finishes in seconds — built on large language models and RAG over Turkish legal corpora.</span></p>
+          <div class="blog-card-meta"><i class="far fa-clock"></i> <span class="lang-content" data-lang="tr">9 dk okuma</span><span class="lang-content" data-lang="en">9 min read</span></div>
+          <a class="read-more" href="ictihub-ai-hukuki-arastirma.html"><span class="lang-content" data-lang="tr">Devamını oku &rarr;</span><span class="lang-content" data-lang="en">Read more &rarr;</span></a>
+        </div>
+      </article>
+
+      <article class="blog-card">
+        <div class="blog-card-top"></div>
+        <div class="blog-card-body">
+          <div class="article-cat"><span class="lang-content" data-lang="tr">Mühendislik</span><span class="lang-content" data-lang="en">Engineering</span></div>
+          <h2><a href="rag-turkce-hukuk-verisi.html"><span class="lang-content" data-lang="tr">Türkçe Hukuk Verisinde LLM'leri RAG ile Sağlamlaştırmak</span><span class="lang-content" data-lang="en">Grounding LLMs in Turkish Legal Data with RAG</span></a></h2>
+          <p><span class="lang-content" data-lang="tr">Ham bir dil modeli hukukta neden yanılır, Retrieval-Augmented Generation bunu nasıl çözer ve İçtiHub'ın altındaki getirme katmanını nasıl kuruyoruz?</span><span class="lang-content" data-lang="en">Why a raw language model gets the law wrong, how Retrieval-Augmented Generation fixes it, and how we build the retrieval layer behind İçtiHub.</span></p>
+          <div class="blog-card-meta"><i class="far fa-clock"></i> <span class="lang-content" data-lang="tr">12 dk okuma</span><span class="lang-content" data-lang="en">12 min read</span></div>
+          <a class="read-more" href="rag-turkce-hukuk-verisi.html"><span class="lang-content" data-lang="tr">Devamını oku &rarr;</span><span class="lang-content" data-lang="en">Read more &rarr;</span></a>
+        </div>
+      </article>
+
+      <article class="blog-card">
+        <div class="blog-card-top"></div>
+        <div class="blog-card-body">
+          <div class="article-cat"><span class="lang-content" data-lang="tr">Araştırma</span><span class="lang-content" data-lang="en">Research</span></div>
+          <h2><a href="turkce-yapay-zeka-nlp.html"><span class="lang-content" data-lang="tr">Türkçe için Yapay Zeka: Türkçe Doğal Dil İşlemenin Zorlukları ve Fırsatları</span><span class="lang-content" data-lang="en">AI for Turkish: The Challenges and Opportunities of Turkish NLP</span></a></h2>
+          <p><span class="lang-content" data-lang="tr">Türkçe neden dil modelleri için zor bir dildir, bu zorluk LLM'lerin davranışını nasıl şekillendirir ve Türkçe öncelikli yapay zeka ürünleri kurmak gerçekte ne gerektirir?</span><span class="lang-content" data-lang="en">Why Turkish is hard for language models, how that difficulty shapes LLM behavior, and what it really takes to build Turkish-first AI products.</span></p>
+          <div class="blog-card-meta"><i class="far fa-clock"></i> <span class="lang-content" data-lang="tr">11 dk okuma</span><span class="lang-content" data-lang="en">11 min read</span></div>
+          <a class="read-more" href="turkce-yapay-zeka-nlp.html"><span class="lang-content" data-lang="tr">Devamını oku &rarr;</span><span class="lang-content" data-lang="en">Read more &rarr;</span></a>
+        </div>
+      </article>
+  </section>
+  <footer class="footer" style="padding:2rem 0;">
+  <div class="container text-center">
+    <div class="footer-social justify-content-center" style="display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;margin-bottom:1rem;">
+      <a href="https://x.com/ecofluxion" target="_blank" rel="noopener" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+      <a href="https://tr.linkedin.com/company/ecofluxion" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      <a href="https://www.instagram.com/ecofluxion/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.tiktok.com/@ecofluxion" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+    </div>
+    <p class="footer-copyright mb-0">&copy; 2024-2026 EcoFluxion. <span class="lang-content" data-lang="tr">Tüm hakları saklıdır.</span><span class="lang-content" data-lang="en">All rights reserved.</span></p>
+  </div>
+</footer>
+  <script>
+(function () {
+  var lang = localStorage.getItem('language') || 'tr';
+  function apply(l) {
+    document.documentElement.lang = l;
+    document.querySelectorAll('.lang-content').forEach(function (el) { el.style.display = (el.getAttribute('data-lang') === l) ? '' : 'none'; });
+    document.querySelectorAll('.legal-lang-btn').forEach(function (b) { b.classList.toggle('active', b.getAttribute('data-lang') === l); });
+    localStorage.setItem('language', l);
+  }
+  document.querySelectorAll('.legal-lang-btn').forEach(function (b) { b.addEventListener('click', function () { apply(b.getAttribute('data-lang')); }); });
+  apply(lang);
+})();
+</script>
+</body>
+</html>

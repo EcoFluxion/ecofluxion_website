@@ -17,6 +17,7 @@ const translations = {
         nav_projects: "Products",
         nav_technologies: "Technologies",
         nav_careers: "Careers",
+        nav_blog: "Blog",
         nav_contact: "Contact",
 
         // Hero Section
@@ -77,6 +78,9 @@ const translations = {
         project2_category: "Our Flagship Product",
         project2_title: "İçtiHub",
         project2_desc: "Our flagship AI-powered legal platform: integrated archives, an advanced case-law search engine, and intelligent legal-assistance tools running on secure cloud infrastructure. Built for lawyers, legal departments, and institutions across Türkiye.",
+        project3_category: "Public-Sector Platform",
+        project3_title: "SYDhub",
+        project3_desc: "A large-scale platform we built and operate for industrial green transformation — bringing together environmental data, resources, and a knowledge-sharing ecosystem for academia, industry, and the public sector.",
 
         // Technologies Section
         tech_title: "Technologies We Use",
@@ -113,6 +117,11 @@ const translations = {
         tech_ai_caselaw: "AI-Powered Case Law Search",
         tech_doc_automation: "Document Automation",
         tech_legal_ai: "Legal AI Assistant",
+        tech_env_db: "Environmental Database",
+        tech_integrated_portal: "Integrated Platform",
+        tech_industry_env: "Industry & Environment",
+        tech_gov_project: "Public Sector",
+        tech_knowledge_share: "Knowledge Sharing",
         tech_portal: "Web Portal",
         tech_collaboration: "Collaboration",
         tech_database: "Database",
@@ -171,6 +180,7 @@ const translations = {
         footer_services: "Products",
         footer_ai: "İçtiHub",
         footer_software: "MevzuatBot",
+        footer_transformation: "SYDhub",
         footer_research: "What We Build",
         footer_resources: "Resources",
         footer_projects: "Products",
@@ -189,6 +199,7 @@ const translations = {
         nav_projects: "Ürünler",
         nav_technologies: "Teknolojiler",
         nav_careers: "Kariyer",
+        nav_blog: "Blog",
         nav_contact: "İletişim",
 
         // Hero Section
@@ -249,6 +260,9 @@ const translations = {
         project2_category: "Amiral Gemisi Ürünümüz",
         project2_title: "İçtiHub",
         project2_desc: "Amiral gemisi yapay zeka destekli hukuk platformumuz: entegre arşivler, gelişmiş içtihat arama motoru ve güvenli bulut altyapısında çalışan akıllı hukuki yardım araçları. Türkiye genelindeki avukatlar, hukuk departmanları ve kurumlar için geliştirildi.",
+        project3_category: "Kamu Sektörü Platformu",
+        project3_title: "SYDhub",
+        project3_desc: "Sanayide yeşil dönüşüm için geliştirip işlettiğimiz büyük ölçekli bir platform — çevre verilerini, kaynakları ve akademi, sanayi ile kamu sektörü için bir bilgi paylaşım ekosistemini bir araya getirir.",
 
         // Technologies Section
         tech_title: "Kullandığımız Teknolojiler",
@@ -285,6 +299,11 @@ const translations = {
         tech_ai_caselaw: "AI Destekli İçtihat Arama",
         tech_doc_automation: "Belge Otomasyonu",
         tech_legal_ai: "Hukuki Yapay Zeka Asistanı",
+        tech_env_db: "Çevre Veritabanı",
+        tech_integrated_portal: "Entegre Platform",
+        tech_industry_env: "Sanayi ve Çevre",
+        tech_gov_project: "Kamu Sektörü",
+        tech_knowledge_share: "Bilgi Paylaşımı",
         tech_portal: "Web Portalı",
         tech_collaboration: "İşbirliği",
         tech_database: "Veritabanı",
@@ -343,6 +362,7 @@ const translations = {
         footer_services: "Ürünler",
         footer_ai: "İçtiHub",
         footer_software: "MevzuatBot",
+        footer_transformation: "SYDhub",
         footer_research: "Neler Geliştiriyoruz",
         footer_resources: "Kaynaklar",
         footer_projects: "Ürünler",

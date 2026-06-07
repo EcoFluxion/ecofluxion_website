@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ham LLM'ler Türkçe hukukta neden yanılır, RAG bunu nasıl çözer: parçalama, embedding, vektör arama, yeniden sıralama ve kaynak gösterimi. İçtiHub'ın mühendisliği.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://ecofluxion.com/blog/rag-turkce-hukuk-verisi.html">
+  <meta name="theme-color" content="#7CB342">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Türkçe Hukuk Verisinde LLM'leri RAG ile Sağlamlaştırmak">
+  <meta property="og:description" content="Ham LLM'ler Türkçe hukukta neden yanılır, RAG bunu nasıl çözer: parçalama, embedding, vektör arama, yeniden sıralama ve kaynak gösterimi. İçtiHub'ın mühendisliği.">
+  <meta property="og:url" content="https://ecofluxion.com/blog/rag-turkce-hukuk-verisi.html">
+  <meta property="og:site_name" content="EcoFluxion">
+  <meta property="og:locale" content="tr_TR">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:image" content="https://ecofluxion.com/image/ecofluxion_logo.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@ecofluxion">
+  <meta name="twitter:title" content="Türkçe Hukuk Verisinde LLM'leri RAG ile Sağlamlaştırmak">
+  <meta name="twitter:description" content="Ham LLM'ler Türkçe hukukta neden yanılır, RAG bunu nasıl çözer: parçalama, embedding, vektör arama, yeniden sıralama ve kaynak gösterimi. İçtiHub'ın mühendisliği.">
+  <meta name="twitter:image" content="https://ecofluxion.com/image/ecofluxion_logo.png">
+  <title>Türkçe Hukuk Verisinde LLM'leri RAG ile Sağlamlaştırmak | EcoFluxion Blog</title>
+  <link rel="icon" type="image/png" href="../image/ecofluxion_logo.png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .legal-nav { background: #2f3a22; }
+    .legal-langbar { display:flex; gap:.5rem; }
+    .legal-lang-btn.active { background:#fff; color:#558B2F; }
+    .article-wrap { max-width: 800px; margin: 0 auto; padding: 130px 1.25rem 70px; }
+    .breadcrumb-nav { font-size:.88rem; color:#999; margin-bottom:1.4rem; }
+    .breadcrumb-nav a { color:#558B2F; text-decoration:none; }
+    .article-cat { color: var(--primary-green,#7CB342); font-weight:700; text-transform:uppercase; letter-spacing:1px; font-size:.82rem; }
+    .article-wrap h1 { font-family:'Montserrat',sans-serif; font-weight:800; line-height:1.2; margin:.4rem 0 1rem; color:#222; }
+    .article-sub { font-size:1.22rem; color:#555; line-height:1.6; margin-bottom:1.4rem; }
+    .article-meta { display:flex; flex-wrap:wrap; gap:.8rem 1.2rem; align-items:center; color:#888; font-size:.9rem; border-top:1px solid #eee; border-bottom:1px solid #eee; padding:.9rem 0; margin-bottom:2rem; }
+    .article-tags { display:flex; flex-wrap:wrap; gap:.4rem; }
+    .article-tag { background:#f3f8ec; color:#558B2F; border-radius:50px; padding:.22rem .7rem; font-size:.78rem; font-weight:600; }
+    .article-body h2 { font-family:'Montserrat',sans-serif; font-weight:700; font-size:1.5rem; margin:2.3rem 0 .8rem; color:#2f3a22; }
+    .article-body p { color:#333; line-height:1.85; font-size:1.07rem; margin-bottom:1.1rem; }
+    .takeaways { background:#f3f8ec; border-left:4px solid var(--primary-green,#7CB342); border-radius:8px; padding:1.2rem 1.5rem; margin:2.6rem 0; }
+    .takeaways h3 { font-family:'Montserrat',sans-serif; font-weight:700; font-size:1.1rem; margin-bottom:.6rem; }
+    .takeaways ul { margin:0; padding-left:1.2rem; } .takeaways li { color:#3a4a28; line-height:1.7; margin-bottom:.3rem; }
+    .article-back { display:inline-block; margin-top:2rem; font-weight:600; color:#558B2F; text-decoration:none; }
+    .blog-head { padding:130px 1.25rem 1.5rem; text-align:center; }
+    .blog-head h1 { font-family:'Montserrat',sans-serif; font-weight:800; color:#2f3a22; }
+    .blog-head p { color:#666; max-width:620px; margin:.5rem auto 0; }
+    .blog-grid { max-width:1120px; margin:0 auto; padding:1rem 1.25rem 80px; display:grid; grid-template-columns:repeat(auto-fill,minmax(330px,1fr)); gap:1.6rem; }
+    .blog-card { background:#fff; border:1px solid #eee; border-radius:14px; overflow:hidden; transition:.3s; display:flex; flex-direction:column; }
+    .blog-card:hover { transform:translateY(-5px); box-shadow:0 15px 35px rgba(0,0,0,.08); }
+    .blog-card-top { height:6px; background:linear-gradient(135deg,#7CB342,#558B2F); }
+    .blog-card-body { padding:1.6rem; display:flex; flex-direction:column; flex:1; }
+    .blog-card h2 { font-family:'Montserrat',sans-serif; font-weight:700; font-size:1.22rem; margin:.45rem 0 .6rem; line-height:1.35; }
+    .blog-card h2 a { color:#222; text-decoration:none; }
+    .blog-card h2 a:hover { color:#558B2F; }
+    .blog-card p { color:#666; line-height:1.6; flex:1; font-size:.97rem; }
+    .blog-card .read-more { color:#558B2F; font-weight:600; text-decoration:none; margin-top:1rem; align-self:flex-start; }
+    .blog-card-meta { color:#999; font-size:.82rem; margin-top:.8rem; }
+</style>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Türkçe Hukuk Verisinde LLM'leri RAG ile Sağlamlaştırmak",
+  "description": "Ham LLM'ler Türkçe hukukta neden yanılır, RAG bunu nasıl çözer: parçalama, embedding, vektör arama, yeniden sıralama ve kaynak gösterimi. İçtiHub'ın mühendisliği.",
+  "inLanguage": "tr",
+  "datePublished": "2026-06-07",
+  "dateModified": "2026-06-07",
+  "author": {
+    "@type": "Organization",
+    "name": "EcoFluxion",
+    "url": "https://ecofluxion.com/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "EcoFluxion",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://ecofluxion.com/image/ecofluxion_logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://ecofluxion.com/blog/rag-turkce-hukuk-verisi.html"
+  },
+  "image": "https://ecofluxion.com/image/ecofluxion_logo.png",
+  "articleSection": "Mühendislik",
+  "keywords": "RAG, LLM, Vektör Veritabanı, NLP"
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://ecofluxion.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://ecofluxion.com/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Türkçe Hukuk Verisinde LLM'leri RAG ile Sağlamlaştırmak",
+      "item": "https://ecofluxion.com/blog/rag-turkce-hukuk-verisi.html"
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+  <nav class="navbar navbar-dark fixed-top legal-nav">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="../index.html">
+        <img src="../image/ecofluxion_logo.png" alt="EcoFluxion" class="logo-img" style="height:36px;">
+        <span class="ms-2 fw-bold">EcoFluxion</span>
+      </a>
+      <div class="d-flex align-items-center gap-3">
+        <a class="nav-link text-white" href="index.html"><span class="lang-content" data-lang="tr">Blog</span><span class="lang-content" data-lang="en">Blog</span></a>
+        <div class="legal-langbar">
+          <button class="btn btn-sm btn-outline-light legal-lang-btn" data-lang="tr">TR</button>
+          <button class="btn btn-sm btn-outline-light legal-lang-btn" data-lang="en">EN</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <main class="article-wrap">
+    <nav class="breadcrumb-nav"><a href="../index.html">EcoFluxion</a> / <a href="index.html">Blog</a> / <span class="lang-content" data-lang="tr">Türkçe Hukuk Verisinde LLM'leri RAG ile Sağlamlaştırmak</span><span class="lang-content" data-lang="en">Grounding LLMs in Turkish Legal Data with RAG</span></nav>
+
+    <div class="lang-content" data-lang="tr">
+      <div class="article-cat">Mühendislik</div>
+      <h1>Türkçe Hukuk Verisinde LLM'leri RAG ile Sağlamlaştırmak</h1>
+      <p class="article-sub">Ham bir dil modeli hukukta neden yanılır, Retrieval-Augmented Generation bunu nasıl çözer ve İçtiHub'ın altındaki getirme katmanını nasıl kuruyoruz?</p>
+      <div class="article-meta"><span><i class="far fa-clock"></i> 12 dk okuma</span><div class="article-tags"><span class="article-tag">RAG</span><span class="article-tag">LLM</span><span class="article-tag">Vektör Veritabanı</span><span class="article-tag">NLP</span></div></div>
+      <div class="article-body">
+<h2>Neden Ham Bir LLM Hukukta Yanılır?</h2>
+<p>Büyük dil modelleri özünde bir sonraki kelimeyi olasılıkla tahmin eden sistemlerdir. Eğitim verisindeki örüntülerden öğrendikleri için akıcı, makul ve çoğu zaman doğru görünen metinler üretirler. Ama akıcılık bir bilgi garantisi değildir: model, bir kanun maddesinin gerçekte ne dediğini değil, öyle bir maddenin nasıl görünmesi gerektiğini öğrenmiştir. Bu fark sıradan bir sohbette önemsizken hukukta belirleyici hale gelir.</p>
+<p>Halüsinasyon dediğimiz şey tam burada doğar. Model var olmayan bir madde numarası, yanlış bir tarih ya da hiç önüne konmamış bir Yargıtay kararı uydurabilir; üstelik bunu tam bir özgüvenle yapar. Türkçe hukuk metinlerinde sorun daha da derinleşir: mevzuat sürekli değişir, mülga maddeler yürürlükten kalkar, aynı konudaki birden fazla düzenleme birbiriyle çatışabilir. Modelin eğitim verisi ise belirli bir tarihte donmuştur ve o tarihten sonraki hiçbir değişiklikten haberi yoktur.</p>
+<p>Bir diğer temel sınır kaynak gösterememektir. Ham bir model, ürettiği cümlenin hangi kanundan, hangi maddeden veya hangi karardan geldiğini söyleyemez; çünkü içsel temsilinde böyle bir bağ yoktur. Hukukçu için bu kabul edilemez bir eksiktir: bir avukatın dilekçesine yazdığı her iddianın bir dayanağı olmak zorundadır. Doğrulanamayan bir cevap, hukukta hiç cevap olmamasından daha tehlikelidir.</p>
+<h2>Retrieval-Augmented Generation Nedir?</h2>
+<p>Retrieval-Augmented Generation (RAG), bir dil modelini kendi hafızasıyla baş başa bırakmak yerine, cevap üretmeden önce ona güncel ve doğrulanmış bir kaynak kümesi sunan bir mimaridir. Fikir basit ama güçlüdür: modele 'bildiğini yaz' demek yerine 'işte ilgili belgeler, yalnızca bunlara dayanarak cevapla' demek. Böylece modelin yaratıcılığı dil üretiminde kalır, olgular ise dışarıdan gelir.</p>
+<p>Akış kabaca iki aşamadır. Önce getirme (retrieval) aşamasında kullanıcının sorusu bir arama sistemine gider ve soruyla en alakalı belge parçaları bulunur. Ardından üretim (generation) aşamasında bu parçalar soruyla birlikte modele bağlam olarak verilir; model cevabını yalnızca bu bağlama yaslanarak kurar. Modelin işi bilgiyi hatırlamak değil, önüne konan kanıtı doğru biçimde sentezlemektir.</p>
+<p>Bu yaklaşım hukuk için neredeyse kusursuz bir eşleşmedir. Mevzuat değiştiğinde modeli baştan eğitmeniz gerekmez; sadece getirme katmanındaki belgeleri güncellersiniz. Bir cevap her zaman somut bir kaynağa bağlanabilir, çünkü zaten o kaynaktan üretilmiştir. İçtiHub'ın çekirdeğindeki MevzuatBot da tam bu ilkeyle çalışır: dilin akıcılığı modelden, doğruluğun teminatı ise getirilen Türk mevzuatı ve içtihadından gelir.</p>
+<p>Özetle RAG, 'her şeyi bilen ama kaynak gösteremeyen' bir modeli, 'doğru kaynağı bulup ondan konuşan' bir asistana dönüştürür. Hukukta değerli olan ezber değil dayanaktır; RAG da bu dayanağı sisteme geri kazandırır.</p>
+<h2>Hukuk Belgelerini Parçalamak: İşin Sessiz Kalbi</h2>
+<p>Bir RAG sisteminin kalitesi, büyük ölçüde getirme katmanına koyduğunuz parçaların kalitesiyle belirlenir. Bir hukuk metnini hangi boyutta ve hangi sınırlardan böldüğünüz, sistemin ileride doğru cevabı bulup bulamayacağını doğrudan etkiler. Bu yüzden parçalama (chunking) bizim için sıradan bir ön işleme adımı değil, mimarinin en kritik tasarım kararlarından biridir.</p>
+<p>Salt karakter sayısına göre kör kesim yapmak hukukta felaketle sonuçlanır; bir maddeyi tam ortasından bölmek, anlamı taşıyan bağlamı koparır. Onun yerine belgenin kendi yapısını izleriz: kanun, madde, fıkra ve bent hiyerarşisi doğal sınırlar sunar. Bir mahkeme kararında olay özeti, gerekçe ve hüküm birbirinden farklı işlevler taşır. Parçalarımızı bu anlamsal birimlere saygı gösterecek biçimde kurar, her parçanın tek başına anlamlı kalmasını gözetiriz.</p>
+<p>Her parçaya zengin bir üst veri (metadata) iliştiririz: kaynağın adı, madde numarası, yürürlük tarihi, varsa mülga durumu ve belge türü. Bu üst veri hem getirme sırasında filtreleme yapmamızı, hem de cevabın sonunda kusursuz bir kaynak künyesi üretmemizi sağlar. Türkçenin sondan eklemeli yapısı ve hukuk dilinin uzun, iç içe geçmiş cümleleri, bu adımı genel amaçlı bir parçalayıcının asla yakalayamayacağı kadar alana özgü kılar.</p>
+<h2>Embedding ve Vektör Arama: Anlamı Aramak</h2>
+<p>Parçaları hazırladıktan sonra onları aranabilir hale getirmemiz gerekir. Burada embedding devreye girer: her metin parçasını, anlamını sayısal olarak temsil eden yüksek boyutlu bir vektöre dönüştürürüz. Anlamca yakın iki metin bu uzayda birbirine yakın noktalara düşer. Böylece 'kira artışı sınırı' diye soran bir kullanıcı, metinde tam o kelimeler geçmese bile ilgili maddeye ulaşabilir.</p>
+<p>Bu, geleneksel anahtar kelime aramasına göre temel bir sıçramadır. Klasik arama yalnızca birebir eşleşen kelimeleri bulur; oysa hukuk dilinde aynı kavram onlarca farklı biçimde ifade edilebilir. Vektör araması kelimeleri değil kavramları eşleştirir. Sorgu da aynı embedding modelinden geçer ve sistem, sorgu vektörüne en yakın belge vektörlerini bularak anlamsal olarak en alakalı parçaları getirir.</p>
+<p>Pratikte yalnızca anlamsal arama her zaman yetmez. Hukukta bazen belirli bir madde numarasını ya da belirli bir terimi birebir aramak istersiniz. Bu yüzden hibrit bir yol izleriz: anlamsal vektör aramasını anahtar kelime tabanlı klasik aramayla birleştirir, hem kavramsal yakınlığı hem de tam eşleşmeleri aynı anda yakalarız.</p>
+<p>Tüm bu altyapı, İçtiHub'ı çalıştıran Vertex AI ve Gemini ekosistemi üzerine kuruludur. Embedding üretimi, vektör depolama ve ölçeklenebilir arama, üretim ortamında çok sayıda sorguyu düşük gecikmeyle karşılayacak biçimde yönetilir; çünkü kullanıcı için doğru cevap kadar, hızlı gelen doğru cevap da önemlidir.</p>
+<h2>Yeniden Sıralama: İlk Getirmenin Üzerine İnce Ayar</h2>
+<p>Vektör araması hızlıdır ve geniş bir aday kümesini saniyeler içinde getirir, ama hassasiyeti her zaman kusursuz olmaz. İlk getirme, on binlerce parça arasından örneğin en alakalı yirmi adayı bulmakta iyidir; fakat bu yirmiyi en doğru sıraya dizmekte zayıf kalabilir. Hukukta sıralama önemlidir: en alakalı maddeyi modele ilk sırada vermek, cevabın kalitesini doğrudan belirler.</p>
+<p>Bu yüzden iki aşamalı bir strateji kullanırız. İlk aşamada vektör araması geniş ama kaba bir aday listesi çıkarır. İkinci aşamada bir yeniden sıralama (re-ranking) modeli, her adayı soruyla birlikte daha derinlemesine tartar ve gerçek alaka düzeyine göre yeniden dizer. Bu model daha pahalıdır, ama yalnızca küçük bir aday kümesine uygulandığı için maliyeti yönetilebilir kalır.</p>
+<p>Yeniden sıralamanın hukuktaki asıl katkısı, gürültüyü modele ulaşmadan elemesidir. Modele ne kadar az ama ne kadar isabetli bağlam verirseniz, o kadar az dağılır ve o kadar az halüsinasyon yapar. Alakasız bir maddeyi bağlamdan çıkarmak çoğu zaman doğru bir maddeyi eklemek kadar değerlidir; çünkü model önüne konan her şeyi ciddiye alma eğilimindedir.</p>
+<h2>Kaynak Gösterimi ve Sağlamlaştırma: Cevabı Gerçeğe Bağlamak</h2>
+<p>Bir RAG sisteminin hukukçu için değeri, yalnızca doğru cevap vermesinde değil, o cevabı doğrulanabilir kılmasında yatar. Bu yüzden grounding, yani sağlamlaştırma, bizim için isteğe bağlı bir özellik değil, sistemin temel sözleşmesidir. Model, ürettiği her önemli iddiayı kendisine verilen belge parçalarına bağlamak ve hangi kaynağa dayandığını açıkça göstermek zorundadır.</p>
+<p>Bunu, modele yalnızca getirilen bağlamdan konuşmasını dayatan katı talimatlarla ve her parçanın taşıdığı üst veriyle sağlarız. Cevap üretildiğinde sistem, o cevabın hangi maddeden veya karardan türediğini künye olarak ekler: kanun adı, madde numarası ve mümkünse doğrudan bağlantı. Böylece kullanıcı tek tıkla kaynağa gidip kendisi doğrulayabilir. Asistan son sözü söylemez; hukukçunun denetleyebileceği bir başlangıç noktası sunar.</p>
+<p>Aynı ölçüde önemli olan, sistemin ne zaman susması gerektiğini bilmesidir. Getirme katmanı soruyla yeterince alakalı bir kaynak bulamadıysa, doğru davranış uydurmak değil, 'bu konuda elimde dayanak yok' demektir. Bilmediğini söyleyebilen bir hukuk asistanı, her şeye özgüvenle cevap veren ama ara sıra uyduran bir asistandan çok daha güvenilirdir. Sağlamlaştırma, bu dürüstlüğü mimarinin içine gömme biçimimizdir.</p>
+<h2>Değerlendirme: Sezgi Değil, Ölçüm</h2>
+<p>Bir RAG sistemini 'iyi görünüyor' diyerek üretime almak hukukta sorumsuzluk olur. Bu yüzden sistemi sürekli ve ayrıştırılmış biçimde ölçeriz. İki katmanı ayrı ayrı değerlendiririz: getirme katmanı doğru belgeleri buluyor mu, üretim katmanı bu belgeleri sadık biçimde kullanıyor mu? Bir cevap kötüyse, sorunun yanlış belge getirmekten mi yoksa doğru belgeyi yanlış yorumlamaktan mı kaynaklandığını bilmek zorundayız.</p>
+<p>Getirme tarafında, doğru cevapları önceden bilinen soru kümeleri üzerinde, doğru kaynağın getirilen parçalar arasında olup olmadığını ve ne kadar üst sıralarda yer aldığını izleriz. Üretim tarafında ise sadakat (faithfulness) ölçeriz: modelin söylediği her şey gerçekten verilen bağlam tarafından destekleniyor mu, yoksa bağlamın ötesine geçip uyduruyor mu? Sadakat, hukuk için belki de en kritik metriktir.</p>
+<p>Bu değerlendirme tek seferlik bir sınav değil, sürekli işleyen bir süreçtir. Hukukçulardan gelen geri bildirimler, hatalı cevap örnekleri ve değişen mevzuat test kümelerimizi besler. Bir parçalama stratejisini, bir embedding modelini ya da bir talimatı değiştirdiğimizde, bunun kaliteyi gerçekten artırdığını sezgiyle değil sayılarla doğrularız. İçtiHub'ın güvenilirliği tam da bu disiplinli ölçüm döngüsünün üzerine inşa edilir.</p>
+<h2>Sonuç: Hukukta Sağlamlaştırma Lüks Değil, Şarttır</h2>
+<p>Birçok alanda bir dil modelinin ara sıra yanılması tolere edilebilir. Hukukta ise yanlış bir madde, mülga bir düzenleme ya da uydurma bir karar gerçek sonuçlar doğurur. Bu yüzden bizim için RAG, modelin zekâsına eklenen bir süs değil, onu güvenilir kılan asıl çerçevedir. Akıllı bir model ile güvenilir bir hukuk asistanı arasındaki fark, tam olarak bu getirme ve sağlamlaştırma katmanında saklıdır.</p>
+<p>Parçalama, embedding, vektör arama, yeniden sıralama, kaynak gösterimi ve değerlendirme; bunların hiçbiri tek başına sihirli bir çözüm değildir. Ama birlikte ve alana özgü bir titizlikle kurulduklarında, ham bir dil modelini her cümlesini gerçek bir kaynağa yaslayabilen bir sisteme dönüştürürler. İçtiHub'ın çekirdeğindeki MevzuatBot'u tam olarak bu felsefeyle inşa ediyoruz.</p>
+<p>EcoFluxion olarak inancımız net: Türkçe hukuk için yapay zeka, kullanıcının kör bir güvenle bağlandığı bir kâhin değil, her iddiasını gösterebilen ve gerektiğinde 'bilmiyorum' diyebilen bir araç olmalıdır. Sağlamlaştırmayı mimarinin merkezine koymak, bu aracı hukukçunun gerçekten güvenebileceği bir meslektaşa dönüştürmenin tek dürüst yoludur.</p>
+      </div>
+      <div class="takeaways"><h3>Öne çıkanlar</h3><ul><li>Ham LLM'ler hukukta halüsinasyon yapar: var olmayan madde, tarih veya karar uydurabilir ve kaynak gösteremez.</li><li>RAG, modele cevaptan önce güncel ve doğrulanmış belgeler sunarak olguları dış kaynaktan getirir; mevzuat değişince yeniden eğitim gerekmez.</li><li>Hukuk belgelerini kanun-madde-fıkra yapısına göre parçalamak ve zengin üst veri eklemek, getirme kalitesinin sessiz belirleyicisidir.</li><li>Embedding tabanlı vektör arama kavramları eşleştirir; hibrit arama ve yeniden sıralama isabeti artırır ve gürültüyü modele ulaşmadan eler.</li><li>Kaynak gösterimi ve sağlamlaştırma her iddiayı gerçek bir kaynağa bağlar ve sistemin gerektiğinde 'bilmiyorum' demesini sağlar.</li><li>Getirme ve üretim katmanları ayrı ayrı, sadakat odaklı ölçülür; İçtiHub'ın MevzuatBot çekirdeği bu disiplinli döngü üzerine kuruludur.</li></ul></div>
+    </div>
+
+    <div class="lang-content" data-lang="en">
+      <div class="article-cat">Engineering</div>
+      <h1>Grounding LLMs in Turkish Legal Data with RAG</h1>
+      <p class="article-sub">Why a raw language model gets the law wrong, how Retrieval-Augmented Generation fixes it, and how we build the retrieval layer behind İçtiHub.</p>
+      <div class="article-meta"><span><i class="far fa-clock"></i> 12 min read</span><div class="article-tags"><span class="article-tag">RAG</span><span class="article-tag">LLM</span><span class="article-tag">Vektör Veritabanı</span><span class="article-tag">NLP</span></div></div>
+      <div class="article-body">
+<h2>Why a Raw LLM Gets the Law Wrong</h2>
+<p>At their core, large language models predict the next token by probability. Because they learn patterns from training data, they produce text that is fluent, plausible and often correct. But fluency guarantees nothing about knowledge: the model has learned what a statutory provision should look like, not what it actually says. That distinction is harmless in casual conversation and decisive in law.</p>
+<p>This is exactly where hallucination begins. A model can fabricate a non-existent article number, a wrong date, or a Court of Cassation ruling it was never given, and it will do so with total confidence. With Turkish legal texts the problem runs deeper still: legislation changes constantly, repealed provisions fall out of force, and several regulations on the same subject can contradict one another. The model's training data, meanwhile, is frozen at a fixed point and blind to every change made since.</p>
+<p>A second fundamental limit is the inability to cite. A raw model cannot tell you which statute, article or decision a sentence came from, because no such link exists in its internal representation. For a lawyer that is a fatal gap: every claim in a brief has to rest on a basis. An answer that cannot be verified is more dangerous in law than no answer at all.</p>
+<h2>What Is Retrieval-Augmented Generation?</h2>
+<p>Retrieval-Augmented Generation (RAG) is an architecture that, instead of leaving a language model alone with its memory, hands it a set of current, verified sources before it answers. The idea is simple but powerful: rather than telling the model 'write what you know,' you tell it 'here are the relevant documents, answer using only these.' The model's creativity stays in language; the facts come from outside.</p>
+<p>The flow has two broad stages. First, in retrieval, the user's question goes to a search system that surfaces the document chunks most relevant to it. Then, in generation, those chunks are passed to the model as context alongside the question, and the model builds its answer leaning only on that context. Its job is not to recall facts but to synthesize, correctly, the evidence placed in front of it.</p>
+<p>For law this is an almost perfect fit. When legislation changes you do not retrain the model; you simply update the documents in the retrieval layer. Any answer can be traced back to a concrete source, because it was produced from that source to begin with. MevzuatBot, at the core of İçtiHub, runs on exactly this principle: the model supplies the fluency, while the retrieved Turkish legislation and case law supply the guarantee of accuracy.</p>
+<p>In short, RAG turns a model that 'knows everything but can cite nothing' into an assistant that 'finds the right source and speaks from it.' What counts in law is not memorization but grounding, and RAG restores precisely that grounding to the system.</p>
+<h2>Chunking Legal Documents: The Quiet Heart of the System</h2>
+<p>The quality of a RAG system is largely set by the quality of the chunks you feed into the retrieval layer. The size at which you split a legal text, and the boundaries you split it on, directly decide whether the system can later find the right answer. So for us chunking is not an incidental pre-processing step but one of the most consequential design decisions in the whole architecture.</p>
+<p>Cutting blindly on raw character count is a disaster in law; slicing an article down the middle severs the context that carries its meaning. Instead we follow the document's own structure: the hierarchy of statute, article, paragraph and clause gives us natural boundaries. In a court decision, the summary of facts, the reasoning and the ruling each serve a different function. We shape our chunks to respect these semantic units, so that every chunk stays meaningful on its own.</p>
+<p>To each chunk we attach rich metadata: the source name, the article number, the date of entry into force, any repealed status, and the document type. This metadata lets us both filter during retrieval and emit a clean source citation at the end of an answer. The agglutinative grammar of Turkish and the long, deeply nested sentences of legal language make this step far more domain-specific than any general-purpose chunker could ever handle.</p>
+<h2>Embeddings and Vector Search: Searching by Meaning</h2>
+<p>Once the chunks are ready, we have to make them searchable. This is where embeddings come in: we turn each text chunk into a high-dimensional vector that represents its meaning numerically. Two semantically similar texts land at nearby points in that space. So a user asking about a 'rent increase cap' can reach the relevant article even if those exact words never appear in it.</p>
+<p>This is a fundamental leap beyond traditional keyword search. Classic search finds only literally matching words, yet in legal language a single concept can be phrased in dozens of ways. Vector search matches concepts, not words. The query passes through the same embedding model, and the system retrieves the document vectors nearest to the query vector, returning the most semantically relevant chunks.</p>
+<p>In practice, semantic search on its own is not always enough. In law you sometimes need an exact article number or a specific term verbatim. So we take a hybrid route: we combine semantic vector search with classic keyword search, capturing conceptual proximity and exact matches in the same pass.</p>
+<p>All of this infrastructure sits on the Vertex AI and Gemini ecosystem that powers İçtiHub. Embedding generation, vector storage and scalable search are tuned to serve a high volume of production queries at low latency, because for the user a correct answer that arrives quickly matters as much as a correct answer at all.</p>
+<h2>Re-ranking: Refining the First Retrieval</h2>
+<p>Vector search is fast and pulls a broad candidate set in seconds, but its precision is not always perfect. The first pass is good at finding, say, the twenty most relevant candidates out of tens of thousands of chunks, yet it can be weak at putting those twenty in the right order. Order matters in law: handing the model the most relevant article first directly shapes the quality of the answer.</p>
+<p>So we use a two-stage strategy. In the first stage, vector search produces a broad but coarse candidate list. In the second, a re-ranking model weighs each candidate against the question more deeply and re-orders them by true relevance. This model is more expensive, but because it runs only on a small candidate set, its cost stays well in hand.</p>
+<p>The real value of re-ranking in law is that it filters noise out before it reaches the model. The less context you give the model, yet the more on-target it is, the less it drifts and the less it hallucinates. Dropping an irrelevant article from the context is often as valuable as adding a correct one, because the model tends to take everything in front of it seriously.</p>
+<h2>Citations and Grounding: Tying the Answer to Reality</h2>
+<p>For a lawyer, the value of a RAG system lies not just in giving the right answer but in making that answer verifiable. So grounding is, for us, not an optional feature but the system's basic contract. The model must tie every significant claim it makes to the document chunks it was given, and show plainly which source it relied on.</p>
+<p>We enforce this with strict instructions that confine the model to the retrieved context, and with the metadata each chunk carries. When an answer is generated, the system appends a citation for the article or decision it was derived from: the statute name, the article number, and where possible a direct link. The user can then open the source in a single click and check it. The assistant never has the last word; it offers a starting point the lawyer can audit.</p>
+<p>Just as important, the system has to know when to stay quiet. If the retrieval layer cannot find a source relevant enough to the question, the right move is not to invent one but to say 'I have no basis for this.' A legal assistant that can admit what it doesn't know is far more trustworthy than one that answers everything confidently and occasionally makes things up. Grounding is how we build that honesty into the architecture itself.</p>
+<h2>Evaluation: Measurement, Not Intuition</h2>
+<p>Shipping a RAG system to production because 'it looks good' would be irresponsible in law. So we measure the system continuously and in a decomposed way. We evaluate the two layers separately: is the retrieval layer finding the right documents, and is the generation layer using them faithfully? When an answer is bad, we need to know whether the fault was retrieving the wrong document or misreading the right one.</p>
+<p>On the retrieval side, using question sets whose correct answers are known in advance, we track whether the right source shows up among the retrieved chunks and how high it ranks. On the generation side we measure faithfulness: is everything the model says actually supported by the provided context, or does it step beyond it and invent? Faithfulness is perhaps the single most critical metric for law.</p>
+<p>This evaluation is not a one-off exam but a process that runs continuously. Feedback from lawyers, examples of faulty answers and changing legislation all feed our test sets. When we swap a chunking strategy, an embedding model or a prompt, we confirm with numbers, not intuition, that the change genuinely improves quality. The reliability of İçtiHub rests squarely on this disciplined measurement loop.</p>
+<h2>Conclusion: In Law, Grounding Is Not a Luxury but a Requirement</h2>
+<p>In many domains, an occasional slip by a language model is tolerable. In law, a wrong article, a repealed regulation or a fabricated decision has real consequences. So for us RAG is not an ornament bolted onto the model's intelligence but the very framework that makes it trustworthy. The difference between a smart model and a reliable legal assistant lives exactly in this retrieval and grounding layer.</p>
+<p>Chunking, embeddings, vector search, re-ranking, citations and evaluation: none of these is a magic bullet on its own. But assembled together, with domain-specific rigor, they turn a raw language model into a system that can rest every sentence on a real source. This is precisely the philosophy behind MevzuatBot, the engine at the core of İçtiHub.</p>
+<p>At EcoFluxion our conviction is simple: AI for Turkish law should not be an oracle that users trust blindly, but a tool that can show its basis for every claim and say 'I don't know' when it must. Putting grounding at the center of the architecture is the only honest way to turn that tool into a colleague a lawyer can genuinely trust.</p>
+      </div>
+      <div class="takeaways"><h3>Key takeaways</h3><ul><li>Raw LLMs hallucinate in law: they can fabricate non-existent articles, dates or decisions and cannot cite sources.</li><li>RAG hands the model current, verified documents before it answers, sourcing facts externally; no retraining is needed when legislation changes.</li><li>Chunking legal documents along the statute-article-paragraph structure and adding rich metadata is the quiet determinant of retrieval quality.</li><li>Embedding-based vector search matches concepts; hybrid search and re-ranking raise precision and filter noise before it reaches the model.</li><li>Citations and grounding tie every claim to a real source and let the system say 'I don't know' when it must.</li><li>Retrieval and generation layers are measured separately with a focus on faithfulness; İçtiHub's MevzuatBot core is built on this disciplined loop.</li></ul></div>
+    </div>
+
+    <a href="index.html" class="article-back"><i class="fas fa-arrow-left"></i> <span class="lang-content" data-lang="tr">Tüm yazılar</span><span class="lang-content" data-lang="en">All articles</span></a>
+  </main>
+  <footer class="footer" style="padding:2rem 0;">
+  <div class="container text-center">
+    <div class="footer-social justify-content-center" style="display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;margin-bottom:1rem;">
+      <a href="https://x.com/ecofluxion" target="_blank" rel="noopener" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+      <a href="https://tr.linkedin.com/company/ecofluxion" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      <a href="https://www.instagram.com/ecofluxion/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.tiktok.com/@ecofluxion" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+    </div>
+    <p class="footer-copyright mb-0">&copy; 2024-2026 EcoFluxion. <span class="lang-content" data-lang="tr">Tüm hakları saklıdır.</span><span class="lang-content" data-lang="en">All rights reserved.</span></p>
+  </div>
+</footer>
+  <script>
+(function () {
+  var lang = localStorage.getItem('language') || 'tr';
+  function apply(l) {
+    document.documentElement.lang = l;
+    document.querySelectorAll('.lang-content').forEach(function (el) { el.style.display = (el.getAttribute('data-lang') === l) ? '' : 'none'; });
+    document.querySelectorAll('.legal-lang-btn').forEach(function (b) { b.classList.toggle('active', b.getAttribute('data-lang') === l); });
+    localStorage.setItem('language', l);
+  }
+  document.querySelectorAll('.legal-lang-btn').forEach(function (b) { b.addEventListener('click', function () { apply(b.getAttribute('data-lang')); }); });
+  apply(lang);
+})();
+</script>
+</body>
+</html>
