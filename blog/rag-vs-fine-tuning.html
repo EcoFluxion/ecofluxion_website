@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="RAG ve ince ayar (fine-tuning) nedir, nasıl çalışır, hangi durumda hangisini seçmelisiniz? Güncellik, maliyet, kontrol ve halüsinasyon ekseninde net bir karşılaştırma ve ikisini birleştirmenin yolu.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://ecofluxion.com/blog/rag-vs-fine-tuning.html">
+  <meta name="theme-color" content="#7CB342">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="RAG mı, İnce Ayar mı? Hangisini Ne Zaman Seçmeli">
+  <meta property="og:description" content="RAG ve ince ayar (fine-tuning) nedir, nasıl çalışır, hangi durumda hangisini seçmelisiniz? Güncellik, maliyet, kontrol ve halüsinasyon ekseninde net bir karşılaştırma ve ikisini birleştirmenin yolu.">
+  <meta property="og:url" content="https://ecofluxion.com/blog/rag-vs-fine-tuning.html">
+  <meta property="og:site_name" content="EcoFluxion">
+  <meta property="og:locale" content="tr_TR">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:image" content="https://ecofluxion.com/image/ecofluxion_logo.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@ecofluxion">
+  <meta name="twitter:title" content="RAG mı, İnce Ayar mı? Hangisini Ne Zaman Seçmeli">
+  <meta name="twitter:description" content="RAG ve ince ayar (fine-tuning) nedir, nasıl çalışır, hangi durumda hangisini seçmelisiniz? Güncellik, maliyet, kontrol ve halüsinasyon ekseninde net bir karşılaştırma ve ikisini birleştirmenin yolu.">
+  <meta name="twitter:image" content="https://ecofluxion.com/image/ecofluxion_logo.png">
+  <title>RAG mı, İnce Ayar mı? Hangisini Ne Zaman Seçmeli | EcoFluxion Blog</title>
+  <link rel="icon" type="image/png" href="../image/ecofluxion_logo.png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .legal-nav { background: #2f3a22; }
+    .legal-nav .nav-link { color: rgba(255,255,255,.85); }
+    .legal-nav .nav-link:hover, .legal-nav .nav-link.active { color: #fff; }
+    .legal-langbar { display:flex; gap:.4rem; }
+    .legal-lang-btn.active { background:#fff; color:#558B2F; }
+    .article-wrap { max-width: 800px; margin: 0 auto; padding: 130px 1.25rem 70px; }
+    .breadcrumb-nav { font-size:.88rem; color:#999; margin-bottom:1.4rem; }
+    .breadcrumb-nav a { color:#558B2F; text-decoration:none; }
+    .article-cat { color: var(--primary-green,#7CB342); font-weight:700; text-transform:uppercase; letter-spacing:1px; font-size:.82rem; }
+    .article-wrap h1 { font-family:'Montserrat',sans-serif; font-weight:800; line-height:1.2; margin:.4rem 0 1rem; color:#222; }
+    .article-sub { font-size:1.22rem; color:#555; line-height:1.6; margin-bottom:1.4rem; }
+    .article-meta { display:flex; flex-wrap:wrap; gap:.8rem 1.2rem; align-items:center; color:#888; font-size:.9rem; border-top:1px solid #eee; border-bottom:1px solid #eee; padding:.9rem 0; margin-bottom:2rem; }
+    .article-tags { display:flex; flex-wrap:wrap; gap:.4rem; }
+    .article-tag { background:#f3f8ec; color:#558B2F; border-radius:50px; padding:.22rem .7rem; font-size:.78rem; font-weight:600; }
+    .article-body h2 { font-family:'Montserrat',sans-serif; font-weight:700; font-size:1.5rem; margin:2.3rem 0 .8rem; color:#2f3a22; }
+    .article-body p { color:#333; line-height:1.85; font-size:1.07rem; margin-bottom:1.1rem; }
+    .takeaways { background:#f3f8ec; border-left:4px solid var(--primary-green,#7CB342); border-radius:8px; padding:1.2rem 1.5rem; margin:2.6rem 0; }
+    .takeaways h3 { font-family:'Montserrat',sans-serif; font-weight:700; font-size:1.1rem; margin-bottom:.6rem; }
+    .takeaways ul { margin:0; padding-left:1.2rem; } .takeaways li { color:#3a4a28; line-height:1.7; margin-bottom:.3rem; }
+    .article-back { display:inline-block; margin-top:2rem; font-weight:600; color:#558B2F; text-decoration:none; }
+    .blog-head { padding:130px 1.25rem 1.5rem; text-align:center; }
+    .blog-head h1 { font-family:'Montserrat',sans-serif; font-weight:800; color:#2f3a22; }
+    .blog-head p { color:#666; max-width:640px; margin:.5rem auto 0; }
+    .blog-grid { max-width:1120px; margin:0 auto; padding:1rem 1.25rem 80px; display:grid; grid-template-columns:repeat(auto-fill,minmax(330px,1fr)); gap:1.6rem; }
+    .blog-card { background:#fff; border:1px solid #eee; border-radius:14px; overflow:hidden; transition:.3s; display:flex; flex-direction:column; }
+    .blog-card:hover { transform:translateY(-5px); box-shadow:0 15px 35px rgba(0,0,0,.08); }
+    .blog-card-top { height:6px; background:linear-gradient(135deg,#7CB342,#558B2F); }
+    .blog-card-body { padding:1.6rem; display:flex; flex-direction:column; flex:1; }
+    .blog-card h2 { font-family:'Montserrat',sans-serif; font-weight:700; font-size:1.22rem; margin:.45rem 0 .6rem; line-height:1.35; }
+    .blog-card h2 a { color:#222; text-decoration:none; }
+    .blog-card h2 a:hover { color:#558B2F; }
+    .blog-card p { color:#666; line-height:1.6; flex:1; font-size:.97rem; }
+    .blog-card .read-more { color:#558B2F; font-weight:600; text-decoration:none; margin-top:1rem; align-self:flex-start; }
+    .blog-card-meta { color:#999; font-size:.82rem; margin-top:.8rem; }
+</style>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "RAG mı, İnce Ayar mı? Hangisini Ne Zaman Seçmeli",
+  "description": "RAG ve ince ayar (fine-tuning) nedir, nasıl çalışır, hangi durumda hangisini seçmelisiniz? Güncellik, maliyet, kontrol ve halüsinasyon ekseninde net bir karşılaştırma ve ikisini birleştirmenin yolu.",
+  "inLanguage": "tr",
+  "datePublished": "2026-06-07",
+  "dateModified": "2026-06-07",
+  "author": {
+    "@type": "Organization",
+    "name": "EcoFluxion",
+    "url": "https://ecofluxion.com/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "EcoFluxion",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://ecofluxion.com/image/ecofluxion_logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://ecofluxion.com/blog/rag-vs-fine-tuning.html"
+  },
+  "image": "https://ecofluxion.com/image/ecofluxion_logo.png",
+  "articleSection": "Mühendislik",
+  "keywords": "RAG, Fine-Tuning, LLM, Mimari"
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://ecofluxion.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://ecofluxion.com/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "RAG mı, İnce Ayar mı? Hangisini Ne Zaman Seçmeli",
+      "item": "https://ecofluxion.com/blog/rag-vs-fine-tuning.html"
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top legal-nav">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="../index.html">
+        <img src="../image/ecofluxion_logo.png" alt="EcoFluxion" class="logo-img" style="height:36px;">
+        <span class="ms-2 fw-bold">EcoFluxion</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#blogNav" aria-label="Menu"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="blogNav">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="../index.html#home"><span class="lang-content" data-lang="tr">Ana Sayfa</span><span class="lang-content" data-lang="en">Home</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="../index.html#about"><span class="lang-content" data-lang="tr">Hakkımızda</span><span class="lang-content" data-lang="en">About</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="../index.html#services"><span class="lang-content" data-lang="tr">Neler Geliştiriyoruz</span><span class="lang-content" data-lang="en">What We Build</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="../index.html#projects"><span class="lang-content" data-lang="tr">Ürünler</span><span class="lang-content" data-lang="en">Products</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="../index.html#technologies"><span class="lang-content" data-lang="tr">Teknolojiler</span><span class="lang-content" data-lang="en">Technologies</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="../index.html#careers"><span class="lang-content" data-lang="tr">Kariyer</span><span class="lang-content" data-lang="en">Careers</span></a></li>
+          <li class="nav-item"><a class="nav-link active" href="index.html"><span class="lang-content" data-lang="tr">Blog</span><span class="lang-content" data-lang="en">Blog</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="../index.html#contact"><span class="lang-content" data-lang="tr">İletişim</span><span class="lang-content" data-lang="en">Contact</span></a></li>
+          <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+            <div class="legal-langbar">
+              <button class="btn btn-sm btn-outline-light legal-lang-btn" data-lang="tr">TR</button>
+              <button class="btn btn-sm btn-outline-light legal-lang-btn" data-lang="en">EN</button>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <main class="article-wrap">
+    <nav class="breadcrumb-nav"><a href="../index.html">EcoFluxion</a> / <a href="index.html">Blog</a> / <span class="lang-content" data-lang="tr">RAG mı, İnce Ayar mı? Hangisini Ne Zaman Seçmeli</span><span class="lang-content" data-lang="en">RAG or Fine-Tuning? Which to Use and When</span></nav>
+
+    <div class="lang-content" data-lang="tr">
+      <div class="article-cat">Mühendislik</div>
+      <h1>RAG mı, İnce Ayar mı? Hangisini Ne Zaman Seçmeli</h1>
+      <p class="article-sub">Bir dil modeline ihtiyacı olan bilgiyi vermenin iki ayrı yolu var: önüne kitabı açık bırakmak (RAG) ya da onu yeniden okula göndermek (ince ayar). İkisinin gerçekte ne yaptığını, nerede ayrıştığını ve en iyi sistemlerin neden çoğu zaman ikisini birden kullandığını anlatıyoruz.</p>
+      <div class="article-meta"><span><i class="far fa-clock"></i> 11 dk okuma</span><div class="article-tags"><span class="article-tag">RAG</span><span class="article-tag">Fine-Tuning</span><span class="article-tag">LLM</span><span class="article-tag">Mimari</span></div></div>
+      <div class="article-body">
+<h2>İki Soru, Tek Karışıklık</h2>
+<p>Yapay zekâyla ciddi bir şey inşa etmeye kalkan hemen herkes aynı duvara çarpar: hazır bir dil modeli, sizin işinizin özel bilgisini bilmez. Şirketinizin iç politikalarından, ürününüzün son sürümünden, dünkü mevzuat değişikliğinden ya da müşteri kayıtlarınızdan haberi yoktur. Model zekidir ama sizin dünyanıza karşı kördür. Tam bu noktada iki kavram durmadan karşınıza çıkar: 'RAG' ve 'ince ayar' (fine-tuning). Üstelik genellikle birbirinin rakibi gibi, tek bir soruyla sunulurlar: hangisi daha iyi?</p>
+<p>İşte tuzak bu çerçevede. RAG ve ince ayar farklı problemleri çözer; biri diğerinin daha iyi versiyonu değildir. Onları rakip görmek, 'sözlük mü daha iyidir, dil kursu mu?' diye sormaya benzer. Cevap, neye ihtiyacınız olduğuna bağlıdır: o an doğru kelimeyi mi aramanız gerekiyor, yoksa kalıcı bir beceriyi mi içselleştirmeniz?</p>
+<p>Bu yazıda ikisini de sıfırdan, jargonun arkasına saklanmadan açıklayacağız. Önce her birinin nasıl çalıştığını somut benzetmelerle kuracağız. Sonra kararı asıl belirleyen ölçütler üzerinden karşılaştıracağız: güncellik, maliyet, kontrol ve halüsinasyon. En sonunda da olgun sistemlerin neden çoğu zaman ikisini birden kullandığını ve İçtiHub'ın hukuki cevaplarda neden ağırlığını RAG'a verdiğini göreceğiz.</p>
+<h2>Önce Temel: Bir Dil Modeli Aslında Ne Bilir?</h2>
+<p>Bir büyük dil modeli (LLM, large language model), devasa miktarda metin üzerinde 'bir sonraki kelimeyi tahmin et' oyununu oynayarak eğitilir. Bu süreçte iki ayrı şey öğrenir. Birincisi dilin kendisi: dilbilgisi, akıl yürütme kalıpları, üslup, bir argümanın nasıl kurulduğu. İkincisi de eğitim verisinde sık sık geçen olgular: ülke başkentleri, temel bilimsel gerçekler, yaygın kod kalıpları. Bu iki tür bilgi de modelin 'ağırlıklarına', yani milyarlarca sayısal parametreye gömülüdür.</p>
+<p>Buradaki kritik nokta şu: modelin bildiği her şey, eğitim bittiği anda donar. Eğitim verisi belirli bir tarihe kadar uzanır ve o tarihten sonra olan hiçbir şeyi model kendiliğinden bilemez. Üstelik model bir olguyu 'bunu şu kaynaktan öğrendim' diye etiketlemez; her şeyi tek bir bulanık istatistik havuzunda eritir. İşte bu yüzden ham bir model, inandırıcı görünen bir uydurmayı gerçek bir cevaptan ayırt edemez.</p>
+<p>RAG ve ince ayar tam olarak bu iki sınırı iki ayrı uçtan ele alır. RAG, modelin donmuş hafızasını es geçip cevap anında ona taze, doğrulanmış bilgi sunar. İnce ayar ise modelin ağırlıklarını yeniden şekillendirerek yeni bir davranışı ya da bilgiyi kalıcı biçimde içine işler. Birincisini 'dışarıdan bilgi getirmek', ikincisini 'modeli içeriden değiştirmek' diye düşünebilirsiniz.</p>
+<h2>RAG: Modelin Önüne Kitabı Açık Bırakmak</h2>
+<p>RAG, 'Retrieval-Augmented Generation', yani 'getirmeyle güçlendirilmiş üretim' demektir. Çalışma mantığı şaşırtıcı derecede sezgiseldir. Bir soru geldiğinde sistem önce sizin belge havuzunuzda (şirket dokümanları, ürün kılavuzları, mevzuat metinleri, her ne ise) o soruyla en alakalı parçaları arar. Sonra bu parçaları, soruyla birlikte modele 'bağlam' olarak verir ve tek bir talimat koyar: 'Yalnızca sana verdiğim bu metinlere dayanarak cevap ver.' Böylece model ezberinden değil, önüne konan kanıttan konuşur.</p>
+<p>En iyi benzetme şu: bir öğrenciye kapalı kitap sınavı yerine açık kitap sınavı vermek. Kapalı kitap sınavında öğrenci sadece aklında kalanlarla, bazen yanlış hatırlayarak cevap verir. Açık kitap sınavında ise doğru sayfayı açar, oradan okur ve cevabını ona yaslar. RAG, dil modelini sürekli bir açık kitap sınavında tutar. Modelin işi artık bilgiyi hatırlamak değil, önüne getirilen metni doğru biçimde yorumlayıp toparlamaktır.</p>
+<p>Bu yaklaşımın getirisi büyüktür. Bilgi değiştiğinde modeli yeniden eğitmeniz gerekmez; yalnızca arama yaptığı belge havuzunu güncellersiniz. Dünkü düzenleme bugün havuza eklenir ve sistem anında ondan haberdar olur. Dahası, her cevap somut bir kaynağa bağlanabilir: model 'bunu şu belgenin şu bölümünden aldım' diyebilir, çünkü cevap zaten o bölümden üretilmiştir. Kaynak gösterebilirlik, belki de RAG'ın en değerli özelliğidir.</p>
+<p>Teknik tarafta bu arama genellikle 'embedding' denen bir yöntemle yapılır: her metin parçası, anlamını temsil eden bir sayı dizisine (vektöre) çevrilir ve soruyla anlamca en yakın parçalar bulunur. Bu sayede kullanıcı tam o kelimeleri kullanmasa bile ilgili bilgi yüzeye çıkabilir; örneğin 'işten çıkarma tazminatı' diye sorduğunuzda, metinde 'kıdem tazminatı' geçen bölüm de getirilebilir. Ama ayrıntılar bir yana, akılda tutulacak çekirdek fikir basittir: RAG, modele doğru sayfayı açıp açık tutmaktır.</p>
+<h2>İnce Ayar: Modeli Yeniden Okula Göndermek</h2>
+<p>İnce ayar (fine-tuning) tamamen başka bir şey yapar. Burada modele dışarıdan bilgi getirmezsiniz; modelin kendisini değiştirirsiniz. Önceden eğitilmiş bir modeli alır, kendi örneklerinizden oluşan daha küçük ve odaklı bir veri kümesiyle ek bir eğitim turuna sokarsınız. Bu süreçte modelin ağırlıkları, yani o milyarlarca parametre, sizin örneklerinize doğru yeniden ayarlanır. Sonunda elinizde, davranışı kalıcı olarak değişmiş yeni bir model olur.</p>
+<p>Benzetmeyi sürdürelim: RAG bir öğrenciye açık kitap sınavı vermekse, ince ayar o öğrenciyi belirli bir alanda yetiştirmektir. Genel bir hukuk fakültesi mezununu alıp aylarca yalnızca dilekçe yazdırarak ona o işin üslubunu, kalıbını ve reflekslerini kazandırmak gibi. Artık her seferinde 'dilekçe şöyle yazılır' diye anlatmanız gerekmez; bu, onun ikinci doğası olmuştur.</p>
+<p>İnce ayarın asıl parladığı yer bilgi eklemek değil, davranış ve biçim öğretmektir. Modelin belirli bir tonu tutturmasını, çıktıyı her zaman belirli bir formatta vermesini, niş bir alanın jargonunu doğal kullanmasını ya da dar bir görevde daha isabetli olmasını istiyorsanız ince ayar tam yerindedir. Buna karşılık 'şu modele yeni bir gerçeği öğreteyim' diye ince ayar yapmak çoğu zaman kötü bir fikirdir: yeni bilgi parametrelere bulanık biçimde dağılır, kaynak gösterilemez ve model o bilgiyi yine yanlış hatırlayabilir.</p>
+<p>Bir nüans daha: ince ayarla işlediğiniz bilgi de yine donar. Modeli bugün eğitirsiniz, yarın mevzuat değişir ve eğittiğiniz modelin bundan haberi olmaz. Güncellemek için tüm süreci baştan çalıştırmanız gerekir. Yani ince ayar, sık değişen olgular için değil, kararlı kalan beceriler ve üsluplar için biçilmiş kaftandır.</p>
+<h2>Dört Eksende Karşılaştırma</h2>
+<p>İkisini de kavradıktan sonra karar dört eksende netleşir. Birincisi güncellik. RAG burada açık ara öndedir: bilgiyi değiştirmek için belge havuzunu güncellemeniz yeter, model anında haberdar olur. İnce ayarda ise her güncelleme yeni bir eğitim turu demektir; sık değişen bilgi için bu pratik değildir. Bilginiz hızlı değişiyorsa varsayılan tercihiniz RAG olmalı.</p>
+<p>İkincisi maliyet ve emek. RAG'ın asıl maliyeti her sorguda biraz daha fazla işlem yapmak ve sağlam bir arama altyapısı kurmaktır; buna karşılık veriyi güncellemek ucuz ve hızlıdır. İnce ayarın maliyeti ise öne yüklenir: kaliteli örnek verisi hazırlamak ve eğitim turunu çalıştırmak hem emek hem hesaplama gücü ister. Ama bunun karşılığında, eğitim bittikten sonra her sorgu daha yalın olabilir, çünkü modele uzun bir bağlam vermeniz gerekmez.</p>
+<p>Üçüncüsü kontrol ve kaynak gösterebilirlik. RAG cevabı somut bir belgeye bağlayabildiği için denetlenebilir ve şeffaftır; kullanıcı kaynağa gidip kendisi doğrulayabilir. İnce ayarlı model ise neyi neden söylediğini bir kaynakla gösteremez; bilgi parametrelere dağılmıştır. Cevabın dayanağının görünür olması sizin için önemliyse, bu tek başına RAG lehine güçlü bir argümandır.</p>
+<p>Dördüncüsü halüsinasyon, yani modelin kendinden emin bir şekilde uydurması. RAG, modeli getirilen kanıta yaslanmaya zorladığı için halüsinasyonu belirgin biçimde azaltır; arama katmanı iyi çalıştığı sürece model dayanaksız konuşmaz. İnce ayar tek başına halüsinasyonu çözmez; hatta yeni olguları zorla öğretmeye çalışırsanız modeli daha da kendinden emin bir uydurmacıya çevirebilir. Bu dört eksen birlikte değerlendirildiğinde tablo netleşir: 'bilgi getirme' ihtiyacı RAG'ı, 'davranış ve biçim' ihtiyacı ince ayarı işaret eder.</p>
+<h2>Peki Hangisini Ne Zaman Seçmeli?</h2>
+<p>Pratik bir karar kuralı şöyle özetlenebilir. Probleminiz 'modelin doğru, güncel ve doğrulanabilir olgulara erişmesi gerekiyor' biçimindeyse, cevap neredeyse her zaman RAG'dır. Müşteri destek botu şirket dokümanlarından konuşacaksa, bir asistan sürekli değişen kataloğa dayanacaksa, bir hukuk aracı yürürlükteki mevzuata yaslanacaksa, burada ihtiyaç bilgi getirmektir ve RAG tam bunun için tasarlanmıştır.</p>
+<p>Probleminiz 'model belirli bir tarzda davransın, belirli bir formatı tutarlı versin, niş bir alanın dilini doğal konuşsun ya da dar bir görevde daha isabetli olsun' biçimindeyse, devreye ince ayar girer. Markanızın ses tonunu birebir yakalamak, çıktıyı her seferinde aynı yapılandırılmış biçimde almak ya da genel modelin zorlandığı özel bir sınıflandırma görevini iyileştirmek, ders kitabına girecek ince ayar senaryolarıdır.</p>
+<p>Yaygın bir hata, sık değişen bilgiyi ince ayarla modele 'ezberletmeye' çalışmaktır. Bu yol hem pahalı hem kırılgandır: bilgi her değiştiğinde yeniden eğitirsiniz, üstelik model o bilgiyi yine kaynaksız ve bazen yanlış hatırlar. Böyle bir ihtiyaçta doğru araç ezberletmek değil, açık kitap vermektir; yani RAG. Tersinden, yalnızca RAG ile bir modele kalıcı bir üslup ya da derin bir alan refleksi kazandırmaya çalışmak da yanlış aleti zorlamak olur.</p>
+<h2>Ya İkisini Birlikte Kullanırsanız?</h2>
+<p>Buraya kadar ikisini ayrı tuttuk, çünkü önce farklarını net görmek gerekiyordu. Ama gerçek dünyadaki olgun sistemlerin çoğu, RAG ile ince ayarı rakip değil, birbirini tamamlayan iki parça olarak kullanır. Çünkü çözdükleri problemler çakışmaz: biri bilgiyi, diğeri davranışı halleder. Doğru kurgu, ikisinin güçlü yanlarını üst üste bindirir.</p>
+<p>Tipik birleşik mimari şöyle işler: ince ayar modele alanın diline ve istenen davranışa hâkim olmayı öğretir; RAG ise her cevap anında güncel ve doğrulanmış olguları getirir. Niş bir alanda çalışan bir asistanı düşünün. İnce ayarla o alanın jargonunu, beklenen cevap biçimini ve üslubunu içselleştirmiş olabilir; aynı anda RAG ile her sorguda en güncel belgelerden besleniyordur. Sonuç hem doğru tonda hem de gerçeğe bağlı cevaplar verir.</p>
+<p>Buradaki temel ilke, her aracı en iyi yaptığı işe koşmaktır. Olguları parametrelere ezberletmeye çalışmazsınız; onları getirme katmanına bırakırsınız. Tarzı ve refleksleri her seferinde uzun talimatlarla anlatmazsınız; onları ince ayarla modele işlersiniz. Pratikte çoğu ekip önce RAG ile başlar, çünkü en büyük kazanımı en düşük emekle o verir; ince ayara ancak davranış ya da biçim ihtiyacı net biçimde belirginleştiğinde geçerler.</p>
+<h2>İçtiHub Neden Ağırlığını RAG'a Veriyor?</h2>
+<p>EcoFluxion'da geliştirdiğimiz hukuk yapay zekâsı ürünü İçtiHub'ın çekirdeğinde ağırlıklı olarak RAG yatar. Bunun sebebi felsefi değil, doğrudan hukukun doğasından gelir. Mevzuat sürekli değişir, maddeler mülga olur, yeni kararlar verilir. Donmuş hafızasıyla konuşan bir model burada kaçınılmaz olarak yanılır; dünkü değişikliği bilmeyen bir hukuk asistanı tehlikelidir.</p>
+<p>Daha da önemlisi, hukukta değerli olan ezber değil dayanaktır. Bir avukatın ileri sürdüğü her iddianın bir kaynağı olmak zorundadır. RAG tam olarak bunu mümkün kılar: İçtiHub'ın verdiği cevaplar, getirilen gerçek Türk mevzuatına ve içtihadına bağlanabilir; kullanıcı kaynağa gidip kendi gözüyle doğrulayabilir. Cevap kaynaksız kalıyorsa, doğru davranış uydurmak değil, 'bu konuda elimde dayanak yok' diyebilmektir. Bu dürüstlük, ancak bilgi getirme katmanından geldiğinde mümkün olur.</p>
+<p>Bu, ince ayarın hukukta hiç yeri yok demek değildir. Modelin hukuk dilini doğal kullanması ya da cevapları tutarlı bir biçimde sunması gibi davranışsal kazanımlarda ince ayar değerli olabilir. Ama olguların, yani hangi maddenin yürürlükte olduğunun ve ne dediğinin kaynağı her zaman dışarıdan, doğrulanabilir biçimde gelmelidir. Bizim için ayrım nettir: dilin akıcılığı modelden, doğruluğun teminatı ise getirilen kaynaktan gelir.</p>
+<p>Sonuçta RAG ile ince ayar arasındaki seçim 'hangisi daha iyi' sorusu değildir; 'şu an hangi problemi çözüyorum' sorusudur. Güncel ve doğrulanabilir bilgiye mi ihtiyacınız var, yoksa kalıcı bir davranışa mı? Çoğu zaman cevap ikisidir; ama hangisiyle başlayacağınızı bilmek, sağlam bir sistemin ilk adımıdır. Hukuk gibi her cümlenin bir dayanağı olması gereken bir alandaysa o ilk adım neredeyse her zaman RAG'dır.</p>
+      </div>
+      <div class="takeaways"><h3>Öne çıkanlar</h3><ul><li>RAG ve ince ayar rakip değil, farklı problemleri çözen iki araçtır: biri dışarıdan bilgi getirir, diğeri modelin davranışını içeriden değiştirir.</li><li>RAG, modele açık kitap sınavı verir gibi cevap anında güncel ve doğrulanmış belgeler sunar; bilgi değişince yeniden eğitim gerekmez ve her cevap bir kaynağa bağlanabilir.</li><li>İnce ayar, modelin ağırlıklarını yeniden eğiterek üslup, format ve dar görev becerilerini kalıcı kazandırır; yeni olgu ezberletmek için ise kötü bir tercihtir.</li><li>Dört eksen: güncellik ve kaynak gösterebilirlik RAG'ı, davranış ve biçim ihtiyacı ince ayarı işaret eder; ayrıca RAG halüsinasyonu belirgin biçimde azaltır.</li><li>Olgun sistemler çoğu zaman ikisini birlikte kullanır: ince ayar davranışı, RAG güncel olguları halleder; çoğu ekip en büyük kazanımı en düşük emekle veren RAG ile başlar.</li><li>İçtiHub ağırlığını RAG'a verir çünkü hukukta değerli olan ezber değil dayanaktır; cevaplar getirilen Türk mevzuatına ve içtihadına bağlanabilir, gerektiğinde 'bilmiyorum' diyebilir.</li></ul></div>
+    </div>
+
+    <div class="lang-content" data-lang="en">
+      <div class="article-cat">Engineering</div>
+      <h1>RAG or Fine-Tuning? Which to Use and When</h1>
+      <p class="article-sub">There are two distinct ways to give a language model what it needs to know: leave the book open in front of it (RAG) or send it back to school (fine-tuning). Here is what each one really does, where they diverge, and why the best systems often use both.</p>
+      <div class="article-meta"><span><i class="far fa-clock"></i> 11 min read</span><div class="article-tags"><span class="article-tag">RAG</span><span class="article-tag">Fine-Tuning</span><span class="article-tag">LLM</span><span class="article-tag">Mimari</span></div></div>
+      <div class="article-body">
+<h2>Two Questions, One Common Confusion</h2>
+<p>Almost everyone who sets out to build something serious with AI hits the same wall: an off-the-shelf language model does not know the specifics of your work. It has never seen your company's internal policies, the latest version of your product, yesterday's regulatory change, or your customer records. The model is clever, but it is blind to your world. At this point two terms keep surfacing: 'RAG' and 'fine-tuning.' And they are usually framed as rivals, posed as a single question: which one is better?</p>
+<p>That framing is the trap. RAG and fine-tuning solve different problems; one is not simply a better version of the other. Treating them as competitors is like asking whether a dictionary is better than a language course. The answer depends on what you actually need: to look up the right word in the moment, or to internalize a lasting skill.</p>
+<p>In this article we will build up both ideas from scratch, without hiding behind jargon. First we will establish how each one works using concrete analogies. Then we will compare them across the criteria that actually drive the decision: freshness, cost, control, and hallucination. Finally, we will see why mature systems usually use both, and why İçtiHub puts its weight on RAG for grounded legal answers.</p>
+<h2>First Principles: What Does a Language Model Actually Know?</h2>
+<p>A large language model (LLM) is trained by playing a 'predict the next word' game across an enormous amount of text. In doing so it learns two kinds of things. First, language itself: grammar, reasoning patterns, tone, how an argument is constructed. Second, the facts that appear often in its training data: world capitals, basic scientific truths, common coding idioms. Both kinds of knowledge are baked into the model's 'weights' — its billions of numerical parameters.</p>
+<p>The crucial point is this: everything the model knows freezes the moment training ends. Its training data runs up to a certain date, and on its own it cannot know anything that happened afterward. Nor does the model tag a fact with 'I learned this from that source'; it melts everything down into a single blurry statistical pool. That is why a raw model cannot tell a plausible-looking fabrication apart from a genuine answer.</p>
+<p>RAG and fine-tuning each tackle these two limits from opposite ends. RAG bypasses the model's frozen memory and hands it fresh, verified information at the moment of answering. Fine-tuning reshapes the model's weights so that a new behavior or piece of knowledge is permanently worked into it. You can think of the first as 'bringing information in from outside' and the second as 'changing the model from the inside.'</p>
+<h2>RAG: Leaving the Book Open in Front of the Model</h2>
+<p>RAG stands for 'Retrieval-Augmented Generation' — generation strengthened by retrieval. Its logic is surprisingly intuitive. When a question arrives, the system first searches your document pool (company files, product manuals, legal texts, whatever it may be) for the passages most relevant to that question. It then hands those passages to the model as 'context' alongside the question, with a single instruction: 'Answer based only on the text I have given you.' The model now speaks from the evidence placed in front of it, not from memory.</p>
+<p>The best analogy is giving a student an open-book exam instead of a closed-book one. In a closed-book exam, the student answers from whatever stuck in their head, sometimes misremembering. In an open-book exam, they turn to the right page, read it, and ground their answer in it. RAG keeps the language model in a permanent open-book exam. The model's job is no longer to recall information but to correctly interpret and summarize the text it was handed.</p>
+<p>The payoff is large. When information changes, you do not retrain the model; you simply update the document pool it searches. Yesterday's regulation is added to the pool today, and the system is instantly aware of it. Better still, every answer can be tied to a concrete source: the model can say 'I took this from that section of that document,' because the answer was in fact produced from that section. Citability is perhaps RAG's single most valuable property.</p>
+<p>Technically, this search is usually done with a method called 'embeddings': each chunk of text is turned into a string of numbers (a vector) that captures its meaning, and the chunks closest in meaning to the question are retrieved. This lets relevant information surface even when the user does not use those exact words; ask about 'firing compensation,' for instance, and the passage that says 'severance pay' can still be retrieved. But details aside, the core idea to hold onto is simple: RAG is about opening the right page for the model and keeping it open.</p>
+<h2>Fine-Tuning: Sending the Model Back to School</h2>
+<p>Fine-tuning does something entirely different. Here you do not bring information in from outside; you change the model itself. You take a pre-trained model and put it through an additional round of training on a smaller, focused dataset made of your own examples. During this process the model's weights — those billions of parameters — are readjusted toward your examples. What you end up with is a new model whose behavior has permanently shifted.</p>
+<p>Continuing the analogy: if RAG is giving a student an open-book exam, fine-tuning is training that student in a specific discipline. It is like taking a general law graduate and, over months of drafting nothing but legal briefs, instilling the style, the structure, and the reflexes of that work. You no longer have to explain 'this is how a brief is written' every single time; it has become second nature.</p>
+<p>Fine-tuning truly shines not at adding facts, but at teaching behavior and form. If you want the model to hit a particular tone, always return output in a specific format, use a niche field's jargon naturally, or simply perform more accurately on a narrow task, fine-tuning is exactly the right place. Fine-tuning in order to 'teach the model a new fact,' on the other hand, is usually a bad idea: the new knowledge spreads diffusely across the parameters, cannot be cited, and the model may still misremember it.</p>
+<p>One more nuance: whatever you fine-tune into the model also freezes. You train the model today, the law changes tomorrow, and your fine-tuned model has no idea. To update it, you have to run the whole process again. So fine-tuning is tailor-made not for fast-changing facts, but for skills and styles that stay stable.</p>
+<h2>A Comparison Across Four Axes</h2>
+<p>Once you grasp both, the decision sharpens along four axes. First, freshness. RAG wins this by a wide margin: to change the information, you just update the document pool and the model knows instantly. With fine-tuning, every update means a new training round, which is impractical for information that changes often. If your knowledge changes fast, your default choice should be RAG.</p>
+<p>Second, cost and effort. RAG's main cost is a little extra computation per query and the work of building a solid retrieval system; in return, updating the data is cheap and fast. Fine-tuning's cost is front-loaded: preparing high-quality example data and running the training round takes both effort and compute. The upside is that once training is done each query can be leaner, because you do not have to feed the model a long context.</p>
+<p>Third, control and citability. Because RAG can tie an answer to a concrete document, it is auditable and transparent; the user can go to the source and verify it themselves. A fine-tuned model, by contrast, cannot show with a source what it said or why; the knowledge is smeared across its parameters. If it matters to you that the basis of an answer is visible, that alone is a strong argument for RAG.</p>
+<p>Fourth, hallucination — the model confidently making things up. By forcing the model to lean on retrieved evidence, RAG markedly reduces hallucination; as long as the retrieval layer works well, the model does not speak without a basis. Fine-tuning alone does not solve hallucination; in fact, if you try to force-feed it new facts, you can turn the model into an even more confident fabricator. Weighed together, these four axes make the picture clear: a 'bring information in' need points to RAG, and a 'behavior and form' need points to fine-tuning.</p>
+<h2>So Which One, and When?</h2>
+<p>A practical decision rule can be summed up like this. If your problem is 'the model needs access to correct, current, verifiable facts,' the answer is almost always RAG. If a customer-support bot must speak from company documents, if an assistant must rely on a constantly changing catalog, if a legal tool must rest on the legislation in force — here the need is to bring information in, and RAG is designed for exactly that.</p>
+<p>If your problem is 'the model should behave in a certain style, return a certain format consistently, speak a niche field's language naturally, or perform more accurately on a narrow task,' then fine-tuning comes into play. Nailing your brand's tone of voice, getting output in the same structured shape every time, or improving on a specialized classification task the general model struggles with are textbook fine-tuning scenarios.</p>
+<p>A common mistake is trying to make a model 'memorize' fast-changing information through fine-tuning. That path is both expensive and brittle: you retrain every time the information changes, and the model still recalls it without a source and sometimes incorrectly. The right tool for that need is not memorization but an open book — that is, RAG. Conversely, trying to instill a lasting style or a deep domain reflex with RAG alone would also be forcing the wrong tool.</p>
+<h2>What If You Use Both Together?</h2>
+<p>Up to here we have kept the two apart, because their differences had to be seen clearly first. But most mature real-world systems use RAG and fine-tuning not as rivals but as complements. The problems they solve do not overlap: one handles information, the other handles behavior. The right design layers their strengths on top of each other.</p>
+<p>A typical combined architecture works like this: fine-tuning teaches the model to master the domain's language and the desired behavior, while RAG brings in current, verified facts at the moment of every answer. Picture an assistant working in a niche field. Through fine-tuning it may have internalized the field's jargon, expected answer shape, and tone; at the same time, through RAG, it is fed the most up-to-date documents on every query. The result gives answers that are both in the right register and grounded in reality.</p>
+<p>The underlying principle is to put each tool to the job it does best. You do not try to memorize facts into the parameters; you leave them to the retrieval layer. You do not spell out the style and reflexes with long instructions every time; you work them into the model with fine-tuning. In practice most teams start with RAG, because it delivers the biggest gain for the least effort; they reach for fine-tuning only once a behavior or format need becomes clearly defined.</p>
+<h2>Why İçtiHub Leans on RAG</h2>
+<p>At the core of İçtiHub — the legal AI product we build at EcoFluxion — lies, predominantly, RAG. The reason is not philosophical but flows directly from the nature of law. Legislation changes constantly, provisions are repealed, new decisions are handed down. A model speaking from frozen memory will inevitably get it wrong here; a legal assistant that does not know about yesterday's change is dangerous.</p>
+<p>More importantly, what counts in law is not memorization but grounding. Every claim a lawyer makes has to have a source. RAG is exactly what makes this possible: the answers İçtiHub gives can be tied to the actual Turkish legislation and case law that was retrieved; the user can go to the source and verify it with their own eyes. When an answer has no basis, the correct behavior is not to invent one but to be able to say 'I have no basis for this.' That honesty is only possible when the information comes from the retrieval layer.</p>
+<p>This does not mean fine-tuning has no place in law. It can be valuable for behavioral gains, such as the model using legal language naturally or presenting answers in a consistent form. But the source of the facts — which provision is in force and what it actually says — must always come from outside, in a verifiable way. For us the line is clear: fluency comes from the model, the guarantee of accuracy comes from the retrieved source.</p>
+<p>In the end, the choice between RAG and fine-tuning is not a question of 'which is better'; it is a question of 'which problem am I solving right now.' Do you need current, verifiable information, or a lasting behavior? Often the answer is both — but knowing which one to start with is the first step toward a solid system. And in a field like law, where every sentence must have a basis, that first step is almost always RAG.</p>
+      </div>
+      <div class="takeaways"><h3>Key takeaways</h3><ul><li>RAG and fine-tuning are not rivals but two tools for different problems: one brings information in from outside, the other changes the model's behavior from the inside.</li><li>RAG gives the model an open-book exam, handing it current, verified documents at answer time; no retraining is needed when information changes, and every answer can be tied to a source.</li><li>Fine-tuning retrains the model's weights to permanently instill tone, format, and narrow-task skill; it is a poor choice for memorizing new facts.</li><li>Four axes: freshness and citability point to RAG, while a behavior-and-form need points to fine-tuning; RAG also markedly reduces hallucination.</li><li>Mature systems often use both: fine-tuning handles behavior, RAG handles current facts; most teams start with RAG because it delivers the biggest gain for the least effort.</li><li>İçtiHub leans on RAG because what counts in law is grounding, not memorization; answers can be tied to retrieved Turkish legislation and case law, and the system can say 'I don't know' when it must.</li></ul></div>
+    </div>
+
+    <a href="index.html" class="article-back"><i class="fas fa-arrow-left"></i> <span class="lang-content" data-lang="tr">Tüm yazılar</span><span class="lang-content" data-lang="en">All articles</span></a>
+  </main>
+  <footer class="footer" style="padding:2rem 0;">
+  <div class="container text-center">
+    <div style="display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;margin-bottom:1rem;">
+      <a href="../index.html"><span class="lang-content" data-lang="tr">Ana Sayfa</span><span class="lang-content" data-lang="en">Home</span></a>
+      <a href="index.html">Blog</a>
+      <a href="https://ictihub.com" target="_blank" rel="noopener">İçtiHub</a>
+      <a href="../privacy-policy.html"><span class="lang-content" data-lang="tr">Gizlilik</span><span class="lang-content" data-lang="en">Privacy</span></a>
+    </div>
+    <div class="footer-social" style="display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;margin-bottom:1rem;">
+      <a href="https://x.com/ecofluxion" target="_blank" rel="noopener" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+      <a href="https://tr.linkedin.com/company/ecofluxion" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      <a href="https://www.instagram.com/ecofluxion/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.tiktok.com/@ecofluxion" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+    </div>
+    <p class="footer-copyright mb-0">&copy; 2024-2026 EcoFluxion. <span class="lang-content" data-lang="tr">Tüm hakları saklıdır.</span><span class="lang-content" data-lang="en">All rights reserved.</span></p>
+  </div>
+</footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+(function () {
+  var lang = localStorage.getItem('language') || 'tr';
+  function apply(l) {
+    document.documentElement.lang = l;
+    document.querySelectorAll('.lang-content').forEach(function (el) { el.style.display = (el.getAttribute('data-lang') === l) ? '' : 'none'; });
+    document.querySelectorAll('.legal-lang-btn').forEach(function (b) { b.classList.toggle('active', b.getAttribute('data-lang') === l); });
+    localStorage.setItem('language', l);
+  }
+  document.querySelectorAll('.legal-lang-btn').forEach(function (b) { b.addEventListener('click', function () { apply(b.getAttribute('data-lang')); }); });
+  apply(lang);
+})();
+</script>
+</body>
+</html>

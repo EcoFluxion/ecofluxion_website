@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Prompt mühendisliği nedir, yapay zekadan nasıl daha iyi cevap alınır? Net talimat, bağlam, az-örnekli yaklaşım, rol istemleri ve adım adım düşünmeyi örneklerle anlatan rehber.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://ecofluxion.com/blog/prompt-muhendisligi.html">
+  <meta name="theme-color" content="#7CB342">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Prompt Mühendisliği: Yapay Zekadan Daha İyi Cevaplar Almanın Pratik Yolları">
+  <meta property="og:description" content="Prompt mühendisliği nedir, yapay zekadan nasıl daha iyi cevap alınır? Net talimat, bağlam, az-örnekli yaklaşım, rol istemleri ve adım adım düşünmeyi örneklerle anlatan rehber.">
+  <meta property="og:url" content="https://ecofluxion.com/blog/prompt-muhendisligi.html">
+  <meta property="og:site_name" content="EcoFluxion">
+  <meta property="og:locale" content="tr_TR">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:image" content="https://ecofluxion.com/image/ecofluxion_logo.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@ecofluxion">
+  <meta name="twitter:title" content="Prompt Mühendisliği: Yapay Zekadan Daha İyi Cevaplar Almanın Pratik Yolları">
+  <meta name="twitter:description" content="Prompt mühendisliği nedir, yapay zekadan nasıl daha iyi cevap alınır? Net talimat, bağlam, az-örnekli yaklaşım, rol istemleri ve adım adım düşünmeyi örneklerle anlatan rehber.">
+  <meta name="twitter:image" content="https://ecofluxion.com/image/ecofluxion_logo.png">
+  <title>Prompt Mühendisliği: Yapay Zekadan Daha İyi Cevaplar Almanın Pratik Yolları | EcoFluxion Blog</title>
+  <link rel="icon" type="image/png" href="../image/ecofluxion_logo.png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .legal-nav { background: #2f3a22; }
+    .legal-nav .nav-link { color: rgba(255,255,255,.85); }
+    .legal-nav .nav-link:hover, .legal-nav .nav-link.active { color: #fff; }
+    .legal-langbar { display:flex; gap:.4rem; }
+    .legal-lang-btn.active { background:#fff; color:#558B2F; }
+    .article-wrap { max-width: 800px; margin: 0 auto; padding: 130px 1.25rem 70px; }
+    .breadcrumb-nav { font-size:.88rem; color:#999; margin-bottom:1.4rem; }
+    .breadcrumb-nav a { color:#558B2F; text-decoration:none; }
+    .article-cat { color: var(--primary-green,#7CB342); font-weight:700; text-transform:uppercase; letter-spacing:1px; font-size:.82rem; }
+    .article-wrap h1 { font-family:'Montserrat',sans-serif; font-weight:800; line-height:1.2; margin:.4rem 0 1rem; color:#222; }
+    .article-sub { font-size:1.22rem; color:#555; line-height:1.6; margin-bottom:1.4rem; }
+    .article-meta { display:flex; flex-wrap:wrap; gap:.8rem 1.2rem; align-items:center; color:#888; font-size:.9rem; border-top:1px solid #eee; border-bottom:1px solid #eee; padding:.9rem 0; margin-bottom:2rem; }
+    .article-tags { display:flex; flex-wrap:wrap; gap:.4rem; }
+    .article-tag { background:#f3f8ec; color:#558B2F; border-radius:50px; padding:.22rem .7rem; font-size:.78rem; font-weight:600; }
+    .article-body h2 { font-family:'Montserrat',sans-serif; font-weight:700; font-size:1.5rem; margin:2.3rem 0 .8rem; color:#2f3a22; }
+    .article-body p { color:#333; line-height:1.85; font-size:1.07rem; margin-bottom:1.1rem; }
+    .takeaways { background:#f3f8ec; border-left:4px solid var(--primary-green,#7CB342); border-radius:8px; padding:1.2rem 1.5rem; margin:2.6rem 0; }
+    .takeaways h3 { font-family:'Montserrat',sans-serif; font-weight:700; font-size:1.1rem; margin-bottom:.6rem; }
+    .takeaways ul { margin:0; padding-left:1.2rem; } .takeaways li { color:#3a4a28; line-height:1.7; margin-bottom:.3rem; }
+    .article-back { display:inline-block; margin-top:2rem; font-weight:600; color:#558B2F; text-decoration:none; }
+    .blog-head { padding:130px 1.25rem 1.5rem; text-align:center; }
+    .blog-head h1 { font-family:'Montserrat',sans-serif; font-weight:800; color:#2f3a22; }
+    .blog-head p { color:#666; max-width:640px; margin:.5rem auto 0; }
+    .blog-grid { max-width:1120px; margin:0 auto; padding:1rem 1.25rem 80px; display:grid; grid-template-columns:repeat(auto-fill,minmax(330px,1fr)); gap:1.6rem; }
+    .blog-card { background:#fff; border:1px solid #eee; border-radius:14px; overflow:hidden; transition:.3s; display:flex; flex-direction:column; }
+    .blog-card:hover { transform:translateY(-5px); box-shadow:0 15px 35px rgba(0,0,0,.08); }
+    .blog-card-top { height:6px; background:linear-gradient(135deg,#7CB342,#558B2F); }
+    .blog-card-body { padding:1.6rem; display:flex; flex-direction:column; flex:1; }
+    .blog-card h2 { font-family:'Montserrat',sans-serif; font-weight:700; font-size:1.22rem; margin:.45rem 0 .6rem; line-height:1.35; }
+    .blog-card h2 a { color:#222; text-decoration:none; }
+    .blog-card h2 a:hover { color:#558B2F; }
+    .blog-card p { color:#666; line-height:1.6; flex:1; font-size:.97rem; }
+    .blog-card .read-more { color:#558B2F; font-weight:600; text-decoration:none; margin-top:1rem; align-self:flex-start; }
+    .blog-card-meta { color:#999; font-size:.82rem; margin-top:.8rem; }
+</style>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Prompt Mühendisliği: Yapay Zekadan Daha İyi Cevaplar Almanın Pratik Yolları",
+  "description": "Prompt mühendisliği nedir, yapay zekadan nasıl daha iyi cevap alınır? Net talimat, bağlam, az-örnekli yaklaşım, rol istemleri ve adım adım düşünmeyi örneklerle anlatan rehber.",
+  "inLanguage": "tr",
+  "datePublished": "2026-06-07",
+  "dateModified": "2026-06-07",
+  "author": {
+    "@type": "Organization",
+    "name": "EcoFluxion",
+    "url": "https://ecofluxion.com/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "EcoFluxion",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://ecofluxion.com/image/ecofluxion_logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://ecofluxion.com/blog/prompt-muhendisligi.html"
+  },
+  "image": "https://ecofluxion.com/image/ecofluxion_logo.png",
+  "articleSection": "Pratik / Nasıl Yapılır",
+  "keywords": "Prompt Engineering, LLM, Yapay Zeka, Verimlilik"
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://ecofluxion.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://ecofluxion.com/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Prompt Mühendisliği: Yapay Zekadan Daha İyi Cevaplar Almanın Pratik Yolları",
+      "item": "https://ecofluxion.com/blog/prompt-muhendisligi.html"
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top legal-nav">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="../index.html">
+        <img src="../image/ecofluxion_logo.png" alt="EcoFluxion" class="logo-img" style="height:36px;">
+        <span class="ms-2 fw-bold">EcoFluxion</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#blogNav" aria-label="Menu"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="blogNav">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="../index.html#home"><span class="lang-content" data-lang="tr">Ana Sayfa</span><span class="lang-content" data-lang="en">Home</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="../index.html#about"><span class="lang-content" data-lang="tr">Hakkımızda</span><span class="lang-content" data-lang="en">About</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="../index.html#services"><span class="lang-content" data-lang="tr">Neler Geliştiriyoruz</span><span class="lang-content" data-lang="en">What We Build</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="../index.html#projects"><span class="lang-content" data-lang="tr">Ürünler</span><span class="lang-content" data-lang="en">Products</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="../index.html#technologies"><span class="lang-content" data-lang="tr">Teknolojiler</span><span class="lang-content" data-lang="en">Technologies</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="../index.html#careers"><span class="lang-content" data-lang="tr">Kariyer</span><span class="lang-content" data-lang="en">Careers</span></a></li>
+          <li class="nav-item"><a class="nav-link active" href="index.html"><span class="lang-content" data-lang="tr">Blog</span><span class="lang-content" data-lang="en">Blog</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="../index.html#contact"><span class="lang-content" data-lang="tr">İletişim</span><span class="lang-content" data-lang="en">Contact</span></a></li>
+          <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+            <div class="legal-langbar">
+              <button class="btn btn-sm btn-outline-light legal-lang-btn" data-lang="tr">TR</button>
+              <button class="btn btn-sm btn-outline-light legal-lang-btn" data-lang="en">EN</button>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <main class="article-wrap">
+    <nav class="breadcrumb-nav"><a href="../index.html">EcoFluxion</a> / <a href="index.html">Blog</a> / <span class="lang-content" data-lang="tr">Prompt Mühendisliği: Yapay Zekadan Daha İyi Cevaplar Almanın Pratik Yolları</span><span class="lang-content" data-lang="en">Prompt Engineering: A Practical Guide to Getting Better Answers from AI</span></nav>
+
+    <div class="lang-content" data-lang="tr">
+      <div class="article-cat">Pratik / Nasıl Yapılır</div>
+      <h1>Prompt Mühendisliği: Yapay Zekadan Daha İyi Cevaplar Almanın Pratik Yolları</h1>
+      <p class="article-sub">Aynı yapay zeka modeli, kötü bir istemle vasat, iyi bir istemle şaşırtıcı sonuçlar verir. Aradaki farkı yaratan birkaç basit ama güçlü alışkanlığı —net talimat, bağlam, örnek ve adım adım düşünme— somut öncesi/sonrası karşılaştırmalarıyla anlatıyoruz.</p>
+      <div class="article-meta"><span><i class="far fa-clock"></i> 11 dk okuma</span><div class="article-tags"><span class="article-tag">Prompt Engineering</span><span class="article-tag">LLM</span><span class="article-tag">Yapay Zeka</span><span class="article-tag">Verimlilik</span></div></div>
+      <div class="article-body">
+<h2>Prompt mühendisliği aslında nedir?</h2>
+<p>Bir yapay zeka modeline yazdığınız her şeye "istem" (prompt) denir ve aldığınız cevabın kalitesi büyük ölçüde o isteme bağlıdır. Adı kulağa teknik gelse de, prompt mühendisliği gizli bir programlama dili değildir. Özünde tek bir şeydir: ne istediğinizi, yapay zekanın anlayabileceği biçimde net, eksiksiz ve düzenli bir şekilde anlatabilme becerisi. İyi haber, bunun kod yazmayı gerektirmemesi; isteyen herkes öğrenebilir.</p>
+<p>Şöyle bir benzetme işe yarıyor: modeli, son derece bilgili ama sizin kafanızın içini hiç göremeyen, işe yeni başlamış çok yetenekli bir stajyer gibi düşünün. Bu stajyere yalnızca "şunu hallet" derseniz, makul ama büyük ihtimalle yanlış bir tahmin yürütür. Oysa ona kim olduğunuzu, neyi neden istediğinizi, sonucun nasıl görünmesi gerektiğini söyler ve bir de örnek verirseniz, çoğu zaman tam aklınızdakini getirir. Model değişmedi; değişen tek şey, ona verdiğiniz brifingdi.</p>
+<p>Bir noktanın altını çizelim: modern modeller giderek daha "affedici" hale geliyor; yani dağınık bir istemi bile bir şekilde anlamaya çalışıyorlar. Ama affedici olmak, kusursuz olmak değildir. Cevabın doğru, ilgili ve kullanılabilir olmasını istiyorsanız, isteminizi şansa bırakmak yerine bilinçli kurmak hâlâ elinizdeki en hızlı kaldıraçtır. Bu yazıda o kaldıracı nasıl kullanacağınızı, her teknik için bir öncesi/sonrası örneğiyle adım adım göreceğiz.</p>
+<h2>Net talimat: belirsizlik girer, belirsizlik çıkar</h2>
+<p>İyi bir istemin birinci kuralı en sıkıcı ama en güçlü olanıdır: ne istediğinizi açıkça söyleyin. Yapay zeka zihninizi okuyamaz; yalnızca sözcüklerinizi okur. "Kısa", "profesyonel", "birkaç madde" gibi ifadeler size net görünür ama modele yoruma açık birer boşluk olarak ulaşır. O boşlukları siz doldurmazsanız, model sizin yerinize doldurur; ve her zaman umduğunuz gibi doldurmaz.</p>
+<p>Somut bir örnekle gidelim. ÖNCESİ: "E-postamı düzeltir misin?" Bu istem neyin düzeltileceğini (yazım mı, ton mu, uzunluk mu?), kime yazıldığını ve ne kadar müdahale istediğinizi söylemez. SONRASI: "Aşağıdaki e-postayı bir müşteriye göndereceğim. Yazım ve dil bilgisi hatalarını düzelt, tonu kibar ama net tut, 120 kelimeyi geçme. Anlamı değiştirme. Yalnızca düzeltilmiş metni döndür." İkinci istem modele başarının ölçütlerini verdiği için, sonuç da tahmin edilebilir biçimde daha iyi gelir.</p>
+<p>Pratik bir alışkanlık olarak, isteminize üç şeyi koymaya çalışın: görev (ne yapsın), kısıt (neyi yapmasın ya da hangi sınırlar içinde kalsın) ve çıktı biçimi (sonuç nasıl görünsün; madde listesi mi, tablo mu, tek paragraf mı?). Bu üçlü tek başına cevaplarınızın kalitesini gözle görülür biçimde yükseltir.</p>
+<p>Olumsuz talimatlar konusunda küçük bir uyarı: "şunu yapma" demek bazen "şunu yap" demekten daha zayıf çalışır, çünkü modelin dikkatini tam da istemediğiniz şeye çekersiniz. Mümkünse olumsuzu olumluya çevirin. "Teknik jargon kullanma" demek yerine "lise öğrencisinin anlayacağı gündelik bir dille yaz" demek genellikle daha temiz bir sonuç verir.</p>
+<h2>Bağlam: modele bildiklerinizi anlatın</h2>
+<p>Net talimattan sonra en büyük kaldıraç bağlamdır. Bağlam, modelin sizin durumunuza özgü iyi bir cevap üretebilmesi için ihtiyaç duyduğu arka plan bilgisidir: kim olduğunuz, kimin için yazdığınız, hangi sektörde çalıştığınız, elinizdeki ham malzeme ve daha önce neyi denediğiniz. Model internetin büyük bir kısmını okumuş olabilir, ama sizin özel durumunuzu yalnızca siz söylerseniz bilebilir.</p>
+<p>Örneğe bakalım. ÖNCESİ: "Yeni ürünümüz için bir tanıtım metni yaz." Model bir şeyler yazar, ama havada yazar; ürünü, kitleyi ve tonu tahmin etmek zorunda kalır. SONRASI: "Küçük işletmelere yönelik bir muhasebe yazılımı için tanıtım metni yaz. Hedef kitle, muhasebeden anlamayan esnaf ve küçük işletme sahipleri. En büyük vaadimiz, fatura ve KDV takibini otomatikleştirip onlara haftada birkaç saat kazandırması. Ton: güven veren, sade, abartısız. 3 kısa paragraf." İkinci versiyon modele gerçek hammaddeyi verdiği için çok daha kullanışlı çıkar.</p>
+<p>Bağlam verirken bir dengeyi gözetmek gerekir. Çok az bağlam modeli tahmine zorlar; gereğinden fazla bağlam ise asıl talimatı gürültüye boğup modelin önemli ayrıntıyı kaçırmasına yol açabilir. Pratik kural: göreve gerçekten yardımcı olan bilgiyi verin, ilgisizi eleyin. Uzun bir metni özetletecekseniz metnin tamamını verin; ama hayat hikayenizi anlatmanıza gerek yok.</p>
+<p>Bu fikir, EcoFluxion'da geliştirdiğimiz hukuk asistanı İçtiHub'ın temel mantığıyla da örtüşür. Orada modele doğru bağlamı otomatik sağlamak için RAG (Retrieval-Augmented Generation, yani "erişimle beslenmiş üretim") adlı bir yöntem kullanırız: model cevap vermeden önce ilgili gerçek hukuk metinlerini getirip önüne koyarız. Yani sizin elle yaptığınız "bağlam ekleme" işini sistem arka planda otomatikleştirir. İlke aynıdır: iyi bağlam, iyi cevap demektir.</p>
+<h2>Örnek göstermek: az-örnekli (few-shot) yaklaşım</h2>
+<p>Bazen ne istediğinizi anlatmaktansa göstermek çok daha etkilidir. Yapay zeka, kendisine verdiğiniz birkaç örnekteki örüntüyü yakalamakta şaşırtıcı derecede iyidir. Bu yönteme "few-shot" (az-örnekli) istem denir: modele birkaç giriş-çıkış çifti gösterirsiniz, o da aynı kalıbı yeni girdiye uygular. Hiç örnek vermeden yalnızca talimatla istemeye ise "zero-shot" (sıfır-örnekli) denir.</p>
+<p>Somut bir durum. Diyelim ki ürün yorumlarını "olumlu / olumsuz / nötr" diye etiketlemek istiyorsunuz ve "nötr"ün sizin için ne anlama geldiği kendine özgü. ÖNCESİ: "Bu yorumun duygusunu söyle: 'Kargo biraz geç geldi ama ürün gayet iyi.'" Model bir tahmin yapar, ama sizin ölçeğinize göre değil. SONRASI: önce üç örnek verirsiniz —"'Harika, bayıldım' → olumlu", "'Berbat, paramı geri istiyorum' → olumsuz", "'İdare eder, beklediğim gibiydi' → nötr"— sonra asıl yorumu sorarsınız. Artık model sizin "nötr" tanımınızı görmüştür ve etiketleri tam istediğiniz çerçevede üretir.</p>
+<p>Few-shot özellikle şu durumlarda parlar: belirli bir biçim istiyorsanız (her cevabın aynı yapıda olması), kendinize özgü bir tarzı ya da tonu yakalatmak istiyorsanız, ya da görev tarif etmesi zor ama göstermesi kolaysa. İyi seçilmiş iki üç örnek, çoğu zaman uzun bir talimat paragrafından daha net iş görür.</p>
+<p>Birkaç pratik not: örnekleriniz çeşitli ve temsil edici olsun, çünkü model örneklerdeki gizli örüntüyü de kopyalar; hepsi kısa cümlelerden oluşuyorsa, model uzun girdilerde şaşırabilir. Ayrıca örneklerinizin doğru olduğundan emin olun; yanlış bir örnek, modele yanlışı öğretir. Az ama nitelikli örnek, çok ama özensiz örnekten daima iyidir.</p>
+<h2>Rol ve sistem istemleri: modele bir şapka giydirin</h2>
+<p>Modele bir rol vermek; cevabın tonunu, derinliğini ve odağını şaşırtıcı derecede etkiler. "Sen deneyimli bir mali müşavirsin" ya da "Acemilere anlatan sabırlı bir öğretmen gibi davran" demek, modelin hangi bilgi havuzuna ve hangi anlatım tarzına yöneleceğine karar vermesine yardım eder. Bu sihir değil; modelin geniş yeteneklerinden hangi dilimini öne çıkaracağını söylemenin pratik bir yoludur.</p>
+<p>Örnek. ÖNCESİ: "Enflasyon nedir?" Genel, ansiklopedik bir cevap alırsınız. SONRASI: "Ekonomi okumamış meraklı bir lise öğrencisine, günlük hayattan bir örnekle enflasyonun ne olduğunu anlatan sabırlı bir öğretmen gibi cevap ver. Tek paragraf, sade dil." İkinci cevap aynı bilgiyi içerir, ama tam ihtiyacınız olan seviyede ve tonda gelir. Rol, içeriği değil, içeriğin sunumunu hizalar.</p>
+<p>Burada "sistem istemi" (system prompt) kavramına değmek gerek. Birçok yapay zeka aracında iki tür talimat vardır: her mesajda yazdığınız normal istem ve sohbetin tamamı boyunca geçerli kalan, kalıcı bir çerçeve niteliğindeki sistem istemi. Sistem istemi modele "sen kimsin ve genel kuralların neler?" sorusunun cevabını verir; tek tek mesajlar ise o çerçevenin içine düşen görevlerdir. Bir uygulama geliştiriyorsanız, davranışın değişmeyen kısmını sistem istemine koymak iyi bir alışkanlıktır.</p>
+<p>Pratik tavsiye: rolü göreve uygun ve dürüst tutun. Modele "sen bir doktorsun" demek onu gerçek bir doktor yapmaz ve verdiği tıbbi tavsiyeyi güvenilir kılmaz; yalnızca anlatım tarzını etkiler. Rolü, çıktının biçimini ve seviyesini ayarlamak için kullanın; bir uzmanlık garantisi olarak değil. Kritik kararlarda cevabı yine bir insanın doğrulaması gerekir.</p>
+<h2>Adım adım düşünmek: düşünce zinciri (chain-of-thought)</h2>
+<p>Bir mantık yürütme, matematik ya da çok adımlı bir problemde modelden doğrudan cevap istediğinizde, bazen hızlı ama yanlış bir tahminle karşılaşırsınız; tıpkı işlemi atlayıp sonucu pat diye söyleyen bir öğrenci gibi. Bunu düzeltmenin basit ve güçlü bir yolu var: modele acele etmemesini, adım adım düşünmesini söylemek. Bu tekniğe "düşünce zinciri" (chain-of-thought) denir.</p>
+<p>Etkisi şaşırtıcı derecede somuttur. ÖNCESİ: "Bir kalem 7 lira, bir defter kalemin 3 katı. 2 kalem ve 1 defter kaç lira?" Modelden doğrudan sayı isterseniz bazen yanlış sonuca atlar. SONRASI: aynı soruya "Adım adım düşün, önce her kalemi tek tek hesapla, en sonda toplamı yaz" eklersiniz. Model önce defterin 21 lira olduğunu, sonra 2 kalemin 14 lira ettiğini, toplamda 35 lira yaptığını ayrı ayrı yazar. Düşünmeyi görünür kılmak, hata olasılığını ciddi biçimde azaltır.</p>
+<p>Bu yaklaşımın iki ek faydası var. Birincisi denetlenebilirlik: modelin akıl yürütmesini görebildiğiniz için nerede yanıldığını fark edip düzeltebilirsiniz; kapalı bir kutudan çıkan tek bir sayıya bakarak bunu yapamazsınız. İkincisi, karmaşık bir görevi parçalara bölmek modelin yükünü hafifletir; tıpkı büyük bir problemi küçük adımlara bölmenin bir insana yardımcı olması gibi.</p>
+<p>Modern modellerin bir kısmında bu akıl yürütme artık dahili olarak yapılıyor; yani siz istemeseniz de model arka planda adım adım düşünüp size yalnızca sonucu veriyor ("akıl yürüten" modeller bunu standart hale getirdi). Yine de, özellikle karmaşık veya kritik görevlerde, "adım adım düşün" demek hem doğruluğu artırır hem de cevabı denetlenebilir kılar. Basit, tek adımlı sorularda ise buna gerek yoktur; yalnızca gereksiz uzunluk yaratır.</p>
+<h2>Sık yapılan hatalar ve nasıl kaçınılır</h2>
+<p>En sık görülen hata, tek bir istemin içine birbiriyle ilgisiz birçok görevi tıkıştırmaktır. "Bu metni özetle, sonra İngilizceye çevir, bir başlık öner, bir de sosyal medya paylaşımı yaz" gibi bir istemde model genellikle bazı parçaları savsaklar. Çözüm, büyük görevi küçük ve odaklı adımlara bölmektir: önce özet, sonra çeviri, sonra başlık. Her adımda kalite belirgin biçimde artar.</p>
+<p>İkinci sık hata, belirsiz nicelik ve biçim ifadeleridir. "Birkaç fikir ver", "kısa tut", "detaylı yaz" gibi ifadeler kişiden kişiye değişir. Bunun yerine sayı ve biçim verin: "5 fikir, her biri tek cümle", "en fazla 100 kelime", "madde madde, her madde bir cümle". Ölçülebilir bir hedef, hem size hem modele net bir başarı tanımı sunar.</p>
+<p>Üçüncü ve hukuki/teknik konularda en tehlikeli hata, modelin uydurduğu bilgiye —yani "halüsinasyon"a— körü körüne güvenmektir. Yapay zeka, emin olmadığı durumlarda bile kendinden emin bir tonla yanlış bir tarih, sahte bir kaynak ya da var olmayan bir alıntı üretebilir. Korunmanın yolu: kritik bilgileri (sayılar, isimler, tarihler, kaynaklar) bağımsız olarak doğrulamak ve modelden mümkün olduğunda dayanağını göstermesini istemek. İçtiHub'ı tam da bu yüzden, cevaplarını uydurmak yerine gerçek hukuk metinlerine bağlayan ve kaynağına kadar izlenebilir kılan bir mimari üzerine kuruyoruz.</p>
+<p>Dördüncü hata daha incedir: ilk cevabı son cevap sanmak. Yapay zekayla çalışmak tek atışlık bir iş değil, bir diyalogdur. Çoğu zaman ilk çıktı yüzde yetmiş iyidir; geri kalan yüzde otuz, birkaç düzeltici talimatla gelir. Bu da bizi son ilkeye, yani yinelemeye getiriyor.</p>
+<h2>Yineleme: iyi istem bulunmaz, geliştirilir</h2>
+<p>Deneyimli kullanıcıları acemilerden ayıran en büyük fark, mükemmel istemi ilk seferde yazmaları değildir; kötü bir ilk cevabı atıp pes etmek yerine, isteklerini düzelterek cevabı adım adım iyileştirmeleridir. Prompt mühendisliği bir keşif değil, bir döngüdür: iste, cevaba bak, neyin eksik olduğunu fark et, istemini düzelt, yeniden dene.</p>
+<p>Bu döngüyü verimli kılmanın pratik yolu, düzeltmelerinizi belirli yapmaktır. "Bu olmadı, tekrar dene" demek yerine, neyin neden olmadığını söyleyin: "Çok resmî oldu, daha samimi bir dille yaz", "İkinci madde konuyla ilgisiz, onu çıkar", "Örnekler soyut kaldı, günlük hayattan somut örnekler ekle." Model hem son cevabını hem sizin geri bildiriminizi gördüğü için, hedefe her turda biraz daha yaklaşır.</p>
+<p>Zamanla, sık yaptığınız işler için işe yarayan istem kalıplarını biriktirmeye başlarsınız; kendinize ait küçük bir "istem kütüphanesi" gibi. Belirli bir e-posta türünü yazdıran, belirli bir formatta özet çıkaran ya da metni belirli bir tonda düzelten kalıplarınız olur. Bir kez işe yarayan bir kalıbı bulduğunuzda kaydedin ve yeniden kullanın; her seferinde sıfırdan başlamak zorunda değilsiniz.</p>
+<p>Sonuç olarak prompt mühendisliği gizemli bir uzmanlık değil, öğrenilebilir bir iletişim becerisidir. Bu yazıdaki ilkeler —net talimat, yeterli bağlam, örnek gösterme, rol/sistem istemleri, adım adım düşünme ve yineleme— birlikte kullanıldığında, aynı modelden çok daha iyi sonuçlar almanızı sağlar. EcoFluxion'da yapay zeka ürünleri geliştirirken her gün bu ilkelerin üzerine inşa ediyoruz; ama güzel yanı, bunları kullanmak için bir yazılım şirketi olmanıza gerek olmaması. Bir sonraki istemi yazarken bunlardan yalnızca birini deneyin; farkı hemen göreceksiniz.</p>
+      </div>
+      <div class="takeaways"><h3>Öne çıkanlar</h3><ul><li>Prompt mühendisliği gizli bir programlama dili değil, ne istediğinizi yapay zekaya net ve düzenli anlatma becerisidir; kod gerektirmez, isteyen herkes öğrenebilir.</li><li>Her isteme üç şey ekleyin: görev (ne yapsın), kısıt (hangi sınırlarda kalsın) ve çıktı biçimi (sonuç nasıl görünsün). Belirsiz ifadeler yerine sayı ve biçim verin.</li><li>Bağlam ve örnek güçlü kaldıraçlardır: modele durumunuza özgü arka planı verin, gerektiğinde birkaç örnekle (few-shot) istediğiniz kalıbı gösterin.</li><li>Rol ve sistem istemleri cevabın tonunu ve seviyesini hizalar; karmaşık problemlerde 'adım adım düşün' demek (chain-of-thought) doğruluğu artırır ve cevabı denetlenebilir kılar.</li><li>En tehlikeli hata, modelin uydurabileceği bilgiye (halüsinasyon) körü körüne güvenmektir; sayı, isim, tarih ve kaynak gibi kritik bilgileri bağımsız olarak doğrulayın.</li><li>İyi istem ilk seferde bulunmaz, yinelenerek geliştirilir; belirli geri bildirimle cevabı adım adım iyileştirin ve işe yarayan kalıpları kaydedip yeniden kullanın.</li></ul></div>
+    </div>
+
+    <div class="lang-content" data-lang="en">
+      <div class="article-cat">Practical / How-to</div>
+      <h1>Prompt Engineering: A Practical Guide to Getting Better Answers from AI</h1>
+      <p class="article-sub">The same AI model can hand you a forgettable answer from a sloppy prompt and a genuinely useful one from a good prompt. We unpack the few simple but powerful habits behind that gap —clear instructions, context, examples, and step-by-step thinking— with concrete before-and-after comparisons.</p>
+      <div class="article-meta"><span><i class="far fa-clock"></i> 11 min read</span><div class="article-tags"><span class="article-tag">Prompt Engineering</span><span class="article-tag">LLM</span><span class="article-tag">Yapay Zeka</span><span class="article-tag">Verimlilik</span></div></div>
+      <div class="article-body">
+<h2>What is prompt engineering, really?</h2>
+<p>Whatever you type into an AI model is called a "prompt," and the quality of the answer you get back leans heavily on it. Despite the technical-sounding name, prompt engineering is not a secret programming language. At heart it is one thing: the skill of describing what you want —clearly, completely, and in an organized way— so the AI can actually grasp it. The good news is that it requires no coding, and anyone willing to try can learn it.</p>
+<p>Here is an analogy that helps. Picture the model as an extremely knowledgeable but brand-new intern who cannot see inside your head at all. Tell this intern to "handle this," and they will make a reasonable but probably wrong guess. Tell them who you are, what you want and why, what the result should look like, and hand them one example, and they will usually deliver exactly what you had in mind. The model never changed; the only thing that changed was the briefing you gave it.</p>
+<p>One point worth underlining: modern models are increasingly "forgiving," meaning they will try to make sense of even a messy prompt. But forgiving is not the same as flawless. If you want answers that are accurate, relevant, and ready to use, deliberately building your prompt —rather than leaving it to chance— is still the fastest lever you have. In this article we will see how to pull that lever, step by step, with a before-and-after example for every technique.</p>
+<h2>Clear instructions: vagueness in, vagueness out</h2>
+<p>The first rule of a good prompt is the most boring but most powerful one: say plainly what you want. The AI cannot read your mind; it can only read your words. Phrases like "short," "professional," or "a few bullet points" feel precise to you, but they arrive at the model as gaps left open to interpretation. If you do not fill those gaps, the model fills them for you —and it will not always fill them the way you hoped.</p>
+<p>Let's make it concrete. BEFORE: "Can you fix my email?" This prompt never says what to fix (spelling? tone? length?), who the reader is, or how heavily you want it edited. AFTER: "I'm sending the email below to a client. Fix spelling and grammar, keep the tone polite but direct, and stay under 120 words. Don't change the meaning. Return only the corrected text." The second prompt hands the model the criteria for success, so the result is predictably better.</p>
+<p>As a working habit, try to put three things in every prompt: the task (what it should do), the constraints (what it should not do, or which limits to stay within), and the output format (what the result should look like —a bullet list, a table, a single paragraph?). That trio alone visibly raises the quality of your answers.</p>
+<p>A small caution about negative instructions: saying "don't do X" sometimes works worse than saying "do Y," because you pull the model's attention toward the very thing you don't want. Where you can, flip the negative into a positive. Instead of "don't use technical jargon," saying "write in everyday language a high-schooler would understand" usually gives a cleaner result.</p>
+<h2>Context: tell the model what you know</h2>
+<p>After clear instructions, the biggest lever is context. Context is the background the model needs to produce a good answer for your specific situation: who you are, who you're writing for, what industry you're in, the raw material you're holding, and what you've already tried. The model may have read much of the internet, but it can only know your particular situation if you tell it.</p>
+<p>Look at an example. BEFORE: "Write a marketing blurb for our new product." The model will write something, but it writes into thin air; it has to guess the product, the audience, and the tone. AFTER: "Write a marketing blurb for an accounting app aimed at small businesses. The audience is shopkeepers and small-business owners who aren't accountants. Our biggest promise is that it automates invoice and VAT tracking, saving them a few hours a week. Tone: reassuring, plain, no hype. Three short paragraphs." The second version comes out far more usable, because it hands the model the real raw material.</p>
+<p>When you supply context, mind the balance. Too little forces the model to guess; needlessly too much can bury the actual instruction in noise and make the model miss the detail that matters. Practical rule: give the information that genuinely helps the task, and cut the rest. If you want a long text summarized, give the whole text; but you don't need to share your life story.</p>
+<p>This idea mirrors the core logic of İçtiHub, the legal assistant we build at EcoFluxion. There, to feed the model the right context automatically, we use a method called RAG (Retrieval-Augmented Generation): before the model answers, we retrieve the relevant, real legal texts and lay them in front of it. In other words, the "adding context" work you'd do by hand, the system automates in the background. The principle is identical: good context means a good answer.</p>
+<h2>Showing examples: the few-shot approach</h2>
+<p>Sometimes showing what you want is far more effective than describing it. AI is surprisingly good at catching the pattern in a handful of examples you give it. This method is called "few-shot" prompting: you show the model a few input-output pairs, and it applies the same pattern to new input. Asking with instructions alone, no examples, is called "zero-shot."</p>
+<p>A concrete case. Say you want to label product reviews as "positive / negative / neutral," and your idea of neutral is particular. BEFORE: "Tell me the sentiment of this review: 'Shipping was a bit late but the product is great.'" The model makes a guess, but not on your scale. AFTER: you first give three examples —"'Amazing, I loved it' → positive," "'Terrible, I want my money back' → negative," "'It's okay, about what I expected' → neutral"— then ask about the real review. Now the model has seen your definition of neutral and produces labels within exactly the frame you intended.</p>
+<p>Few-shot shines especially when you want a specific format (every answer in the same structure), you want to capture a particular style or tone, or the task is hard to describe but easy to demonstrate. Two or three well-chosen examples often do clearer work than a long paragraph of instructions.</p>
+<p>A few practical notes: make your examples varied and representative, because the model copies the hidden patterns in them too —if they are all short sentences, it may stumble on long inputs. Make sure your examples are correct, as well; a wrong example teaches the model the wrong thing. A few high-quality examples always beat many sloppy ones.</p>
+<h2>Role and system prompts: give the model a hat to wear</h2>
+<p>Giving the model a role affects the tone, depth, and focus of the answer to a surprising degree. Saying "You are an experienced accountant" or "Act like a patient teacher explaining to beginners" helps the model decide which pool of knowledge and which style of delivery to draw on. This is not magic; it's simply a practical way of telling the model which slice of its broad abilities to bring to the front.</p>
+<p>An example. BEFORE: "What is inflation?" You get a general, encyclopedic answer. AFTER: "Answer like a patient teacher explaining to a curious high-schooler who hasn't studied economics, using an example from everyday life. One paragraph, plain language." The second answer carries the same information, but it lands at exactly the level and tone you need. The role aligns not the content, but how the content is presented.</p>
+<p>It's worth pausing here on the idea of a "system prompt." In many AI tools there are two kinds of instruction: the ordinary prompt you type in each message, and the system prompt —a persistent frame that holds across the whole conversation. The system prompt answers "who are you and what are your general rules?" while individual messages are the tasks that fall inside that frame. If you're building an application, putting the unchanging part of the behavior in the system prompt is a good habit.</p>
+<p>Practical advice: keep the role appropriate and honest. Telling the model "you are a doctor" does not make it a real doctor or make its medical advice reliable; it only affects the style of delivery. Use the role to tune the form and level of the output, not as a guarantee of expertise. For critical decisions, the answer still needs a human to verify it.</p>
+<h2>Thinking step by step: chain-of-thought</h2>
+<p>When you ask the model for a direct answer to a reasoning, math, or multi-step problem, you sometimes get a fast but wrong guess —like a student who skips the working and blurts out a result. There is a simple, powerful fix: tell the model not to rush, but to think step by step. This technique is called "chain-of-thought."</p>
+<p>Its effect is surprisingly concrete. BEFORE: "A pen costs 7 liras, a notebook costs 3 times a pen. How much are 2 pens and 1 notebook?" Ask the model for the number directly and it sometimes jumps to the wrong one. AFTER: you add to the same question, "Think step by step, compute each item one by one first, and write the total at the end." The model writes, separately, that the notebook is 21 liras, then that 2 pens come to 14, and that the total is 35. Making the thinking visible substantially cuts the chance of error.</p>
+<p>This approach has two extra benefits. First, auditability: because you can see the model's reasoning, you can spot where it went wrong and correct it; you can't do that with a single number tumbling out of a closed box. Second, breaking a complex task into parts lightens the model's load —just as splitting a big problem into small steps helps a human.</p>
+<p>In some modern models this reasoning now happens internally; even if you don't ask, the model thinks step by step in the background and gives you only the result (the wave of "reasoning" models has made this the default). Still, especially for complex or critical tasks, saying "think step by step" both improves accuracy and makes the answer auditable. For simple, single-step questions there is no need for it; it only adds unnecessary length.</p>
+<h2>Common mistakes and how to avoid them</h2>
+<p>The most common mistake is cramming many unrelated tasks into a single prompt. With a prompt like "summarize this text, then translate it to English, also suggest a title and write a social-media post," the model usually skimps on some of the parts. The fix is to break the big task into small, focused steps: first the summary, then the translation, then the title. Quality rises noticeably at each step.</p>
+<p>The second common mistake is vague quantity and format wording. Phrases like "give a few ideas," "keep it short," or "write in detail" mean different things to different people. Instead, give a number and a format: "5 ideas, each one sentence," "at most 100 words," "as bullet points, one sentence each." A measurable target gives both you and the model a clear definition of success.</p>
+<p>The third —and most dangerous mistake on legal or technical topics— is blindly trusting the model's made-up information, i.e. a "hallucination." Even when it is unsure, AI can produce a wrong date, a fake source, or a nonexistent quotation in a perfectly confident tone. The way to protect yourself: independently verify critical information (numbers, names, dates, sources) and, where possible, ask the model to show its basis. This is exactly why we build İçtiHub on an architecture that grounds its answers in real legal texts rather than inventing them, and keeps them traceable back to the source.</p>
+<p>The fourth mistake is subtler: mistaking the first answer for the final answer. Working with AI is not a one-shot job but a dialogue. The first output is often seventy percent of the way there; the remaining thirty percent comes from a few corrective instructions. And that brings us to the final principle: iteration.</p>
+<h2>Iteration: a good prompt isn't found, it's refined</h2>
+<p>The single biggest difference between experienced users and beginners isn't that they write the perfect prompt on the first try —it's that, instead of throwing away a bad first answer and giving up, they refine their request and improve the answer step by step. Prompt engineering is not a discovery but a loop: ask, look at the answer, notice what's missing, fix your prompt, try again.</p>
+<p>A practical way to make this loop efficient is to make your corrections specific. Instead of "that didn't work, try again," say what didn't work and why: "too formal, write it in a friendlier voice," "the second bullet is off-topic, remove it," "the examples are too abstract, add concrete ones from everyday life." Because the model sees both its last answer and your feedback, it inches closer to the target each round.</p>
+<p>Over time, you start collecting prompt patterns that work for the tasks you do often —like your own little "prompt library." You'll have patterns that draft a certain kind of email, produce a summary in a certain format, or fix text in a certain tone. Once you find a pattern that works, save it and reuse it; you don't have to start from scratch every time.</p>
+<p>In the end, prompt engineering is not a mysterious specialty but a learnable communication skill. The principles in this article —clear instructions, enough context, showing examples, role/system prompts, step-by-step thinking, and iteration— used together, let you pull far better results out of the same model. At EcoFluxion we build on these principles every day while developing AI products; but the nice part is that you don't need to be a software company to use them. On your next prompt, try just one of them —you'll see the difference right away.</p>
+      </div>
+      <div class="takeaways"><h3>Key takeaways</h3><ul><li>Prompt engineering isn't a secret programming language but the skill of telling AI clearly and in an organized way what you want; it needs no code, and anyone willing to try can learn it.</li><li>Add three things to every prompt: the task (what to do), the constraints (which limits to stay within), and the output format (what the result should look like). Replace vague wording with numbers and format.</li><li>Context and examples are powerful levers: give the model the background specific to your situation, and when needed show the pattern you want with a few examples (few-shot).</li><li>Role and system prompts align the tone and level of the answer; for complex problems, saying 'think step by step' (chain-of-thought) improves accuracy and makes the answer auditable.</li><li>The most dangerous mistake is blindly trusting information the model may invent (hallucination); independently verify critical facts like numbers, names, dates, and sources.</li><li>A good prompt isn't found on the first try but refined through iteration; improve the answer step by step with specific feedback, and save reusable patterns that work.</li></ul></div>
+    </div>
+
+    <a href="index.html" class="article-back"><i class="fas fa-arrow-left"></i> <span class="lang-content" data-lang="tr">Tüm yazılar</span><span class="lang-content" data-lang="en">All articles</span></a>
+  </main>
+  <footer class="footer" style="padding:2rem 0;">
+  <div class="container text-center">
+    <div style="display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;margin-bottom:1rem;">
+      <a href="../index.html"><span class="lang-content" data-lang="tr">Ana Sayfa</span><span class="lang-content" data-lang="en">Home</span></a>
+      <a href="index.html">Blog</a>
+      <a href="https://ictihub.com" target="_blank" rel="noopener">İçtiHub</a>
+      <a href="../privacy-policy.html"><span class="lang-content" data-lang="tr">Gizlilik</span><span class="lang-content" data-lang="en">Privacy</span></a>
+    </div>
+    <div class="footer-social" style="display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;margin-bottom:1rem;">
+      <a href="https://x.com/ecofluxion" target="_blank" rel="noopener" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+      <a href="https://tr.linkedin.com/company/ecofluxion" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      <a href="https://www.instagram.com/ecofluxion/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.tiktok.com/@ecofluxion" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+    </div>
+    <p class="footer-copyright mb-0">&copy; 2024-2026 EcoFluxion. <span class="lang-content" data-lang="tr">Tüm hakları saklıdır.</span><span class="lang-content" data-lang="en">All rights reserved.</span></p>
+  </div>
+</footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+(function () {
+  var lang = localStorage.getItem('language') || 'tr';
+  function apply(l) {
+    document.documentElement.lang = l;
+    document.querySelectorAll('.lang-content').forEach(function (el) { el.style.display = (el.getAttribute('data-lang') === l) ? '' : 'none'; });
+    document.querySelectorAll('.legal-lang-btn').forEach(function (b) { b.classList.toggle('active', b.getAttribute('data-lang') === l); });
+    localStorage.setItem('language', l);
+  }
+  document.querySelectorAll('.legal-lang-btn').forEach(function (b) { b.addEventListener('click', function () { apply(b.getAttribute('data-lang')); }); });
+  apply(lang);
+})();
+</script>
+</body>
+</html>

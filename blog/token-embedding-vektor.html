@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Token, embedding ve vektör nedir? Yapay zeka dili nasil sayiya cevirir? Tokenizasyon, vektor uzayi ve kosinus benzerligini sade analojilerle anlatan rehber.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://ecofluxion.com/blog/token-embedding-vektor.html">
+  <meta name="theme-color" content="#7CB342">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Token, Embedding ve Vektör: Yapay Zeka Dili Nasıl Sayıya Çeviriyor?">
+  <meta property="og:description" content="Token, embedding ve vektör nedir? Yapay zeka dili nasil sayiya cevirir? Tokenizasyon, vektor uzayi ve kosinus benzerligini sade analojilerle anlatan rehber.">
+  <meta property="og:url" content="https://ecofluxion.com/blog/token-embedding-vektor.html">
+  <meta property="og:site_name" content="EcoFluxion">
+  <meta property="og:locale" content="tr_TR">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:image" content="https://ecofluxion.com/image/ecofluxion_logo.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@ecofluxion">
+  <meta name="twitter:title" content="Token, Embedding ve Vektör: Yapay Zeka Dili Nasıl Sayıya Çeviriyor?">
+  <meta name="twitter:description" content="Token, embedding ve vektör nedir? Yapay zeka dili nasil sayiya cevirir? Tokenizasyon, vektor uzayi ve kosinus benzerligini sade analojilerle anlatan rehber.">
+  <meta name="twitter:image" content="https://ecofluxion.com/image/ecofluxion_logo.png">
+  <title>Token, Embedding ve Vektör: Yapay Zeka Dili Nasıl Sayıya Çeviriyor? | EcoFluxion Blog</title>
+  <link rel="icon" type="image/png" href="../image/ecofluxion_logo.png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .legal-nav { background: #2f3a22; }
+    .legal-nav .nav-link { color: rgba(255,255,255,.85); }
+    .legal-nav .nav-link:hover, .legal-nav .nav-link.active { color: #fff; }
+    .legal-langbar { display:flex; gap:.4rem; }
+    .legal-lang-btn.active { background:#fff; color:#558B2F; }
+    .article-wrap { max-width: 800px; margin: 0 auto; padding: 130px 1.25rem 70px; }
+    .breadcrumb-nav { font-size:.88rem; color:#999; margin-bottom:1.4rem; }
+    .breadcrumb-nav a { color:#558B2F; text-decoration:none; }
+    .article-cat { color: var(--primary-green,#7CB342); font-weight:700; text-transform:uppercase; letter-spacing:1px; font-size:.82rem; }
+    .article-wrap h1 { font-family:'Montserrat',sans-serif; font-weight:800; line-height:1.2; margin:.4rem 0 1rem; color:#222; }
+    .article-sub { font-size:1.22rem; color:#555; line-height:1.6; margin-bottom:1.4rem; }
+    .article-meta { display:flex; flex-wrap:wrap; gap:.8rem 1.2rem; align-items:center; color:#888; font-size:.9rem; border-top:1px solid #eee; border-bottom:1px solid #eee; padding:.9rem 0; margin-bottom:2rem; }
+    .article-tags { display:flex; flex-wrap:wrap; gap:.4rem; }
+    .article-tag { background:#f3f8ec; color:#558B2F; border-radius:50px; padding:.22rem .7rem; font-size:.78rem; font-weight:600; }
+    .article-body h2 { font-family:'Montserrat',sans-serif; font-weight:700; font-size:1.5rem; margin:2.3rem 0 .8rem; color:#2f3a22; }
+    .article-body p { color:#333; line-height:1.85; font-size:1.07rem; margin-bottom:1.1rem; }
+    .takeaways { background:#f3f8ec; border-left:4px solid var(--primary-green,#7CB342); border-radius:8px; padding:1.2rem 1.5rem; margin:2.6rem 0; }
+    .takeaways h3 { font-family:'Montserrat',sans-serif; font-weight:700; font-size:1.1rem; margin-bottom:.6rem; }
+    .takeaways ul { margin:0; padding-left:1.2rem; } .takeaways li { color:#3a4a28; line-height:1.7; margin-bottom:.3rem; }
+    .article-back { display:inline-block; margin-top:2rem; font-weight:600; color:#558B2F; text-decoration:none; }
+    .blog-head { padding:130px 1.25rem 1.5rem; text-align:center; }
+    .blog-head h1 { font-family:'Montserrat',sans-serif; font-weight:800; color:#2f3a22; }
+    .blog-head p { color:#666; max-width:640px; margin:.5rem auto 0; }
+    .blog-grid { max-width:1120px; margin:0 auto; padding:1rem 1.25rem 80px; display:grid; grid-template-columns:repeat(auto-fill,minmax(330px,1fr)); gap:1.6rem; }
+    .blog-card { background:#fff; border:1px solid #eee; border-radius:14px; overflow:hidden; transition:.3s; display:flex; flex-direction:column; }
+    .blog-card:hover { transform:translateY(-5px); box-shadow:0 15px 35px rgba(0,0,0,.08); }
+    .blog-card-top { height:6px; background:linear-gradient(135deg,#7CB342,#558B2F); }
+    .blog-card-body { padding:1.6rem; display:flex; flex-direction:column; flex:1; }
+    .blog-card h2 { font-family:'Montserrat',sans-serif; font-weight:700; font-size:1.22rem; margin:.45rem 0 .6rem; line-height:1.35; }
+    .blog-card h2 a { color:#222; text-decoration:none; }
+    .blog-card h2 a:hover { color:#558B2F; }
+    .blog-card p { color:#666; line-height:1.6; flex:1; font-size:.97rem; }
+    .blog-card .read-more { color:#558B2F; font-weight:600; text-decoration:none; margin-top:1rem; align-self:flex-start; }
+    .blog-card-meta { color:#999; font-size:.82rem; margin-top:.8rem; }
+</style>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Token, Embedding ve Vektör: Yapay Zeka Dili Nasıl Sayıya Çeviriyor?",
+  "description": "Token, embedding ve vektör nedir? Yapay zeka dili nasil sayiya cevirir? Tokenizasyon, vektor uzayi ve kosinus benzerligini sade analojilerle anlatan rehber.",
+  "inLanguage": "tr",
+  "datePublished": "2026-06-07",
+  "dateModified": "2026-06-07",
+  "author": {
+    "@type": "Organization",
+    "name": "EcoFluxion",
+    "url": "https://ecofluxion.com/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "EcoFluxion",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://ecofluxion.com/image/ecofluxion_logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://ecofluxion.com/blog/token-embedding-vektor.html"
+  },
+  "image": "https://ecofluxion.com/image/ecofluxion_logo.png",
+  "articleSection": "Eğitim",
+  "keywords": "Embedding, Vektör, NLP, Yapay Zeka"
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://ecofluxion.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://ecofluxion.com/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Token, Embedding ve Vektör: Yapay Zeka Dili Nasıl Sayıya Çeviriyor?",
+      "item": "https://ecofluxion.com/blog/token-embedding-vektor.html"
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top legal-nav">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="../index.html">
+        <img src="../image/ecofluxion_logo.png" alt="EcoFluxion" class="logo-img" style="height:36px;">
+        <span class="ms-2 fw-bold">EcoFluxion</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#blogNav" aria-label="Menu"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="blogNav">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="../index.html#home"><span class="lang-content" data-lang="tr">Ana Sayfa</span><span class="lang-content" data-lang="en">Home</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="../index.html#about"><span class="lang-content" data-lang="tr">Hakkımızda</span><span class="lang-content" data-lang="en">About</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="../index.html#services"><span class="lang-content" data-lang="tr">Neler Geliştiriyoruz</span><span class="lang-content" data-lang="en">What We Build</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="../index.html#projects"><span class="lang-content" data-lang="tr">Ürünler</span><span class="lang-content" data-lang="en">Products</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="../index.html#technologies"><span class="lang-content" data-lang="tr">Teknolojiler</span><span class="lang-content" data-lang="en">Technologies</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="../index.html#careers"><span class="lang-content" data-lang="tr">Kariyer</span><span class="lang-content" data-lang="en">Careers</span></a></li>
+          <li class="nav-item"><a class="nav-link active" href="index.html"><span class="lang-content" data-lang="tr">Blog</span><span class="lang-content" data-lang="en">Blog</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="../index.html#contact"><span class="lang-content" data-lang="tr">İletişim</span><span class="lang-content" data-lang="en">Contact</span></a></li>
+          <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+            <div class="legal-langbar">
+              <button class="btn btn-sm btn-outline-light legal-lang-btn" data-lang="tr">TR</button>
+              <button class="btn btn-sm btn-outline-light legal-lang-btn" data-lang="en">EN</button>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <main class="article-wrap">
+    <nav class="breadcrumb-nav"><a href="../index.html">EcoFluxion</a> / <a href="index.html">Blog</a> / <span class="lang-content" data-lang="tr">Token, Embedding ve Vektör: Yapay Zeka Dili Nasıl Sayıya Çeviriyor?</span><span class="lang-content" data-lang="en">Tokens, Embeddings and Vectors: How AI Turns Language Into Numbers</span></nav>
+
+    <div class="lang-content" data-lang="tr">
+      <div class="article-cat">Eğitim</div>
+      <h1>Token, Embedding ve Vektör: Yapay Zeka Dili Nasıl Sayıya Çeviriyor?</h1>
+      <p class="article-sub">Bir bilgisayar harfleri değil, sayıları işler. Peki bir kelime, bir cümle, hatta bir anlam nasıl oluyor da sayıya dönüşüyor? Tokenizasyondan embedding'lere, vektör uzayından anlamsal benzerliğe; yapay zekanın dili kavrama biçimini matematik bilmeden, somut analojilerle anlatıyoruz.</p>
+      <div class="article-meta"><span><i class="far fa-clock"></i> 11 dk okuma</span><div class="article-tags"><span class="article-tag">Embedding</span><span class="article-tag">Vektör</span><span class="article-tag">NLP</span><span class="article-tag">Yapay Zeka</span></div></div>
+      <div class="article-body">
+<h2>Neden Bir Çeviriye İhtiyaç Var?</h2>
+<p>Yapay zekanın "dili anladığını" söylediğimizde aslında ufak bir yalan söyleriz. Bir dil modeli ne harfleri ne kelimeleri ne de cümleleri bizim anladığımız anlamda görür. Onun dünyasında her şey sayıdır. Tıpkı bir hesap makinesinin yalnızca rakamlarla iş görmesi gibi, modern yapay zeka sistemlerinin içinde dönen tek şey de uçsuz bucaksız sayı dizileridir. Demek ki ortada çözülmesi gereken temel bir problem var: insanın yazdığı bir metni, makinenin işleyebileceği sayılara nasıl çeviririz?</p>
+<p>Bu çeviri kulağa mekanik gelse de işin asıl zorluğu mekanik kısımda değil. Bir kelimeyi rastgele bir sayıya eşlemek kolaydır; sözlükteki her kelimeye bir numara verir, işi bitirirsiniz. Ama bu yöntem anlamı tamamen çöpe atar. "Kral" kelimesine 4172, "kraliçe" kelimesine 9038 numarasını verseniz, bu iki sayı arasında o iki kavramın akrabalığına dair tek bir iz bile kalmaz. Asıl mesele, çeviriyi öyle bir yapmaktır ki anlam da metinle birlikte yolculuk etsin.</p>
+<p>Bu yazıda söz konusu çevirinin üç temel taşını adım adım kuracağız: önce metni parçalara ayıran tokenizasyonu, ardından her parçaya anlam yükleyen embedding'leri, en sonunda da bu anlamların içinde yaşadığı vektör uzayını ele alacağız. Amacımız, modern yapay zekanın kalbindeki bu sessiz mekanizmayı hiç matematik geçmişi gerektirmeden anlaşılır kılmak.</p>
+<h2>Tokenizasyon: Metni Lokmalara Bölmek</h2>
+<p>Çevirinin ilk adımı, metni yönetilebilir parçalara bölmektir. Bu parçalara token denir. Bir token çoğu zaman tam bir kelime değildir; bazen bir kelimenin parçası, bazen bir ek, bazen de yalnızca birkaç harftir. Modeli besleyen sistem, gelen metni bu token'lara ayırır ve her birine sözlüğündeki sıra numarasını verir. Belki de en sade benzetme yemektir: bir cümleyi olduğu gibi yutamazsınız, önce ısırıp lokmalara ayırırsınız. Tokenizasyon da modelin metni sindirilebilir lokmalara böldüğü adımdır.</p>
+<p>Peki neden tam kelimeler yerine bu tuhaf alt-parçalar kullanılıyor? Çünkü dünyadaki tüm kelimeleri tek bir sözlüğe sığdırmak imkânsızdır. Yeni kelimeler, yazım hataları, isimler ve teknik terimler sonsuza kadar üretilebilir. Bunun yerine modeller, sık geçen parçalardan oluşan sabit boyutlu bir kelime dağarcığı kullanır. "Kitaplıklarımızdan" gibi uzun bir kelime, model tarafından "kitap" ve onu izleyen ekler gibi tanıdık parçalara bölünebilir. Böylece daha önce hiç görmediği bir kelimeyi bile bildiği parçalardan yeniden kurabilir; tıpkı tanımadığınız bir kelimeyi hecelerine ayırarak okuyabilmeniz gibi.</p>
+<p>Bu bölme işi masum görünür ama sonuçları derindir. Bir metnin kaç token'a bölündüğü doğrudan maliyeti, hızı ve modelin tek seferde göz önünde tutabileceği bağlamın uzunluğunu belirler; çünkü modeller metni token sayısıyla ölçer. Üstelik token sınırları her dilde aynı verimlilikte düşmez. İngilizce için tasarlanmış birçok tokenizer, Türkçe gibi sondan eklemeli dillerde kelimeleri anlamla ilgisi olmayan noktalardan parçalar; bu da aynı şeyi söylemek için daha fazla token harcanması demektir. Yani tokenizasyon, çoğu kişinin sandığının aksine teknik bir ayrıntı değil, ürün kalitesini sessizce belirleyen temel bir tasarım kararıdır.</p>
+<h2>Embedding: Bir Token'a Anlam Yüklemek</h2>
+<p>Token'ları sıra numaralarına çevirdik, ama biraz önce gördüğümüz gibi bu numaralar anlamsızdır; "4172" sayısı "kral" hakkında hiçbir şey söylemez. İşte embedding tam burada devreye girer. Embedding (Türkçesiyle "gömme"), her token'ı tek bir sayı yerine bir sayı listesiyle, yani bir vektörle temsil etmektir. Örneğin "kral" kelimesi artık tek başına 4172 değil, [0.21, -0.83, 0.05, ...] gibi yüzlerce, hatta binlerce sayıdan oluşan uzun bir liste hâline gelir. Bu listedeki her sayı, kelimenin bir özelliğine dair minik bir ipucu taşır.</p>
+<p>Buradaki kilit nokta şudur: bu sayılar elle atanmaz. Model, milyarlarca cümleyi okurken bu vektörleri kendisi öğrenir. Bir kelimenin hangi kelimelerle yan yana geçtiğini, hangi bağlamlarda kullanıldığını gözlemleye gözlemleye, ona öyle bir sayı listesi atar ki benzer bağlamlarda görünen kelimeler benzer listelere sahip olur. Dilbilimde sevilen bir söz vardır: "Bir kelimeyi, birlikte gezdiği arkadaşlarından tanırsınız." Embedding'ler tam olarak bu sezgiyi sayıya döker; bir kelimenin anlamı, onunla birlikte göründüğü kelimelerden damıtılır.</p>
+<p>Bunu basit bir benzetmeyle düşünelim. Diyelim ki her kelimeyi birkaç eksende puanlıyoruz: ne kadar "canlı", ne kadar "kraliyetle ilgili", ne kadar "erkeksi mi dişil mi". "Kral" yüksek kraliyet, yüksek erkek alır; "kraliçe" yüksek kraliyet, yüksek dişil; "muz" ise her üçünden de düşük puan alır. Gerçek embedding'lerde bu eksenler yüzlercedir ve hiçbiri bizim koyduğumuz kadar temiz etiketli değildir; ama fikir aynıdır. Her kelime, anlamını oluşturan özelliklerin bir koordinat listesine dönüşür.</p>
+<h2>Vektör Uzayı: Bir Anlam Haritası</h2>
+<p>Her kelimeyi bir sayı listesine, yani koordinatlara çevirdiğimize göre artık her kelimeyi bir noktaya benzetebiliriz; tıpkı bir haritadaki bir şehrin enlem ve boylamla işaretlenmesi gibi. İki sayıyla iki boyutlu bir harita, üç sayıyla üç boyutlu bir uzay kurabiliriz. Embedding'ler yüzlerce sayı içerdiğinden, kelimelerin yaşadığı yer yüzlerce boyutlu bir uzaydır. Bunu gözümüzde canlandıramayız, ama mantık tıpatıp aynıdır: her kelime, bu devasa uzayda kendine ait bir konuma sahip bir noktadır. İşte bu uzaya vektör uzayı denir.</p>
+<p>Bu haritanın güzelliği, üzerindeki konumların rastgele olmamasıdır. Embedding'ler iyi öğrenildiğinde anlamca yakın kelimeler haritada da birbirine yakın düşer. "Kral", "kraliçe", "taht" ve "saray" bir mahallede toplanırken; "muz", "elma" ve "çilek" bambaşka bir mahallede kümelenir. Anlamın kendisi fiziksel bir yakınlığa dönüşmüştür. Coğrafi bir haritada birbirine yakın şehirler çoğu zaman benzer iklimi paylaşır; bu anlam haritasında da birbirine yakın noktalar benzer anlamlar taşır.</p>
+<p>İşin en şaşırtıcı yanı, bu uzaydaki yönlerin bile anlam taşıyabilmesidir. Klasik örnek şudur: "kral" vektöründen "erkek" yönünü çıkarıp "kadın" yönünü eklediğinizde, vardığınız nokta şaşırtıcı biçimde "kraliçe" noktasının yakınına düşer. Yani uzayda belli bir hareket, kabaca "erkeği dişile çevirme" anlamına denk gelir. Bu temiz örnek her durumda mükemmel işlemese de, kayda değer bir gerçeği gösterir: model anlamı yalnızca konumlarda değil, konumlar arasındaki ilişkilerde de kodlar. Anlam, haritanın hem noktalarında hem de doğrultularında yaşar.</p>
+<h2>Anlamsal Benzerlik: İki Anlamın Arasındaki Açı</h2>
+<p>Kelimeler bir haritada noktalara dönüştüğüne göre, artık çok güçlü bir soru sorabiliriz: iki kelime ne kadar benzer? Bunu ölçmek için iki noktanın ne kadar "aynı yöne baktığına" bakarız. En yaygın yöntem kosinüs benzerliğidir. İsmi korkutucu gelse de fikri sadedir: her vektörü, uzayın merkezinden o noktaya uzanan bir ok gibi düşünün. İki ok aynı yöne işaret ediyorsa, temsil ettikleri anlamlar da benzerdir. Oklar arasındaki açı küçüldükçe benzerlik artar.</p>
+<p>Kosinüs benzerliği tam olarak bu açıyı bir sayıya çevirir. İki ok birebir aynı yöne bakıyorsa benzerlik 1'e yakın olur; tamamen ilgisiz, yani dik açıyla duruyorlarsa 0'a; zıt yönlere bakıyorlarsa -1'e yaklaşır. Önemli bir incelik şu: kosinüs benzerliği okların uzunluğunu değil yalnızca yönünü dikkate alır. Yani bir kavram metinde çok sık geçtiği için "daha uzun" bir vektöre sahip olsa bile benzerlik kararı bundan etkilenmez; yalnızca anlamın yönü konuşur.</p>
+<p>Bunun neden bu kadar değerli olduğunu bir örnekle görelim. "Otomobil" ile "araba" yazılış olarak bambaşkadır; ortak tek bir harf dizisi bile paylaşmazlar. Klasik bir metin araması bu ikisini eşleştiremez. Ama vektör uzayında neredeyse üst üste düşerler, çünkü hep aynı bağlamlarda geçerler. Kosinüs benzerliği bu yakınlığı yüksek bir skorla yakalar. İşte makinelerin kelimeleri değil anlamları karşılaştırabilmesinin sırrı buradadır: benzerlik artık harflerin değil, anlamların ölçüsüdür.</p>
+<h2>Cümleler ve Belgeler: Tek Kelimeden Bütün Metne</h2>
+<p>Şimdiye kadar hep tek kelimelerden konuştuk, ama gerçek dünyada sorular, cümleler ve sayfalarca belgeyle uğraşırız. İyi haber şu: aynı fikir ölçeklenir. Modern modeller yalnızca kelimeleri değil, koca bir cümleyi ya da paragrafı da tek bir vektöre, yani anlam haritasındaki tek bir noktaya sıkıştırabilir. Bu vektör, metnin tüm anlamının bir özeti gibidir. "İş sözleşmesi nasıl feshedilir?" sorusu da, sayfalarca süren bir mevzuat metni de sonunda aynı uzayda birer noktaya dönüşür.</p>
+<p>Bu sıkıştırma, kelimelerinkinden daha incelikli bir iştir. Bir cümlenin anlamı içindeki kelimelerin sadece toplamı değildir; sıraları, hangi kelimenin hangisini nitelediği ve bağlam da işin içine girer. "Köpek adamı ısırdı" ile "Adam köpeği ısırdı" aynı kelimeleri içerir ama bambaşka şeyler anlatır. Bu yüzden cümle embedding'i üreten modeller, kelimeler arasındaki ilişkileri de hesaba katarak tek bir bütünsel temsil çıkarır. Sonuç yine bir vektördür, ama artık bir cümlenin ya da paragrafın anlamını taşır.</p>
+<p>Bu yetenek, yapay zekanın en kullanışlı uygulamalarından birinin kapısını açar: anlamsal arama. Bir kullanıcının sorusunu bir vektöre çevirirsiniz; ardından elinizdeki binlerce belgenin vektörleri arasından soruya en yakın yöne bakanları, yani kosinüs benzerliği en yüksek olanları getirirsiniz. Kullanıcı, sorudaki kelimelerin birebir geçtiği belgeleri değil, sorunun anlamına en yakın belgeleri alır. Anahtar kelime eşleştirmesinin atladığı, yani farklı sözcüklerle ama aynı anlamı anlatan belgeler de böylece yakalanır.</p>
+<h2>Hukuk Gibi Gerçek Bir Alanda Bu Ne İşe Yarar?</h2>
+<p>Bu kavramlar soyut görünebilir, ama somut bir alanda hayata değdiklerinde değerleri ortaya çıkar. Türk hukuku tam da böyle bir alandır. Bir avukatın aradığı, çoğu zaman belli bir kelimenin geçtiği belge değil, belli bir hukuki durumu konu alan kararlardır. Kullanıcı "kira sözleşmesinin haklı nedenle feshi" diye arattığında, bu tam ifadeyi içermese bile aynı hukuki meseleyi tartışan kararların gelmesini ister. Anlamsal benzerlik, kelimelerin ötesine geçip meselenin özünü yakaladığı için bunu mümkün kılar.</p>
+<p>EcoFluxion'da geliştirdiğimiz hukuk teknolojisi ürünü İçtiHub tam olarak bu mekanizmanın üzerine kuruludur. Milyonlarca karar ve binlerce sayfa mevzuat, embedding'ler aracılığıyla bir anlam haritasına yerleştirilir. Bir kullanıcı soru sorduğunda, sorusu da aynı haritaya bir nokta olarak düşer ve sistem o noktaya anlamca en yakın metinleri saniyeler içinde getirir. Klasik anahtar kelime aramasının kaçırdığı, yani farklı terimlerle ifade edilmiş ama aynı hukuki sonuca işaret eden kararlar da böylece görünür hâle gelir.</p>
+<p>Tam bu noktada Türkçenin kendine özgü zorlukları da işin içine girer. Sistemin "taşınmaz", "taşınmazın" ve "taşınmazlardan" gibi biçimlerin aynı kavrama ait olduğunu tanıması; tokenizasyonun Türkçenin yapısına uygun yapılması; embedding'lerin Türkçe hukuk diliyle anlamlı çalışması gerekir. Yani bu yazıda anlattığımız üç temel taş, İçtiHub'ın altında her gün üzerine kafa yorduğumuz somut mühendislik kararlarına dönüşür. Doğru token, anlamlı embedding ve sağlam bir benzerlik ölçüsü olmadan, hukukta güvenilir bir anlamsal arama kurulamaz.</p>
+<h2>Toparlayalım: Sayıların Altındaki Sezgi</h2>
+<p>Başa dönelim. Yapay zeka dili anlamaz; onu sayıya çevirir ve o sayılar üzerinde işlem yapar. Bu çevirinin üç halkasını gördük. Tokenizasyon metni sindirilebilir parçalara böler. Embedding her parçaya, anlamını yansıtan bir koordinat listesi atar. Vektör uzayı ise bu koordinatların yaşadığı bir anlam haritasıdır; bu haritada yakınlık benzerlik demektir ve kosinüs benzerliği bu yakınlığı ölçmemizi sağlar.</p>
+<p>Bu zincirin gücü, anlamı bir geometriye çevirmesinde yatar. Anlam bir kez harita üzerinde bir konuma dönüştüğünde, "bu iki şey ne kadar benzer?" gibi insanca bir soru, "bu iki nokta birbirine ne kadar yakın?" gibi makinece çözülebilir bir soruya dönüşür. Modern yapay zekanın dili kavrar gibi görünmesinin altında yatan sessiz fikir budur: anlamı uzayda bir yere yerleştirmek.</p>
+<p>Bu sezgiyi bir kez edindiğinizde, etrafınızdaki birçok yapay zeka aracının nasıl çalıştığı aydınlanır. Bir öneri sisteminin neden "buna benzer" şeyler bulabildiği, bir asistanın neden tam kelimeleri kullanmasanız da ne demek istediğinizi yakaladığı, bir hukuk aracının neden farklı ifade edilmiş ama aynı meseleyi konu alan kararları getirebildiği; hepsinin temelinde aynı fikir yatar. Dil sayıya çevrilir, anlam bir haritaya yerleşir ve makineler bu harita üzerinde gezinerek bizimkine benzeyen bir anlam duygusu üretir.</p>
+      </div>
+      <div class="takeaways"><h3>Öne çıkanlar</h3><ul><li>Yapay zeka dili "anlamaz"; metni sayılara çevirir ve yalnızca sayılarla işlem yapar. Tüm mesele, bu çeviriyi anlamı kaybetmeden yapabilmektir.</li><li>Tokenizasyon, metni token denen alt-parçalara böler; bir metnin kaç token'a bölündüğü maliyeti, hızı ve bağlam uzunluğunu doğrudan etkiler ve her dilde aynı verimlilikte çalışmaz.</li><li>Embedding, her token'ı tek bir sayı yerine bir sayı listesiyle (vektör) temsil eder; bu sayılar elle değil, modelin milyarlarca cümleyi okuyarak öğrenmesiyle atanır ve kelimenin anlamını kodlar.</li><li>Vektör uzayı bir anlam haritasıdır: her kelime bir noktadır ve anlamca yakın kelimeler birbirine yakın düşer; hatta yönler bile (kral − erkek + kadın ≈ kraliçe) anlam taşıyabilir.</li><li>Kosinüs benzerliği, iki vektörün arasındaki açıya bakarak anlamsal benzerliği ölçer; böylece makineler harfleri değil anlamları karşılaştırabilir ("otomobil" ile "araba" gibi).</li><li>Aynı fikir cümlelere ve belgelere ölçeklenerek anlamsal aramayı mümkün kılar; EcoFluxion'ın İçtiHub'ı bu mekanizmayla, farklı kelimelerle ifade edilse bile aynı hukuki meseleyi konu alan kararları getirir.</li></ul></div>
+    </div>
+
+    <div class="lang-content" data-lang="en">
+      <div class="article-cat">Education</div>
+      <h1>Tokens, Embeddings and Vectors: How AI Turns Language Into Numbers</h1>
+      <p class="article-sub">A computer processes numbers, not letters. So how does a word, a sentence, even a meaning turn into a number? From tokenization to embeddings, from vector space to semantic similarity, we explain how AI grasps language with concrete analogies and no math required.</p>
+      <div class="article-meta"><span><i class="far fa-clock"></i> 11 min read</span><div class="article-tags"><span class="article-tag">Embedding</span><span class="article-tag">Vektör</span><span class="article-tag">NLP</span><span class="article-tag">Yapay Zeka</span></div></div>
+      <div class="article-body">
+<h2>Why We Need a Translation in the First Place</h2>
+<p>When we say AI "understands language," we are telling a small white lie. A language model does not see letters, words or sentences the way we do. In its world, everything is a number. Just as a calculator works only with digits, the one and only thing flowing through a modern AI system is vast strings of numbers. So there is a basic problem to solve: how do we translate text written by a human into numbers a machine can process?</p>
+<p>This translation may sound mechanical, but the real difficulty is not in the mechanics. Mapping a word to some arbitrary number is easy; you give every word in the dictionary an ID and you are done. But that throws meaning straight in the bin. If you assign 4172 to "king" and 9038 to "queen," nothing in those two numbers carries the faintest trace of how closely related the two concepts are. The real challenge is to do the translation so that meaning travels along with the text.</p>
+<p>In this article we will build the three cornerstones of that translation, one at a time: first tokenization, which splits text into pieces; then embeddings, which load meaning onto each piece; and finally the vector space in which those meanings live. The goal is to make this quiet mechanism at the heart of modern AI understandable without requiring any background in mathematics.</p>
+<h2>Tokenization: Cutting Text Into Bite-Size Pieces</h2>
+<p>The first step of the translation is breaking text into manageable pieces. These pieces are called tokens. A token is often not a whole word; sometimes it is part of a word, sometimes a suffix, sometimes just a few letters. The system feeding the model splits incoming text into these tokens and assigns each one its index in the model's vocabulary. Perhaps the simplest analogy is food: you cannot swallow a sentence whole, you first chew it into bites. Tokenization is the step where the model cuts text into digestible bites.</p>
+<p>So why use these odd sub-pieces instead of whole words? Because fitting every word in the world into a single dictionary is impossible. New words, typos, names and technical terms can be invented endlessly. Instead, models use a fixed-size vocabulary made of frequently occurring pieces. A long, rare word like "unbelievable" might be split into familiar parts such as "un," "believ" and "able." This way the model can reconstruct even a word it has never seen out of pieces it already knows, much as you can sound out an unfamiliar word by breaking it into syllables.</p>
+<p>This splitting looks innocent, but its consequences run deep. How many tokens a text breaks into directly determines cost, speed and how much context the model can hold at once, because models measure text in tokens. And token boundaries do not fall with equal efficiency in every language. Many tokenizers built for English shred words in agglutinative languages like Turkish at points that have nothing to do with meaning, which means burning more tokens to say the same thing. Contrary to what most people assume, tokenization is not a technical footnote; it is a foundational design decision that quietly shapes product quality.</p>
+<h2>Embedding: Loading Meaning Onto a Token</h2>
+<p>We turned tokens into index numbers, but as we just saw those numbers are meaningless; "4172" tells you nothing about "king." This is exactly where embeddings come in. An embedding represents each token not as a single number but as a list of numbers, that is, a vector. The word "king" becomes not 4172 alone but a long list like [0.21, -0.83, 0.05, ...] made of hundreds, even thousands, of numbers. Each number in this list carries a tiny clue about one feature of the word.</p>
+<p>The key point is that these numbers are not assigned by hand. The model learns the vectors itself while reading billions of sentences. By watching which words a word sits next to and which contexts it shows up in, it gives it a list of numbers such that words appearing in similar contexts end up with similar lists. There is a beloved saying in linguistics: "You shall know a word by the company it keeps." Embeddings turn exactly this intuition into numbers; a word's meaning is distilled from the words it appears alongside.</p>
+<p>Think of it with a simple analogy. Suppose we score every word along a few axes: how "alive" it is, how "royal" it is, how "masculine versus feminine" it is. "King" scores high on royal and high on masculine; "queen" scores high on royal and high on feminine; "banana" scores low on all three. In real embeddings these axes number in the hundreds and none of them carry labels as tidy as ours; but the idea is the same. Each word becomes a list of coordinates describing the features that make up its meaning.</p>
+<h2>Vector Space: A Map of Meaning</h2>
+<p>Since we have turned every word into a list of numbers, that is, into coordinates, we can now picture every word as a point, just like a city pinned on a map by latitude and longitude. With two numbers we can build a two-dimensional map, with three a three-dimensional space. Because embeddings contain hundreds of numbers, the place where words live is a space of hundreds of dimensions. We cannot visualize it, but the logic is exactly the same: each word is a point with its own position in this vast space. This space is called the vector space.</p>
+<p>The beauty of this map is that the positions on it are not random. When embeddings are learned well, words close in meaning land close together. "King," "queen," "throne" and "palace" gather in one neighborhood, while "banana," "apple" and "strawberry" cluster in a completely different one. Meaning itself has turned into physical proximity. Just as cities near each other on a geographic map often share a similar climate, points near each other on this map of meaning carry similar meanings.</p>
+<p>The most surprising part is that even directions in this space can carry meaning. The classic example: take the vector for "king," subtract the "male" direction and add the "female" direction, and the point you arrive at falls strikingly close to "queen." In other words, a particular movement through the space roughly corresponds to "turning masculine into feminine." This tidy example does not work perfectly in every case, but it points to something real: the model encodes meaning not only in positions but also in the relationships between them. Meaning lives both in the map's points and in its directions.</p>
+<h2>Semantic Similarity: The Angle Between Two Meanings</h2>
+<p>Now that words have become points on a map, we can ask a very powerful question: how similar are two words? To measure this, we look at how much the two points "face the same direction." The most common method is cosine similarity. The name sounds intimidating, but the idea is simple: picture each vector as an arrow reaching from the center of the space out to its point. If two arrows point the same way, the meanings they represent are similar. The smaller the angle between the arrows, the greater the similarity.</p>
+<p>Cosine similarity turns exactly this angle into a number. If two arrows point in precisely the same direction, the similarity is close to 1; if they are completely unrelated, standing at a right angle, it is near 0; if they point in opposite directions, it approaches -1. An important subtlety: cosine similarity considers only the direction of the arrows, not their length. So even if a concept has a "longer" vector because it appears very often, the similarity verdict is not affected; only the direction of the meaning speaks.</p>
+<p>Let us see why this matters with an example. "Automobile" and "car" look completely different in spelling; they share not a single common run of letters. A classic text search cannot match them. But in vector space the two land almost on top of each other, because they keep showing up in the same contexts. Cosine similarity catches this closeness with a high score. This is the secret behind machines comparing meanings rather than words: similarity is now a measure of meanings, not of letters.</p>
+<h2>Sentences and Documents: From a Single Word to a Whole Text</h2>
+<p>So far we have spoken only of single words, but in the real world we deal with questions, sentences and pages of documents. The good news: the same idea scales. Modern models can compress not just words but an entire sentence or paragraph into a single vector, that is, a single point on the map of meaning. This vector is like a summary of the whole text's meaning. The question "How is an employment contract terminated?" and a multi-page piece of legislation both end up as points in the same space.</p>
+<p>This compression is a subtler job than for words. The meaning of a sentence is not merely the sum of its words; their order, which word modifies which, and the surrounding context all come into play. "The dog bit the man" and "The man bit the dog" contain the same words but say entirely different things. So models that produce sentence embeddings account for the relationships between words and generate a single holistic representation. The result is again a vector, but now it carries the meaning of a sentence or a paragraph.</p>
+<p>This ability opens the door to one of AI's most useful applications: semantic search. You turn a user's question into a vector, then, among the vectors of the thousands of documents you hold, you retrieve the ones facing the most similar direction, that is, those with the highest cosine similarity to the question. The user gets not the documents that happen to contain the exact words of the question, but the documents closest to its meaning. Documents that say the same thing in different words, which keyword matching misses entirely, are caught this way too.</p>
+<h2>What Does This Do in a Real Domain Like Law?</h2>
+<p>These concepts can seem abstract, but their value shows up when they touch ground in a concrete domain. Turkish law is exactly such a domain. What a lawyer is after is usually not a document that happens to contain a particular word, but rulings that deal with a particular legal situation. When a user searches for "termination of a lease for just cause," they want rulings on that same legal issue to surface even if those rulings never use that exact phrase. Semantic similarity makes this possible because it reaches past the words to grasp the essence of the matter.</p>
+<p>İçtiHub, the legal-tech product we build at EcoFluxion, is founded on precisely this mechanism. Millions of rulings and thousands of pages of legislation are placed onto a map of meaning through embeddings. When a user asks a question, that question lands on the same map as a point, and the system retrieves the texts closest in meaning within seconds. Rulings that classic keyword search would miss, phrased in different terms but pointing to the same legal conclusion, become visible this way.</p>
+<p>It is right here that Turkish's own peculiar challenges enter the picture. The system has to recognize that forms like "taşınmaz," "taşınmazın" and "taşınmazlardan" all belong to the same concept; tokenization has to suit Turkish structure; and embeddings have to work meaningfully with Turkish legal language. So the three cornerstones described in this article turn into concrete engineering decisions we wrestle with every day beneath İçtiHub. Without the right tokens, meaningful embeddings and a sound similarity measure, you simply cannot build reliable semantic search in law.</p>
+<h2>Wrapping Up: The Intuition Beneath the Numbers</h2>
+<p>Let us return to the start. AI does not understand language; it translates it into numbers and operates on those numbers. We have seen the three links of that translation. Tokenization splits text into digestible pieces. Embedding gives each piece a list of coordinates reflecting its meaning. And the vector space is a map of meaning in which those coordinates live; on this map, closeness means similarity, and cosine similarity lets us measure that closeness.</p>
+<p>The power of this chain lies in turning meaning into geometry. Once meaning becomes a position on a map, a human question like "how similar are these two things?" turns into a machine-solvable one like "how close are these two points?" This is the quiet idea beneath modern AI's appearance of grasping language: placing meaning somewhere in space.</p>
+<p>Once you hold this intuition, the workings of many AI tools around you light up. Why a recommender system can find things "similar to this," why an assistant catches what you mean even when you do not use the exact words, why a legal tool can surface rulings phrased differently but about the same issue; the same idea sits beneath all of them. Language is turned into numbers, meaning is placed on a map, and machines navigate that map to produce a sense of meaning that resembles our own.</p>
+      </div>
+      <div class="takeaways"><h3>Key takeaways</h3><ul><li>AI does not "understand" language; it translates text into numbers and operates only on numbers. The whole point is to do that translation without losing meaning.</li><li>Tokenization splits text into sub-pieces called tokens; how many tokens a text breaks into directly affects cost, speed and context length, and it does not work with equal efficiency in every language.</li><li>An embedding represents each token as a list of numbers (a vector) rather than a single number; these numbers are learned as the model reads billions of sentences, not set by hand, and they encode the word's meaning.</li><li>Vector space is a map of meaning: each word is a point, and words close in meaning land close together; even directions can carry meaning (king − male + female ≈ queen).</li><li>Cosine similarity measures semantic similarity by looking at the angle between two vectors, letting machines compare meanings rather than letters (like "automobile" and "car").</li><li>The same idea scales to sentences and documents to enable semantic search; EcoFluxion's İçtiHub uses this mechanism to surface rulings about the same legal issue even when they are phrased in different words.</li></ul></div>
+    </div>
+
+    <a href="index.html" class="article-back"><i class="fas fa-arrow-left"></i> <span class="lang-content" data-lang="tr">Tüm yazılar</span><span class="lang-content" data-lang="en">All articles</span></a>
+  </main>
+  <footer class="footer" style="padding:2rem 0;">
+  <div class="container text-center">
+    <div style="display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;margin-bottom:1rem;">
+      <a href="../index.html"><span class="lang-content" data-lang="tr">Ana Sayfa</span><span class="lang-content" data-lang="en">Home</span></a>
+      <a href="index.html">Blog</a>
+      <a href="https://ictihub.com" target="_blank" rel="noopener">İçtiHub</a>
+      <a href="../privacy-policy.html"><span class="lang-content" data-lang="tr">Gizlilik</span><span class="lang-content" data-lang="en">Privacy</span></a>
+    </div>
+    <div class="footer-social" style="display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;margin-bottom:1rem;">
+      <a href="https://x.com/ecofluxion" target="_blank" rel="noopener" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+      <a href="https://tr.linkedin.com/company/ecofluxion" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      <a href="https://www.instagram.com/ecofluxion/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.tiktok.com/@ecofluxion" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+    </div>
+    <p class="footer-copyright mb-0">&copy; 2024-2026 EcoFluxion. <span class="lang-content" data-lang="tr">Tüm hakları saklıdır.</span><span class="lang-content" data-lang="en">All rights reserved.</span></p>
+  </div>
+</footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+(function () {
+  var lang = localStorage.getItem('language') || 'tr';
+  function apply(l) {
+    document.documentElement.lang = l;
+    document.querySelectorAll('.lang-content').forEach(function (el) { el.style.display = (el.getAttribute('data-lang') === l) ? '' : 'none'; });
+    document.querySelectorAll('.legal-lang-btn').forEach(function (b) { b.classList.toggle('active', b.getAttribute('data-lang') === l); });
+    localStorage.setItem('language', l);
+  }
+  document.querySelectorAll('.legal-lang-btn').forEach(function (b) { b.addEventListener('click', function () { apply(b.getAttribute('data-lang')); }); });
+  apply(lang);
+})();
+</script>
+</body>
+</html>

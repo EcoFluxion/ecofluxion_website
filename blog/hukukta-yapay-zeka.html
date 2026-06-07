@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Yapay zeka hukukta araştırma, taslak ve incelemeyi nasıl hızlandırır? Uydurma atıf, gizlilik ve aşırı güven risklerini; topraklama (grounding), RAG ve insan denetimini anlaşılır biçimde anlatıyoruz.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://ecofluxion.com/blog/hukukta-yapay-zeka.html">
+  <meta name="theme-color" content="#7CB342">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Hukukta Yapay Zeka: Fırsatlar, Riskler ve Sorumluluk">
+  <meta property="og:description" content="Yapay zeka hukukta araştırma, taslak ve incelemeyi nasıl hızlandırır? Uydurma atıf, gizlilik ve aşırı güven risklerini; topraklama (grounding), RAG ve insan denetimini anlaşılır biçimde anlatıyoruz.">
+  <meta property="og:url" content="https://ecofluxion.com/blog/hukukta-yapay-zeka.html">
+  <meta property="og:site_name" content="EcoFluxion">
+  <meta property="og:locale" content="tr_TR">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:image" content="https://ecofluxion.com/image/ecofluxion_logo.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@ecofluxion">
+  <meta name="twitter:title" content="Hukukta Yapay Zeka: Fırsatlar, Riskler ve Sorumluluk">
+  <meta name="twitter:description" content="Yapay zeka hukukta araştırma, taslak ve incelemeyi nasıl hızlandırır? Uydurma atıf, gizlilik ve aşırı güven risklerini; topraklama (grounding), RAG ve insan denetimini anlaşılır biçimde anlatıyoruz.">
+  <meta name="twitter:image" content="https://ecofluxion.com/image/ecofluxion_logo.png">
+  <title>Hukukta Yapay Zeka: Fırsatlar, Riskler ve Sorumluluk | EcoFluxion Blog</title>
+  <link rel="icon" type="image/png" href="../image/ecofluxion_logo.png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .legal-nav { background: #2f3a22; }
+    .legal-nav .nav-link { color: rgba(255,255,255,.85); }
+    .legal-nav .nav-link:hover, .legal-nav .nav-link.active { color: #fff; }
+    .legal-langbar { display:flex; gap:.4rem; }
+    .legal-lang-btn.active { background:#fff; color:#558B2F; }
+    .article-wrap { max-width: 800px; margin: 0 auto; padding: 130px 1.25rem 70px; }
+    .breadcrumb-nav { font-size:.88rem; color:#999; margin-bottom:1.4rem; }
+    .breadcrumb-nav a { color:#558B2F; text-decoration:none; }
+    .article-cat { color: var(--primary-green,#7CB342); font-weight:700; text-transform:uppercase; letter-spacing:1px; font-size:.82rem; }
+    .article-wrap h1 { font-family:'Montserrat',sans-serif; font-weight:800; line-height:1.2; margin:.4rem 0 1rem; color:#222; }
+    .article-sub { font-size:1.22rem; color:#555; line-height:1.6; margin-bottom:1.4rem; }
+    .article-meta { display:flex; flex-wrap:wrap; gap:.8rem 1.2rem; align-items:center; color:#888; font-size:.9rem; border-top:1px solid #eee; border-bottom:1px solid #eee; padding:.9rem 0; margin-bottom:2rem; }
+    .article-tags { display:flex; flex-wrap:wrap; gap:.4rem; }
+    .article-tag { background:#f3f8ec; color:#558B2F; border-radius:50px; padding:.22rem .7rem; font-size:.78rem; font-weight:600; }
+    .article-body h2 { font-family:'Montserrat',sans-serif; font-weight:700; font-size:1.5rem; margin:2.3rem 0 .8rem; color:#2f3a22; }
+    .article-body p { color:#333; line-height:1.85; font-size:1.07rem; margin-bottom:1.1rem; }
+    .takeaways { background:#f3f8ec; border-left:4px solid var(--primary-green,#7CB342); border-radius:8px; padding:1.2rem 1.5rem; margin:2.6rem 0; }
+    .takeaways h3 { font-family:'Montserrat',sans-serif; font-weight:700; font-size:1.1rem; margin-bottom:.6rem; }
+    .takeaways ul { margin:0; padding-left:1.2rem; } .takeaways li { color:#3a4a28; line-height:1.7; margin-bottom:.3rem; }
+    .article-back { display:inline-block; margin-top:2rem; font-weight:600; color:#558B2F; text-decoration:none; }
+    .blog-head { padding:130px 1.25rem 1.5rem; text-align:center; }
+    .blog-head h1 { font-family:'Montserrat',sans-serif; font-weight:800; color:#2f3a22; }
+    .blog-head p { color:#666; max-width:640px; margin:.5rem auto 0; }
+    .blog-grid { max-width:1120px; margin:0 auto; padding:1rem 1.25rem 80px; display:grid; grid-template-columns:repeat(auto-fill,minmax(330px,1fr)); gap:1.6rem; }
+    .blog-card { background:#fff; border:1px solid #eee; border-radius:14px; overflow:hidden; transition:.3s; display:flex; flex-direction:column; }
+    .blog-card:hover { transform:translateY(-5px); box-shadow:0 15px 35px rgba(0,0,0,.08); }
+    .blog-card-top { height:6px; background:linear-gradient(135deg,#7CB342,#558B2F); }
+    .blog-card-body { padding:1.6rem; display:flex; flex-direction:column; flex:1; }
+    .blog-card h2 { font-family:'Montserrat',sans-serif; font-weight:700; font-size:1.22rem; margin:.45rem 0 .6rem; line-height:1.35; }
+    .blog-card h2 a { color:#222; text-decoration:none; }
+    .blog-card h2 a:hover { color:#558B2F; }
+    .blog-card p { color:#666; line-height:1.6; flex:1; font-size:.97rem; }
+    .blog-card .read-more { color:#558B2F; font-weight:600; text-decoration:none; margin-top:1rem; align-self:flex-start; }
+    .blog-card-meta { color:#999; font-size:.82rem; margin-top:.8rem; }
+</style>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Hukukta Yapay Zeka: Fırsatlar, Riskler ve Sorumluluk",
+  "description": "Yapay zeka hukukta araştırma, taslak ve incelemeyi nasıl hızlandırır? Uydurma atıf, gizlilik ve aşırı güven risklerini; topraklama (grounding), RAG ve insan denetimini anlaşılır biçimde anlatıyoruz.",
+  "inLanguage": "tr",
+  "datePublished": "2026-06-07",
+  "dateModified": "2026-06-07",
+  "author": {
+    "@type": "Organization",
+    "name": "EcoFluxion",
+    "url": "https://ecofluxion.com/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "EcoFluxion",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://ecofluxion.com/image/ecofluxion_logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://ecofluxion.com/blog/hukukta-yapay-zeka.html"
+  },
+  "image": "https://ecofluxion.com/image/ecofluxion_logo.png",
+  "articleSection": "LegalTech",
+  "keywords": "Hukuk, LegalTech, Yapay Zeka, İçtiHub, RAG"
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://ecofluxion.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://ecofluxion.com/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Hukukta Yapay Zeka: Fırsatlar, Riskler ve Sorumluluk",
+      "item": "https://ecofluxion.com/blog/hukukta-yapay-zeka.html"
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top legal-nav">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="../index.html">
+        <img src="../image/ecofluxion_logo.png" alt="EcoFluxion" class="logo-img" style="height:36px;">
+        <span class="ms-2 fw-bold">EcoFluxion</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#blogNav" aria-label="Menu"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="blogNav">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="../index.html#home"><span class="lang-content" data-lang="tr">Ana Sayfa</span><span class="lang-content" data-lang="en">Home</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="../index.html#about"><span class="lang-content" data-lang="tr">Hakkımızda</span><span class="lang-content" data-lang="en">About</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="../index.html#services"><span class="lang-content" data-lang="tr">Neler Geliştiriyoruz</span><span class="lang-content" data-lang="en">What We Build</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="../index.html#projects"><span class="lang-content" data-lang="tr">Ürünler</span><span class="lang-content" data-lang="en">Products</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="../index.html#technologies"><span class="lang-content" data-lang="tr">Teknolojiler</span><span class="lang-content" data-lang="en">Technologies</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="../index.html#careers"><span class="lang-content" data-lang="tr">Kariyer</span><span class="lang-content" data-lang="en">Careers</span></a></li>
+          <li class="nav-item"><a class="nav-link active" href="index.html"><span class="lang-content" data-lang="tr">Blog</span><span class="lang-content" data-lang="en">Blog</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="../index.html#contact"><span class="lang-content" data-lang="tr">İletişim</span><span class="lang-content" data-lang="en">Contact</span></a></li>
+          <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+            <div class="legal-langbar">
+              <button class="btn btn-sm btn-outline-light legal-lang-btn" data-lang="tr">TR</button>
+              <button class="btn btn-sm btn-outline-light legal-lang-btn" data-lang="en">EN</button>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <main class="article-wrap">
+    <nav class="breadcrumb-nav"><a href="../index.html">EcoFluxion</a> / <a href="index.html">Blog</a> / <span class="lang-content" data-lang="tr">Hukukta Yapay Zeka: Fırsatlar, Riskler ve Sorumluluk</span><span class="lang-content" data-lang="en">AI in Law: Opportunities, Risks, and Responsibility</span></nav>
+
+    <div class="lang-content" data-lang="tr">
+      <div class="article-cat">LegalTech</div>
+      <h1>Hukukta Yapay Zeka: Fırsatlar, Riskler ve Sorumluluk</h1>
+      <p class="article-sub">Yapay zeka hukuki araştırmayı, taslak yazımını ve belge incelemesini dakikalara indiriyor. Ama uydurma atıflar, gizlilik açıkları ve sessizce yerleşen aşırı güven gibi gerçek riskler de getiriyor. Bu yazıda neyin gerçekten işe yaradığını, neyin tehlikeli olduğunu ve son sözün neden hâlâ hukukçuda kaldığını açıklıyoruz.</p>
+      <div class="article-meta"><span><i class="far fa-clock"></i> 11 dk okuma</span><div class="article-tags"><span class="article-tag">Hukuk</span><span class="article-tag">LegalTech</span><span class="article-tag">Yapay Zeka</span><span class="article-tag">İçtiHub</span><span class="article-tag">RAG</span></div></div>
+      <div class="article-body">
+<h2>Neden şimdi: hukuk, yapay zeka için adeta biçilmiş bir alan</h2>
+<p>Hukuk, özünde dille yapılan bir iştir. Bir avukatın günü; karar okumak, dilekçe yazmak, sözleşme maddelerini karşılaştırmak, mevzuat taramak ve bütün bunları tutarlı bir argümana dönüştürmekle geçer. Hammadde de metindir, ürün de metin. Tam da bu yüzden, metni anlamak ve üretmek üzere kurulmuş büyük dil modelleri (large language models, kısaca LLM) hukukla şaşırtıcı bir uyum içinde.</p>
+<p>Peki bu model tam olarak nedir? Büyük dil modeli, devasa miktarda metinle eğitilmiş ve 'bir sonraki kelime ne olmalı' sorusunu olağanüstü iyi yanıtlayan bir tahmin makinesidir. Basit görünen bu yetenek pratikte uzun bir kararı özetlemeye, bir paragrafı yeniden yazmaya, iki sözleşme arasındaki farkı bulmaya ya da bir soruyu doğal dilde yanıtlamaya dönüşür. Hukukçunun günlük işlerinin çoğunun tam olarak bu kalıplara oturması bir rastlantı değil.</p>
+<p>Burada en baştan bir noktanın altını çizelim: yapay zeka hukukta 'akıl yürüten bir hâkim' değil, 'çok hızlı okuyan ve yazan bir stajyer' gibidir. Bu benzetme yazının geri kalanının da pusulası olacak. Doğru kullanıldığında bu stajyer, saatler süren mekanik işi dakikalara indirir. Yanlış kullanıldığında ise kendinden son derece emin bir dille yanlış bilgi üretir. Bu yazının amacı, o iki durumu birbirinden ayırt etmeyi öğretmek.</p>
+<h2>Üç büyük fırsat: araştırma, taslak ve inceleme</h2>
+<p>Yapay zekanın hukukta en çok değer kattığı yer araştırmadır. Klasik arama motorları kelime eşler; oysa hukukçunun aradığı çoğu zaman bir kelime değil, bir hukuki durumdur. İşte anlamsal arama (semantic search) tam burada devreye girer: bir uyuşmazlığı kendi cümlelerinizle anlatırsınız, sistem ifade bambaşka olsa bile özü örtüşen kararları önünüze getirir. 'Haksız fesih' yazmasanız bile, anlattığınız olayın aynı hukuki çekirdeği taşıyan emsallerine ulaşırsınız. Saatlerce sekme açıp kapamak yerine, dakikalar içinde ilgili kararlardasınızdır.</p>
+<p>İkinci fırsat taslak yazımıdır. Bir cevap dilekçesinin iskeleti, bir sözleşmenin standart maddeleri ya da bir ihtarnamenin kalıbı çoğu zaman tekrar eder. Yapay zeka, dosyanın bağlamına uyarlanmış bir ilk taslakla işe başlamanızı sağlar. Bu, herkesin bildiği o boş sayfa direncini ortadan kaldırır; siz de enerjinizi sıfırdan cümle kurmaya değil, argümanı keskinleştirmeye ayırırsınız. Önemli olan şudur: bu bir bitmiş metin değil, üzerine inşa edeceğiniz bir kaba taslaktır.</p>
+<p>Üçüncü fırsat incelemedir. Yüz sayfalık bir sözleşmede riskli maddeleri taramak, iki versiyon arasındaki farkları çıkarmak, bir dilekçenin dayandığı argümanları ve atıf yaptığı maddeleri listelemek; insan için yorucu ve hata payı yüksek işlerdir. Yorgun bir göz, otuzuncu sayfadaki bir cezai şart maddesini kolayca atlar. Yapay zeka bu taramayı yorulmadan ve tutarlı biçimde yapar. Ama dikkat: 'tarar ve öne çıkarır', 'karar verir' demek değildir. Son hükmü hâlâ insan kurar.</p>
+<h2>En tehlikeli risk: uydurulmuş atıflar (halüsinasyon)</h2>
+<p>Yapay zekanın hukuktaki en sinsi riski 'halüsinasyon' denen olgudur. Bir dil modeli, gerçekten var olan bir kararı getirmek yerine; var olması mümkün görünen ama aslında hiç bulunmayan bir karar, esas-karar numarası ya da alıntı üretebilir. Üstelik bunu tereddütsüz, akıcı ve son derece inandırıcı bir dille yapar. İşin asıl tehlikesi de burada: model yanıldığında bunu bir uyarı sesiyle değil, tam bir özgüvenle yapar.</p>
+<p>Neden olduğunu anlamak önemli. Ham bir dil modeli bir veri tabanı değildir; gerçekleri bir rafa koyup oradan çağırmaz. Eğitildiği metinlerdeki örüntülere bakarak 'böyle bir cümle nasıl devam ederdi' diye tahmin yürütür. Bir karar numarasının formatını taklit etmek onun için çok kolaydır; o numaranın gerçekten var olup olmadığını denetlemekse, sırf kendi başına bırakıldığında, tam olarak yapamadığı şeydir. Bir bakıma, hatırı sayılır bir kelime hazinesiyle ama hiçbir gerçeği doğrulama imkânı olmadan yazan birini düşünün.</p>
+<p>Ve bu teorik bir kaygı değil. Yalnızca 2025 boyunca, dünyanın dört bir yanındaki mahkemelerde avukatların yapay zekanın uydurduğu sahte kararları dosyaya sundukları yüzlerce vaka belgelendi; bunların bir kısmı para cezaları ve disiplin yaptırımlarıyla sonuçlandı. Bazı hâkimler bu konuda açıkça uyardığı hâlde olaylar tekrarladı. Ders nettir: hukukta bir atıf, kaynağına kadar doğrulanmadan asla güvenilir sayılamaz. Ve bu doğrulamayı yapacak mekanizma, modelin iç sesine değil, sistemin tasarımına ve hukukçunun denetimine ait olmalı.</p>
+<h2>Topraklama (grounding): modeli gerçek metne bağlamak</h2>
+<p>Halüsinasyon riskine karşı bugün bilinen en sağlam yanıt 'topraklama' (grounding) ilkesidir. Fikir basit ama güçlü: modelin yanıtını, hafızasındaki bulanık izlere değil, önüne konan gerçek ve doğrulanabilir kaynaklara dayandırmak. Yani modele 'şu konudaki fikrin nedir' demek yerine, önce ilgili gerçek belgeleri bulup 'yalnızca bu metinlere dayanarak cevap ver' demek. Açık sınavla kapalı sınav arasındaki fark gibi: modelin önüne kaynak kitabı koyarsınız.</p>
+<p>Bunu sağlayan en yaygın mimari, İngilizce kısaltmasıyla RAG (Retrieval-Augmented Generation), yani 'getirmeyle güçlendirilmiş üretim'dir. Akış şöyle işler: kullanıcının sorusu önce bir hukuk korpusunda (kararlar, kanunlar, yönetmelikler arasında) anlamca en yakın gerçek belgeleri bulmak için kullanılır. Bulunan bu belgeler modele bağlam olarak verilir. Model de yanıtını havadan değil, bu somut metinlerin üzerine kurar ve hangi karara ya da maddeye dayandığını gösterir.</p>
+<p>Topraklamanın hukuk açısından iki kritik kazanımı var. Birincisi izlenebilirlik: her cümle bir kaynağa bağlandığı için, hukukçu körü körüne güvenmek yerine tek tıkla gidip kaynağı kendisi görebilir. İkincisi güncellik: yeni bir karar ya da mevzuat değişikliği geldiğinde modeli baştan eğitmek gerekmez; bilgi tabanını güncellemek yeterlidir. İçtiHub'ı geliştirirken topraklamayı bilinçli olarak temel ilke seçtik; çünkü hukukta 'kendinden emin ama dayanaksız' bir yanıt, çoğu zaman hiç yanıt olmamasından daha tehlikelidir.</p>
+<p>Yine de dürüst olalım: topraklama halüsinasyonu azaltır, sıfırlamaz. Model bazen önüne konan kaynağı yanlış yorumlayabilir ya da kaynak yetersiz kaldığında boşluğu kendi tahminiyle doldurmaya çalışabilir. Bu yüzden topraklama tek başına yeterli bir güvence değil; ancak bir sonraki ilkeyle, yani insan denetimiyle birlikte gerçek anlamını kazanan bir temeldir.</p>
+<h2>Gizlilik: hukuki sırrın yeni sınavı</h2>
+<p>Hukuki belgeler doğası gereği hassastır. Bir dosya; müvekkilin kişisel verilerini, ticari sırlarını, sağlık bilgilerini ya da bir uyuşmazlığın en mahrem ayrıntılarını içerebilir. Avukatın sır saklama yükümlülüğü, mesleğin en eski ve en temel taşlarından biridir. Yapay zeka araçları bu yükümlülüğü ortadan kaldırmaz; tam tersine, ona yepyeni bir sınav ekler.</p>
+<p>Tehlike şurada: bir avukat hassas bir belgeyi, nasıl çalıştığını bilmediği herkese açık bir yapay zeka aracına yapıştırdığında, o veriyi kontrolünden çıkarmış olabilir. Bazı ücretsiz araçlar, kullanıcının girdiği metni modeli geliştirmek için saklayabilir ya da işleyebilir. Böyle bir durumda gizli bir bilgi, hiç amaçlanmadığı yerlere sızabilir. O yüzden ilk kural nettir: bir aracın verinizle ne yaptığını bilmeden, oraya gizli bilgi vermeyin.</p>
+<p>Doğru yaklaşım, gizliliği sonradan eklenen bir yama değil, en baştan gelen temel bir tasarım gereksinimi olarak ele almaktır. Bu; verinin nerede işlendiğini bilmek, modelin eğitiminde kullanılıp kullanılmadığını netleştirmek ve denetlenebilir, güvenli altyapılar tercih etmek demektir. Nitekim dünya genelinde baroların yayımladığı yapay zeka rehberleri de aynı noktaya, yani aydınlatılmış onam ve veri güvenliğine işaret ediyor. İçtiHub'ı geliştirirken veri güvenliğini ve gizliliği tasarımın merkezine koyuyoruz; çünkü bir hukukçunun teknolojiye güvenebilmesi için, o teknolojinin sırrı koruyacağından emin olması şarttır.</p>
+<h2>Sessiz risk: aşırı güven ve beceri körelmesi</h2>
+<p>Uydurma atıflar göze batan bir risktir; oysa belki daha sinsi olanı sessizce ilerler: aşırı güven. Bir araç çoğu zaman doğru ve hızlı çalıştığında, insan zihni doğal olarak denetimi gevşetir. 'Nasılsa makine bir bakmıştır' düşüncesi, tam da en çok dikkat gereken anda dikkatin azalmasına yol açar. Yapay zekanın akıcı ve kendinden emin üslubu bu eğilimi büsbütün besler.</p>
+<p>Bunun ikinci bir yüzü var: beceri körelmesi. Genç bir hukukçu, araştırmayı ve taslak yazımını tümüyle bir araca devrettiğinde, o işleri kendi başına yapma kasını çalıştırmayı bırakabilir. Oysa bir argümanın neden zayıf olduğunu sezmek ya da bir kararın somut olaya gerçekten uyup uymadığını görmek, ancak o emeği defalarca verdikten sonra gelişen bir yargıdır. Aracın amacı bu yargının yerine geçmek değil, ona zaman açmaktır.</p>
+<p>Sağlıklı denge, yapay zekayı bir 'cevap makinesi' değil, bir 'taslak ve hızlandırıcı' olarak görmektir. Modelin getirdiği her sonucu, tıpkı bir stajyerin hazırladığı taslağa bakar gibi eleştirel bir gözle okumak gerekir: kaynak gerçek mi, atıf güncel mi, argüman somut olaya oturuyor mu? Bu şüpheci refleks bir zayıflık değil, mesleki olgunluğun ta kendisidir.</p>
+<h2>İnsan denetimi (human-in-the-loop): vazgeçilmez katman</h2>
+<p>Bütün bu risklerin birleştiği nokta tek bir ilkeye işaret ediyor: 'insan denetimi' (human-in-the-loop). Bu kavram, yapay zekanın bir işi tek başına baştan sona bitirmesine izin vermek yerine, kritik anlarda kararın bir insana ait kalmasını güvence altına almak demektir. Hukukta bu insan, her zaman hukukçunun kendisidir.</p>
+<p>İnsan denetimi pratikte şöyle görünür: yapay zeka araştırmayı yapar, ama emsalin uygunluğuna avukat karar verir. Model taslağı yazar, ama her cümlenin sorumluluğunu imzasını atan hukukçu taşır. Sistem riskli bir maddeyi öne çıkarır, ama o riskin somut dosyada ne anlama geldiğini insan yorumlar. Yapay zeka hızı sağlar; insan ise yargıyı, bağlamı ve sorumluluğu.</p>
+<p>İyi tasarlanmış bir sistem, bu denetimi zorlaştırmaz, kolaylaştırır. Her yanıtı kaynağına bağlamak, modelin emin olmadığı yerlerde bunu açıkça belirtmesini sağlamak ve doğrulamayı tek tıkla mümkün kılmak; hepsi insanın denetim görevini güçlendiren tasarım tercihleridir. İçtiHub'ı bu felsefeyle kuruyoruz: amaç hukukçunun yerini almak değil, onun muhakemesini hızlandırmak ve sağlamlaştırmak. Son sözü her zaman insan söyler.</p>
+<h2>Sorumluluk hukukçuda kalır: değişmeyen kural</h2>
+<p>Teknoloji ne kadar gelişirse gelişsin, değişmeyen bir gerçek var: mahkemeye sunulan bir dilekçenin, müvekkile verilen bir tavsiyenin ve ileri sürülen bir argümanın sorumluluğu hukukçuya aittir. 'Yapay zeka öyle söyledi' bir savunma değildir. Bir aracı kullanmayı seçen ve onun çıktısını imzalayan kişi, o çıktının doğruluğundan da sorumludur. Yapay zeka bu denklemi değiştirmez; yalnızca özeni gösterme biçimini dönüştürür.</p>
+<p>Dünyanın pek çok yerinde barolar ve düzenleyici kurumlar tam da bu yönde adım atıyor. Örneğin Amerikan Barolar Birliği'nin (ABA) üretken yapay zekaya ilişkin etik görüşü ve giderek artan sayıda eyalet barosunun rehberi; hukukçuların kullandıkları teknolojiyi anlama, gizliliği koruma ve yapay zeka çıktılarını bağımsız olarak doğrulama yükümlülüğüne dikkat çekiyor. Bunların hiçbiri yapay zekayı yasaklamak için değil; onu meslek etiğinin sınırları içinde, sorumlu biçimde kullanmayı güvence altına almak için. Yani araç yeni, ama özen yükümlülüğü eski ve sağlam.</p>
+<p>Bu yazıyı tek bir cümlede toplamak gerekirse: yapay zeka, hukukçunun gücünü çoğaltan olağanüstü bir kaldıraçtır, ama yargısının yerine geçen bir merci değildir. Doğru kullanım, fırsatları cömertçe kucaklarken riskleri ciddiye almaktan geçer: topraklamayla kaynağa bağlanmak, gizliliği korumak, aşırı güvene direnmek ve son sözü her zaman insana bırakmak. EcoFluxion olarak İçtiHub'ı tam da bu denge üzerine kuruyoruz: hukukçuyu yavaşlatan mekanik yükü almak, ama ona ait olan muhakemeyi ve sorumluluğu sonuna kadar onun elinde bırakmak.</p>
+      </div>
+      <div class="takeaways"><h3>Öne çıkanlar</h3><ul><li>Hukuk dille yapılan bir iştir; bu yüzden büyük dil modelleri araştırma, taslak yazımı ve belge incelemesinde gerçek bir hızlanma sağlar. Ama bu modeller 'akıl yürüten bir hâkim' değil, 'çok hızlı okuyup yazan bir stajyer' gibidir.</li><li>En tehlikeli risk halüsinasyondur: model, var olmayan kararları ve atıfları kendinden emin bir dille uydurabilir. Yalnızca 2025'te dünya genelinde yüzlerce sahte atıf vakası belgelendi. Hiçbir atıf, kaynağına kadar doğrulanmadan güvenilir sayılmamalı.</li><li>Topraklama (grounding) ve RAG, yanıtı gerçek hukuk metnine bağlayarak halüsinasyonu azaltır ve her cümleyi izlenebilir kılar; ama tek başına yeterli değildir, ancak insan denetimiyle anlam kazanır.</li><li>Gizlilik temel bir tasarım gereksinimidir: bir aracın verinizle ne yaptığını bilmeden ona gizli belge vermeyin.</li><li>Aşırı güven ve beceri körelmesi sessiz ama gerçek risklerdir; yapay zeka bir 'cevap makinesi' değil, eleştirel gözle denetlenmesi gereken bir 'taslak ve hızlandırıcı'dır.</li><li>Sorumluluk her zaman hukukçuda kalır: 'yapay zeka öyle söyledi' bir savunma değildir. İçtiHub'ı bu denge üzerine kuruyoruz: mekanik yükü al, muhakemeyi ve son sözü insana bırak.</li></ul></div>
+    </div>
+
+    <div class="lang-content" data-lang="en">
+      <div class="article-cat">LegalTech</div>
+      <h1>AI in Law: Opportunities, Risks, and Responsibility</h1>
+      <p class="article-sub">AI is collapsing legal research, drafting, and review from hours into minutes. But it also brings real risks: hallucinated citations, confidentiality leaks, and a quiet creep of over-reliance. This piece explains what genuinely works, what is dangerous, and why the final word still belongs to the lawyer.</p>
+      <div class="article-meta"><span><i class="far fa-clock"></i> 11 min read</span><div class="article-tags"><span class="article-tag">Hukuk</span><span class="article-tag">LegalTech</span><span class="article-tag">Yapay Zeka</span><span class="article-tag">İçtiHub</span><span class="article-tag">RAG</span></div></div>
+      <div class="article-body">
+<h2>Why now: law is almost tailor-made for AI</h2>
+<p>Law is, at its core, work done with language. A lawyer's day is spent reading decisions, drafting petitions, comparing contract clauses, searching legislation, and turning all of it into a coherent argument. The raw material is text and so is the finished product. That is precisely why large language models (LLMs), systems built to understand and produce text, fit law so surprisingly well.</p>
+<p>So what exactly is one of these models? A large language model is a prediction machine, trained on an enormous amount of text and extraordinarily good at answering a single question: what word should come next? That deceptively simple ability turns, in practice, into summarizing a long decision, rewriting a paragraph, spotting the difference between two contracts, or answering a question in plain language. It is no accident that most of a lawyer's daily work fits exactly these patterns.</p>
+<p>Let us underline one point from the very start: AI in law is not a 'reasoning judge' but more like 'an intern who reads and writes extremely fast.' That comparison will be the compass for the rest of this article. Used well, the intern turns hours of mechanical work into minutes. Used badly, it produces wrong information in a tone of complete confidence. The aim of this article is to teach you to tell those two situations apart.</p>
+<h2>Three big opportunities: research, drafting, and review</h2>
+<p>Where AI adds the most value in law is research. Classic search engines match words; yet what a lawyer is after is rarely a word, it is a legal situation. This is exactly where semantic search comes in: you describe a dispute in your own words, and the system surfaces decisions whose substance matches even when the wording is entirely different. You may never type 'wrongful termination,' yet still reach precedents that share the same legal core as the facts you described. Instead of opening and closing tabs for hours, within minutes you are reading the relevant decisions.</p>
+<p>The second opportunity is drafting. The skeleton of a reply petition, the standard clauses of a contract, or the template of a formal notice tend to repeat. AI lets you begin from a first draft already adapted to the context of your file. That dissolves the familiar resistance of the blank page, so you spend your energy not on building sentences from scratch but on sharpening the argument. The key point: this is not a finished text but a rough draft to build upon.</p>
+<p>The third opportunity is review. Scanning a hundred-page contract for risky clauses, extracting the differences between two versions, listing the arguments a petition rests on and the articles it cites, these are tiring, error-prone tasks for a human. A tired eye easily skips a penalty clause buried on page thirty. AI runs that scan tirelessly and consistently. But note: 'scans and surfaces' does not mean 'decides.' The final judgment is still built by a human.</p>
+<h2>The most dangerous risk: hallucinated citations</h2>
+<p>The most insidious risk of AI in law is the phenomenon called 'hallucination.' Instead of retrieving a decision that genuinely exists, a language model can produce a decision, a docket number, or a quotation that looks plausible yet does not exist at all. Worse, it does so without hesitation, fluently and very convincingly. That is the real danger: when the model is wrong, it is wrong with full confidence, not with a warning tone.</p>
+<p>It matters to understand why this happens. A raw language model is not a database; it does not place facts on a shelf and call them back. It looks at patterns in the text it was trained on and predicts 'how would a sentence like this continue?' Imitating the format of a case number is easy for it; checking whether that number actually exists is precisely what it cannot do when left on its own. Picture someone with an impressive vocabulary who writes with no way to verify a single fact.</p>
+<p>And this is not a theoretical worry. In 2025 alone, courts around the world documented hundreds of instances of lawyers submitting fake AI-invented decisions, some ending in monetary sanctions and disciplinary action, and the incidents kept recurring even after judges issued explicit warnings. The lesson is plain: in law, a citation can never be considered reliable until it is verified all the way back to its source. And the mechanism that does that verifying must belong not to the model's inner voice, but to the design of the system and the oversight of the lawyer.</p>
+<h2>Grounding: tying the model to real text</h2>
+<p>The strongest known answer to the hallucination risk today is the principle of 'grounding.' The idea is simple but powerful: base the model's answer not on the fuzzy traces in its memory, but on real, verifiable sources placed in front of it. That is, instead of asking the model 'what is your opinion on this,' you first find the relevant real documents and then say 'answer based only on these texts.' Think of the difference between a closed-book and an open-book exam: you hand the model the source material.</p>
+<p>The most common architecture that delivers this is RAG, short for Retrieval-Augmented Generation. The flow runs like this: the user's question is first used to find the real documents closest in meaning within a legal corpus, decisions, statutes, regulations. Those retrieved documents are handed to the model as context. The model then builds its answer not out of thin air but on these concrete texts, and shows which decision or article it relied on.</p>
+<p>Grounding brings two crucial gains for law. The first is traceability: because every sentence is tied to a source, the lawyer can open that source with a single click instead of trusting blindly. The second is freshness: when a new decision or legislative change lands, there is no need to retrain the model, updating the knowledge base is enough. In building İçtiHub we deliberately chose grounding as a core principle, because in law a 'confident but unfounded' answer is often more dangerous than no answer at all.</p>
+<p>Still, let us be honest: grounding reduces hallucination, it does not zero it out. The model can sometimes misread the source it is handed, or, when the source falls short, try to fill the gap with its own guess. So grounding alone is not a sufficient guarantee; it is a foundation that gains its true meaning only together with the next principle, human oversight.</p>
+<h2>Confidentiality: a new test for legal privilege</h2>
+<p>Legal documents are sensitive by nature. A file may hold a client's personal data, trade secrets, health information, or the most intimate details of a dispute. The lawyer's duty of confidentiality is one of the oldest and most fundamental stones of the profession. AI tools do not remove that duty; on the contrary, they add a brand-new test to it.</p>
+<p>Here is where the danger lies: when a lawyer pastes a sensitive document into a public AI tool whose workings they do not understand, they may have let that data slip out of their control. Some free tools may store or process the text users enter in order to improve their models. In that case, confidential information can leak to places it was never meant to reach. So the first rule is clear: do not give confidential information to a tool without knowing what it does with your data.</p>
+<p>The right approach is to treat confidentiality not as a patch added later but as a fundamental design requirement present from the outset. That means knowing where data is processed, clarifying whether it is used to train the model, and choosing auditable, secure infrastructure. Indeed, the AI guidance bar associations have issued around the world points to the same place: informed consent and data security. In building İçtiHub we put data security and privacy at the center of the design, because for a lawyer to trust a technology, they must be sure that technology will keep the secret.</p>
+<h2>The quiet risk: over-reliance and skill erosion</h2>
+<p>Hallucinated citations are a glaring risk; yet perhaps the more insidious one advances quietly: over-reliance. When a tool works correctly and quickly most of the time, the human mind naturally relaxes its scrutiny. The thought 'the machine surely checked' makes attention fade at exactly the moment it is needed most. AI's fluent, confident tone only feeds this tendency.</p>
+<p>There is a second face to this: skill erosion. When a junior lawyer hands research and drafting over to a tool entirely, they may stop exercising the muscle of doing those tasks themselves. Yet sensing why an argument is weak, or seeing whether a decision truly fits the case at hand, is a judgment that develops only after putting in that effort many times over. The tool's purpose is not to replace this judgment but to make time for it.</p>
+<p>The healthy balance is to see AI not as an 'answer machine' but as a 'draft and accelerator.' Every result the model returns should be read with the critical eye you would bring to an intern's draft: is the source real, is the citation current, does the argument fit the case at hand? That skeptical reflex is not weakness, it is professional maturity itself.</p>
+<h2>Human-in-the-loop: the indispensable layer</h2>
+<p>The point where all these risks converge points to a single principle: 'human-in-the-loop.' This concept means that, rather than letting AI finish a task entirely on its own, you guarantee that at critical moments the decision stays with a human. In law, that human is always the lawyer.</p>
+<p>In practice, human-in-the-loop looks like this: AI does the research, but the lawyer decides whether the precedent fits. The model writes the draft, but the lawyer who signs it carries responsibility for every sentence. The system surfaces a risky clause, but the human interprets what that risk means in the case at hand. AI provides the speed; the human provides the judgment, the context, and the responsibility.</p>
+<p>A well-designed system does not make this oversight harder, it makes it easier. Tying every answer to its source, having the model state plainly where it is unsure, and making verification possible with a single click, all are design choices that strengthen the human's supervisory role. We build İçtiHub with this philosophy: the aim is not to replace the lawyer but to accelerate and strengthen their reasoning. The final word always belongs to the human.</p>
+<h2>Responsibility stays with the lawyer: the unchanging rule</h2>
+<p>No matter how far technology advances, one truth does not change: responsibility for a petition filed with a court, advice given to a client, and an argument put forward rests with the lawyer. 'The AI said so' is not a defense. The person who chooses to use a tool and signs its output is responsible for the accuracy of that output. AI does not change this equation; it only transforms how due care is exercised.</p>
+<p>Across much of the world, bar associations and regulators are moving in exactly this direction. The American Bar Association's ethics guidance on generative AI, for instance, along with the guidance of a growing number of state bars, draws attention to lawyers' duty to understand the technology they use, protect confidentiality, and independently verify AI outputs. None of this is meant to ban AI; it is meant to ensure it is used responsibly, within the bounds of professional ethics. The tool is new, but the duty of care is old and firm.</p>
+<p>If this article had to be gathered into a single sentence: AI is an extraordinary lever that multiplies a lawyer's power, but it is not an authority that replaces their judgment. Right use comes from embracing the opportunities generously while taking the risks seriously: grounding answers in sources, protecting confidentiality, resisting over-reliance, and always leaving the final word to a human. At EcoFluxion, we build İçtiHub on exactly this balance: take away the mechanical burden that slows the lawyer down, but leave the reasoning and the responsibility that are theirs fully in their hands.</p>
+      </div>
+      <div class="takeaways"><h3>Key takeaways</h3><ul><li>Law is work done with language, so large language models bring a real acceleration to research, drafting, and document review. But these models behave less like a 'reasoning judge' and more like 'an intern who reads and writes extremely fast.'</li><li>The most dangerous risk is hallucination: a model can invent non-existent decisions and citations in a confident voice. In 2025 alone, courts worldwide documented hundreds of fake-citation cases. No citation should be trusted until it is verified back to its source.</li><li>Grounding and RAG reduce hallucination by tying answers to real legal text and making every sentence traceable; but grounding alone is not enough, it gains its meaning only together with human oversight.</li><li>Confidentiality is a fundamental design requirement: never give a confidential document to a tool without knowing what it does with your data.</li><li>Over-reliance and skill erosion are quiet but real risks; AI is not an 'answer machine' but a 'draft and accelerator' that must be checked with a critical eye.</li><li>Responsibility always stays with the lawyer: 'the AI said so' is not a defense. We build İçtiHub on this balance: take the mechanical burden, leave the reasoning and the final word to the human.</li></ul></div>
+    </div>
+
+    <a href="index.html" class="article-back"><i class="fas fa-arrow-left"></i> <span class="lang-content" data-lang="tr">Tüm yazılar</span><span class="lang-content" data-lang="en">All articles</span></a>
+  </main>
+  <footer class="footer" style="padding:2rem 0;">
+  <div class="container text-center">
+    <div style="display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;margin-bottom:1rem;">
+      <a href="../index.html"><span class="lang-content" data-lang="tr">Ana Sayfa</span><span class="lang-content" data-lang="en">Home</span></a>
+      <a href="index.html">Blog</a>
+      <a href="https://ictihub.com" target="_blank" rel="noopener">İçtiHub</a>
+      <a href="../privacy-policy.html"><span class="lang-content" data-lang="tr">Gizlilik</span><span class="lang-content" data-lang="en">Privacy</span></a>
+    </div>
+    <div class="footer-social" style="display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;margin-bottom:1rem;">
+      <a href="https://x.com/ecofluxion" target="_blank" rel="noopener" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+      <a href="https://tr.linkedin.com/company/ecofluxion" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      <a href="https://www.instagram.com/ecofluxion/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.tiktok.com/@ecofluxion" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+    </div>
+    <p class="footer-copyright mb-0">&copy; 2024-2026 EcoFluxion. <span class="lang-content" data-lang="tr">Tüm hakları saklıdır.</span><span class="lang-content" data-lang="en">All rights reserved.</span></p>
+  </div>
+</footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+(function () {
+  var lang = localStorage.getItem('language') || 'tr';
+  function apply(l) {
+    document.documentElement.lang = l;
+    document.querySelectorAll('.lang-content').forEach(function (el) { el.style.display = (el.getAttribute('data-lang') === l) ? '' : 'none'; });
+    document.querySelectorAll('.legal-lang-btn').forEach(function (b) { b.classList.toggle('active', b.getAttribute('data-lang') === l); });
+    localStorage.setItem('language', l);
+  }
+  document.querySelectorAll('.legal-lang-btn').forEach(function (b) { b.addEventListener('click', function () { apply(b.getAttribute('data-lang')); }); });
+  apply(lang);
+})();
+</script>
+</body>
+</html>

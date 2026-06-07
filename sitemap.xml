@@ -13,7 +13,25 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://ecofluxion.com/blog/hukukta-yapay-zeka.html</loc>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://ecofluxion.com/blog/ictihub-ai-hukuki-arastirma.html</loc>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ecofluxion.com/blog/llm-nedir-nasil-calisir.html</loc>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ecofluxion.com/blog/prompt-muhendisligi.html</loc>
     <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -25,7 +43,49 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://ecofluxion.com/blog/rag-vs-fine-tuning.html</loc>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ecofluxion.com/blog/token-embedding-vektor.html</loc>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ecofluxion.com/blog/transformer-mimarisi.html</loc>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://ecofluxion.com/blog/turkce-yapay-zeka-nlp.html</loc>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ecofluxion.com/blog/vektor-veritabani-anlamsal-arama.html</loc>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ecofluxion.com/blog/yapay-zeka-ajanlari.html</loc>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ecofluxion.com/blog/yapay-zeka-etigi-onyargi.html</loc>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ecofluxion.com/blog/yapay-zeka-halusinasyon.html</loc>
     <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Büyük dil modeli (LLM) nedir, nasıl çalışır? Sonraki kelime tahmini, eğitim, parametreler, bağlam penceresi ve halüsinasyonu sade, örneklerle dolu bir dille anlatıyoruz.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://ecofluxion.com/blog/llm-nedir-nasil-calisir.html">
+  <meta name="theme-color" content="#7CB342">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Büyük Dil Modelleri (LLM) Nedir ve Nasıl Çalışır?">
+  <meta property="og:description" content="Büyük dil modeli (LLM) nedir, nasıl çalışır? Sonraki kelime tahmini, eğitim, parametreler, bağlam penceresi ve halüsinasyonu sade, örneklerle dolu bir dille anlatıyoruz.">
+  <meta property="og:url" content="https://ecofluxion.com/blog/llm-nedir-nasil-calisir.html">
+  <meta property="og:site_name" content="EcoFluxion">
+  <meta property="og:locale" content="tr_TR">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:image" content="https://ecofluxion.com/image/ecofluxion_logo.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@ecofluxion">
+  <meta name="twitter:title" content="Büyük Dil Modelleri (LLM) Nedir ve Nasıl Çalışır?">
+  <meta name="twitter:description" content="Büyük dil modeli (LLM) nedir, nasıl çalışır? Sonraki kelime tahmini, eğitim, parametreler, bağlam penceresi ve halüsinasyonu sade, örneklerle dolu bir dille anlatıyoruz.">
+  <meta name="twitter:image" content="https://ecofluxion.com/image/ecofluxion_logo.png">
+  <title>Büyük Dil Modelleri (LLM) Nedir ve Nasıl Çalışır? | EcoFluxion Blog</title>
+  <link rel="icon" type="image/png" href="../image/ecofluxion_logo.png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .legal-nav { background: #2f3a22; }
+    .legal-nav .nav-link { color: rgba(255,255,255,.85); }
+    .legal-nav .nav-link:hover, .legal-nav .nav-link.active { color: #fff; }
+    .legal-langbar { display:flex; gap:.4rem; }
+    .legal-lang-btn.active { background:#fff; color:#558B2F; }
+    .article-wrap { max-width: 800px; margin: 0 auto; padding: 130px 1.25rem 70px; }
+    .breadcrumb-nav { font-size:.88rem; color:#999; margin-bottom:1.4rem; }
+    .breadcrumb-nav a { color:#558B2F; text-decoration:none; }
+    .article-cat { color: var(--primary-green,#7CB342); font-weight:700; text-transform:uppercase; letter-spacing:1px; font-size:.82rem; }
+    .article-wrap h1 { font-family:'Montserrat',sans-serif; font-weight:800; line-height:1.2; margin:.4rem 0 1rem; color:#222; }
+    .article-sub { font-size:1.22rem; color:#555; line-height:1.6; margin-bottom:1.4rem; }
+    .article-meta { display:flex; flex-wrap:wrap; gap:.8rem 1.2rem; align-items:center; color:#888; font-size:.9rem; border-top:1px solid #eee; border-bottom:1px solid #eee; padding:.9rem 0; margin-bottom:2rem; }
+    .article-tags { display:flex; flex-wrap:wrap; gap:.4rem; }
+    .article-tag { background:#f3f8ec; color:#558B2F; border-radius:50px; padding:.22rem .7rem; font-size:.78rem; font-weight:600; }
+    .article-body h2 { font-family:'Montserrat',sans-serif; font-weight:700; font-size:1.5rem; margin:2.3rem 0 .8rem; color:#2f3a22; }
+    .article-body p { color:#333; line-height:1.85; font-size:1.07rem; margin-bottom:1.1rem; }
+    .takeaways { background:#f3f8ec; border-left:4px solid var(--primary-green,#7CB342); border-radius:8px; padding:1.2rem 1.5rem; margin:2.6rem 0; }
+    .takeaways h3 { font-family:'Montserrat',sans-serif; font-weight:700; font-size:1.1rem; margin-bottom:.6rem; }
+    .takeaways ul { margin:0; padding-left:1.2rem; } .takeaways li { color:#3a4a28; line-height:1.7; margin-bottom:.3rem; }
+    .article-back { display:inline-block; margin-top:2rem; font-weight:600; color:#558B2F; text-decoration:none; }
+    .blog-head { padding:130px 1.25rem 1.5rem; text-align:center; }
+    .blog-head h1 { font-family:'Montserrat',sans-serif; font-weight:800; color:#2f3a22; }
+    .blog-head p { color:#666; max-width:640px; margin:.5rem auto 0; }
+    .blog-grid { max-width:1120px; margin:0 auto; padding:1rem 1.25rem 80px; display:grid; grid-template-columns:repeat(auto-fill,minmax(330px,1fr)); gap:1.6rem; }
+    .blog-card { background:#fff; border:1px solid #eee; border-radius:14px; overflow:hidden; transition:.3s; display:flex; flex-direction:column; }
+    .blog-card:hover { transform:translateY(-5px); box-shadow:0 15px 35px rgba(0,0,0,.08); }
+    .blog-card-top { height:6px; background:linear-gradient(135deg,#7CB342,#558B2F); }
+    .blog-card-body { padding:1.6rem; display:flex; flex-direction:column; flex:1; }
+    .blog-card h2 { font-family:'Montserrat',sans-serif; font-weight:700; font-size:1.22rem; margin:.45rem 0 .6rem; line-height:1.35; }
+    .blog-card h2 a { color:#222; text-decoration:none; }
+    .blog-card h2 a:hover { color:#558B2F; }
+    .blog-card p { color:#666; line-height:1.6; flex:1; font-size:.97rem; }
+    .blog-card .read-more { color:#558B2F; font-weight:600; text-decoration:none; margin-top:1rem; align-self:flex-start; }
+    .blog-card-meta { color:#999; font-size:.82rem; margin-top:.8rem; }
+</style>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Büyük Dil Modelleri (LLM) Nedir ve Nasıl Çalışır?",
+  "description": "Büyük dil modeli (LLM) nedir, nasıl çalışır? Sonraki kelime tahmini, eğitim, parametreler, bağlam penceresi ve halüsinasyonu sade, örneklerle dolu bir dille anlatıyoruz.",
+  "inLanguage": "tr",
+  "datePublished": "2026-06-07",
+  "dateModified": "2026-06-07",
+  "author": {
+    "@type": "Organization",
+    "name": "EcoFluxion",
+    "url": "https://ecofluxion.com/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "EcoFluxion",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://ecofluxion.com/image/ecofluxion_logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://ecofluxion.com/blog/llm-nedir-nasil-calisir.html"
+  },
+  "image": "https://ecofluxion.com/image/ecofluxion_logo.png",
+  "articleSection": "Eğitim",
+  "keywords": "LLM, Yapay Zeka, Eğitim, GPT, Transformer"
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://ecofluxion.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://ecofluxion.com/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Büyük Dil Modelleri (LLM) Nedir ve Nasıl Çalışır?",
+      "item": "https://ecofluxion.com/blog/llm-nedir-nasil-calisir.html"
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top legal-nav">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="../index.html">
+        <img src="../image/ecofluxion_logo.png" alt="EcoFluxion" class="logo-img" style="height:36px;">
+        <span class="ms-2 fw-bold">EcoFluxion</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#blogNav" aria-label="Menu"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="blogNav">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="../index.html#home"><span class="lang-content" data-lang="tr">Ana Sayfa</span><span class="lang-content" data-lang="en">Home</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="../index.html#about"><span class="lang-content" data-lang="tr">Hakkımızda</span><span class="lang-content" data-lang="en">About</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="../index.html#services"><span class="lang-content" data-lang="tr">Neler Geliştiriyoruz</span><span class="lang-content" data-lang="en">What We Build</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="../index.html#projects"><span class="lang-content" data-lang="tr">Ürünler</span><span class="lang-content" data-lang="en">Products</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="../index.html#technologies"><span class="lang-content" data-lang="tr">Teknolojiler</span><span class="lang-content" data-lang="en">Technologies</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="../index.html#careers"><span class="lang-content" data-lang="tr">Kariyer</span><span class="lang-content" data-lang="en">Careers</span></a></li>
+          <li class="nav-item"><a class="nav-link active" href="index.html"><span class="lang-content" data-lang="tr">Blog</span><span class="lang-content" data-lang="en">Blog</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="../index.html#contact"><span class="lang-content" data-lang="tr">İletişim</span><span class="lang-content" data-lang="en">Contact</span></a></li>
+          <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+            <div class="legal-langbar">
+              <button class="btn btn-sm btn-outline-light legal-lang-btn" data-lang="tr">TR</button>
+              <button class="btn btn-sm btn-outline-light legal-lang-btn" data-lang="en">EN</button>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <main class="article-wrap">
+    <nav class="breadcrumb-nav"><a href="../index.html">EcoFluxion</a> / <a href="index.html">Blog</a> / <span class="lang-content" data-lang="tr">Büyük Dil Modelleri (LLM) Nedir ve Nasıl Çalışır?</span><span class="lang-content" data-lang="en">What Are Large Language Models (LLMs) and How Do They Work?</span></nav>
+
+    <div class="lang-content" data-lang="tr">
+      <div class="article-cat">Eğitim</div>
+      <h1>Büyük Dil Modelleri (LLM) Nedir ve Nasıl Çalışır?</h1>
+      <p class="article-sub">ChatGPT'nin, Gemini'nin ve Claude'un arkasındaki teknolojiyi sıfırdan anlamak: sonraki kelimeyi tahmin etmekten parametrelere, bağlam penceresinden eğitim ile çalışma arasındaki farka kadar, hiçbir teknik geçmiş gerektirmeden.</p>
+      <div class="article-meta"><span><i class="far fa-clock"></i> 12 dk okuma</span><div class="article-tags"><span class="article-tag">LLM</span><span class="article-tag">Yapay Zeka</span><span class="article-tag">Eğitim</span><span class="article-tag">GPT</span><span class="article-tag">Transformer</span></div></div>
+      <div class="article-body">
+<h2>LLM Aslında Nedir? Devasa Bir Otomatik Tamamlama</h2>
+<p>Büyük Dil Modeli, İngilizce kısaltmasıyla LLM (Large Language Model), basitçe söylersek bir metni alıp "sırada hangi kelime gelmeli?" sorusunu şaşırtıcı bir isabetle yanıtlayan bir bilgisayar programıdır. ChatGPT, Google'ın Gemini'si, Anthropic'in Claude'u ve benzerlerinin hepsi birer LLM'dir. Adındaki "büyük" kelimesi hem öğrendiği metnin hem de modelin kendi boyutunun gerçekten devasa olmasından gelir; ikisine de birazdan döneceğiz.</p>
+<p>En sevdiğim benzetme, telefonunuzdaki klavyenin sunduğu sonraki kelime önerisidir. "Bugün hava çok..." yazdığınızda klavye size "güzel", "sıcak" ya da "soğuk" önerir. LLM de özünde tam olarak bu işi yapar; ama telefonunuzdaki o minik modelin aksine, internetin büyük bir bölümünü okumuş ve milyarlarca cümle üzerinde pratik yapmıştır. Bu yüzden tek bir kelime değil, koca bir paragrafı, bir denemeyi, hatta çalışan bir bilgisayar kodunu, her seferinde bir parça tahmin ederek üst üste örebilir.</p>
+<p>Bu kadar basit bir fikrin nasıl olup da hukuki bir metni özetleyen, şiir yazan ya da koddaki bir hatayı bulan bir şeye dönüştüğü ilk bakışta sezgiye aykırı gelir. İşin sırrı tek bir tahminde değil; bu tahminin milyarlarca kez tekrarlanmasında ve modelin bu süreçte dilin, mantığın ve dünyanın örüntülerini içselleştirmesinde yatar. Yazının geri kalanında bu küçük fikrin nasıl bu kadar büyük bir sıçramaya dönüştüğünü adım adım açacağız.</p>
+<h2>Kalbindeki Fikir: Sonraki Kelimeyi (Token'ı) Tahmin Etmek</h2>
+<p>LLM'lerin tek bir temel becerisi vardır: bir metin parçasının devamında en olası birimi tahmin etmek. Buna teknik dilde "sonraki token tahmini" (next-token prediction) denir. Burada "token", modelin metni işlerken kullandığı en küçük parçadır. Çoğu zaman bir kelimeye karşılık gelir; ama "kitaplarımızdan" gibi uzun bir kelime birkaç token'a bölünebilir. Yani bir token bazen tam bir kelime, bazen bir kelime parçası, bazen de yalnızca bir noktalama işaretidir.</p>
+<p>Model her adımda olası tüm token'lar için bir olasılık dağılımı üretir; yani "şu an gelebilecek binlerce kelimeden her birinin ihtimali ne kadar?" sorusuna sayısal bir cevap verir. "Türkiye'nin başkenti..." ifadesinin ardından "Ankara" token'ına çok yüksek, "muz" token'ına ise neredeyse sıfır olasılık atar. Sonra bu olasılıklara göre bir token seçer, onu metnin sonuna ekler ve aynı işlemi en baştan tekrarlar. Tahmin et, ekle, tekrar tahmin et: gördüğünüz o akıcı paragrafları kelime kelime ören mekanizma işte budur.</p>
+<p>Buradaki ince nokta şudur: model her seferinde en yüksek olasılıklı token'ı seçmek zorunda değildir. Genellikle olasılıklara göre ağırlıklandırılmış rastgele bir seçim yapar; "sıcaklık" (temperature) denen bir ayar bu rastgeleliğin dozunu belirler. Düşük sıcaklık modeli daha öngörülebilir ve temkinli, yüksek sıcaklık ise daha yaratıcı ama bazen daha savruk yapar. Aynı soruyu iki kez sorduğunuzda birbirinden farklı yanıtlar almanızın başlıca nedeni de budur.</p>
+<h2>Devasa Metinle Eğitim: Model Bunu Nereden Öğreniyor?</h2>
+<p>Bir model, "başkenti" kelimesinin ardından genellikle bir şehir adının geldiğini, kimse ona bunu açıkça söylemediği hâlde bilir. Bu bilgiyi "eğitim" (training) denen süreçte, devasa miktarda metni okuyarak kendi kendine çıkarır. Eğitim verisi tipik olarak web sayfalarından, kitaplardan, ansiklopedilerden, makalelerden, forum tartışmalarından ve kod depolarından oluşur; toplamda yüz milyarlarca, hatta trilyonlarca kelime düzeyindedir.</p>
+<p>Eğitimin mekaniği şaşırtıcı derecede sadedir. Modele bir cümle parçası gösterilir, bir sonraki kelime gizlenir ve modelden onu tahmin etmesi istenir. Model bir tahminde bulunur, bu tahmin gerçek kelimeyle karşılaştırılır ve yanıldığı ölçüde modelin içindeki sayısal ayarlar minicik bir miktar düzeltilir. Bu işlem devasa metnin üzerinde sayısız kez tekrarlanır. Hiç kimse modele dilbilgisi kuralı, tarih bilgisi ya da mantık öğretmez; model tüm bunları yalnızca "sonraki kelimeyi biraz daha iyi tahmin etmeye" çalışırken, yan ürün olarak örüntü hâlinde yakalar.</p>
+<p>Bu temel eğitimin ardından genellikle ikinci bir aşama gelir: insan geri bildirimiyle ince ayar. Burada insanlar modelin verdiği yanıtları değerlendirir, daha yardımcı ve daha güvenli olanları ödüllendirir. "RLHF" (insan geri bildiriminden pekiştirmeli öğrenme) denen bu süreç, ham bir kelime tahmincisini gerçekten işe yarayan, kibar ve talimatları izleyen bir asistana dönüştürür. Yani bugün sohbet ettiğiniz modelin kişiliği ve yardımseverliği, büyük ölçüde bu ikinci aşamanın ürünüdür; ilk aşama ona dili, ikinci aşama ise nasıl davranacağını öğretir.</p>
+<h2>Parametreler: Modelin "Bildiği" Milyarlarca Küçük Ayar</h2>
+<p>Eğitim sırasında düzeltilen o "sayısal ayarlara" parametre denir. Bir parametreyi, devasa bir ses mikseri masasındaki minicik bir düğme, bir potansiyometre gibi düşünebilirsiniz. Modelin tüm bilgisi, dil sezgisi ve örüntü tanıma yeteneği, bu düğmelerin tam olarak hangi konumda durduğunda gizlidir. Eğitim, esasen bu milyarlarca düğmeyi tek tek doğru konuma ayarlama sürecinden başka bir şey değildir.</p>
+<p>Modern büyük modeller genellikle on milyarlarca, hatta yüzlerce milyar parametreye sahiptir. "GPT" ya da "Llama" gibi isimlerin yanında duyduğunuz büyük sayılar çoğu zaman tam da bu parametre sayısına işaret eder. Genel bir kural olarak daha çok parametre, daha fazla örüntüyü yakalama ve daha incelikli davranma kapasitesi demektir; ama bu ilişki doğrusal değildir. Belli bir noktadan sonra verinin kalitesi, eğitim yöntemi ve modelin mimarisi, ham parametre sayısından çok daha belirleyici hâle gelir.</p>
+<p>Burada yaygın bir kavram yanılgısını düzeltmekte fayda var: parametreler, modelin okuduğu cümleleri tek tek sakladığı bir veritabanı değildir. Model eğitim metnini içinde bir kütüphane gibi tutmaz; onun yerine, metindeki istatistiksel örüntüleri bu düğmelere "sıkıştırır". Tıpkı bir kitabı baştan sona okuyup sonra kapaklarını kapatan ve artık sayfaları göremeyen ama özü aklında kalan biri gibi. Bu yüzden bir LLM bilgiyi çoğu zaman kelimesi kelimesine değil, bulanık bir özet gibi hatırlar. Bu ayrım, birazdan değineceğimiz "uydurma" (halüsinasyon) sorununun da temelinde yatar.</p>
+<h2>"Anlıyor" Gibi Görünmesinin Sırrı: Dikkat ve Transformer</h2>
+<p>Eğer model yalnızca bir sonraki kelimeyi tahmin ediyorsa, nasıl oluyor da bir soruyu kavrayıp tutarlı, bağlama uygun bir yanıt verebiliyor? Cevap, bugünkü neredeyse tüm LLM'lerin temelindeki "Transformer" adlı mimaride ve onun kalbindeki "dikkat" (attention) mekanizmasında yatar. Dikkat, modelin bir kelimeyi işlerken metindeki diğer kelimelerin hangilerine ne kadar ağırlık vermesi gerektiğine karar vermesini sağlar; yani modele "şu an neye odaklanmalıyım?" sorusunu sürekli sordurtur.</p>
+<p>Bir örnek bunu somutlaştırır: "Çantayı masaya koydum çünkü o çok ağırdı" cümlesinde "o" zamiri neye işaret ediyor? İnsan zihni anında "çanta" der. Dikkat mekanizması sayesinde model de "o" kelimesini işlerken "çanta" kelimesine güçlü, "masa" kelimesine ise zayıf bir bağ kurar. Cümleyi "çünkü o çok büyüktü" diye değiştirseydiniz, dikkat bu kez büyük olasılıkla "masa"ya kayardı. İşte bir sonraki kelimeyi doğru tahmin edebilmek için kelimeler arasındaki bu ilişkileri yakalama yeteneği, dışarıdan "anlama" gibi görünen şeyin büyük kısmını üretir.</p>
+<p>Peki model gerçekten anlıyor mu? Bu, felsefi olarak hâlâ tartışılan bir sorudur ve dürüst cevap "insanın anladığı anlamda hayır"dır. Modelin bilinci, niyeti ya da dünyaya dair yaşanmış bir deneyimi yoktur. Yaptığı şey, devasa metinden öğrendiği örüntüleri olağanüstü bir incelikle uygulamaktan ibarettir. Ne var ki bu örüntüler o kadar zengindir ki, ortaya çıkan davranış pek çok pratik durumda anlamaktan ayırt edilemez hâle gelir. "Anlıyormuş gibi yapmak" ile "anlamak" arasındaki bu gri bölge, yapay zeka tartışmalarının en kışkırtıcı ve en çözümsüz köşelerinden biridir.</p>
+<h2>Bağlam Penceresi: Modelin Kısa Süreli Hafızası</h2>
+<p>Bir LLM'le sohbet ederken, modelin az önce söylediklerinizi hatırlıyormuş gibi davrandığını fark edersiniz. Bunu mümkün kılan şey "bağlam penceresi" (context window) denen kavramdır. Bağlam penceresi, modelin bir seferde "görebildiği" ve hesaba katabildiği metin miktarıdır; token cinsinden ölçülür. Bunu, modelin önündeki bir çalışma masasının boyutu gibi düşünebilirsiniz: o masaya sığan her şeyi aynı anda değerlendirebilir, masaya sığmayanı ise göremez.</p>
+<p>Bu pencerenin sınırlı olması önemli sonuçlar doğurur. Eğer bir konuşma ya da belge bağlam penceresinden uzunsa, en eski kısımlar masadan düşmeye başlar; yani model, konuşmanın en başındaki bir ayrıntıyı bir noktadan sonra artık görmez. Çok uzun sohbetlerde modelin baştaki talimatları unutmuş gibi davranmasının nedeni budur. Modelin kalıcı bir hafızası olduğu yanılgısı da çoğu zaman buradan doğar; oysa söz konusu olan, her mesajda masaya yeniden dizilen geçici bir bağlamdır.</p>
+<p>Son yıllarda bağlam pencereleri çarpıcı biçimde büyüdü; bugün bazı modeller yüz binlerce, hatta milyonlarca token'lık metni aynı anda dikkate alabiliyor. Bu, bir modelin uzun bir sözleşmeyi ya da koca bir dava dosyasını tek seferde okuyup üzerine soru yanıtlamasını mümkün kılar. Yine de bağlam penceresi ne kadar büyürse büyüsün, modelin eğitimle kazandığı kalıcı bilgi ile o anki konuşmaya özgü geçici bilgi arasındaki ayrım her zaman korunur. Bu kritik ayrımı bir sonraki bölümde netleştiriyoruz.</p>
+<h2>Eğitim ve Çalışma (Inference) Arasındaki Fark</h2>
+<p>LLM'lerin en çok karıştırılan yanlarından biri, modelin "öğrendiği" an ile "kullanıldığı" an arasındaki farktır. Eğitim (training), modelin devasa metinden parametrelerini ayarlayarak bilgi edindiği; haftalar süren, son derece pahalı ve yalnızca bir kez (ya da nadiren) yapılan süreçtir. Bunu okulda geçirilen uzun yıllara benzetebilirsiniz: yoğun, masraflı ama bir defa tamamlanan bir birikim dönemi.</p>
+<p>Çalışma ya da teknik adıyla çıkarım (inference) ise, eğitilmiş modeli alıp ona bir soru sorduğunuz andır. Burada model artık yeni bir şey öğrenmez; parametreleri sabittir, adeta dondurulmuştur. Model yalnızca o sabit düğme konumlarını kullanarak sizin metninize bir yanıt üretir. Yani siz ChatGPT'ye bir şey sorduğunuzda model sizden "öğrenmez"; sadece daha önce öğrendiklerini o anki bağlamınıza uygular. Tıpkı mezun olmuş bir uzmanın, yeni bir vakayı çözmek için diplomasını yeniden kazanmasına gerek olmadan mevcut bilgisini kullanması gibi.</p>
+<p>Bu ayrımın iki pratik sonucu vardır. Birincisi, bir modelin "bilgisi" eğitim verisinin bittiği tarihte donar; buna eğitim kesim tarihi (training cutoff) denir ve modelin o tarihten sonraki olayları kendiliğinden bilmemesinin nedeni tam olarak budur. İkincisi, bir konuşmada modele "öğrettiğinizi" sandığınız şeyler, yalnızca o konuşmanın bağlam penceresiyle sınırlıdır; sohbeti kapattığınızda model bunları unutur, çünkü kalıcı parametrelerine hiçbir şey yazılmamıştır. Bir modeli güncel ve alana özgü tutmanın yolu da çoğu zaman pahalı bir yeniden eğitimden değil, bir sonraki bölümde anlatacağımız tekniklerden geçer.</p>
+<h2>Ne Yapabilir, Ne Yapamaz? Halüsinasyon ve Sınırlar</h2>
+<p>LLM'ler metni özetlemekte, yeniden yazmakta, çevirmekte, sınıflandırmakta, fikir üretmekte ve genel olarak dilsel görevlerde olağanüstü iyidir. Bir konuyu farklı seviyelerde açıklayabilir, bir metnin tonunu değiştirebilir, kod yazabilir ya da karmaşık bir paragrafı sadeleştirebilirler. Güçlü oldukları yer, dilin ve örüntülerin hâkim olduğu, tek bir kesin doğrunun şart olmadığı görevlerdir.</p>
+<p>Buna karşılık en bilinen zayıflıkları "halüsinasyon" denen olgudur: modelin, kulağa son derece güvenilir ve akıcı gelen ama aslında yanlış, hatta tamamen uydurma bilgiler üretmesi. Bunun nedeni, daha önce gördüğümüz gibi, modelin gerçeği bir veritabanından çekip getirmemesi, istatistiksel olarak "olası görüneni" üretmesidir. Var olmayan bir mahkeme kararına atıf yapması ya da yanlış bir tarih vermesi kötü niyetinden değil, doğruluğu değil olasılığı optimize eden doğasından kaynaklanır. İşte tam da bu yüzden, hassas alanlarda bir LLM çıktısı her zaman bağımsız olarak doğrulanmalıdır.</p>
+<p>Modeller ayrıca güncel olaylardan habersiz olabilir (eğitim kesim tarihi nedeniyle), karmaşık çok adımlı mantık ya da kesin aritmetik gerektiren işlerde tökezleyebilir ve eğitim verisindeki önyargıları yansıtabilir. İşte bu sınırları aşmak için iki güçlü yöntem geliştirildi: "araç kullanımı" (model bir hesap makinesini ya da arama motorunu çağırır) ve özellikle "RAG" (retrieval-augmented generation, getirim destekli üretim). RAG, modele cevap ürettirmeden önce güvenilir ve güncel bir kaynaktan ilgili belgeleri getirip bağlam penceresine koyar; böylece model hafızasından uydurmak yerine, önündeki gerçek metne dayanarak yanıt verir.</p>
+<p>EcoFluxion'da bu ayrımları her gün pratikte yaşıyoruz. Hukuk teknolojisi ürünümüz İçtiHub'ın motoru MevzuatBot, tam da halüsinasyonun kabul edilemez olduğu bir alanda çalışıyor: yanlış bir madde ya da uydurma bir içtihat, gerçek bir hukuki sonuca yol açabilir. Bu yüzden yanıtları modelin hafızasına değil, RAG ile getirilen gerçek mevzuat ve içtihat metinlerine dayandırıyoruz. Sonuçta bir LLM'i hem güçlü hem de güvenilir kılan şey, çoğu zaman modelin kendisi değil, etrafına özenle kurulan bu mühendisliktir.</p>
+      </div>
+      <div class="takeaways"><h3>Öne çıkanlar</h3><ul><li>Büyük dil modeli (LLM), bir metnin devamında en olası birimi tahmin eden bir programdır; ChatGPT, Gemini ve Claude'un hepsi birer LLM'dir. Temel becerisi, devasa ölçekte tekrarlanan "sonraki token tahmini"dir.</li><li>Model bilgisini, internetin büyük bölümünü okuyarak ve milyarlarca kez sonraki kelimeyi tahmin etmeye çalışarak, kimse ona açıkça kural öğretmeden kazanır; bu sürece eğitim denir. İkinci bir aşama olan RLHF ise ona nasıl davranacağını öğretir.</li><li>Modelin tüm 'bilgisi', parametre denen ve eğitim sırasında ayarlanan milyarlarca sayısal düğmede saklıdır; bunlar bir veritabanı değil, örüntülerin sıkıştırılmış, bulanık bir özetidir.</li><li>Eğitim, modelin bilgi edindiği pahalı ve tek seferlik süreçtir; çalışma (inference) ise donmuş parametrelerle yanıt üretildiği andır. Model bir sohbet sırasında kalıcı olarak yeni bir şey öğrenmez.</li><li>Bağlam penceresi modelin kısa süreli hafızasıdır; ona sığmayan eski metin 'masadan düşer' ve sohbet kapandığında model her şeyi unutur, çünkü kalıcı bir hafızası yoktur.</li><li>En büyük zayıflıkları halüsinasyondur: model doğruluğu değil olasılığı optimize ettiği için kendinden emin ama yanlış bilgi üretebilir. RAG gibi yöntemler yanıtı gerçek kaynaklara dayandırarak bunu azaltır; EcoFluxion'ın İçtiHub'da yaptığı da tam budur.</li></ul></div>
+    </div>
+
+    <div class="lang-content" data-lang="en">
+      <div class="article-cat">Education</div>
+      <h1>What Are Large Language Models (LLMs) and How Do They Work?</h1>
+      <p class="article-sub">Understanding the technology behind ChatGPT, Gemini and Claude from scratch: from next-token prediction to parameters, from context windows to the difference between training and inference, with no technical background required.</p>
+      <div class="article-meta"><span><i class="far fa-clock"></i> 12 min read</span><div class="article-tags"><span class="article-tag">LLM</span><span class="article-tag">Yapay Zeka</span><span class="article-tag">Eğitim</span><span class="article-tag">GPT</span><span class="article-tag">Transformer</span></div></div>
+      <div class="article-body">
+<h2>What Is an LLM, Really? A Gigantic Autocomplete</h2>
+<p>A Large Language Model, abbreviated LLM, is, put simply, a computer program that takes a piece of text and answers the question "what word should come next?" with surprising accuracy. ChatGPT, Google's Gemini, Anthropic's Claude and the rest are all LLMs. The "large" in the name comes from the fact that both the text it learns from and the model itself are genuinely enormous, and we'll return to both shortly.</p>
+<p>My favorite analogy is the next-word suggestion on your phone's keyboard. When you type "The weather today is very...", the keyboard offers "nice," "hot" or "cold." At its core, an LLM does exactly this; but unlike that tiny model on your phone, it has read a large slice of the internet and practiced on billions of sentences. That is why it can produce not just one word but an entire paragraph, an essay, even working computer code, weaving them one piece at a time.</p>
+<p>It feels counterintuitive at first that such a simple idea turns into something that can summarize a legal document, write poetry or spot a bug in code. The secret lies not in any single prediction, but in repeating that prediction billions of times, and in the model absorbing the patterns of language, reasoning and the world along the way. In the rest of this article we'll unpack, step by step, how such a small idea becomes such a large leap.</p>
+<h2>The Idea at the Core: Predicting the Next Word (Token)</h2>
+<p>LLMs have a single core skill: predicting the most likely unit that comes next in a piece of text. In technical terms this is called "next-token prediction." Here a "token" is the smallest piece the model uses while processing text. Often it corresponds to a word, but a long word like "autocompletion" may be split into several tokens. So a token is sometimes a whole word, sometimes a fragment of one, sometimes just a punctuation mark.</p>
+<p>At each step the model produces a probability distribution over all possible tokens, in other words a numerical answer to the question "out of the thousands of words that could come next, how likely is each one?" After the phrase "The capital of Turkey is..." it assigns a very high probability to the token "Ankara" and a near-zero probability to "banana." It then picks a token according to those probabilities, appends it to the end of the text, and repeats the whole process from the top. Predict, append, predict again: this loop is the mechanism that weaves the fluent paragraphs you see, one word at a time.</p>
+<p>The subtle part is that the model doesn't have to pick the single most likely token every time. It usually makes a random choice weighted by the probabilities; a setting called "temperature" controls the dose of that randomness. Low temperature makes the model more predictable and cautious, while high temperature makes it more creative but sometimes more rambling. This is the main reason asking the same question twice can give you two different answers.</p>
+<h2>Training on Massive Text: Where Does the Model Learn This?</h2>
+<p>A model knows that the word "capital" is usually followed by the name of a city, even though no one explicitly told it so. It figures this out on its own during a process called "training," by reading enormous amounts of text. Training data typically consists of web pages, books, encyclopedias, articles, forum discussions and code repositories; in total, on the order of hundreds of billions, even trillions, of words.</p>
+<p>The mechanics of training are surprisingly simple. The model is shown a fragment of a sentence, the next word is hidden, and the model is asked to predict it. The model makes a guess, the guess is compared with the real word, and to the extent it was wrong, the numerical settings inside the model are nudged by a tiny amount. This procedure is repeated countless times over the massive text. No one teaches the model grammar rules, historical facts or logic; it captures all of these as patterns, as a byproduct, simply while trying to "predict the next word a little better."</p>
+<p>After this base training, a second stage usually follows: fine-tuning with human feedback. Here humans rate the model's responses, rewarding the ones that are more helpful and safer. This process, called "RLHF" (reinforcement learning from human feedback), turns a raw word-predictor into a genuinely useful, polite, instruction-following assistant. So the personality and helpfulness of the model you chat with today are largely the product of this second stage; the first stage teaches it language, the second teaches it how to behave.</p>
+<h2>Parameters: The Billions of Tiny Knobs the Model "Knows"</h2>
+<p>Those "numerical settings" adjusted during training are called parameters. You can think of a parameter as a tiny knob, a dial on a gigantic audio mixing board. All of the model's knowledge, linguistic intuition and pattern-recognition ability is hidden in exactly where these dials sit. Training is essentially nothing more than the process of setting these billions of dials, one by one, to the right positions.</p>
+<p>Modern large models typically have tens of billions, even hundreds of billions, of parameters. The big numbers you hear next to names like "GPT" or "Llama" often refer to precisely this parameter count. As a rough rule, more parameters mean more capacity to capture patterns and behave with more nuance; but the relationship is not linear. Beyond a certain point, the quality of the data, the training method and the model's architecture become far more decisive than raw parameter count.</p>
+<p>It's worth correcting a common misconception here: parameters are not a database where the model stores the sentences it read one by one. The model does not hold its training text inside like a library; instead it "compresses" the statistical patterns in the text into these dials. Like someone who reads a book cover to cover, then closes it and can no longer see the pages but retains the gist. That is why an LLM often remembers information not word for word, but like a blurry summary. This distinction also lies at the root of the "making things up" (hallucination) problem we'll touch on shortly.</p>
+<h2>The Secret Behind Seeming to "Understand": Attention and the Transformer</h2>
+<p>If the model only predicts the next word, how does it manage to grasp a question and give a coherent, context-appropriate answer? The answer lies in the architecture underlying almost every LLM today, called the "Transformer," and the "attention" mechanism at its heart. Attention lets the model decide, while processing a given word, which of the other words in the text to weight and by how much; in effect, it keeps asking the model "what should I focus on right now?"</p>
+<p>An example makes this concrete: in the sentence "I put the bag on the table because it was very heavy," what does the pronoun "it" refer to? A human mind instantly says "the bag." Thanks to attention, the model too forms a strong link to the word "bag" while processing "it," and a weak link to "table." Had you changed the sentence to "because it was very large," attention would most likely shift to "table" instead. This ability to capture the relationships between words in order to predict the next one correctly produces much of what looks, from the outside, like "understanding."</p>
+<p>So does the model really understand? This is still philosophically contested, and the honest answer is "not in the sense a human does." The model has no consciousness, no intent, no lived experience of the world. What it does is apply, with extraordinary finesse, the patterns it learned from massive text. Yet those patterns are so rich that the resulting behavior becomes, in many practical situations, indistinguishable from understanding. This gray zone between "pretending to understand" and "understanding" is one of the most provocative and least resolvable corners of the AI debate.</p>
+<h2>The Context Window: The Model's Short-Term Memory</h2>
+<p>When you chat with an LLM, you notice it behaves as if it remembers what you just said. What makes this possible is a concept called the "context window." The context window is the amount of text the model can "see" and take into account at once, measured in tokens. You can think of it as the size of a desk in front of the model: it can consider everything that fits on that desk at once, and it cannot see anything that doesn't fit.</p>
+<p>The fact that this window is limited has important consequences. If a conversation or document is longer than the context window, the oldest parts start falling off the desk; that is, beyond a certain point the model no longer sees a detail from the very start of the conversation. This is why, in very long chats, it's common for the model to act as if it has forgotten the initial instructions. The illusion that the model has a permanent memory often comes from here; in reality it is a temporary context, re-laid on the desk with each new message.</p>
+<p>In recent years context windows have grown dramatically; today some models can take in hundreds of thousands, even millions, of tokens at once. This makes it possible for a model to read a long contract or an entire case file in one go and answer questions about it. Still, no matter how large the context window grows, the distinction between the permanent knowledge the model gained through training and the temporary information specific to the current conversation always holds. We clarify that critical distinction in the next section.</p>
+<h2>The Difference Between Training and Inference</h2>
+<p>One of the most commonly confused aspects of LLMs is the difference between the moment the model "learns" and the moment it is "used." Training is the process in which the model acquires knowledge by adjusting its parameters from massive text; it takes weeks, is extremely expensive, and is done only once (or rarely). You can compare it to the long years spent in school: intensive and costly, but a one-time period of accumulation.</p>
+<p>Inference, on the other hand, is the moment you take the trained model and ask it a question. Here the model no longer learns anything new; its parameters are fixed, essentially frozen. The model simply uses those fixed dial positions to produce a response to your text. So when you ask ChatGPT something, the model does not "learn" from you; it merely applies what it learned earlier to your current context. It's like a graduated expert using their existing knowledge to solve a new case, without needing to re-earn their diploma.</p>
+<p>This distinction has two practical consequences. First, a model's "knowledge" freezes at the date the training data ends; this is called the training cutoff, and it is precisely why the model does not, on its own, know about events after that date. Second, the things you think you've "taught" the model in a conversation are limited to that conversation's context window; when you close the chat, the model forgets them, because nothing was written to its permanent parameters. The way to keep a model up to date and domain-specific usually runs not through expensive retraining, but through the techniques we cover in the next section.</p>
+<h2>What Can It Do, What Can't It? Hallucination and Limits</h2>
+<p>LLMs are extraordinarily good at summarizing, rewriting, translating, classifying, generating ideas and linguistic tasks in general. They can explain a topic at different levels, change the tone of a text, write code, or simplify a dense paragraph. Where they are strong is in tasks dominated by language and patterns, where a single exact correct answer isn't required.</p>
+<p>Their best-known weakness, by contrast, is the phenomenon called "hallucination": the model producing information that sounds perfectly confident and fluent but is actually wrong, or even entirely made up. The reason, as we saw earlier, is that the model is not pulling facts from a database but generating what "looks statistically likely." Citing a court ruling that doesn't exist or giving a wrong date stems not from ill intent but from its nature, which optimizes for probability rather than truth. This is exactly why, in sensitive domains, an LLM's output must always be independently verified.</p>
+<p>Models can also be unaware of recent events (because of the training cutoff), stumble on complex multi-step reasoning or exact arithmetic, and reflect biases in the training data. To get past these limits, two powerful methods were developed: "tool use" (the model calls a calculator or a search engine) and especially "RAG" (retrieval-augmented generation). Before letting the model generate an answer, RAG fetches relevant documents from a reliable, up-to-date source and places them in the context window; so the model answers based on the real text in front of it rather than inventing from memory.</p>
+<p>At EcoFluxion we live these distinctions in practice every day. MevzuatBot, the engine of our legal-tech product İçtiHub, operates precisely in a domain where hallucination is unacceptable: a wrong article or a fabricated precedent can lead to a real legal consequence. That is why we ground answers not in the model's memory but in the actual legislation and case-law texts retrieved through RAG. In the end, what makes an LLM both powerful and trustworthy is often not the model itself, but the engineering carefully built around it.</p>
+      </div>
+      <div class="takeaways"><h3>Key takeaways</h3><ul><li>A large language model (LLM) is a program that predicts the most likely unit to come next in a text; ChatGPT, Gemini and Claude are all LLMs. Its core skill is "next-token prediction" repeated at massive scale.</li><li>The model gains its knowledge by reading a large slice of the internet and trying billions of times to predict the next word, without anyone explicitly teaching it rules; this process is called training. A second stage, RLHF, teaches it how to behave.</li><li>All of the model's 'knowledge' is stored in billions of numerical dials called parameters, set during training; these are not a database but a compressed, blurry summary of patterns.</li><li>Training is the expensive, one-time process where the model acquires knowledge; inference is the moment it produces answers with frozen parameters. The model does not permanently learn anything new during a chat.</li><li>The context window is the model's short-term memory; older text that doesn't fit 'falls off the desk,' and when the chat closes the model forgets everything, because it has no permanent memory.</li><li>Their biggest weakness is hallucination: because the model optimizes for probability rather than truth, it can produce confident but wrong information. Methods like RAG reduce this by grounding answers in real sources, which is exactly what EcoFluxion does in İçtiHub.</li></ul></div>
+    </div>
+
+    <a href="index.html" class="article-back"><i class="fas fa-arrow-left"></i> <span class="lang-content" data-lang="tr">Tüm yazılar</span><span class="lang-content" data-lang="en">All articles</span></a>
+  </main>
+  <footer class="footer" style="padding:2rem 0;">
+  <div class="container text-center">
+    <div style="display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;margin-bottom:1rem;">
+      <a href="../index.html"><span class="lang-content" data-lang="tr">Ana Sayfa</span><span class="lang-content" data-lang="en">Home</span></a>
+      <a href="index.html">Blog</a>
+      <a href="https://ictihub.com" target="_blank" rel="noopener">İçtiHub</a>
+      <a href="../privacy-policy.html"><span class="lang-content" data-lang="tr">Gizlilik</span><span class="lang-content" data-lang="en">Privacy</span></a>
+    </div>
+    <div class="footer-social" style="display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;margin-bottom:1rem;">
+      <a href="https://x.com/ecofluxion" target="_blank" rel="noopener" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+      <a href="https://tr.linkedin.com/company/ecofluxion" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      <a href="https://www.instagram.com/ecofluxion/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.tiktok.com/@ecofluxion" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+    </div>
+    <p class="footer-copyright mb-0">&copy; 2024-2026 EcoFluxion. <span class="lang-content" data-lang="tr">Tüm hakları saklıdır.</span><span class="lang-content" data-lang="en">All rights reserved.</span></p>
+  </div>
+</footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+(function () {
+  var lang = localStorage.getItem('language') || 'tr';
+  function apply(l) {
+    document.documentElement.lang = l;
+    document.querySelectorAll('.lang-content').forEach(function (el) { el.style.display = (el.getAttribute('data-lang') === l) ? '' : 'none'; });
+    document.querySelectorAll('.legal-lang-btn').forEach(function (b) { b.classList.toggle('active', b.getAttribute('data-lang') === l); });
+    localStorage.setItem('language', l);
+  }
+  document.querySelectorAll('.legal-lang-btn').forEach(function (b) { b.addEventListener('click', function () { apply(b.getAttribute('data-lang')); }); });
+  apply(lang);
+})();
+</script>
+</body>
+</html>

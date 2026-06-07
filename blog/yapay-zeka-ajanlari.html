@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Yapay zeka ajanı nedir, sohbet botundan farkı ne? Planla-uygula-gözlemle döngüsü, araç çağırma, RAG, API'ler ve MCP standardı; otonomi ile güvenlik İçtiHub örnekleriyle sade anlatım.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://ecofluxion.com/blog/yapay-zeka-ajanlari.html">
+  <meta name="theme-color" content="#7CB342">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Yapay Zeka Ajanları ve Araç Kullanımı: Sohbet Botundan Eyleme Geçen Yapay Zekaya">
+  <meta property="og:description" content="Yapay zeka ajanı nedir, sohbet botundan farkı ne? Planla-uygula-gözlemle döngüsü, araç çağırma, RAG, API'ler ve MCP standardı; otonomi ile güvenlik İçtiHub örnekleriyle sade anlatım.">
+  <meta property="og:url" content="https://ecofluxion.com/blog/yapay-zeka-ajanlari.html">
+  <meta property="og:site_name" content="EcoFluxion">
+  <meta property="og:locale" content="tr_TR">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:image" content="https://ecofluxion.com/image/ecofluxion_logo.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@ecofluxion">
+  <meta name="twitter:title" content="Yapay Zeka Ajanları ve Araç Kullanımı: Sohbet Botundan Eyleme Geçen Yapay Zekaya">
+  <meta name="twitter:description" content="Yapay zeka ajanı nedir, sohbet botundan farkı ne? Planla-uygula-gözlemle döngüsü, araç çağırma, RAG, API'ler ve MCP standardı; otonomi ile güvenlik İçtiHub örnekleriyle sade anlatım.">
+  <meta name="twitter:image" content="https://ecofluxion.com/image/ecofluxion_logo.png">
+  <title>Yapay Zeka Ajanları ve Araç Kullanımı: Sohbet Botundan Eyleme Geçen Yapay Zekaya | EcoFluxion Blog</title>
+  <link rel="icon" type="image/png" href="../image/ecofluxion_logo.png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .legal-nav { background: #2f3a22; }
+    .legal-nav .nav-link { color: rgba(255,255,255,.85); }
+    .legal-nav .nav-link:hover, .legal-nav .nav-link.active { color: #fff; }
+    .legal-langbar { display:flex; gap:.4rem; }
+    .legal-lang-btn.active { background:#fff; color:#558B2F; }
+    .article-wrap { max-width: 800px; margin: 0 auto; padding: 130px 1.25rem 70px; }
+    .breadcrumb-nav { font-size:.88rem; color:#999; margin-bottom:1.4rem; }
+    .breadcrumb-nav a { color:#558B2F; text-decoration:none; }
+    .article-cat { color: var(--primary-green,#7CB342); font-weight:700; text-transform:uppercase; letter-spacing:1px; font-size:.82rem; }
+    .article-wrap h1 { font-family:'Montserrat',sans-serif; font-weight:800; line-height:1.2; margin:.4rem 0 1rem; color:#222; }
+    .article-sub { font-size:1.22rem; color:#555; line-height:1.6; margin-bottom:1.4rem; }
+    .article-meta { display:flex; flex-wrap:wrap; gap:.8rem 1.2rem; align-items:center; color:#888; font-size:.9rem; border-top:1px solid #eee; border-bottom:1px solid #eee; padding:.9rem 0; margin-bottom:2rem; }
+    .article-tags { display:flex; flex-wrap:wrap; gap:.4rem; }
+    .article-tag { background:#f3f8ec; color:#558B2F; border-radius:50px; padding:.22rem .7rem; font-size:.78rem; font-weight:600; }
+    .article-body h2 { font-family:'Montserrat',sans-serif; font-weight:700; font-size:1.5rem; margin:2.3rem 0 .8rem; color:#2f3a22; }
+    .article-body p { color:#333; line-height:1.85; font-size:1.07rem; margin-bottom:1.1rem; }
+    .takeaways { background:#f3f8ec; border-left:4px solid var(--primary-green,#7CB342); border-radius:8px; padding:1.2rem 1.5rem; margin:2.6rem 0; }
+    .takeaways h3 { font-family:'Montserrat',sans-serif; font-weight:700; font-size:1.1rem; margin-bottom:.6rem; }
+    .takeaways ul { margin:0; padding-left:1.2rem; } .takeaways li { color:#3a4a28; line-height:1.7; margin-bottom:.3rem; }
+    .article-back { display:inline-block; margin-top:2rem; font-weight:600; color:#558B2F; text-decoration:none; }
+    .blog-head { padding:130px 1.25rem 1.5rem; text-align:center; }
+    .blog-head h1 { font-family:'Montserrat',sans-serif; font-weight:800; color:#2f3a22; }
+    .blog-head p { color:#666; max-width:640px; margin:.5rem auto 0; }
+    .blog-grid { max-width:1120px; margin:0 auto; padding:1rem 1.25rem 80px; display:grid; grid-template-columns:repeat(auto-fill,minmax(330px,1fr)); gap:1.6rem; }
+    .blog-card { background:#fff; border:1px solid #eee; border-radius:14px; overflow:hidden; transition:.3s; display:flex; flex-direction:column; }
+    .blog-card:hover { transform:translateY(-5px); box-shadow:0 15px 35px rgba(0,0,0,.08); }
+    .blog-card-top { height:6px; background:linear-gradient(135deg,#7CB342,#558B2F); }
+    .blog-card-body { padding:1.6rem; display:flex; flex-direction:column; flex:1; }
+    .blog-card h2 { font-family:'Montserrat',sans-serif; font-weight:700; font-size:1.22rem; margin:.45rem 0 .6rem; line-height:1.35; }
+    .blog-card h2 a { color:#222; text-decoration:none; }
+    .blog-card h2 a:hover { color:#558B2F; }
+    .blog-card p { color:#666; line-height:1.6; flex:1; font-size:.97rem; }
+    .blog-card .read-more { color:#558B2F; font-weight:600; text-decoration:none; margin-top:1rem; align-self:flex-start; }
+    .blog-card-meta { color:#999; font-size:.82rem; margin-top:.8rem; }
+</style>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Yapay Zeka Ajanları ve Araç Kullanımı: Sohbet Botundan Eyleme Geçen Yapay Zekaya",
+  "description": "Yapay zeka ajanı nedir, sohbet botundan farkı ne? Planla-uygula-gözlemle döngüsü, araç çağırma, RAG, API'ler ve MCP standardı; otonomi ile güvenlik İçtiHub örnekleriyle sade anlatım.",
+  "inLanguage": "tr",
+  "datePublished": "2026-06-07",
+  "dateModified": "2026-06-07",
+  "author": {
+    "@type": "Organization",
+    "name": "EcoFluxion",
+    "url": "https://ecofluxion.com/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "EcoFluxion",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://ecofluxion.com/image/ecofluxion_logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://ecofluxion.com/blog/yapay-zeka-ajanlari.html"
+  },
+  "image": "https://ecofluxion.com/image/ecofluxion_logo.png",
+  "articleSection": "Mühendislik",
+  "keywords": "AI Agents, Tool Use, MCP, RAG, Otonomi"
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://ecofluxion.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://ecofluxion.com/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Yapay Zeka Ajanları ve Araç Kullanımı: Sohbet Botundan Eyleme Geçen Yapay Zekaya",
+      "item": "https://ecofluxion.com/blog/yapay-zeka-ajanlari.html"
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top legal-nav">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="../index.html">
+        <img src="../image/ecofluxion_logo.png" alt="EcoFluxion" class="logo-img" style="height:36px;">
+        <span class="ms-2 fw-bold">EcoFluxion</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#blogNav" aria-label="Menu"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="blogNav">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="../index.html#home"><span class="lang-content" data-lang="tr">Ana Sayfa</span><span class="lang-content" data-lang="en">Home</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="../index.html#about"><span class="lang-content" data-lang="tr">Hakkımızda</span><span class="lang-content" data-lang="en">About</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="../index.html#services"><span class="lang-content" data-lang="tr">Neler Geliştiriyoruz</span><span class="lang-content" data-lang="en">What We Build</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="../index.html#projects"><span class="lang-content" data-lang="tr">Ürünler</span><span class="lang-content" data-lang="en">Products</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="../index.html#technologies"><span class="lang-content" data-lang="tr">Teknolojiler</span><span class="lang-content" data-lang="en">Technologies</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="../index.html#careers"><span class="lang-content" data-lang="tr">Kariyer</span><span class="lang-content" data-lang="en">Careers</span></a></li>
+          <li class="nav-item"><a class="nav-link active" href="index.html"><span class="lang-content" data-lang="tr">Blog</span><span class="lang-content" data-lang="en">Blog</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="../index.html#contact"><span class="lang-content" data-lang="tr">İletişim</span><span class="lang-content" data-lang="en">Contact</span></a></li>
+          <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+            <div class="legal-langbar">
+              <button class="btn btn-sm btn-outline-light legal-lang-btn" data-lang="tr">TR</button>
+              <button class="btn btn-sm btn-outline-light legal-lang-btn" data-lang="en">EN</button>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <main class="article-wrap">
+    <nav class="breadcrumb-nav"><a href="../index.html">EcoFluxion</a> / <a href="index.html">Blog</a> / <span class="lang-content" data-lang="tr">Yapay Zeka Ajanları ve Araç Kullanımı: Sohbet Botundan Eyleme Geçen Yapay Zekaya</span><span class="lang-content" data-lang="en">AI Agents and Tool Use: From Chatbot to AI That Actually Does Things</span></nav>
+
+    <div class="lang-content" data-lang="tr">
+      <div class="article-cat">Mühendislik</div>
+      <h1>Yapay Zeka Ajanları ve Araç Kullanımı: Sohbet Botundan Eyleme Geçen Yapay Zekaya</h1>
+      <p class="article-sub">Bir "ajan" sıradan bir sohbet botundan nasıl ayrılır? Planla-uygula-gözlemle döngüsünü, araç çağırmayı, MCP gibi araç standartlarını ve ajanların nerede parlayıp nerede çuvalladığını sade bir dille anlatıyoruz.</p>
+      <div class="article-meta"><span><i class="far fa-clock"></i> 12 dk okuma</span><div class="article-tags"><span class="article-tag">AI Agents</span><span class="article-tag">Tool Use</span><span class="article-tag">MCP</span><span class="article-tag">RAG</span><span class="article-tag">Otonomi</span></div></div>
+      <div class="article-body">
+<h2>Sohbet Botu Konuşur, Ajan İş Yapar</h2>
+<p>Sıradan bir sohbet botunu, çok okumuş ama masasından hiç kalkamayan bir danışmana benzetebilirsiniz. Bir soru sorarsınız; hafızasındaki her şeyi tartar ve size derli toplu bir cevap yazar. Ama hikaye orada biter. Bir dosyayı açamaz, bir veritabanını sorgulayamaz, bir hesap yapıp sonucuna göre fikrini değiştiremez. Tek bir nefeste, zaten bildikleriyle konuşur ve susar. Teknik söyleyişle: bir sohbet botu, dil modeline yapılan tek bir çağrıdır. Girdi gider, metin geri gelir, iş biter.</p>
+<p>Yapay zeka ajanı (AI agent) ise aynı danışmana telefon, internet bağlantısı ve küçük bir asistan ekibi vermek gibidir. Artık sadece düşünmüyor; düşündüğünü sınamak için dışarıya uzanabiliyor. Bir arama yapabilir, bir belge getirebilir, bir API'yi (yani başka bir yazılımın 'servis penceresini') çağırabilir, gelen sonuca bakıp 'hmm, bu beklediğim gibi değil' deyip planını değiştirebilir. Ajan tek bir cevapta donup kalmaz; bir hedefe ulaşana dek adım adım ilerler.</p>
+<p>En sade tanımıyla: bir sohbet botu, dil modeline yapılan tek seferlik bir çağrıdır; bir ajan ise iş bitene kadar araçları bir döngü içinde çağıran bir dil modelidir. 'Döngü' kelimesinin altını çizin, çünkü ajanı ajan yapan tam olarak o döngüdür. Cevabı bir çırpıda vermek yerine ajan küçük adımlar atar, her adımdan sonra ne olduğuna bakar ve bir sonraki adıma yeni bilgiyle karar verir.</p>
+<p>Bu fark sandığınızdan daha köktendir. Sohbet botu size 'bu davaya ilişkin Yargıtay içtihadı muhtemelen şöyle der' diye tahmin yürütür. Ajan ise gerçekten içtihat veritabanına gider, ilgili kararı bulur, metnini okur ve 'işte tam olarak bu karar, şu maddeye dayanıyor' der. Biri hatırlamaya çalışır, diğeri bakar; ve hukukta bu ikisi arasındaki uçurum bazen bir davanın kaderini belirler.</p>
+<h2>Döngünün Kalbi: Planla, Uygula, Gözlemle</h2>
+<p>Bütün ajanlar, ne kadar gösterişli olurlarsa olsunlar, basit bir ritimle çalışır: planla, uygula, gözlemle, tekrarla. Araştırmacılar buna sıkça 'ReAct döngüsü' der — İngilizce 'Reasoning' (akıl yürütme) ile 'Acting' (eylem) kelimelerinin birleşimi. Adı önemli değil; ritmi önemli. Bu döngü, neredeyse her ciddi yapay zeka ajanının altında atan kalptir.</p>
+<p>Önce planlama gelir: model, eldeki hedefe bakar ve 'bir sonraki en mantıklı adım ne?' diye sorar. Bu bir iç sestir, bir niyet beyanıdır — 'Bu sorunun cevabı için önce ilgili kanun maddesini bulmam gerek.' Sonra uygulama gelir: model bu niyeti bir araç çağrısına (tool call) dönüştürür. 'Mevzuat arama aracını şu anahtar kelimeyle çalıştır.' Bu çağrıyı modelin etrafındaki sistem gerçekten yürütür ve sonucu modele geri verir.</p>
+<p>Üçüncü adım, çoğu kişinin gözden kaçırdığı ama her şeyi belirleyen adımdır: gözlem. Model, araçtan dönen sonuca bakar. Aradığı maddeyi buldu mu? Sonuç boş mu geldi? Beklediğinden farklı bir şey mi çıktı? İşte bu gözlem, bir sonraki planı şekillendirir. Arama boş döndüyse model 'anahtar kelimeyi değiştireyim' der; doğru maddeyi bulduysa 'şimdi bu maddeyi yorumlayan içtihadı arayayım' der. Akıl yürütme ile eylem birbirini besler: model ne yapacağını düşünür, yaptığının sonucuna bakarak yeniden düşünür.</p>
+<p>Bu döngü, hedefe ulaşılana ya da makul bir durma noktasına gelinene kadar tekrar eder. Tek bir görevde model belki üç, belki on beş kez bu çevrimden geçer. Ortada sihir yok; yalnızca küçük kararların üst üste konmasıyla büyük bir işin tamamlanması var. Tıpkı bir araştırmacının bir konuyu çözerken yaptığı gibi: bir kaynak oku, not al, eksiği gör, başka kaynağa git, parçaları bağla, sonuca var.</p>
+<h2>Araç Çağırma: Modelin Eli Ayağı</h2>
+<p>Dil modeli, ne kadar yetenekli olursa olsun, doğası gereği yalnızca metin üretir. Bir veritabanını kendi başına sorgulayamaz, bir e-posta gönderemez, gerçek bir hesap makinesi çalıştıramaz. Peki ajanlar bütün bunları nasıl yapıyor? Cevap, araç çağırma (tool calling; kimi yerde 'function calling', yani fonksiyon çağırma) denen zarif bir hilede gizli.</p>
+<p>Şöyle işler: modele, kullanabileceği araçların bir menüsü verilir. Her araç için kısa bir tarif vardır — 'mevzuat_ara: bir anahtar kelime alır, ilgili kanun maddelerini döndürür.' Model bir aracı kullanmak istediğinde onu kendisi çalıştırmaz; yalnızca bir istek yazar: 'mevzuat_ara aracını, anahtar kelime = "kira artış oranı" ile çağırmak istiyorum.' Bu, garson çağırmaya benzer. Model siparişi verir; mutfak (yani çevredeki yazılım) yemeği pişirir ve tabağı geri getirir.</p>
+<p>Bu ayrım kritik. Model 'ne yapılması gerektiğine' karar verir; gerçek işi, güvenli bir biçimde dış sistem yapar. Böylece modelin doğrudan veritabanına ya da internete sınırsız erişimi olmaz — yalnızca tasarlanmış, denetlenebilir bir araç setini kullanabilir. Bir araç banka bakiyesini gösterebilir ama para transfer etmesine izin verilmeyebilir; bu sınırları geliştiriciler çizer, model değil.</p>
+<p>Araçların geri getirdiği sonuç, modelin gözlemi haline gelir ve döngü kapanır. Ajanları güçlü kılan da tam budur: model, kendi kafasındaki muhtemelen eskimiş ya da eksik bilgiyle yetinmek zorunda değildir. Canlı, gerçek, doğrulanabilir veriye uzanabilir. Bir hukuk asistanı için bu, 'sanırım kanun böyle' ile 'kanun aynen şöyle, işte resmi metni' arasındaki farktır.</p>
+<h2>Hatırlamak Değil, Bakmak: Erişim ve API'ler</h2>
+<p>Ajanların kullandığı araçlar genellikle iki büyük aileye ayrılır: erişim (retrieval) araçları ve eylem (action) araçları. Bu ikisini ayırmak, ajanların ne yapabileceğini anlamayı epeyce kolaylaştırır.</p>
+<p>Erişim araçları bilgiyi içeri getirir. En yaygın örneği RAG'dir — açılımıyla 'erişimle güçlendirilmiş üretim' (Retrieval-Augmented Generation). Fikir basit ama dönüştürücü: modelin cevabı uydurmasına izin vermek yerine, önce konuyla ilgili gerçek belgeleri bir bilgi havuzundan çekersiniz — çoğunlukla bir 'vektör veritabanından', yani metinleri kelime benzerliğine değil anlam yakınlığına göre dizen bir depodan — ve sonra modelden cevabını yalnızca o belgelere dayandırmasını istersiniz. Sonuç: tahmin değil, kaynaklı bir cevap. Hukuk gibi yanlış bir cümlenin pahalıya patladığı alanlarda bu pazarlık konusu değildir.</p>
+<p>Eylem araçları ise dünyada bir şey değiştirir ya da dış bir servisle konuşur. Çoğu API üzerinden çalışır. API'yi (Application Programming Interface) bir yazılımın dışarıya açtığı düzenli bir 'servis penceresi' gibi düşünün: doğru formatta istek gönderirsiniz, düzenli bir cevap alırsınız. Bir hava durumu API'si, bir ödeme API'si, bir takvim API'si... Ajan bir API çağrısını da diğer araçlar gibi yapar; tek fark, bu kez sonucun bir belge değil, bir işlem ya da canlı bir veri olmasıdır.</p>
+<p>Bu ikisini birleştirmek ajana gerçek bir derinlik kazandırır. Bir ajan önce erişim aracıyla 'bu sözleşmede hangi madde geçerli?' sorusunu yanıtlar, sonra bir hesaplama aracıyla tutarı bulur, ardından başka bir araçla sonucu düzgün bir özet halinde sunar. Her adım küçük; ama zincirlendiğinde, tek bir sohbet botunun asla beceremeyeceği çok adımlı bir iş ortaya çıkar.</p>
+<h2>Çok Adımlı Görevler: Bir İşi Parçalara Bölmek</h2>
+<p>Ajanların asıl değeri, tek bir soruya cevap vermekte değil, birden çok adım gerektiren işleri baştan sona götürebilmektedir. Karmaşık bir görev düşünün: 'Şu kira sözleşmesini incele, güncel mevzuata göre artış oranının yasal olup olmadığını kontrol et, bir uyuşmazlık çıkarsa hangi içtihadın işe yarayacağını söyle.' Bu tek bir 'soru' değil; üst üste binen bir görevler zinciridir.</p>
+<p>Bir ajan bu işi, bir insanın yapacağı gibi parçalara böler. Önce sözleşmeyi okur ve ilgili maddeyi çıkarır. Sonra mevzuat aracıyla yürürlükteki yasal tavanı bulur. Ardından sözleşmedeki oranla yasal tavanı karşılaştırır. Bir uyuşmazlık görürse içtihat arama aracına geçer ve emsal kararları getirir. Her adımın çıktısı, bir sonraki adımın girdisi olur. Döngünün gerçek gücü de budur: ajan, yol boyunca öğrendikçe planını canlı canlı günceller.</p>
+<p>Pratikte iki yaygın yaklaşım vardır. Biri 'önce planla, sonra uygula': ajan baştan bütün adımları bir liste halinde çıkarır, sonra tek tek yürütür. Diğeri, daha esnek olan ReAct tarzıdır: ajan bir adım atar, sonucuna bakar, ona göre bir sonraki adıma karar verir. İkincisi, önceden kestirilemeyen ve yol boyunca şekillenen işlerde çok daha dayanıklıdır — çünkü gerçek dünya nadiren ilk plana uyar.</p>
+<p>Burada önemli bir uyarı var: her ek adım, bir hata ihtimali de taşır. Bu yüzden iyi tasarlanmış ajanlar bir görevi gereksiz yere uzun zincirlere bölmez. En iyi mimariler, bir işi mümkün olan en az ama en sağlam adıma indirger; çünkü her fazladan halka, kopabilecek bir zayıf nokta demektir. Bir sonraki bölümde bunun neden bu kadar kritik olduğunu sayılarla göreceğiz.</p>
+<h2>Ortak Dil: MCP ve Araç Standartları</h2>
+<p>Ajanlar araç kullanmaya başlayınca hızla can sıkıcı bir sorun ortaya çıktı: her model her araca farklı biçimde bağlanıyordu. Beş ayrı yapay zeka modeliniz ve sekiz ayrı aracınız varsa, kırk ayrı entegrasyon yazıp bakımını yapmanız gerekiyordu. Mühendisler buna 'N çarpı M sorunu' der; ve bu, sektörü gerçekten yavaşlatan bir baş ağrısıydı.</p>
+<p>Çözüm, ortak bir standart oldu: MCP, yani Model Context Protocol (Model Bağlam Protokolü). Kasım 2024'te Anthropic tarafından açık bir standart olarak ortaya atılan MCP'yi, 'yapay zeka için USB-C girişi' gibi düşünebilirsiniz. Nasıl USB-C sayesinde tek bir kabloyla telefonu, dizüstünü ve kulaklığı şarj edebiliyorsanız, MCP de modellerle araçların tek bir ortak şekilde konuşmasını sağlar. Bir aracı bir kez MCP'ye uygun yazarsınız; sonra onu hangi modele takarsanız çalışır.</p>
+<p>Standart hızla benimsendi: 2025 boyunca OpenAI ve Google gibi büyük oyuncular da MCP'yi desteklediğini açıkladı ve Aralık 2025'te Anthropic protokolün yönetişimini bağımsız bir vakfa (Linux Foundation çatısı altındaki Agentic AI Foundation'a) devretti. Böylece 2026 itibarıyla MCP, tek bir şirkete bağlı olmayan, fiilî sektör standardı haline geldi. Pratikte üç temel parça sunar: araçlar (modelin çağırmaya karar verdiği çalıştırılabilir fonksiyonlar), kaynaklar (modelin okuyabildiği veri parçaları) ve istem şablonları (modele bir araçla nasıl etkileşeceğini gösteren hazır kalıplar). Bu üçlü, dağınık entegrasyonları temiz ve taşınabilir bir mimariye dönüştürür.</p>
+<p>Bu, EcoFluxion'da soyut bir teori değil; günlük çalışma şeklimiz. İçtiHub'a güç veren motor bir MCP ajan sistemi üzerine kuruludur. Mevzuat arama, içtihat getirme ve kaynak doğrulama gibi yeteneklerin her biri, modelin disiplinli biçimde çağırabildiği birer araç olarak tanımlanır. Bu sayede sistem hem genişletilebilir kalır (yeni bir araç eklemek, her şeyi baştan yazmak değildir) hem de denetlenebilir: modelin tam olarak hangi araca, hangi parametreyle uzandığını görebiliriz.</p>
+<h2>Nerede Parlar, Nerede Çuvallar</h2>
+<p>Ajanlar her derde deva değildir; belirli işlerde olağanüstü, başka işlerde tehlikeli derecede güvenilmezdir. İkisini ayırt edebilmek, belki de yapay zekayı sağduyuyla kullanmanın en önemli becerisidir.</p>
+<p>Ajanlar, işin net bir hedefi ve geri besleme veren güvenilir araçları olduğunda parlar. Bir belgeden bilgi çıkarıp doğrulamak, bir kod tabanında belirli bir hatayı avlamak, çok kaynaklı bir araştırmayı toparlamak, bir veri kümesini sorgulayıp özetlemek — bunlar tam onların alanıdır. Buralarda her adımın sonucu somuttur: arama bir şey buldu ya da bulmadı, test geçti ya da kaldı. Ajan bu sinyalleri okuyarak kendini düzeltebilir.</p>
+<p>Çuvalladıkları yer ise tahmin edilebilir: uzun, çok adımlı zincirler. Burada sinsi bir matematik devreye girer. Diyelim ki model her adımda yüzde doksan dokuz isabetli olsun; kulağa kusursuz geliyor. Ama yüz adımlık bir görevde bu küçük hata payları birikir — 0,99'un yüzüncü kuvveti yaklaşık 0,37'ye iner, yani görevin baştan sona doğru gitme ihtimali üçte birin biraz üzerine düşer. Üstelik hatalar yalnızca toplanmaz, çoğalır: üçüncü adımda uydurulan yanlış bir 'gerçek', yedinci adımda kanıt diye kullanılır ve sonunda kendinden emin görünen, ama temelden çürük bir cevap çıkar.</p>
+<p>Bir başka klasik tuzak da uydurma, yani 'halüsinasyon'dur. Bir model bazen bir aracı hiç çağırmadığı halde çağırmış gibi davranıp gerçekmiş süsü verilmiş bir sonuç üretebilir; kullanıcı ise aracın gerçekten çalışıp çalışmadığını çıplak gözle göremez. İşte bu yüzden ciddi sistemlerde her adımın izini sürmek — hangi aracın gerçekten çağrıldığını, ne döndürdüğünü kaydetmek — bir lüks değil, zorunluluktur. İçtihadın kaynağını gerçekten getirmekle getirmiş gibi yapmak arasındaki fark, bir hukuk ürününde her şey demektir.</p>
+<h2>Güvenlik: Otonomiyi Dizginlemek</h2>
+<p>Bir ajana otonomi — yani kendi başına karar verip eylemde bulunma yetkisi — verdiğiniz anda hem güç hem de risk artar. Yalnızca konuşan bir botun yapabileceği en kötü şey yanlış bir cümle kurmaktır. Eyleme geçebilen bir ajan ise yanlış bir e-posta gönderebilir, yanlış bir kaydı silebilir, yanlış bir tutarı onaylayabilir. Bu yüzden güvenlik, ajan tasarımında sonradan eklenen bir süs değil, en baştan kurulan bir iskelettir.</p>
+<p>İlk ve en önemli ilke en az yetki ilkesidir: ajana yalnızca işini yapması için gereken araçları verin, fazlasını değil. Bir araştırma ajanının okuma araçlarına ihtiyacı vardır ama veri silme aracına asla. Bir araç parayı gösterebilir ama transfer edemez. Bu sınırları geliştirici çizer, model değil; ve model bu sınırları aşamaz, çünkü o araçlar menüde hiç yer almaz.</p>
+<p>İkinci ilke insan denetimidir — sıkça 'insan döngüde' (human-in-the-loop) diye geçer. Geri alınamaz ya da maliyetli eylemlerden önce sistem durur ve bir insanın onayını ister. Yapay zeka bir taslak hazırlar, bir öneri sunar, bir hesap yapar; ama tetiği bir insan çeker. Hukuk gibi sonuçların ağır olduğu alanlarda doğru denge budur: ağır yükü ajan taşır, son sözü insan söyler. Mevcut sistemlerin uzun, çok adımlı işlerde ve ince muhakeme gerektiren durumlarda hâlâ kırılgan olduğunu unutmayın — denetim tam da bu yüzden vazgeçilmezdir.</p>
+<p>Üçüncü ilke şeffaflıktır. İyi bir ajan sistemi, attığı her adımın izini bırakır: hangi aracı çağırdı, hangi parametreyle, ne sonuç aldı, o sonucu nasıl kullandı. Bu iz hem hata ayıklamayı mümkün kılar hem de güven inşa eder. İçtiHub felsefemizin özü tam da budur: yapay zekanın bir cevabı üretmesi yetmez; o cevabın hangi kaynağa dayandığını gösterebilmesi gerekir. Bir hukukçu mahkemeye çıkıp 'yapay zeka böyle dedi' diyemez; 'işte kanun, işte içtihat, işte kaynak' diyebilmelidir. Ajanları hem güvenli hem de gerçekten faydalı kılan şey budur.</p>
+      </div>
+      <div class="takeaways"><h3>Öne çıkanlar</h3><ul><li>Sohbet botu, dil modeline yapılan tek bir çağrıdır; ajan ise iş bitene kadar araçları bir döngü içinde çağıran bir dil modelidir.</li><li>Her ajan aynı ritimle çalışır: planla, uygula, gözlemle, tekrarla — sıkça 'ReAct döngüsü' denen bu çevrim ajanın kalbidir.</li><li>Araç çağırma (function calling) modelin 'eli ayağıdır': model ne yapılacağına karar verir, gerçek işi güvenli bir dış sistem yapar.</li><li>Araçlar iki aileye ayrılır: bilgi getiren erişim araçları (RAG gibi) ve dünyada bir şey değiştiren API tabanlı eylem araçları.</li><li>MCP (Model Context Protocol), modellerle araçları tek ortak dille konuşturan 'yapay zeka için USB-C' standardıdır; 2026'da artık bağımsız bir vakıf altında, sektörün fiilî standardıdır.</li><li>Ajanlar net hedefli ve geri besleme veren işlerde parlar; uzun çok adımlı zincirlerde hatalar birikip çoğalarak çuvallar.</li><li>Güvenliğin üç temeli: en az yetki, insan denetimi (human-in-the-loop) ve her adımı izlenebilir kılan şeffaflık.</li></ul></div>
+    </div>
+
+    <div class="lang-content" data-lang="en">
+      <div class="article-cat">Engineering</div>
+      <h1>AI Agents and Tool Use: From Chatbot to AI That Actually Does Things</h1>
+      <p class="article-sub">What separates an "agent" from a plain chatbot? We explain the plan-act-observe loop, tool calling, MCP-style tool standards, and where agents shine and where they fall apart, in plain language.</p>
+      <div class="article-meta"><span><i class="far fa-clock"></i> 12 min read</span><div class="article-tags"><span class="article-tag">AI Agents</span><span class="article-tag">Tool Use</span><span class="article-tag">MCP</span><span class="article-tag">RAG</span><span class="article-tag">Otonomi</span></div></div>
+      <div class="article-body">
+<h2>A Chatbot Talks; An Agent Gets Things Done</h2>
+<p>Think of a plain chatbot as a very well-read advisor who can never leave their desk. You ask a question, they weigh everything in their memory, and they write you a tidy answer. But that's where the story ends. They can't open a file, query a database, or run a calculation and change their mind based on the result. In a single breath, they speak from what they already know, and then they stop. In technical terms: a chatbot is one call to a language model. Input goes in, text comes back, done.</p>
+<p>An AI agent is like giving that same advisor a phone, an internet connection, and a small team of assistants. Now they don't just think — they can reach out into the world to test what they're thinking. They can run a search, fetch a document, call an API (another piece of software's 'service window'), look at what comes back, and decide 'hmm, that's not what I expected' and revise the plan. An agent doesn't freeze on a single reply; it works toward a goal, one step at a time.</p>
+<p>The cleanest definition: a chatbot is a single, one-shot call to a language model; an agent is a language model calling tools in a loop until the job is done. Underline the word loop, because that loop is exactly what makes an agent an agent. Instead of answering in one go, an agent takes small steps, looks at what happened after each one, and decides the next step with fresh information.</p>
+<p>This difference is more fundamental than it sounds. A chatbot guesses: 'the Court of Cassation's case law on this probably says X.' An agent actually goes to the case-law database, finds the relevant ruling, reads its text, and tells you: 'here is the exact decision, and it rests on this specific article.' One tries to remember; the other looks it up — and in law, the gap between those two can decide a case.</p>
+<h2>The Heart of the Loop: Plan, Act, Observe</h2>
+<p>Every agent, however fancy, runs on a simple rhythm: plan, act, observe, repeat. Researchers often call this the 'ReAct loop' — a blend of 'Reasoning' and 'Acting.' The name doesn't matter; the rhythm does. This loop is the beating heart underneath nearly every serious AI agent.</p>
+<p>First comes planning: the model looks at the goal and asks, 'what's the most sensible next step?' This is an inner voice, a statement of intent — 'To answer this, I first need to find the relevant statute.' Then comes acting: the model turns that intent into a tool call. 'Run the legislation-search tool with this keyword.' The system around the model actually executes that call and hands the result back.</p>
+<p>The third step is the one most people overlook but which decides everything: observing. The model looks at what the tool returned. Did it find the article it wanted? Did the result come back empty? Is it something different from what it expected? That observation shapes the next plan. If the search came back empty, the model says 'let me change the keyword'; if it found the right article, it says 'now let me search for the case law interpreting it.' Reasoning and action feed each other: the model thinks about what to do, then re-thinks based on what its action produced.</p>
+<p>This loop repeats until the goal is reached or a reasonable stopping point arrives. On a single task, the model might cycle through it three times, or fifteen. There's no magic — just a big job getting done by stacking small decisions on top of one another, exactly the way a researcher works through a problem: read a source, take a note, spot the gap, go to another source, connect the pieces, conclude.</p>
+<h2>Tool Calling: The Model's Hands and Feet</h2>
+<p>A language model, however capable, by nature only produces text. It can't query a database on its own, send an email, or run a real calculator. So how do agents do all those things? The answer lies in an elegant trick called tool calling (sometimes 'function calling').</p>
+<p>Here's how it works: the model is handed a menu of tools it's allowed to use. Each tool comes with a short description — 'search_legislation: takes a keyword, returns the relevant statute articles.' When the model wants to use a tool, it doesn't run it itself; it just writes a request: 'I'd like to call search_legislation with keyword = "rent increase cap."' It's like flagging down a waiter. The model places the order; the kitchen (the surrounding software) cooks the dish and brings the plate back.</p>
+<p>This separation is crucial. The model decides what should be done; the actual work is performed safely by an external system. That way the model never gets unlimited direct access to your database or the internet — it can only use a designed, auditable set of tools. One tool might be allowed to show a bank balance but never to transfer money; developers draw those lines, not the model.</p>
+<p>Whatever the tools return becomes the model's observation, and the loop closes. This is precisely what makes agents powerful: the model doesn't have to settle for the possibly stale or incomplete knowledge in its own head. It can reach out to live, real, verifiable data. For a legal assistant, that's the difference between 'I think the law says this' and 'the law says exactly this, here is the official text.'</p>
+<h2>Looking It Up, Not Remembering: Retrieval and APIs</h2>
+<p>The tools agents use generally fall into two big families: retrieval tools and action tools. Splitting them apart makes it far easier to understand what agents can actually do.</p>
+<p>Retrieval tools bring information in. The most common example is RAG — Retrieval-Augmented Generation. The idea is simple but transformative: instead of letting the model invent an answer, you first pull the real, relevant documents from a knowledge store — usually a 'vector database,' a repository that arranges texts by meaning rather than by keyword overlap — and then ask the model to base its answer only on those documents. The result is a sourced answer, not a guess. In fields like law, where one wrong sentence is expensive, this is non-negotiable.</p>
+<p>Action tools, by contrast, change something in the world or talk to an outside service. Most of them run over an API. Think of an API (Application Programming Interface) as a software's tidy 'service window': you send a request in the right format, you get a structured response back. A weather API, a payments API, a calendar API. The agent makes an API call just like any other tool call; the only difference is that this time the result is a transaction or live data rather than a document.</p>
+<p>Combining the two gives an agent real depth. An agent might first use a retrieval tool to answer 'which clause governs this contract?', then a calculation tool to compute an amount, then another tool to present the result as a clean summary. Each step is small; but chained together, they accomplish a multi-step job that no single chatbot could ever manage.</p>
+<h2>Multi-Step Tasks: Breaking a Job into Pieces</h2>
+<p>The real value of agents isn't answering a single question; it's carrying a multi-step job from start to finish. Picture a complex task: 'Review this lease, check whether the rent increase is legal under current legislation, and if there's a dispute, tell me which case law would help.' That isn't one 'question'; it's a chain of overlapping tasks.</p>
+<p>An agent breaks this up the way a person would. First it reads the lease and extracts the relevant clause. Then it uses the legislation tool to find the statutory cap in force. Next it compares the contract's rate against that cap. If it spots a conflict, it switches to the case-law tool and pulls precedent. The output of each step becomes the input to the next. This is the loop's real power: the agent updates its plan live as it learns along the way.</p>
+<p>In practice there are two common approaches. One is 'plan first, then execute': the agent lays out all the steps as a list up front, then works through them one by one. The other, more flexible, is the ReAct style: the agent takes a step, looks at the result, and decides the next step based on it. The second is far more robust for jobs that can't be fully foreseen and take shape as you go — because the real world rarely follows the first plan.</p>
+<p>An important caution here: every additional step also carries a chance of error. That's why well-designed agents don't chop a task into needlessly long chains. The best architectures reduce a job to the fewest, sturdiest steps possible, because every extra link is a weak point that can snap. In the next section we'll see, with numbers, exactly why that matters so much.</p>
+<h2>A Common Language: MCP and Tool Standards</h2>
+<p>Once agents started using tools, an annoying problem surfaced fast: every model connected to every tool in its own way. If you had five different AI models and eight different tools, you had to write and maintain forty separate integrations. Engineers call this the 'N-times-M problem,' and it was a real headache that slowed the whole industry down.</p>
+<p>The fix was a shared standard: MCP, the Model Context Protocol. Introduced by Anthropic as an open standard in November 2024, MCP is best thought of as the 'USB-C port for AI.' Just as USB-C lets one cable charge your phone, laptop, and headphones, MCP lets models and tools talk to each other in one common way. You write a tool once to fit MCP, and then it works with whichever model you plug it into.</p>
+<p>Adoption came quickly: through 2025, major players like OpenAI and Google announced support for MCP, and in December 2025 Anthropic handed the protocol's governance to an independent body (the Agentic AI Foundation, under the Linux Foundation). So as of 2026, MCP has become a de facto industry standard that no longer belongs to any single company. In practice it offers three core pieces: tools (executable functions the model decides to call), resources (data the model can read), and prompt templates (ready-made patterns that show the model how to interact with a tool). Together these turn a tangle of integrations into a clean, portable architecture.</p>
+<p>At EcoFluxion this isn't abstract theory; it's how we work day to day. The engine that powers İçtiHub is built on an MCP agent system. Capabilities like legislation search, case-law retrieval, and source verification are each defined as a tool the model can call in a disciplined way. That keeps the system both extensible (adding a new tool isn't rewriting everything) and auditable: we can see exactly which tool the model reached for, and with which parameters.</p>
+<h2>Where Agents Shine, and Where They Fall Apart</h2>
+<p>Agents are not a cure-all; they're extraordinary at certain jobs and dangerously unreliable at others. Telling the two apart may be the single most important skill in using AI with good judgment.</p>
+<p>Agents shine when the job has a clear goal and reliable tools that give feedback. Extracting and verifying facts from a document, hunting a specific bug in a codebase, pulling together multi-source research, querying and summarizing a dataset — these are squarely their territory. Here, the result of each step is concrete: the search found something or it didn't, the test passed or it failed. The agent can read those signals and correct itself.</p>
+<p>Where they fall apart is predictable: long, multi-step chains. A sneaky bit of math kicks in here. Say the model is 99% accurate at every step — that sounds flawless. But over a hundred-step task, those tiny error rates accumulate: 0.99 to the hundredth power is about 0.37, meaning the odds of the whole task going right end-to-end drop to just over a third. Worse, errors don't just add up, they multiply: a false 'fact' invented at step three gets used as evidence at step seven, and the final output is a confident-sounding answer that's rotten at its foundation.</p>
+<p>Another classic trap is fabrication, or 'hallucination.' A model can sometimes act as if it called a tool when it never did, producing a result dressed up to look real — and the user can't see with the naked eye whether the tool actually ran. That's exactly why, in serious systems, tracing every step — logging which tool was really called and what it returned — is not a luxury but a requirement. In a legal product, the difference between truly fetching the source of a ruling and merely pretending to is everything.</p>
+<h2>Safety: Keeping Autonomy on a Leash</h2>
+<p>The moment you give an agent autonomy — the authority to decide and act on its own — both the power and the risk go up. The worst a talk-only bot can do is write a wrong sentence. An agent that can act might send the wrong email, delete the wrong record, or approve the wrong amount. That's why safety isn't a decoration added later in agent design; it's a frame built from the very start.</p>
+<p>The first and most important principle is least privilege: give the agent only the tools it needs to do its job, and nothing more. A research agent needs reading tools but never a delete-data tool. A tool may show money but not transfer it. Developers draw these limits, not the model — and the model can't cross them, because those tools simply aren't on its menu.</p>
+<p>The second principle is human oversight — often called 'human-in-the-loop.' Before any irreversible or costly action, the system pauses and asks a person to approve. The AI drafts, suggests, calculates; but a human pulls the trigger. In high-stakes fields like law, that's the right balance: the agent does the heavy lifting, the human has the final say. Remember that today's systems are still fragile on long, multi-step tasks and on anything requiring subtle reasoning — which is exactly why oversight is indispensable.</p>
+<p>The third principle is transparency. A good agent system leaves a trail for every step it takes: which tool it called, with which parameters, what it got back, and how it used that. This trail makes debugging possible and builds trust. This is the very core of our İçtiHub philosophy: it's not enough for AI to produce an answer; it has to show which source the answer rests on. A lawyer can't walk into a courtroom and say 'the AI told me so'; they have to be able to say 'here is the statute, here is the precedent, here is the source.' That is what makes agents both safe and genuinely useful.</p>
+      </div>
+      <div class="takeaways"><h3>Key takeaways</h3><ul><li>A chatbot is a single call to a language model; an agent is a language model that calls tools in a loop until the job is done.</li><li>Every agent runs on the same rhythm: plan, act, observe, repeat — this 'ReAct loop' is the heart of an agent.</li><li>Tool calling (function calling) is the model's hands and feet: the model decides what to do, while a safe external system does the real work.</li><li>Tools fall into two families: retrieval tools that bring in information (like RAG) and API-based action tools that change something in the world.</li><li>MCP (Model Context Protocol) is the 'USB-C for AI' standard that lets models and tools speak one common language; by 2026 it sits under an independent foundation as the industry's de facto standard.</li><li>Agents shine on clear-goal tasks with feedback; they fall apart on long multi-step chains where errors accumulate and multiply.</li><li>The three pillars of safety: least privilege, human-in-the-loop oversight, and transparency that makes every step traceable.</li></ul></div>
+    </div>
+
+    <a href="index.html" class="article-back"><i class="fas fa-arrow-left"></i> <span class="lang-content" data-lang="tr">Tüm yazılar</span><span class="lang-content" data-lang="en">All articles</span></a>
+  </main>
+  <footer class="footer" style="padding:2rem 0;">
+  <div class="container text-center">
+    <div style="display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;margin-bottom:1rem;">
+      <a href="../index.html"><span class="lang-content" data-lang="tr">Ana Sayfa</span><span class="lang-content" data-lang="en">Home</span></a>
+      <a href="index.html">Blog</a>
+      <a href="https://ictihub.com" target="_blank" rel="noopener">İçtiHub</a>
+      <a href="../privacy-policy.html"><span class="lang-content" data-lang="tr">Gizlilik</span><span class="lang-content" data-lang="en">Privacy</span></a>
+    </div>
+    <div class="footer-social" style="display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;margin-bottom:1rem;">
+      <a href="https://x.com/ecofluxion" target="_blank" rel="noopener" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+      <a href="https://tr.linkedin.com/company/ecofluxion" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      <a href="https://www.instagram.com/ecofluxion/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.tiktok.com/@ecofluxion" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+    </div>
+    <p class="footer-copyright mb-0">&copy; 2024-2026 EcoFluxion. <span class="lang-content" data-lang="tr">Tüm hakları saklıdır.</span><span class="lang-content" data-lang="en">All rights reserved.</span></p>
+  </div>
+</footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+(function () {
+  var lang = localStorage.getItem('language') || 'tr';
+  function apply(l) {
+    document.documentElement.lang = l;
+    document.querySelectorAll('.lang-content').forEach(function (el) { el.style.display = (el.getAttribute('data-lang') === l) ? '' : 'none'; });
+    document.querySelectorAll('.legal-lang-btn').forEach(function (b) { b.classList.toggle('active', b.getAttribute('data-lang') === l); });
+    localStorage.setItem('language', l);
+  }
+  document.querySelectorAll('.legal-lang-btn').forEach(function (b) { b.addEventListener('click', function () { apply(b.getAttribute('data-lang')); }); });
+  apply(lang);
+})();
+</script>
+</body>
+</html>

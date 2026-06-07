@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="EcoFluxion Blog — yapay zeka ürünleri, büyük dil modelleri, RAG, Türkçe NLP ve hukuk teknolojisi üzerine yazılar. Articles on AI products, LLMs, RAG and Turkish NLP.">
+  <meta name="description" content="EcoFluxion Blog — yapay zeka, büyük dil modelleri, RAG, Türkçe NLP ve hukuk teknolojisi üzerine eğitici yazılar. Educational articles on AI, LLMs, RAG and Turkish NLP.">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="https://ecofluxion.com/blog/">
   <meta name="theme-color" content="#7CB342">
   <meta property="og:type" content="website">
   <meta property="og:title" content="EcoFluxion Blog">
-  <meta property="og:description" content="Articles on AI products, LLMs, RAG, Turkish NLP and legal technology.">
+  <meta property="og:description" content="Educational articles on AI, LLMs, RAG, Turkish NLP and legal technology.">
   <meta property="og:url" content="https://ecofluxion.com/blog/">
   <meta property="og:site_name" content="EcoFluxion">
   <meta property="og:image" content="https://ecofluxion.com/image/ecofluxion_logo.png">
@@ -24,7 +24,9 @@
   <link rel="stylesheet" href="../css/style.css">
   <style>
     .legal-nav { background: #2f3a22; }
-    .legal-langbar { display:flex; gap:.5rem; }
+    .legal-nav .nav-link { color: rgba(255,255,255,.85); }
+    .legal-nav .nav-link:hover, .legal-nav .nav-link.active { color: #fff; }
+    .legal-langbar { display:flex; gap:.4rem; }
     .legal-lang-btn.active { background:#fff; color:#558B2F; }
     .article-wrap { max-width: 800px; margin: 0 auto; padding: 130px 1.25rem 70px; }
     .breadcrumb-nav { font-size:.88rem; color:#999; margin-bottom:1.4rem; }
@@ -43,7 +45,7 @@
     .article-back { display:inline-block; margin-top:2rem; font-weight:600; color:#558B2F; text-decoration:none; }
     .blog-head { padding:130px 1.25rem 1.5rem; text-align:center; }
     .blog-head h1 { font-family:'Montserrat',sans-serif; font-weight:800; color:#2f3a22; }
-    .blog-head p { color:#666; max-width:620px; margin:.5rem auto 0; }
+    .blog-head p { color:#666; max-width:640px; margin:.5rem auto 0; }
     .blog-grid { max-width:1120px; margin:0 auto; padding:1rem 1.25rem 80px; display:grid; grid-template-columns:repeat(auto-fill,minmax(330px,1fr)); gap:1.6rem; }
     .blog-card { background:#fff; border:1px solid #eee; border-radius:14px; overflow:hidden; transition:.3s; display:flex; flex-direction:column; }
     .blog-card:hover { transform:translateY(-5px); box-shadow:0 15px 35px rgba(0,0,0,.08); }
@@ -62,7 +64,7 @@
   "@type": "Blog",
   "name": "EcoFluxion Blog",
   "url": "https://ecofluxion.com/blog/",
-  "description": "EcoFluxion blog: AI products, LLMs, RAG, Turkish NLP and legal technology.",
+  "description": "EcoFluxion blog: AI products, LLMs, RAG, Turkish NLP and legal technology — explained.",
   "inLanguage": [
     "tr",
     "en"
@@ -76,6 +78,66 @@
     }
   },
   "blogPost": [
+    {
+      "@type": "BlogPosting",
+      "headline": "Büyük Dil Modelleri (LLM) Nedir ve Nasıl Çalışır?",
+      "url": "https://ecofluxion.com/blog/llm-nedir-nasil-calisir.html",
+      "datePublished": "2026-06-07"
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "Token, Embedding ve Vektör: Yapay Zeka Dili Nasıl Sayıya Çeviriyor?",
+      "url": "https://ecofluxion.com/blog/token-embedding-vektor.html",
+      "datePublished": "2026-06-07"
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "Prompt Mühendisliği: Yapay Zekadan Daha İyi Cevaplar Almanın Pratik Yolları",
+      "url": "https://ecofluxion.com/blog/prompt-muhendisligi.html",
+      "datePublished": "2026-06-07"
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "RAG mı, İnce Ayar mı? Hangisini Ne Zaman Seçmeli",
+      "url": "https://ecofluxion.com/blog/rag-vs-fine-tuning.html",
+      "datePublished": "2026-06-07"
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "Yapay Zekâ Halüsinasyonu: Modeller Neden Uydurur ve Bunu Nasıl Azaltırız?",
+      "url": "https://ecofluxion.com/blog/yapay-zeka-halusinasyon.html",
+      "datePublished": "2026-06-07"
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "Transformer Mimarisi, Sade Bir Dille",
+      "url": "https://ecofluxion.com/blog/transformer-mimarisi.html",
+      "datePublished": "2026-06-07"
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "Yapay Zeka Ajanları ve Araç Kullanımı: Sohbet Botundan Eyleme Geçen Yapay Zekaya",
+      "url": "https://ecofluxion.com/blog/yapay-zeka-ajanlari.html",
+      "datePublished": "2026-06-07"
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "Vektör Veritabanları ve Anlamsal Arama: Bilgisayar \"Anlam\"ı Nasıl Bulur?",
+      "url": "https://ecofluxion.com/blog/vektor-veritabani-anlamsal-arama.html",
+      "datePublished": "2026-06-07"
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "Yapay Zekâ Etiği, Önyargı ve Güvenlik: Sakin ve Pratik Bir Rehber",
+      "url": "https://ecofluxion.com/blog/yapay-zeka-etigi-onyargi.html",
+      "datePublished": "2026-06-07"
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "Hukukta Yapay Zeka: Fırsatlar, Riskler ve Sorumluluk",
+      "url": "https://ecofluxion.com/blog/hukukta-yapay-zeka.html",
+      "datePublished": "2026-06-07"
+    },
     {
       "@type": "BlogPosting",
       "headline": "İçtiHub — Türkiye'de hukuki araştırmayı yapay zekayla yeniden kuruyoruz",
@@ -99,26 +161,148 @@
   </script>
 </head>
 <body>
-  <nav class="navbar navbar-dark fixed-top legal-nav">
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top legal-nav">
     <div class="container">
       <a class="navbar-brand d-flex align-items-center" href="../index.html">
         <img src="../image/ecofluxion_logo.png" alt="EcoFluxion" class="logo-img" style="height:36px;">
         <span class="ms-2 fw-bold">EcoFluxion</span>
       </a>
-      <div class="d-flex align-items-center gap-3">
-        <a class="nav-link text-white" href="index.html"><span class="lang-content" data-lang="tr">Blog</span><span class="lang-content" data-lang="en">Blog</span></a>
-        <div class="legal-langbar">
-          <button class="btn btn-sm btn-outline-light legal-lang-btn" data-lang="tr">TR</button>
-          <button class="btn btn-sm btn-outline-light legal-lang-btn" data-lang="en">EN</button>
-        </div>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#blogNav" aria-label="Menu"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="blogNav">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="../index.html#home"><span class="lang-content" data-lang="tr">Ana Sayfa</span><span class="lang-content" data-lang="en">Home</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="../index.html#about"><span class="lang-content" data-lang="tr">Hakkımızda</span><span class="lang-content" data-lang="en">About</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="../index.html#services"><span class="lang-content" data-lang="tr">Neler Geliştiriyoruz</span><span class="lang-content" data-lang="en">What We Build</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="../index.html#projects"><span class="lang-content" data-lang="tr">Ürünler</span><span class="lang-content" data-lang="en">Products</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="../index.html#technologies"><span class="lang-content" data-lang="tr">Teknolojiler</span><span class="lang-content" data-lang="en">Technologies</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="../index.html#careers"><span class="lang-content" data-lang="tr">Kariyer</span><span class="lang-content" data-lang="en">Careers</span></a></li>
+          <li class="nav-item"><a class="nav-link active" href="index.html"><span class="lang-content" data-lang="tr">Blog</span><span class="lang-content" data-lang="en">Blog</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="../index.html#contact"><span class="lang-content" data-lang="tr">İletişim</span><span class="lang-content" data-lang="en">Contact</span></a></li>
+          <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+            <div class="legal-langbar">
+              <button class="btn btn-sm btn-outline-light legal-lang-btn" data-lang="tr">TR</button>
+              <button class="btn btn-sm btn-outline-light legal-lang-btn" data-lang="en">EN</button>
+            </div>
+          </li>
+        </ul>
       </div>
     </div>
   </nav>
   <header class="blog-head">
     <h1>Blog</h1>
-    <p><span class="lang-content" data-lang="tr">Yapay zeka ürünleri, büyük dil modelleri, RAG ve Türkçe NLP üzerine yazdıklarımız.</span><span class="lang-content" data-lang="en">Our writing on AI products, large language models, RAG and Turkish NLP.</span></p>
+    <p><span class="lang-content" data-lang="tr">Yapay zeka, büyük dil modelleri, RAG ve Türkçe NLP üzerine eğitici yazılar.</span><span class="lang-content" data-lang="en">Educational writing on AI, large language models, RAG and Turkish NLP.</span></p>
   </header>
   <section class="blog-grid">
+
+      <article class="blog-card">
+        <div class="blog-card-top"></div>
+        <div class="blog-card-body">
+          <div class="article-cat"><span class="lang-content" data-lang="tr">Eğitim</span><span class="lang-content" data-lang="en">Education</span></div>
+          <h2><a href="llm-nedir-nasil-calisir.html"><span class="lang-content" data-lang="tr">Büyük Dil Modelleri (LLM) Nedir ve Nasıl Çalışır?</span><span class="lang-content" data-lang="en">What Are Large Language Models (LLMs) and How Do They Work?</span></a></h2>
+          <p><span class="lang-content" data-lang="tr">ChatGPT'nin, Gemini'nin ve Claude'un arkasındaki teknolojiyi sıfırdan anlamak: sonraki kelimeyi tahmin etmekten parametrelere, bağlam penceresinden eğitim ile çalışma arasındaki farka kadar, hiçbir teknik geçmiş gerektirmeden.</span><span class="lang-content" data-lang="en">Understanding the technology behind ChatGPT, Gemini and Claude from scratch: from next-token prediction to parameters, from context windows to the difference between training and inference, with no technical background required.</span></p>
+          <div class="blog-card-meta"><i class="far fa-clock"></i> <span class="lang-content" data-lang="tr">12 dk okuma</span><span class="lang-content" data-lang="en">12 min read</span></div>
+          <a class="read-more" href="llm-nedir-nasil-calisir.html"><span class="lang-content" data-lang="tr">Devamını oku &rarr;</span><span class="lang-content" data-lang="en">Read more &rarr;</span></a>
+        </div>
+      </article>
+
+      <article class="blog-card">
+        <div class="blog-card-top"></div>
+        <div class="blog-card-body">
+          <div class="article-cat"><span class="lang-content" data-lang="tr">Eğitim</span><span class="lang-content" data-lang="en">Education</span></div>
+          <h2><a href="token-embedding-vektor.html"><span class="lang-content" data-lang="tr">Token, Embedding ve Vektör: Yapay Zeka Dili Nasıl Sayıya Çeviriyor?</span><span class="lang-content" data-lang="en">Tokens, Embeddings and Vectors: How AI Turns Language Into Numbers</span></a></h2>
+          <p><span class="lang-content" data-lang="tr">Bir bilgisayar harfleri değil, sayıları işler. Peki bir kelime, bir cümle, hatta bir anlam nasıl oluyor da sayıya dönüşüyor? Tokenizasyondan embedding'lere, vektör uzayından anlamsal benzerliğe; yapay zekanın dili kavrama biçimini matematik bilmeden, somut analojilerle anlatıyoruz.</span><span class="lang-content" data-lang="en">A computer processes numbers, not letters. So how does a word, a sentence, even a meaning turn into a number? From tokenization to embeddings, from vector space to semantic similarity, we explain how AI grasps language with concrete analogies and no math required.</span></p>
+          <div class="blog-card-meta"><i class="far fa-clock"></i> <span class="lang-content" data-lang="tr">11 dk okuma</span><span class="lang-content" data-lang="en">11 min read</span></div>
+          <a class="read-more" href="token-embedding-vektor.html"><span class="lang-content" data-lang="tr">Devamını oku &rarr;</span><span class="lang-content" data-lang="en">Read more &rarr;</span></a>
+        </div>
+      </article>
+
+      <article class="blog-card">
+        <div class="blog-card-top"></div>
+        <div class="blog-card-body">
+          <div class="article-cat"><span class="lang-content" data-lang="tr">Pratik / Nasıl Yapılır</span><span class="lang-content" data-lang="en">Practical / How-to</span></div>
+          <h2><a href="prompt-muhendisligi.html"><span class="lang-content" data-lang="tr">Prompt Mühendisliği: Yapay Zekadan Daha İyi Cevaplar Almanın Pratik Yolları</span><span class="lang-content" data-lang="en">Prompt Engineering: A Practical Guide to Getting Better Answers from AI</span></a></h2>
+          <p><span class="lang-content" data-lang="tr">Aynı yapay zeka modeli, kötü bir istemle vasat, iyi bir istemle şaşırtıcı sonuçlar verir. Aradaki farkı yaratan birkaç basit ama güçlü alışkanlığı —net talimat, bağlam, örnek ve adım adım düşünme— somut öncesi/sonrası karşılaştırmalarıyla anlatıyoruz.</span><span class="lang-content" data-lang="en">The same AI model can hand you a forgettable answer from a sloppy prompt and a genuinely useful one from a good prompt. We unpack the few simple but powerful habits behind that gap —clear instructions, context, examples, and step-by-step thinking— with concrete before-and-after comparisons.</span></p>
+          <div class="blog-card-meta"><i class="far fa-clock"></i> <span class="lang-content" data-lang="tr">11 dk okuma</span><span class="lang-content" data-lang="en">11 min read</span></div>
+          <a class="read-more" href="prompt-muhendisligi.html"><span class="lang-content" data-lang="tr">Devamını oku &rarr;</span><span class="lang-content" data-lang="en">Read more &rarr;</span></a>
+        </div>
+      </article>
+
+      <article class="blog-card">
+        <div class="blog-card-top"></div>
+        <div class="blog-card-body">
+          <div class="article-cat"><span class="lang-content" data-lang="tr">Mühendislik</span><span class="lang-content" data-lang="en">Engineering</span></div>
+          <h2><a href="rag-vs-fine-tuning.html"><span class="lang-content" data-lang="tr">RAG mı, İnce Ayar mı? Hangisini Ne Zaman Seçmeli</span><span class="lang-content" data-lang="en">RAG or Fine-Tuning? Which to Use and When</span></a></h2>
+          <p><span class="lang-content" data-lang="tr">Bir dil modeline ihtiyacı olan bilgiyi vermenin iki ayrı yolu var: önüne kitabı açık bırakmak (RAG) ya da onu yeniden okula göndermek (ince ayar). İkisinin gerçekte ne yaptığını, nerede ayrıştığını ve en iyi sistemlerin neden çoğu zaman ikisini birden kullandığını anlatıyoruz.</span><span class="lang-content" data-lang="en">There are two distinct ways to give a language model what it needs to know: leave the book open in front of it (RAG) or send it back to school (fine-tuning). Here is what each one really does, where they diverge, and why the best systems often use both.</span></p>
+          <div class="blog-card-meta"><i class="far fa-clock"></i> <span class="lang-content" data-lang="tr">11 dk okuma</span><span class="lang-content" data-lang="en">11 min read</span></div>
+          <a class="read-more" href="rag-vs-fine-tuning.html"><span class="lang-content" data-lang="tr">Devamını oku &rarr;</span><span class="lang-content" data-lang="en">Read more &rarr;</span></a>
+        </div>
+      </article>
+
+      <article class="blog-card">
+        <div class="blog-card-top"></div>
+        <div class="blog-card-body">
+          <div class="article-cat"><span class="lang-content" data-lang="tr">Eğitim</span><span class="lang-content" data-lang="en">Education</span></div>
+          <h2><a href="yapay-zeka-halusinasyon.html"><span class="lang-content" data-lang="tr">Yapay Zekâ Halüsinasyonu: Modeller Neden Uydurur ve Bunu Nasıl Azaltırız?</span><span class="lang-content" data-lang="en">AI Hallucination: Why Models Make Things Up and How to Reduce It</span></a></h2>
+          <p><span class="lang-content" data-lang="tr">Bir dil modeli neden yanlış bir cevabı, tam bir özgüvenle, doğruymuş gibi söyler? Halüsinasyonun ne olduğunu, neden modelin doğasından kaynaklandığını ve mühendislerin onu nasıl dizginlediğini sade bir dille anlatıyoruz.</span><span class="lang-content" data-lang="en">Why does a language model state a wrong answer with total confidence, as if it were true? In plain language, we explain what hallucination is, why it springs from the model's very nature, and how engineers rein it in.</span></p>
+          <div class="blog-card-meta"><i class="far fa-clock"></i> <span class="lang-content" data-lang="tr">11 dk okuma</span><span class="lang-content" data-lang="en">11 min read</span></div>
+          <a class="read-more" href="yapay-zeka-halusinasyon.html"><span class="lang-content" data-lang="tr">Devamını oku &rarr;</span><span class="lang-content" data-lang="en">Read more &rarr;</span></a>
+        </div>
+      </article>
+
+      <article class="blog-card">
+        <div class="blog-card-top"></div>
+        <div class="blog-card-body">
+          <div class="article-cat"><span class="lang-content" data-lang="tr">Araştırma</span><span class="lang-content" data-lang="en">Research</span></div>
+          <h2><a href="transformer-mimarisi.html"><span class="lang-content" data-lang="tr">Transformer Mimarisi, Sade Bir Dille</span><span class="lang-content" data-lang="en">The Transformer Architecture, Explained Simply</span></a></h2>
+          <p><span class="lang-content" data-lang="tr">2017'de yayımlanan tek bir makale yapay zekânın gidişatını değiştirdi. "Attention Is All You Need" fikrinin neden bu kadar önemli olduğunu, kelimelerin birbirine nasıl "dikkat ettiğini" ve bugünkü büyük dil modellerinin neden hepsinin bu temele oturduğunu adım adım anlatıyoruz.</span><span class="lang-content" data-lang="en">A single paper published in 2017 changed the course of AI. We walk through why the "Attention Is All You Need" idea matters so much, how words learn to "pay attention" to one another, and why nearly every large language model today rests on this one foundation.</span></p>
+          <div class="blog-card-meta"><i class="far fa-clock"></i> <span class="lang-content" data-lang="tr">11 dk okuma</span><span class="lang-content" data-lang="en">11 min read</span></div>
+          <a class="read-more" href="transformer-mimarisi.html"><span class="lang-content" data-lang="tr">Devamını oku &rarr;</span><span class="lang-content" data-lang="en">Read more &rarr;</span></a>
+        </div>
+      </article>
+
+      <article class="blog-card">
+        <div class="blog-card-top"></div>
+        <div class="blog-card-body">
+          <div class="article-cat"><span class="lang-content" data-lang="tr">Mühendislik</span><span class="lang-content" data-lang="en">Engineering</span></div>
+          <h2><a href="yapay-zeka-ajanlari.html"><span class="lang-content" data-lang="tr">Yapay Zeka Ajanları ve Araç Kullanımı: Sohbet Botundan Eyleme Geçen Yapay Zekaya</span><span class="lang-content" data-lang="en">AI Agents and Tool Use: From Chatbot to AI That Actually Does Things</span></a></h2>
+          <p><span class="lang-content" data-lang="tr">Bir "ajan" sıradan bir sohbet botundan nasıl ayrılır? Planla-uygula-gözlemle döngüsünü, araç çağırmayı, MCP gibi araç standartlarını ve ajanların nerede parlayıp nerede çuvalladığını sade bir dille anlatıyoruz.</span><span class="lang-content" data-lang="en">What separates an "agent" from a plain chatbot? We explain the plan-act-observe loop, tool calling, MCP-style tool standards, and where agents shine and where they fall apart, in plain language.</span></p>
+          <div class="blog-card-meta"><i class="far fa-clock"></i> <span class="lang-content" data-lang="tr">12 dk okuma</span><span class="lang-content" data-lang="en">12 min read</span></div>
+          <a class="read-more" href="yapay-zeka-ajanlari.html"><span class="lang-content" data-lang="tr">Devamını oku &rarr;</span><span class="lang-content" data-lang="en">Read more &rarr;</span></a>
+        </div>
+      </article>
+
+      <article class="blog-card">
+        <div class="blog-card-top"></div>
+        <div class="blog-card-body">
+          <div class="article-cat"><span class="lang-content" data-lang="tr">Mühendislik</span><span class="lang-content" data-lang="en">Engineering</span></div>
+          <h2><a href="vektor-veritabani-anlamsal-arama.html"><span class="lang-content" data-lang="tr">Vektör Veritabanları ve Anlamsal Arama: Bilgisayar "Anlam"ı Nasıl Bulur?</span><span class="lang-content" data-lang="en">Vector Databases and Semantic Search: How a Computer Finds "Meaning"</span></a></h2>
+          <p><span class="lang-content" data-lang="tr">Anahtar kelime aramasından anlamsal aramaya: embedding'ler, HNSW gibi yaklaşık komşu indeksleri, vektör veritabanının gerçekte yaptığı iş ve yeniden sıralama. Hepsini sade örneklerle anlatıyor, İçtiHub'ın içtihadı kelimeyle değil anlamla nasıl bulduğunu gösteriyoruz.</span><span class="lang-content" data-lang="en">From keyword search to semantic search: embeddings, ANN indexes like HNSW, what a vector database actually does, and re-ranking — all explained with plain examples, plus how İçtiHub finds case law by meaning rather than by words.</span></p>
+          <div class="blog-card-meta"><i class="far fa-clock"></i> <span class="lang-content" data-lang="tr">12 dk okuma</span><span class="lang-content" data-lang="en">12 min read</span></div>
+          <a class="read-more" href="vektor-veritabani-anlamsal-arama.html"><span class="lang-content" data-lang="tr">Devamını oku &rarr;</span><span class="lang-content" data-lang="en">Read more &rarr;</span></a>
+        </div>
+      </article>
+
+      <article class="blog-card">
+        <div class="blog-card-top"></div>
+        <div class="blog-card-body">
+          <div class="article-cat"><span class="lang-content" data-lang="tr">Toplum</span><span class="lang-content" data-lang="en">Society</span></div>
+          <h2><a href="yapay-zeka-etigi-onyargi.html"><span class="lang-content" data-lang="tr">Yapay Zekâ Etiği, Önyargı ve Güvenlik: Sakin ve Pratik Bir Rehber</span><span class="lang-content" data-lang="en">AI Ethics, Bias, and Safety: A Calm, Practical Guide</span></a></h2>
+          <p><span class="lang-content" data-lang="tr">Önyargı nereden gelir, adalet ve şeffaflık aslında ne demektir, KVKK ile AB Yapay Zekâ Yasası bizden ne ister? Vaaz vermeden, somut örneklerle gidiyoruz.</span><span class="lang-content" data-lang="en">Where does bias come from, what do fairness and transparency really mean, and what do KVKK and the EU AI Act actually ask of us? A concrete walkthrough, without the lecture.</span></p>
+          <div class="blog-card-meta"><i class="far fa-clock"></i> <span class="lang-content" data-lang="tr">11 dk okuma</span><span class="lang-content" data-lang="en">11 min read</span></div>
+          <a class="read-more" href="yapay-zeka-etigi-onyargi.html"><span class="lang-content" data-lang="tr">Devamını oku &rarr;</span><span class="lang-content" data-lang="en">Read more &rarr;</span></a>
+        </div>
+      </article>
+
+      <article class="blog-card">
+        <div class="blog-card-top"></div>
+        <div class="blog-card-body">
+          <div class="article-cat"><span class="lang-content" data-lang="tr">LegalTech</span><span class="lang-content" data-lang="en">LegalTech</span></div>
+          <h2><a href="hukukta-yapay-zeka.html"><span class="lang-content" data-lang="tr">Hukukta Yapay Zeka: Fırsatlar, Riskler ve Sorumluluk</span><span class="lang-content" data-lang="en">AI in Law: Opportunities, Risks, and Responsibility</span></a></h2>
+          <p><span class="lang-content" data-lang="tr">Yapay zeka hukuki araştırmayı, taslak yazımını ve belge incelemesini dakikalara indiriyor. Ama uydurma atıflar, gizlilik açıkları ve sessizce yerleşen aşırı güven gibi gerçek riskler de getiriyor. Bu yazıda neyin gerçekten işe yaradığını, neyin tehlikeli olduğunu ve son sözün neden hâlâ hukukçuda kaldığını açıklıyoruz.</span><span class="lang-content" data-lang="en">AI is collapsing legal research, drafting, and review from hours into minutes. But it also brings real risks: hallucinated citations, confidentiality leaks, and a quiet creep of over-reliance. This piece explains what genuinely works, what is dangerous, and why the final word still belongs to the lawyer.</span></p>
+          <div class="blog-card-meta"><i class="far fa-clock"></i> <span class="lang-content" data-lang="tr">11 dk okuma</span><span class="lang-content" data-lang="en">11 min read</span></div>
+          <a class="read-more" href="hukukta-yapay-zeka.html"><span class="lang-content" data-lang="tr">Devamını oku &rarr;</span><span class="lang-content" data-lang="en">Read more &rarr;</span></a>
+        </div>
+      </article>
 
       <article class="blog-card">
         <div class="blog-card-top"></div>
@@ -155,7 +339,13 @@
   </section>
   <footer class="footer" style="padding:2rem 0;">
   <div class="container text-center">
-    <div class="footer-social justify-content-center" style="display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;margin-bottom:1rem;">
+    <div style="display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;margin-bottom:1rem;">
+      <a href="../index.html"><span class="lang-content" data-lang="tr">Ana Sayfa</span><span class="lang-content" data-lang="en">Home</span></a>
+      <a href="index.html">Blog</a>
+      <a href="https://ictihub.com" target="_blank" rel="noopener">İçtiHub</a>
+      <a href="../privacy-policy.html"><span class="lang-content" data-lang="tr">Gizlilik</span><span class="lang-content" data-lang="en">Privacy</span></a>
+    </div>
+    <div class="footer-social" style="display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;margin-bottom:1rem;">
       <a href="https://x.com/ecofluxion" target="_blank" rel="noopener" aria-label="X"><i class="fab fa-x-twitter"></i></a>
       <a href="https://tr.linkedin.com/company/ecofluxion" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
       <a href="https://www.instagram.com/ecofluxion/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
@@ -164,7 +354,8 @@
     <p class="footer-copyright mb-0">&copy; 2024-2026 EcoFluxion. <span class="lang-content" data-lang="tr">Tüm hakları saklıdır.</span><span class="lang-content" data-lang="en">All rights reserved.</span></p>
   </div>
 </footer>
-  <script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
 (function () {
   var lang = localStorage.getItem('language') || 'tr';
   function apply(l) {
