@@ -492,4 +492,22 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://ecofluxion.com/cozumler/</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://ecofluxion.com/cozumler/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ecofluxion.com/solutions/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ecofluxion.com/cozumler/"/>
+    <lastmod>2026-06-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ecofluxion.com/solutions/</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://ecofluxion.com/cozumler/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ecofluxion.com/solutions/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ecofluxion.com/cozumler/"/>
+    <lastmod>2026-06-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>

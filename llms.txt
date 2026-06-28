@@ -1,6 +1,6 @@
 # EcoFluxion
 
-> EcoFluxion is an AI product R&D company based in ODTÜ Teknokent, Ankara, Türkiye, that builds its own AI products. Its flagship product is İçtiHub, an AI-powered legal-tech platform for Turkish legal professionals (large language models + retrieval-augmented generation over Turkish case-law and legislation). EcoFluxion develops and operates its own products — it is NOT a software agency or consultancy.
+> EcoFluxion is an AI product R&D company based in ODTÜ Teknokent, Ankara, Türkiye, that builds its own AI products. Its flagship product is İçtiHub, an AI-powered legal-tech platform for Turkish legal professionals (large language models + retrieval-augmented generation over Turkish case-law and legislation). EcoFluxion primarily develops and operates its own products, and also delivers software, AI, and data solutions to businesses (custom software development, LLM training & fine-tuning, computer vision, RAG/semantic search, mobile apps, big data) — see its Çözümler/Solutions practice. Ankara-based, serving all of Türkiye.
 
 EcoFluxion Teknoloji A.Ş. was founded in August 2024 and is post-revenue and investor-backed. The company focuses on Turkish-language AI: large language models (LLMs), natural language processing (NLP), retrieval-augmented generation (RAG), semantic/vector search, and model training. Its products are: **İçtiHub** (flagship AI legal-tech SaaS: semantic case-law search, document analysis, smart templates, and an AI legal assistant), **MevzuatBot** (the Turkish legal LLM engine that powers İçtiHub), and **SYDhub** (a large-scale industrial green-transformation platform). The website is bilingual — Turkish at /faydali-bilgiler/ and English at /insights/ — with hreflang annotations. Contact: info@ecofluxion.com.
 
@@ -75,6 +75,16 @@ EcoFluxion Teknoloji A.Ş. was founded in August 2024 and is post-revenue and in
 - [İçtiHub — Türkiye'de hukuki araştırmayı yapay zekayla yeniden kuruyoruz](https://ecofluxion.com/faydali-bilgiler/ictihub-ai-hukuki-arastirma.html): İçtiHub, Türk hukuk metinleri için büyük dil modelleri ve RAG ile içtihat araması, belge analizi ve hukuki asistanı bir araya getiren yapay zeka platformudur.
 - [Türkçe Hukuk Verisinde LLM'leri RAG ile Sağlamlaştırmak](https://ecofluxion.com/faydali-bilgiler/rag-turkce-hukuk-verisi.html): Ham LLM'ler Türkçe hukukta neden yanılır, RAG bunu nasıl çözer: parçalama, embedding, vektör arama, yeniden sıralama ve kaynak gösterimi. İçtiHub'ın mühendisliği.
 - [Türkçe için Yapay Zeka: Türkçe Doğal Dil İşlemenin Zorlukları ve Fırsatları](https://ecofluxion.com/faydali-bilgiler/turkce-yapay-zeka-nlp.html): Türkçenin sondan eklemeli yapısı, zengin çekimi, tokenizasyon ve veri sorunları yapay zekayı neden zorlar? Türkçe NLP'nin zorluklarını ve fırsatlarını inceliyoruz.
+
+## Çözümler / Solutions (services for businesses)
+
+- [Çözümler & Hizmetler (TR)](https://ecofluxion.com/cozumler/) · [Solutions & Services (EN)](https://ecofluxion.com/solutions/): EcoFluxion brings the engineering capability behind its own AI products (İçtiHub, MevzuatBot, SYDhub) to client projects. Ankara-based, serving all of Türkiye.
+- Custom Software Development — web apps, internal dashboards, APIs, microservices, cloud-based systems and integrations.
+- LLM Training & Fine-Tuning — domain-specific language models, Turkish NLP, fine-tuning and adaptation to enterprise data.
+- Computer Vision & Image Recognition — object recognition, OCR, document/image analysis, visual quality control, video analytics.
+- RAG & Enterprise Semantic Search — semantic search over corporate documents and AI assistants that cite their sources.
+- Mobile App Development — iOS, Android and cross-platform AI-powered apps, end to end.
+- Big Data & Data Engineering — data pipelines, warehousing, analytics infrastructure and data cleaning.
 
 ## Optional
 
