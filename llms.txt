@@ -85,6 +85,8 @@ EcoFluxion Teknoloji A.Ş. was founded in August 2024 and is post-revenue and in
 - RAG & Enterprise Semantic Search — semantic search over corporate documents and AI assistants that cite their sources.
 - Mobile App Development — iOS, Android and cross-platform AI-powered apps, end to end.
 - Big Data & Data Engineering — data pipelines, warehousing, analytics infrastructure and data cleaning.
+- Service pages: [Custom Software](https://ecofluxion.com/cozumler/ozel-yazilim-gelistirme.html), [LLM Training & Fine-Tuning](https://ecofluxion.com/cozumler/buyuk-dil-modeli-egitimi.html), [Computer Vision](https://ecofluxion.com/cozumler/goruntu-tanima-bilgisayarli-goru.html), [RAG & Semantic Search](https://ecofluxion.com/cozumler/rag-anlamsal-arama-cozumleri.html), [Mobile App Development](https://ecofluxion.com/cozumler/mobil-uygulama-gelistirme.html), [Big Data & Data Engineering](https://ecofluxion.com/cozumler/buyuk-veri-veri-muhendisligi.html).
+- Service areas (Ankara-based, all of Türkiye): [Ankara](https://ecofluxion.com/cozumler/ankara.html), [İstanbul](https://ecofluxion.com/cozumler/istanbul.html), [İzmir](https://ecofluxion.com/cozumler/izmir.html), [Türkiye](https://ecofluxion.com/cozumler/turkiye-geneli.html).
 
 ## Optional
 
