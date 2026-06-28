@@ -134,9 +134,17 @@ img {
 .nav-link {
     color: var(--white) !important;
     font-weight: 500;
-    padding: 0.5rem 1rem !important;
+    padding: 0.5rem 0.7rem !important;
     position: relative;
     font-size: 0.95rem;
+    white-space: nowrap;
+}
+
+/* Keep the full nav on one line on tighter desktop widths (lg breakpoint) */
+@media (min-width: 992px) and (max-width: 1299.98px) {
+    .nav-link { padding: 0.5rem 0.5rem !important; font-size: 0.86rem; }
+    .navbar-brand span { font-size: 1.25rem; }
+    .navbar-nav .nav-item.ms-3 { margin-left: 0.5rem !important; }
 }
 
 .nav-link::after {
