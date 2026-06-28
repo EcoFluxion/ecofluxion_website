@@ -25,6 +25,17 @@
         initScrollToTop();
         initContactForm();
         initSmoothScroll();
+
+        // Arriving with a section hash (e.g. an inner-page link to /#insights):
+        // smooth-scroll to it, accounting for the fixed navbar.
+        if (window.location.hash) {
+            var _hashTarget = $(window.location.hash);
+            if (_hashTarget.length) {
+                setTimeout(function () {
+                    $('html, body').stop().animate({ scrollTop: _hashTarget.offset().top - 70 }, 450);
+                }, 120);
+            }
+        }
     });
 
     // ==========================================================================
