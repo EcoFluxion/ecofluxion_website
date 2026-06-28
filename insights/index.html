@@ -67,6 +67,8 @@
     .blog-pagination button.active { background:#558B2F; border-color:#558B2F; color:#fff; }
     .blog-pagination button:disabled { opacity:.4; cursor:default; }
     @media (max-width:600px){ .article-hero{ height:210px; } }
+    .blog-card.card-in { animation: cardIn .5s cubic-bezier(.22,.61,.36,1) both; }
+    @keyframes cardIn { from { opacity:0; transform: translateY(16px); } to { opacity:1; transform:none; } }
 </style>
   <script type="application/ld+json">
 {
@@ -576,7 +578,7 @@
   if (!pager) return;
   var pages = Math.ceil(cards.length / PER);
   function show(p, scroll) {
-    cards.forEach(function (c, i) { c.style.display = (i >= (p - 1) * PER && i < p * PER) ? '' : 'none'; });
+    cards.forEach(function (c, i) { var v = (i >= (p - 1) * PER && i < p * PER); c.style.display = v ? '' : 'none'; if (v && scroll) { c.classList.remove('card-in'); void c.offsetWidth; c.classList.add('card-in'); } });
     Array.prototype.slice.call(pager.querySelectorAll('button')).forEach(function (b) { if (b.dataset.p) b.classList.toggle('active', b.dataset.p === String(p)); });
     var prev = pager.querySelector('[data-nav=prev]'), next = pager.querySelector('[data-nav=next]');
     if (prev) prev.disabled = (p <= 1); if (next) next.disabled = (p >= pages);
